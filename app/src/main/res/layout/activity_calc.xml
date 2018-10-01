@@ -30,13 +30,17 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbarStyle="insideOverlay">
+                android:scrollbarStyle="insideOverlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
 
                 <LinearLayout
                     android:id="@+id/settingLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
@@ -62,7 +66,25 @@
                         android:id="@+id/srcList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"></LinearLayout>
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/srcAddButton"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="false"
+                            android:contentDescription="@string/addSrcButton"
+                            app:srcCompat="@android:drawable/ic_input_add" />
+                    </LinearLayout>
 
                     <Space
                         android:layout_width="match_parent"
@@ -87,6 +109,22 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"></LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/prodAddButton"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="false"
+                            android:contentDescription="@string/addProdButton"
+                            app:srcCompat="@android:drawable/ic_input_add" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </ScrollView>
@@ -97,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 android:gravity="bottom"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -112,11 +150,22 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/eqText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/defaultText" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="false">
+
+                    <TextView
+                        android:id="@+id/eqText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/defaultEqu"
+                        android:textSize="16sp" />
+                </HorizontalScrollView>
 
                 <TextView
                     android:id="@+id/GPH"

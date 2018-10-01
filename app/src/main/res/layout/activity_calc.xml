@@ -27,78 +27,82 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/settingLayout"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent"
+                android:scrollbarStyle="insideOverlay">
 
-                <TextView
-                    android:id="@+id/textView2"
+
+                <LinearLayout
+                    android:id="@+id/settingLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sourceText"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:text="原料" />
+                    android:layout_height="0dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="4dp" />
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sourceText"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="原料" />
 
-                <ListView
-                    android:id="@+id/srcList"
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp">
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp" />
 
-                </ListView>
+                    <LinearLayout
+                        android:id="@+id/srcList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"></LinearLayout>
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="12dp" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="12dp" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/prodText"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:text="成果品" />
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prodText"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        tools:text="成果品" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="4dp" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp" />
 
-                <ListView
-                    android:id="@+id/prodList"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp">
+                    <LinearLayout
+                        android:id="@+id/prodList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"></LinearLayout>
 
-                </ListView>
+                </LinearLayout>
 
-            </LinearLayout>
+            </ScrollView>
 
             <LinearLayout
                 android:id="@+id/resultLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="bottom"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/settingLayout">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
                     android:id="@+id/resultText"

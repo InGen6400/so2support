@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">so2support</string>
+    <string name="sourceText">原料</string>
+    <string name="prodText">完成品</string>
+    <string name="resultText">結果</string>
+    <string name="defaultText">default...</string>
+    <string name="defaultGPH">時給2340 G/h</string>
+</resources>

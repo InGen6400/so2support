@@ -2,9 +2,13 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Widget.AppCompat.Button"
+    android:id="@+id/itemView"
+    style="@style/Base.Widget.AppCompat.Button"
     android:layout_width="match_parent"
-    android:layout_height="60dp">
+    android:layout_height="52dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    tools:layout_editor_absoluteY="81dp">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -91,16 +95,15 @@
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="2dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/delete"
         android:cropToPadding="false"
         android:scaleType="matrix"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_delete"
-        tools:scaleType="center"
-        android:contentDescription="@string/delete" />
+        tools:scaleType="center" />
 
 </android.support.constraint.ConstraintLayout>

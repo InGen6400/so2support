@@ -8,7 +8,9 @@ import android.widget.Toast;
 
 public class CalcActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //原料リスト
     LinearLayout srcList;
+    //アイテムのデータ(名前，スタック数, etc...)
     ItemData itemData;
 
     int i;
@@ -17,9 +19,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
         itemData = new ItemData(this);
-
+        //原料リストを取得
         srcList = findViewById(R.id.srcList);
 
+        //テスト用の5アイテム
         for (i = 0; i < 5; i++) {
             ItemButtonView itemButton = new ItemButtonView(this, itemData);
             itemButton.setOnClickListener(this);
@@ -41,10 +44,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(v.toString()), Toast.LENGTH_SHORT).show();
     }
 
+    //原料リストにアイテムを追加する
     private void addSrc() {
 
     }
 
+    //リスト要素を編集する
     public void onClickEdit(View v) {
 
     }

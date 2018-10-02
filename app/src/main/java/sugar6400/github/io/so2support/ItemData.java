@@ -16,6 +16,7 @@ public class ItemData {
     private InputStream is;
     private String jsonText;
 
+    //画像番号とアイテムidの結びつけ(jsonに直接書くようにするかも?)
     private int[] id2im;
     private JSONObject itemJson;
 
@@ -24,14 +25,9 @@ public class ItemData {
         if (jsonText == null) {
             Log.e("Json Error", "JsonText is null");
         }
-        try {
-            itemJson = new JSONObject(jsonText.substring(jsonText.indexOf("{"), jsonText.lastIndexOf("}") + 1));
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.e("Json Error", "ItemData.java 30~");
-        }
     }
 
+    //text(.json形式)ファイルを読み込んでJsonText形式にする
     public void readJson(Context context) {
         try {
             try {
@@ -50,8 +46,16 @@ public class ItemData {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        //Jsonデータに変換
+        try {
+            itemJson = new JSONObject(jsonText.substring(jsonText.indexOf("{"), jsonText.lastIndexOf("}") + 1));
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("Json Error", "ItemData.java 30~");
+        }
     }
 
+    //jsonオブジェクトを取得
     public JSONObject getItemJson(int id) {
         try {
             return itemJson.getJSONObject(String.valueOf(id));
@@ -61,6 +65,7 @@ public class ItemData {
         return null;
     }
 
+    //指定したタグの要素を取得
     public String getItemStr(int id, String tag) {
         try {
             return itemJson.getJSONObject(String.valueOf(id)).getString(tag);
@@ -70,6 +75,7 @@ public class ItemData {
         return null;
     }
 
+    //指定したタグ要素を取得(int)
     public int getItemInt(int id, String tag) {
         try {
             return itemJson.getJSONObject(String.valueOf(id)).getInt(tag);

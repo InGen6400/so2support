@@ -9,23 +9,20 @@ import android.widget.Toast;
 public class CalcActivity extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout srcList;
+    ItemData itemData;
 
     int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
+        itemData = new ItemData(this);
 
         srcList = findViewById(R.id.srcList);
 
         for (i = 0; i < 5; i++) {
-            ItemButtonView itemButton = new ItemButtonView(this);
-            itemButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(i), Toast.LENGTH_SHORT).show();
-                }
-            });
+            ItemButtonView itemButton = new ItemButtonView(this, itemData);
+            itemButton.setOnClickListener(this);
             srcList.addView(itemButton);
         }
     }
@@ -33,6 +30,19 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        if (v != null) {
+            switch (v.getId()) {
+                case R.id.srcAddButton:
+                case R.id.prodAddButton:
+                case R.id.deleteButton:
+                case R.id.itemView:
+            }
+        }
+        Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(v.toString()), Toast.LENGTH_SHORT).show();
+    }
+
+    private void addSrc() {
+
     }
 
     public void onClickEdit(View v) {

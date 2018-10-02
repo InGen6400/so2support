@@ -6,21 +6,56 @@ import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.widget.TextView;
 
 public class ItemButtonView extends ConstraintLayout {
 
+    CalcItem calcItem;
+    ItemData itemData;
+    TextView nameText;
+    TextView numText;
+    TextView valueText;
+    TextView breakProbText;
+    TextView sumValueText;
+
     public ItemButtonView(Context context) {
-        this(context, null);
+        this(context, null, new ItemData(context));
     }
 
-    public ItemButtonView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public ItemButtonView(Context context, ItemData itemData) {
+        this(context, null, itemData);
+    }
 
+    public ItemButtonView(Context context, AttributeSet attrs, ItemData itemData) {
+        super(context, attrs);
         init();
+
+        this.itemData = itemData;
+        nameText = this.findViewById(R.id.name);
+        numText = this.findViewById(R.id.num);
+        valueText = this.findViewById(R.id.value);
+        breakProbText = this.findViewById(R.id.breakProbText);
+        sumValueText = this.findViewById(R.id.sumValueText);
+
+        refresh();
     }
 
     private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.item_view, this);
+        calcItem = new CalcItem();
+    }
+
+    public void setItem(CalcItem calcItem) {
+        this.calcItem = calcItem;
+    }
+
+    public void refresh() {
+        nameText.setText(itemData.getItemStr(calcItem.id, "name"));
+        numText.setText("x" + String.valueOf(calcItem.num) + itemData.getItemStr(calcItem.id, "scale"));
+        valueText.setText("金額:" + String.valueOf(calcItem.value) + "G");
+        breakProbText.setText("破損:" + String.valueOf(calcItem.breakProb) + "%");
+        double sum = calcItem.value * calcItem.num * (1 - calcItem.breakProb / 100.0);
+        sumValueText.setText(String.format("合計:%1$.2fG", sum));
     }
 
     @Nullable

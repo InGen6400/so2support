@@ -8,4 +8,6 @@
     <string name="defaultGPH">時給 ... G/h</string>
     <string name="addSrcButton">原料を追加</string>
     <string name="addProdButton">成果品を追加</string>
+    <string name="itemicon">itemIcon</string>
+    <string name="delete">delete</string>
 </resources>

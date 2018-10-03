@@ -6,26 +6,34 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class CalcActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private int JsonMaxDataNum = 1217;
     //原料リスト
     LinearLayout srcList;
     //カテゴリースピナー
-    private static String[][] catSpinnerItems;
+    private static ArrayList<Integer>[] catSpinnerItemId;
     //アイテムのデータ(名前，スタック数, etc...)
     ItemData itemData;
 
-    int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
+
+        //アイテムデータの読み込み
         itemData = new ItemData(this);
+        //スピナーデータの読み込み
+        catSpinnerItemId = new ArrayList[12];
+        setSpinnerItemId();
+
         //原料リストを取得
         srcList = findViewById(R.id.srcList);
 
         //テスト用の5アイテム
-        for (i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             ItemButtonView itemButton = new ItemButtonView(this, itemData);
             itemButton.setOnClickListener(this);
             srcList.addView(itemButton);
@@ -44,6 +52,18 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(v.toString()), Toast.LENGTH_SHORT).show();
+    }
+
+    private void setSpinnerItemId(){
+        String cat;
+        int catId;
+        for(int i=1; i<=JsonMaxDataNum; i++){
+            cat = itemData.getItemStr(i, "category");
+            if(cat != null){
+                catId = catStr2int(cat);
+                catSpinnerItemId[catId].add(itemData.getItemInt(i,"item_id"));
+            }
+        }
     }
 
     private int catStr2int(String catStr) {

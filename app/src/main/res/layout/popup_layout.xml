@@ -35,7 +35,7 @@
             android:orientation="horizontal">
 
             <Spinner
-                android:id="@+id/spinner2"
+                android:id="@+id/catSpinner"
                 style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                 android:entries="@array/categoryList" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/itemSpinner"
                 style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -2,6 +2,7 @@ package sugar6400.github.io.so2support;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -89,7 +90,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             cat = itemData.getItemStr(i, "category");
             if(cat != null){
                 catId = catStr2int(cat);
-                catSpinnerItemId[catId].add(itemData.getItemInt(i,"item_id"));
+                if (catId != -1) {
+                    catSpinnerItemId[catId].add(itemData.getItemInt(i, "item_id"));
+                } else {
+                    Log.e("Spinner", "CalcActivity 95~");
+                }
             }
         }
     }

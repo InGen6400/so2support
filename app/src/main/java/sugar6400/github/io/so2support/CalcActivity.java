@@ -3,7 +3,9 @@ package sugar6400.github.io.so2support;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,8 +17,15 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout srcList;
     //カテゴリースピナー
     private static ArrayList<Integer>[] catSpinnerItemId;
+    //カテゴリ別スピナーadapter
+    private ItemAdapter[] itemAdapters;
     //アイテムのデータ(名前，スタック数, etc...)
     ItemData itemData;
+
+    //選択中のカテゴリID
+    private int selectedCatID = 0;
+    //選択中のアイテムID
+    private int selectedItemID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +37,25 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         //スピナーデータの読み込み
         catSpinnerItemId = new ArrayList[12];
         setSpinnerItemId();
+
+        //アイテム一覧スピナーの初期設定
+        Spinner itemSpinner = findViewById(R.id.itemSpinner);
+        ItemAdapter adapter = new ItemAdapter(this.getApplicationContext(), R.layout.spinner_item, catSpinnerItemId[0]);
+
+        itemSpinner.setAdapter(adapter);
+        itemSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //アイテム選択時
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //選択したアイテムのIDを取得
+                selectedItemID = catSpinnerItemId[selectedCatID].get(position);
+            }
+
+            //　アイテムが選択されなかった
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
 
         //原料リストを取得
         srcList = findViewById(R.id.srcList);

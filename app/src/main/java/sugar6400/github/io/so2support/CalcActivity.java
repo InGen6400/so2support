@@ -10,6 +10,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     //原料リスト
     LinearLayout srcList;
+    //カテゴリースピナー
+    private static String[][] catSpinnerItems;
     //アイテムのデータ(名前，スタック数, etc...)
     ItemData itemData;
 
@@ -42,6 +44,36 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(v.toString()), Toast.LENGTH_SHORT).show();
+    }
+
+    private int catStr2int(String catStr) {
+        switch (catStr) {
+            case "原料":
+                return 0;
+            case "本":
+                return 1;
+            case "薬":
+                return 2;
+            case "剣":
+                return 3;
+            case "鎧":
+                return 4;
+            case "盾":
+                return 5;
+            case "杖":
+                return 6;
+            case "アクセサリ":
+                return 7;
+            case "地図":
+                return 8;
+            case "道具":
+                return 9;
+            case "生物":
+                return 10;
+            case "食物":
+                return 11;
+        }
+        return -1;
     }
 
     //原料リストにアイテムを追加する

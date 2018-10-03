@@ -16,31 +16,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/overLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorGrayback"
-            android:visibility="invisible">
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/settingLay"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/shape_rounded_corner"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </android.support.constraint.ConstraintLayout>
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
             android:id="@+id/calcLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:visibility="visible">
 
             <ScrollView
                 android:id="@+id/scroll"
@@ -198,6 +178,29 @@
             </LinearLayout>
 
         </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/overLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGrayback"
+            android:visibility="visible">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/settingLay"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/shape_rounded_corner"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+
     </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

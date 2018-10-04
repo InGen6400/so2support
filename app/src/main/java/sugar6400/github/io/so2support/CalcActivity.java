@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class CalcActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final int nCategory = 12;
+
     private int JsonMaxDataNum = 1217;
     //原料リスト
     LinearLayout srcList;
@@ -20,6 +22,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private static ArrayList<Integer>[] catSpinnerItemId;
     //カテゴリ別スピナーadapter
     private ItemAdapter[] itemAdapters;
+    //アイテムスピナー
+    private Spinner itemSpinner;
     //アイテムのデータ(名前，スタック数, etc...)
     ItemData itemData;
 
@@ -37,21 +41,56 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
 
+        //原料リストを取得
+        srcList = findViewById(R.id.srcList);
+
         //アイテムデータの読み込み
         itemData = new ItemData(this);
+
+        //テスト用の5アイテム
+        for (int i = 0; i < 5; i++) {
+            ItemButtonView itemButton = new ItemButtonView(this, itemData);
+            itemButton.setOnClickListener(this);
+            srcList.addView(itemButton);
+        }
+
+        initItemSpinner();
+    }
+
+    private void initCategorySpinner() {
+        Spinner catSpinner = popupView.findViewById(R.id.catSpinner);
+        catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedCatID = position;
+                reloadItemSpinner();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    private void initItemSpinner() {
         //スピナーデータの読み込み
-        catSpinnerItemId = new ArrayList[12];
+        catSpinnerItemId = new ArrayList[nCategory];
         setSpinnerItemId();
 
         //アイテム一覧スピナーの初期設定
-        Spinner itemSpinner = popupView.findViewById(R.id.itemSpinner);
-        ItemAdapter adapter = new ItemAdapter(this.getApplicationContext(), R.layout.spinner_item, catSpinnerItemId[0]);
+        itemSpinner = popupView.findViewById(R.id.itemSpinner);
+        itemAdapters = new ItemAdapter[nCategory];
+        for (int i = 0; i < nCategory; i++) {
+            itemAdapters[i] = new ItemAdapter(this.getApplicationContext(), R.layout.spinner_item, catSpinnerItemId[i]);
+        }
 
-        itemSpinner.setAdapter(adapter);
-        itemSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //初期は原料カテゴリのスピナー
+        itemSpinner.setAdapter(itemAdapters[0]);
+        itemSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             //アイテム選択時
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //選択したアイテムのIDを取得
                 selectedItemID = catSpinnerItemId[selectedCatID].get(position);
             }
@@ -60,19 +99,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-
-        //原料リストを取得
-        srcList = findViewById(R.id.srcList);
-
-        //テスト用の5アイテム
-        for (int i = 0; i < 5; i++) {
-            ItemButtonView itemButton = new ItemButtonView(this, itemData);
-            itemButton.setOnClickListener(this);
-            srcList.addView(itemButton);
-        }
     }
 
+    private void reloadItemSpinner() {
+        itemSpinner.setAdapter(itemAdapters[selectedCatID]);
+    }
 
     @Override
     public void onClick(View v) {
@@ -91,7 +122,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         String cat;
         int catId;
 
-        for(int i=0; i<12; i++){
+        for (int i = 0; i < nCategory; i++) {
             catSpinnerItemId[i] = new ArrayList<Integer>();
         }
 

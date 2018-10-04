@@ -28,10 +28,14 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     //選択中のアイテムID
     private int selectedItemID = 0;
 
+    private View popupView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
+
+        popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
 
         //アイテムデータの読み込み
         itemData = new ItemData(this);
@@ -40,7 +44,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         setSpinnerItemId();
 
         //アイテム一覧スピナーの初期設定
-        Spinner itemSpinner = findViewById(R.id.itemSpinner);
+        Spinner itemSpinner = popupView.findViewById(R.id.itemSpinner);
         ItemAdapter adapter = new ItemAdapter(this.getApplicationContext(), R.layout.spinner_item, catSpinnerItemId[0]);
 
         itemSpinner.setAdapter(adapter);
@@ -86,6 +90,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private void setSpinnerItemId(){
         String cat;
         int catId;
+
+        for(int i=0; i<12; i++){
+            catSpinnerItemId[i] = new ArrayList<Integer>();
+        }
+
         for(int i=1; i<=JsonMaxDataNum; i++){
             cat = itemData.getItemStr(i, "category");
             if(cat != null){

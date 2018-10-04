@@ -28,6 +28,7 @@ public class ItemAdapter extends BaseAdapter {
         layoutID = itemLayoutId;
 
         itemIDs = idList;
+        imageIDs = new int[idList.size()];
 
         Resources res = c.getResources();
         for (int i = 0; i < idList.size(); i++) {

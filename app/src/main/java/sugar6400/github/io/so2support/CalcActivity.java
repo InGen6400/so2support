@@ -3,9 +3,12 @@ package sugar6400.github.io.so2support;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,7 +28,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     //アイテムスピナー
     private Spinner itemSpinner;
     //アイテムのデータ(名前，スタック数, etc...)
-    ItemData itemData;
+    public static ItemData itemData;
 
     //選択中のカテゴリID
     private int selectedCatID = 0;
@@ -33,6 +36,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private int selectedItemID = 0;
 
     private View popupView;
+    private PopupWindow popupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,12 +114,49 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         if (v != null) {
             switch (v.getId()) {
                 case R.id.srcAddButton:
+                    openPopup();
                 case R.id.prodAddButton:
                 case R.id.deleteButton:
                 case R.id.itemView:
             }
         }
         Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(v.toString()), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (popupWindow != null && popupWindow.isShowing()) {
+            popupWindow.dismiss();
+        }
+        super.onDestroy();
+    }
+
+    private void openPopup() {
+        popupWindow = new PopupWindow(CalcActivity.this);
+        popupView.findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (popupWindow.isShowing()) {
+                    popupWindow.dismiss();
+                }
+            }
+        });
+        popupWindow.setContentView(popupView);
+        //背景の指定
+        //popupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.));
+
+        //タップ時の他Viewの動作の設定
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
+
+        int width = 1000;
+        popupWindow.setWindowLayoutMode(width, WindowManager.LayoutParams.WRAP_CONTENT);
+        popupWindow.setWidth(width);
+        popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+
+        //中央に表示
+        popupWindow.showAtLocation(findViewById(R.id.srcAddButton), Gravity.CENTER, 0, 0);
     }
 
     private void setSpinnerItemId(){

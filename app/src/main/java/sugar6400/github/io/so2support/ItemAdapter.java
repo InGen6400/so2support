@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static sugar6400.github.io.so2support.CalcActivity.itemData;
+
 public class ItemAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
@@ -68,7 +70,7 @@ public class ItemAdapter extends BaseAdapter {
         }
 
         holder.image.setImageResource(imageIDs[position]);
-        holder.text.setText(itemIDs.get(position));
+        holder.text.setText(itemData.getItemStr(itemIDs.get(position), "name"));
 
         return convertView;
     }

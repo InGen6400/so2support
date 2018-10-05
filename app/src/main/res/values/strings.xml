@@ -12,6 +12,7 @@
     <string name="delete">delete</string>
     <string name="addItem">アイテムを追加</string>
     <string name="itemImageDescript" />
+    <string name="toolCheckboxText">道具(確率で消失するか)</string>
     <string-array name="categoryList">
         <item>原料</item>
         <item>本</item>

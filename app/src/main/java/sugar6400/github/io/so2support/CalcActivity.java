@@ -1,5 +1,8 @@
 package sugar6400.github.io.so2support;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,22 +24,26 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private int JsonMaxDataNum = 1217;
     //原料リスト
     LinearLayout srcList;
+    //アイテムのデータ(名前，スタック数, etc...)
+    public static ItemData itemData;
+
     //カテゴリースピナー
     private static ArrayList<Integer>[] catSpinnerItemId;
     //カテゴリ別スピナーadapter
     private ItemAdapter[] itemAdapters;
     //アイテムスピナー
     private Spinner itemSpinner;
-    //アイテムのデータ(名前，スタック数, etc...)
-    public static ItemData itemData;
-
+    //カテゴリスピナー
+    private Spinner catSpinner;
     //選択中のカテゴリID
     private int selectedCatID = 0;
     //選択中のアイテムID
     private int selectedItemID = 0;
 
+    //ポップアップ用変数
     private View popupView;
     private PopupWindow popupWindow;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +65,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             srcList.addView(itemButton);
         }
 
+        initCategorySpinner();
         initItemSpinner();
     }
 
     private void initCategorySpinner() {
-        Spinner catSpinner = popupView.findViewById(R.id.catSpinner);
+        catSpinner = popupView.findViewById(R.id.catSpinner);
         catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -143,8 +151,15 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         popupWindow.setContentView(popupView);
+
         //背景の指定
-        //popupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            //lolipop以上なら影付き表示
+            popupWindow.setElevation(20);
+            popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        } else {
+            popupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.popup_background));
+        }
 
         //タップ時の他Viewの動作の設定
         popupWindow.setOutsideTouchable(true);

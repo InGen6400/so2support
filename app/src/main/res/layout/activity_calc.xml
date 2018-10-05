@@ -105,7 +105,9 @@
                         android:id="@+id/prodList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"></LinearLayout>
+                        android:orientation="vertical">
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -123,6 +125,12 @@
                             android:tag="addProd"
                             app:srcCompat="@android:drawable/ic_input_add" />
                     </LinearLayout>
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="15dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="16dp" />
 
                 </LinearLayout>
 

@@ -1,14 +1,18 @@
 package sugar6400.github.io.so2support;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,6 +64,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     private PopupHolder popupHolder;
 
+    // キーボード表示を制御するためのオブジェクト
+    InputMethodManager inputMethodManager;
+    // 背景のレイアウト
+    private ConstraintLayout mainLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +76,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
         popupHolder = new PopupHolder();
+
+        inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        mainLayout = popupView.findViewById(R.id.popupLayout);
+
         //原料リストを取得
         srcList = findViewById(R.id.srcList);
 
@@ -187,6 +200,17 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(v.toString()), Toast.LENGTH_SHORT).show();
     }
 
+    // 画面タップ時の処理
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // キーボードを隠す
+        inputMethodManager.hideSoftInputFromWindow(mainLayout.getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
+        // 背景にフォーカスを移す
+        mainLayout.requestFocus();
+        return true;
+    }
+
     @Override
     protected void onDestroy() {
         if (popupWindow != null && popupWindow.isShowing()) {
@@ -294,4 +318,5 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     public void onClickEdit(View v) {
 
     }
+
 }

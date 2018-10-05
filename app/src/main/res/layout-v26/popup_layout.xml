@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -70,8 +69,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/valueTextHint"
                     android:inputType="numberDecimal"
-                    android:importantForAutofill="no"
-                    tools:targetApi="o" />
+                    android:importantForAutofill="no" />
 
                 <ImageButton
                     android:id="@+id/delValue"
@@ -170,8 +168,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/numHint"
                     android:inputType="numberDecimal"
-                    android:importantForAutofill="no"
-                    tools:targetApi="o" />
+                    android:importantForAutofill="no" />
 
                 <ImageButton
                     android:id="@+id/delNum"
@@ -270,8 +267,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/breakProbHint"
                 android:inputType="numberDecimal"
-                android:importantForAutofill="no"
-                tools:targetApi="o" />
+                android:importantForAutofill="no" />
 
         </LinearLayout>
 

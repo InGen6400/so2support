@@ -9,13 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 public class CatAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
     private int layoutID;
-    private ArrayList<Integer> catIDs;
+    private int num_cat;
     private int[] imageIDs;
 
     static class ViewHolder {
@@ -23,23 +21,23 @@ public class CatAdapter extends BaseAdapter {
         ImageView image;
     }
 
-    CatAdapter(Context c, int catLayoutId, ArrayList<Integer> idList) {
+    CatAdapter(Context c, int catLayoutId, int num_cat) {
         inflater = LayoutInflater.from(c);
         layoutID = catLayoutId;
 
-        catIDs = idList;
-        imageIDs = new int[idList.size()];
+        this.num_cat = num_cat;
+        imageIDs = new int[num_cat];
 
         Resources res = c.getResources();
-        for (int i = 0; i < idList.size(); i++) {
-            String imageFileName = "sprite_category2x_" + String.valueOf(idList.get(i));
-            imageIDs[i] = res.getIdentifier(imageFileName, "drawable-xxhdpi", c.getPackageName());
+        for (int i = 0; i < num_cat; i++) {
+            String imageFileName = "sprite_category2x_" + String.valueOf(i);
+            imageIDs[i] = res.getIdentifier(imageFileName, "drawable", c.getPackageName());
         }
     }
 
     @Override
     public int getCount() {
-        return catIDs.size();
+        return num_cat;
     }
 
     @Override

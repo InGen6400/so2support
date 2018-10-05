@@ -19,9 +19,12 @@ import java.util.ArrayList;
 
 public class CalcActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //定数
+    //カテゴリー数
     private static final int nCategory = 12;
+    //Jsonに登録されている読み込まないといけないアイテム数
+    private static final int JsonMaxDataNum = 1217;
 
-    private int JsonMaxDataNum = 1217;
     //原料リスト
     LinearLayout srcList;
     //アイテムのデータ(名前，スタック数, etc...)
@@ -73,10 +76,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initCategorySpinner() {
         catSpinner = popupView.findViewById(R.id.catSpinner);
-        //catAdapter = new ItemAdapter(this.getApplicationContext(), R.layout.spinner_item, );
+        catAdapter = new CatAdapter(this.getApplicationContext(), R.layout.spinner_item, nCategory);
+        catSpinner.setAdapter(catAdapter);
         catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //選択されたカテゴリーIDを保存してアイテムスピナーの内容を更新
                 selectedCatID = position;
                 reloadItemSpinner();
             }
@@ -116,6 +121,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    //アイテムスピナーの内容を更新
     private void reloadItemSpinner() {
         itemSpinner.setAdapter(itemAdapters[selectedCatID]);
     }
@@ -142,6 +148,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
     }
 
+    //アイテム追加用ポップアップを開く
     private void openPopup() {
         popupWindow = new PopupWindow(CalcActivity.this);
         popupView.findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener() {
@@ -177,6 +184,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         popupWindow.showAtLocation(findViewById(R.id.srcAddButton), Gravity.CENTER, 0, 0);
     }
 
+    //アイテムをカテゴリーごとに振り分けてスピナーに登録
     private void setSpinnerItemId(){
         String cat;
         int catId;
@@ -185,7 +193,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             catSpinnerItemId[i] = new ArrayList<Integer>();
         }
 
-        for(int i=1; i<=JsonMaxDataNum; i++){
+        for(int i = 1; i<=JsonMaxDataNum; i++){
             cat = itemData.getItemStr(i, "category");
             if(cat != null){
                 catId = catStr2int(cat);

@@ -6,6 +6,7 @@ public class PopupHolder {
     int category;
     int item;
     int num;
+    boolean isTool;
 
     PopupHolder() {
         reset();
@@ -17,6 +18,7 @@ public class PopupHolder {
         breakProb = 100;
         num = 0;
         value = 0;
+        isTool = false;
     }
 
     public int addNum(int input) {

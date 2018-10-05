@@ -266,16 +266,19 @@
                 android:id="@+id/isToolCheck"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="false"
+                android:clickable="true"
                 android:text="@string/toolCheckboxText" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/breakProbText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/breakProbHint"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
+                android:visibility="visible"
                 tools:targetApi="o" />
 
         </LinearLayout>

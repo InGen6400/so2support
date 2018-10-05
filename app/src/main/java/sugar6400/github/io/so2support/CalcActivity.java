@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -61,6 +62,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     //各種数値表示テキスト
     private EditText valueEditText;
     private EditText numEditText;
+    private EditText probEditText;
+    private CheckBox isToolChk;
 
     private PopupHolder popupHolder;
 
@@ -98,8 +101,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         valueEditText = popupView.findViewById(R.id.valueText);
         numEditText = popupView.findViewById(R.id.numText);
+        probEditText = popupView.findViewById(R.id.breakProbText);
+        isToolChk = popupView.findViewById(R.id.isToolCheck);
         valueAddButtons = new Button[5];
         numAddButtons = new Button[5];
+        isToolChk.setOnClickListener(this);
         setAddButtons();
     }
 
@@ -144,7 +150,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 selectedItemID = catSpinnerItemId[selectedCatID].get(position);
             }
 
-            //　アイテムが選択されなかった
+            //アイテムが選択されなかった
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
@@ -195,6 +201,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.delNum:
                     popupHolder.num = 0;
                     numEditText.setText("");
+                case R.id.isToolCheck:
+                    if (isToolChk.isChecked() == true) {
+                        probEditText.setVisibility(View.VISIBLE);
+                    } else {
+                        probEditText.setVisibility(View.INVISIBLE);
+                    }
             }
         }
         Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(v.toString()), Toast.LENGTH_SHORT).show();

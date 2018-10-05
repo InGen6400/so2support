@@ -31,6 +31,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private static ArrayList<Integer>[] catSpinnerItemId;
     //カテゴリ別スピナーadapter
     private ItemAdapter[] itemAdapters;
+    //カテゴリスピナー用アダプター
+    private CatAdapter catAdapter;
     //アイテムスピナー
     private Spinner itemSpinner;
     //カテゴリスピナー
@@ -71,6 +73,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initCategorySpinner() {
         catSpinner = popupView.findViewById(R.id.catSpinner);
+        //catAdapter = new ItemAdapter(this.getApplicationContext(), R.layout.spinner_item, );
         catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

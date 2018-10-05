@@ -11,13 +11,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import static sugar6400.github.io.so2support.CalcActivity.itemData;
-
-public class ItemAdapter extends BaseAdapter {
+public class CatAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
     private int layoutID;
-    private ArrayList<Integer> itemIDs;
+    private ArrayList<Integer> catIDs;
     private int[] imageIDs;
 
     static class ViewHolder {
@@ -25,23 +23,23 @@ public class ItemAdapter extends BaseAdapter {
         ImageView image;
     }
 
-    ItemAdapter(Context c, int itemLayoutId, ArrayList<Integer> idList) {
+    CatAdapter(Context c, int catLayoutId, ArrayList<Integer> idList) {
         inflater = LayoutInflater.from(c);
-        layoutID = itemLayoutId;
+        layoutID = catLayoutId;
 
-        itemIDs = idList;
+        catIDs = idList;
         imageIDs = new int[idList.size()];
 
         Resources res = c.getResources();
         for (int i = 0; i < idList.size(); i++) {
-            String imageFileName = "sprite_item2x_" + String.valueOf(i);//TODO:画像IDとのマッチング配列から検索するように
-            imageIDs[i] = res.getIdentifier(imageFileName, "drawable", c.getPackageName());
+            String imageFileName = "sprite_category2x_" + String.valueOf(idList.get(i));
+            imageIDs[i] = res.getIdentifier(imageFileName, "drawable-xxhdpi", c.getPackageName());
         }
     }
 
     @Override
     public int getCount() {
-        return itemIDs.size();
+        return catIDs.size();
     }
 
     @Override
@@ -70,7 +68,7 @@ public class ItemAdapter extends BaseAdapter {
         }
 
         holder.image.setImageResource(imageIDs[position]);
-        holder.text.setText(itemData.getItemStr(itemIDs.get(position), "name"));
+        holder.text.setText(convertView.getResources().getStringArray(R.array.categoryList)[position]);
 
         return convertView;
     }

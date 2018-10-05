@@ -34,7 +34,7 @@ public class ItemAdapter extends BaseAdapter {
 
         Resources res = c.getResources();
         for (int i = 0; i < idList.size(); i++) {
-            String imageFileName = "sprite_item2x_" + String.valueOf(i);//TODO:画像IDとのマッチング配列から検索するように
+            String imageFileName = "sprite_item2x_" + String.valueOf(itemData.getItemInt(idList.get(i), "image"));
             imageIDs[i] = res.getIdentifier(imageFileName, "drawable", c.getPackageName());
         }
     }

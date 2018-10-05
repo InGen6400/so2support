@@ -10,6 +10,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
@@ -49,6 +51,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private View popupView;
     private PopupWindow popupWindow;
 
+    //各種追加ボタン
+    private Button[] valueAddButtons;
+    private Button[] numAddButtons;
+    //各種数値表示テキスト
+    private EditText valueEditText;
+    private EditText numEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +80,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         initCategorySpinner();
         initItemSpinner();
+
+        valueEditText = popupView.findViewById(R.id.valueText);
+        numEditText = popupView.findViewById(R.id.numText);
+
+        initAddButtons(popupView);
     }
 
     private void initCategorySpinner() {
@@ -119,6 +132,28 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    private void initAddButtons(View popup){
+        valueAddButtons = new Button[5];
+        numAddButtons = new Button[5];
+        for(int i=0; i<5; i++){
+            valueAddButtons[i] = popup.findViewById()
+            valueAddButtons[i].setTag(i);
+            valueAddButtons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    valueEditText.setText(String.valueOf(Float.valueOf(valueEditText.getText().toString())+Math.pow(10, (int)view.getTag())));
+                }
+            });
+            numAddButtons[i].setTag(i);
+            numAddButtons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    numEditText.setText(String.valueOf(Float.valueOf(numEditText.getText().toString())+Math.pow(10, (int)view.getTag())));
+                }
+            });
+        }
     }
 
     //アイテムスピナーの内容を更新

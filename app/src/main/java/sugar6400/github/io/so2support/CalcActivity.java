@@ -58,13 +58,15 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private EditText valueEditText;
     private EditText numEditText;
 
+    private PopupHolder popupHolder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
 
         popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
-
+        popupHolder = new PopupHolder();
         //原料リストを取得
         srcList = findViewById(R.id.srcList);
 
@@ -83,8 +85,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         valueEditText = popupView.findViewById(R.id.valueText);
         numEditText = popupView.findViewById(R.id.numText);
-
-        initAddButtons(popupView);
+        valueAddButtons = new Button[5];
+        numAddButtons = new Button[5];
+        setAddButtons();
     }
 
     private void initCategorySpinner() {
@@ -134,23 +137,26 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private void initAddButtons(View popup){
-        valueAddButtons = new Button[5];
-        numAddButtons = new Button[5];
+    private void setAddButtons() {
         for(int i=0; i<5; i++){
-            valueAddButtons[i] = popup.findViewById()
-            valueAddButtons[i].setTag(i);
+            int id = getResources().getIdentifier("addValue" + String.valueOf((int) Math.pow(10, i)), "id", getPackageName());
+            valueAddButtons[i] = popupView.findViewById(id);
+            valueAddButtons[i].setTag((float) Math.pow(10, i));
             valueAddButtons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    valueEditText.setText(String.valueOf(Float.valueOf(valueEditText.getText().toString())+Math.pow(10, (int)view.getTag())));
+                    popupHolder.addValue((float) view.getTag());
+                    valueEditText.setText(String.format("%,.2f", popupHolder.value));
                 }
             });
-            numAddButtons[i].setTag(i);
+            id = getResources().getIdentifier("addNum" + String.valueOf((int) Math.pow(10, i)), "id", getPackageName());
+            numAddButtons[i] = popupView.findViewById(id);
+            numAddButtons[i].setTag((int) Math.pow(10, i));
             numAddButtons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    numEditText.setText(String.valueOf(Float.valueOf(numEditText.getText().toString())+Math.pow(10, (int)view.getTag())));
+                    popupHolder.addNum((int) view.getTag());
+                    numEditText.setText(String.format("%,d", popupHolder.num));
                 }
             });
         }
@@ -170,6 +176,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.prodAddButton:
                 case R.id.deleteButton:
                 case R.id.itemView:
+                case R.id.delValue:
+                    popupHolder.value = 0;
+                    valueEditText.setText("");
+                case R.id.delNum:
+                    popupHolder.num = 0;
+                    numEditText.setText("");
             }
         }
         Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(v.toString()), Toast.LENGTH_SHORT).show();
@@ -187,7 +199,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private void openPopup() {
         popupWindow = new PopupWindow(CalcActivity.this);
         popupView.findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 if (popupWindow.isShowing()) {
@@ -195,6 +206,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
+
         popupWindow.setContentView(popupView);
 
         //背景の指定
@@ -217,6 +229,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         //中央に表示
         popupWindow.showAtLocation(findViewById(R.id.srcAddButton), Gravity.CENTER, 0, 0);
+
+        popupHolder.reset();
     }
 
     //アイテムをカテゴリーごとに振り分けてスピナーに登録

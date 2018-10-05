@@ -11,7 +11,6 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -69,8 +68,8 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:hint="@string/valueTextHint"
-                    android:inputType="numberDecimal"
                     android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
                     tools:targetApi="o" />
 
                 <ImageButton
@@ -81,17 +80,17 @@
                     android:background="@color/colorAlpha"
                     android:contentDescription="@string/delete"
                     android:cropToPadding="true"
+                    android:onClick="onClick"
                     app:srcCompat="@android:drawable/ic_delete" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/valueButtonsHorizon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/addValue1"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -101,7 +100,7 @@
                     android:text="@string/add1" />
 
                 <Button
-                    android:id="@+id/button10"
+                    android:id="@+id/addValue10"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -111,7 +110,7 @@
                     android:text="@string/add10" />
 
                 <Button
-                    android:id="@+id/button100"
+                    android:id="@+id/addValue100"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -121,7 +120,7 @@
                     android:text="@string/add100" />
 
                 <Button
-                    android:id="@+id/button1000"
+                    android:id="@+id/addValue1000"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -131,7 +130,7 @@
                     android:text="@string/add1000" />
 
                 <Button
-                    android:id="@+id/button10000"
+                    android:id="@+id/addValue10000"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -169,8 +168,8 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:hint="@string/numHint"
-                    android:inputType="numberDecimal"
                     android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
                     tools:targetApi="o" />
 
                 <ImageButton
@@ -181,6 +180,7 @@
                     android:background="@color/colorAlpha"
                     android:contentDescription="@string/cancelButton"
                     android:cropToPadding="true"
+                    android:onClick="onClick"
                     app:srcCompat="@android:drawable/ic_delete" />
 
             </LinearLayout>
@@ -191,7 +191,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button1_num"
+                    android:id="@+id/addNum1"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -201,7 +201,7 @@
                     android:text="@string/add1" />
 
                 <Button
-                    android:id="@+id/button10_num"
+                    android:id="@+id/addNum10"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -211,7 +211,7 @@
                     android:text="@string/add10" />
 
                 <Button
-                    android:id="@+id/button100_num"
+                    android:id="@+id/addNum100"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -221,7 +221,7 @@
                     android:text="@string/add100" />
 
                 <Button
-                    android:id="@+id/button1000_num"
+                    android:id="@+id/addNum1000"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -231,7 +231,7 @@
                     android:text="@string/add1000" />
 
                 <Button
-                    android:id="@+id/button10000_num"
+                    android:id="@+id/addNum10000"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -269,8 +269,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/breakProbHint"
-                android:inputType="numberDecimal"
                 android:importantForAutofill="no"
+                android:inputType="numberDecimal"
                 tools:targetApi="o" />
 
         </LinearLayout>

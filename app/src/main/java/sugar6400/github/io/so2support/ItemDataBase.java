@@ -10,17 +10,15 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class ItemData {
+public class ItemDataBase {
 
     private BufferedReader br;
     private InputStream is;
     private String jsonText;
 
-    //画像番号とアイテムidの結びつけ(jsonに直接書くようにするかも?)
-    private int[] id2im;
     private JSONObject itemJson;
 
-    ItemData(Context c) {
+    ItemDataBase(Context c) {
         readJson(c);
         if (jsonText == null) {
             Log.e("Json Error", "JsonText is null");
@@ -51,7 +49,7 @@ public class ItemData {
             itemJson = new JSONObject(jsonText.substring(jsonText.indexOf("{"), jsonText.lastIndexOf("}") + 1));
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.e("Json Error", "ItemData.java 30~");
+            Log.e("Json Error", "ItemDataBase.java 30~");
         }
     }
 

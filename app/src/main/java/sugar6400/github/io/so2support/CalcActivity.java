@@ -1,6 +1,7 @@
 package sugar6400.github.io.so2support;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -17,10 +18,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,14 +33,20 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private static final int JsonMaxDataNum = 1217;
 
     //原料リスト
-    LinearLayout srcList;
     //アイテムのデータ(名前，スタック数, etc...)
-    public static ItemData itemData;
+    public static ItemDataBase itemDataBase;
+    public static int[] imageIDs;
 
+    private ArrayList<CalcItemData> srcList;
+    private ArrayList<CalcItemData> prodList;
+    private ItemListAdapter srcAdapter;
+    private ItemListAdapter prodAdapter;
+
+    //region SpinnerValues
     //カテゴリースピナー
     private static ArrayList<Integer>[] catSpinnerItemId;
     //カテゴリ別スピナーadapter
-    private ItemAdapter[] itemAdapters;
+    private ItemSpinnerAdapter[] itemSpinnerAdapter;
     //カテゴリスピナー用アダプター
     private CatAdapter catAdapter;
     //アイテムスピナー
@@ -51,6 +57,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private int selectedCatID = 0;
     //選択中のアイテムID
     private int selectedItemID = 0;
+    //endregion
 
     //ポップアップ用変数
     private View popupView;
@@ -83,18 +90,24 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mainLayout = popupView.findViewById(R.id.popupLayout);
 
-        //原料リストを取得
-        srcList = findViewById(R.id.srcList);
-
         //アイテムデータの読み込み
-        itemData = new ItemData(this);
+        itemDataBase = new ItemDataBase(this);
+        initImageID();
 
-        //テスト用の5アイテム
-        for (int i = 0; i < 5; i++) {
-            ItemButtonView itemButton = new ItemButtonView(this, itemData);
-            itemButton.setOnClickListener(this);
-            srcList.addView(itemButton);
-        }
+        final ListView srcListView;
+        ListView prodListView;
+        //原料のリストビューを取得
+
+        srcListView = findViewById(R.id.srcList);
+        prodListView = findViewById(R.id.prodList);
+        srcList = new ArrayList<>();
+        prodList = new ArrayList<>();
+        //原料・完成品リストの初期化
+        srcAdapter = initItemListView(srcList);
+        prodAdapter = initItemListView(prodList);
+
+        srcListView.setAdapter(srcAdapter);
+        prodListView.setAdapter(prodAdapter);
 
         initCategorySpinner();
         initItemSpinner();
@@ -135,13 +148,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         //アイテム一覧スピナーの初期設定
         itemSpinner = popupView.findViewById(R.id.itemSpinner);
-        itemAdapters = new ItemAdapter[nCategory];
+        itemSpinnerAdapter = new ItemSpinnerAdapter[nCategory];
         for (int i = 0; i < nCategory; i++) {
-            itemAdapters[i] = new ItemAdapter(this.getApplicationContext(), R.layout.spinner_item, catSpinnerItemId[i]);
+            itemSpinnerAdapter[i] = new ItemSpinnerAdapter(this.getApplicationContext(), R.layout.spinner_item, catSpinnerItemId[i]);
         }
 
         //初期は原料カテゴリのスピナー
-        itemSpinner.setAdapter(itemAdapters[0]);
+        itemSpinner.setAdapter(itemSpinnerAdapter[0]);
         itemSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             //アイテム選択時
             @Override
@@ -154,6 +167,33 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    private void initImageID() {
+        imageIDs = new int[JsonMaxDataNum];
+
+        Resources res = getResources();
+        for (int i = 0; i < imageIDs.length; i++) {
+            String imageFileName = "sprite_item2x_" + String.valueOf(itemDataBase.getItemInt(i + 1, "image"));
+            imageIDs[i] = res.getIdentifier(imageFileName, "drawable", getPackageName());
+        }
+    }
+
+    private ItemListAdapter initItemListView(ArrayList<CalcItemData> list) {
+        ItemListAdapter adapter = new ItemListAdapter(CalcActivity.this);
+        //テスト用の5アイテム
+        adapter.setItemList(list);
+        for (int i = 0; i < 5; i++) {
+            CalcItemData itemData = new CalcItemData();
+            itemData.id = 1 + i;
+            itemData.num = (i + 1) * 5;
+            itemData.breakProb = 100;
+            itemData.value = (i + 1) * 10;
+            itemData.isTool = false;
+            list.add(itemData);
+        }
+        adapter.notifyDataSetChanged();
+        return adapter;
     }
 
     private void setAddButtons() {
@@ -183,7 +223,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     //アイテムスピナーの内容を更新
     private void reloadItemSpinner() {
-        itemSpinner.setAdapter(itemAdapters[selectedCatID]);
+        itemSpinner.setAdapter(itemSpinnerAdapter[selectedCatID]);
     }
 
     @Override
@@ -194,7 +234,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     openPopup();
                     break;
                 case R.id.prodAddButton:
-                case R.id.deleteButton:
                 case R.id.itemView:
                 case R.id.delValue:
                     popupHolder.value = 0;
@@ -213,7 +252,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     break;
             }
         }
-        Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(v.toString()), Toast.LENGTH_SHORT).show();
     }
 
     // 画面タップ時の処理
@@ -283,11 +321,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         for(int i = 1; i<=JsonMaxDataNum; i++){
-            cat = itemData.getItemStr(i, "category");
+            cat = itemDataBase.getItemStr(i, "category");
             if(cat != null){
                 catId = catStr2int(cat);
                 if (catId != -1) {
-                    catSpinnerItemId[catId].add(itemData.getItemInt(i, "item_id"));
+                    catSpinnerItemId[catId].add(itemDataBase.getItemInt(i, "item_id"));
                 } else {
                     Log.e("Spinner", "CalcActivity 95~");
                 }

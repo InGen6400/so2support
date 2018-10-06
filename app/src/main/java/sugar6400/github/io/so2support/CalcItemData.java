@@ -1,6 +1,6 @@
 package sugar6400.github.io.so2support;
 
-public class CalcItem {
+public class CalcItemData {
     //アイテムのid
     public int id;
     //個数
@@ -12,11 +12,11 @@ public class CalcItem {
     //破損率
     public float breakProb;
 
-    CalcItem() {
+    CalcItemData() {
         this(1);
     }
 
-    CalcItem(int id) {
+    CalcItemData(int id) {
         this.id = id;
         num = 0;
         value = 0;

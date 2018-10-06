@@ -58,13 +58,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="4dp" />
 
-                    <LinearLayout
+                    <sugar6400.github.io.so2support.NonScrollListView
                         android:id="@+id/srcList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                    </LinearLayout>
+                        android:isScrollContainer="false" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -101,13 +99,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="4dp" />
 
-                    <LinearLayout
+                    <sugar6400.github.io.so2support.NonScrollListView
                         android:id="@+id/prodList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                    </LinearLayout>
+                    </sugar6400.github.io.so2support.NonScrollListView>
 
                     <LinearLayout
                         android:layout_width="match_parent"

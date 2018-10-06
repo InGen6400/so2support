@@ -15,6 +15,9 @@ public class CalcItemData implements Cloneable {
     public float breakProb;
     //道具かどうか
     public boolean isTool;
+    //金額入力がプラスかどうか
+    public boolean isPMvaluePlus;
+    public boolean isPMnumPlus;
 
     CalcItemData() {
         this(1);
@@ -33,14 +36,16 @@ public class CalcItemData implements Cloneable {
         isTool = false;
         catPosition = 0;
         itemPosition = 0;
+        isPMvaluePlus = true;
+        isPMnumPlus = true;
     }
 
     public int addNum(int input) {
-        return num += input;
+        return isPMnumPlus ? (num += input) : (num -= input);
     }
 
     public float addValue(float input) {
-        return value += input;
+        return isPMvaluePlus ? (value += input) : (value -= input);
     }
 
     public Object clone() {

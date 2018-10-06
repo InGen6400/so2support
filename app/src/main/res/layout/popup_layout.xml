@@ -143,13 +143,14 @@
                     android:text="@string/add10000" />
 
                 <Button
-                    android:id="@+id/buttonDel"
+                    android:id="@+id/PMchangeValue"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@color/colorButton"
+                    android:onClick="onClick"
                     android:text="@string/plus_minus"
                     android:textStyle="bold" />
 
@@ -245,13 +246,14 @@
                     android:text="@string/add10000" />
 
                 <Button
-                    android:id="@+id/buttonDel_num"
+                    android:id="@+id/PMchangeNum"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@color/colorButton"
+                    android:onClick="onClick"
                     android:text="@string/plus_minus"
                     android:textStyle="bold" />
 

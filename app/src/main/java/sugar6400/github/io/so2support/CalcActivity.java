@@ -202,22 +202,24 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         return adapter;
     }
 
-
+    //TODO:　キーパッドでの入力時，数値が反映されない
     private void setAddButtons() {
         for(int i=0; i<5; i++){
             int id = getResources().getIdentifier("addValue" + String.valueOf((int) Math.pow(10, i)), "id", getPackageName());
             valueAddButtons[i] = popupView.findViewById(id);
             valueAddButtons[i].setTag((float) Math.pow(10, i));
+            valueAddButtons[i].setText("+" + String.valueOf((int) Math.pow(10, i)));
             valueAddButtons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     popupHolder.addValue((float) view.getTag());
-                    valueEditText.setText(String.format("%,.2f", popupHolder.value));
+                    valueEditText.setText(String.format("%,.0f", popupHolder.value));
                 }
             });
             id = getResources().getIdentifier("addNum" + String.valueOf((int) Math.pow(10, i)), "id", getPackageName());
             numAddButtons[i] = popupView.findViewById(id);
             numAddButtons[i].setTag((int) Math.pow(10, i));
+            numAddButtons[i].setText("+" + String.valueOf((int) Math.pow(10, i)));
             numAddButtons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -259,6 +261,30 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     reCalc();
                     break;
                 case R.id.itemView:
+                case R.id.PMchangeNum:
+                    popupHolder.isPMnumPlus = !popupHolder.isPMnumPlus;
+                    if (popupHolder.isPMnumPlus) {
+                        for (int i = 0; i < numAddButtons.length; i++) {
+                            numAddButtons[i].setText("+" + String.valueOf((int) Math.pow(10, i)));
+                        }
+                    } else {
+                        for (int i = 0; i < numAddButtons.length; i++) {
+                            numAddButtons[i].setText("-" + String.valueOf((int) Math.pow(10, i)));
+                        }
+                    }
+                    break;
+                case R.id.PMchangeValue:
+                    popupHolder.isPMvaluePlus = !popupHolder.isPMvaluePlus;
+                    if (popupHolder.isPMvaluePlus) {
+                        for (int i = 0; i < valueAddButtons.length; i++) {
+                            valueAddButtons[i].setText("+" + String.valueOf((int) Math.pow(10, i)));
+                        }
+                    } else {
+                        for (int i = 0; i < valueAddButtons.length; i++) {
+                            valueAddButtons[i].setText("-" + String.valueOf((int) Math.pow(10, i)));
+                        }
+                    }
+                    break;
                 case R.id.delValue:
                     popupHolder.value = 0;
                     valueEditText.setText("");

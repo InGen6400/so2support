@@ -72,7 +72,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private EditText probEditText;
     private CheckBox isToolChk;
 
-    private PopupHolder popupHolder;
+    //private PopupHolder popupHolder;
+    private CalcItemData popupHolder;
 
     // キーボード表示を制御するためのオブジェクト
     InputMethodManager inputMethodManager;
@@ -85,7 +86,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_calc);
 
         popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
-        popupHolder = new PopupHolder();
+        popupHolder = new CalcItemData();
 
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mainLayout = popupView.findViewById(R.id.popupLayout);
@@ -231,6 +232,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         if (v != null) {
             switch (v.getId()) {
                 case R.id.srcAddButton:
+                    popupHolder.reset();
                     openPopup();
                     break;
                 case R.id.prodAddButton:
@@ -307,8 +309,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         //中央に表示
         popupWindow.showAtLocation(findViewById(R.id.srcAddButton), Gravity.CENTER, 0, 0);
-
-        popupHolder.reset();
     }
 
     //アイテムをカテゴリーごとに振り分けてスピナーに登録
@@ -364,7 +364,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //原料リストにアイテムを追加する
-    private void addSrc() {
+    private void addSrc(CalcItemData itemData) {
 
     }
 

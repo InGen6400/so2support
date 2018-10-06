@@ -192,21 +192,25 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             switch (v.getId()) {
                 case R.id.srcAddButton:
                     openPopup();
+                    break;
                 case R.id.prodAddButton:
                 case R.id.deleteButton:
                 case R.id.itemView:
                 case R.id.delValue:
                     popupHolder.value = 0;
                     valueEditText.setText("");
+                    break;
                 case R.id.delNum:
                     popupHolder.num = 0;
                     numEditText.setText("");
+                    break;
                 case R.id.isToolCheck:
                     if (isToolChk.isChecked() == true) {
                         probEditText.setVisibility(View.VISIBLE);
                     } else {
                         probEditText.setVisibility(View.INVISIBLE);
                     }
+                    break;
             }
         }
         Toast.makeText(CalcActivity.this, "Click! " + String.valueOf(v.toString()), Toast.LENGTH_SHORT).show();

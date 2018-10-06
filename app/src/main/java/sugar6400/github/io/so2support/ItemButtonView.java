@@ -53,7 +53,7 @@ public class ItemButtonView extends ConstraintLayout {
     //描画内容を更新する
     public void refresh() {
         nameText.setText(itemData.getItemStr(calcItem.id, "name"));
-        numText.setText(" " + String.valueOf(calcItem.num) + itemData.getItemStr(calcItem.id, "scale"));
+        numText.setText("x" + String.valueOf(calcItem.num) + itemData.getItemStr(calcItem.id, "scale"));
         valueText.setText("金額:" + String.valueOf(calcItem.value) + "G");
         breakProbText.setText("破損:" + String.valueOf(calcItem.breakProb) + "%");
         double sum = calcItem.value * calcItem.num * (1 - calcItem.breakProb / 100.0);

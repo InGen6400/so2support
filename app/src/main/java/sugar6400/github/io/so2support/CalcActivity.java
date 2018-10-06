@@ -69,6 +69,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private EditText probEditText;
     private CheckBox isToolChk;
 
+    private TextView eqText;
+    private TextView GPHText;
+
     //private PopupHolder popupHolder;
     private CalcItemData popupHolder;
 
@@ -83,6 +86,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
+
+        eqText = findViewById(R.id.eqText);
+        GPHText = findViewById(R.id.GPH);
 
         popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
         popupHolder = new CalcItemData();
@@ -121,6 +127,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         isToolChk.setOnClickListener(this);
         setAddButtons();
     }
+
 
     private void initCategorySpinner() {
         catSpinner = popupView.findViewById(R.id.catSpinner);
@@ -179,7 +186,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private ItemListAdapter initItemListView(ArrayList<CalcItemData> list) {
-        ItemListAdapter adapter = new ItemListAdapter(CalcActivity.this);
+        ItemListAdapter adapter = new ItemListAdapter(CalcActivity.this, this);
         //テスト用のアイテム
         adapter.setItemList(list);
         for (int i = 0; i < 1; i++) {
@@ -194,6 +201,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         adapter.notifyDataSetChanged();
         return adapter;
     }
+
 
     private void setAddButtons() {
         for(int i=0; i<5; i++){
@@ -238,6 +246,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     openPopup();
                     break;
                 case R.id.addButton:
+                    popupHolder.id = catSpinnerItemId[popupHolder.catPosition].get(popupHolder.itemPosition);
                     if (isSelectedSrcList) {
                         addSrc(popupHolder);
                     } else {
@@ -247,6 +256,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     if (popupWindow.isShowing()) {
                         popupWindow.dismiss();
                     }
+                    reCalc();
                     break;
                 case R.id.itemView:
                 case R.id.delValue:
@@ -350,6 +360,36 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             probEditText.setText("100");
             probEditText.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void reCalc() {
+        //原料の総額
+        float srcSum = 0;
+        for (int i = 0; i < srcList.size(); i++) {
+            if (srcList.get(i).isTool) {
+                srcSum += srcList.get(i).value * srcList.get(i).num * (srcList.get(i).breakProb / 100);
+            } else {
+                srcSum += srcList.get(i).value * srcList.get(i).num;
+            }
+        }
+        //成果の総額
+        float prodSum = 0;
+        for (int i = 0; i < prodList.size(); i++) {
+            if (prodList.get(i).isTool) {
+                prodSum += prodList.get(i).value * prodList.get(i).num * (prodList.get(i).breakProb / 100);
+            } else {
+                prodSum += prodList.get(i).value * prodList.get(i).num;
+            }
+        }
+        //もし原料や成果がないなら計算式は表示しない
+        if (srcList.size() == 0 || prodList.size() == 0) {
+            eqText.setText(R.string.defaultEqu);
+            GPHText.setText(R.string.defaultGPH);
+        } else {
+            float tax = (float) ((prodSum - srcSum) * 0.1);
+            eqText.setText(String.format("(成果:%.1fG) － (原料:%.1fG) － (税金:%.1fG)", prodSum, srcSum, tax));
+            GPHText.setText(String.format("時給 %.1f G/h", prodSum - srcSum - tax));
         }
     }
 

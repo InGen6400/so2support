@@ -20,8 +20,10 @@ public class ItemListAdapter extends BaseAdapter implements ListAdapter {
     private Context context;
     private LayoutInflater inflater;
     private ArrayList<CalcItemData> itemList;
+    private CalcActivity calcActivity;
 
-    public ItemListAdapter(Context context) {
+    public ItemListAdapter(Context context, CalcActivity activity) {
+        this.calcActivity = activity;
         this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -75,6 +77,7 @@ public class ItemListAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 itemList.remove((int) v.getTag());
                 notifyDataSetChanged();
+                calcActivity.reCalc();
             }
         });
 

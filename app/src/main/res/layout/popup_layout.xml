@@ -278,7 +278,7 @@
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:visibility="visible"
+                android:visibility="invisible"
                 tools:targetApi="o" />
 
         </LinearLayout>

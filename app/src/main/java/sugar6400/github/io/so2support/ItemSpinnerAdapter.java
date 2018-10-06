@@ -61,7 +61,7 @@ public class ItemSpinnerAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.image.setImageResource(imageIDs[position]);
+        holder.image.setImageResource(imageIDs[itemIDs.get(position) - 1]);
         holder.text.setText(itemDataBase.getItemStr(itemIDs.get(position), "name"));
 
         return convertView;

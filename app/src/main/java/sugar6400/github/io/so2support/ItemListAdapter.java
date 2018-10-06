@@ -67,7 +67,7 @@ public class ItemListAdapter extends BaseAdapter implements ListAdapter {
             ((TextView) convertView.findViewById(R.id.breakProbText)).setText("");
         }
 
-        ((ImageView) convertView.findViewById(R.id.itemImage)).setImageResource(imageIDs[itemList.get(position).id]);
+        ((ImageView) convertView.findViewById(R.id.itemImage)).setImageResource(imageIDs[itemList.get(position).id - 1]);
         ImageButton delButton = convertView.findViewById(R.id.itemDeleteButton);
         delButton.setTag(position);
         delButton.setOnClickListener(new View.OnClickListener() {

@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">SOLD OUT2 支援あぷり</string>
-    <string name="sourceText">原料</string>
+    <string name="sourceText">原料・道具</string>
     <string name="prodText">完成品</string>
     <string name="resultText">結果</string>
     <string name="defaultText">default...</string>
     <string name="defaultEqu">ここに計算式が表示されてほしい(；人；) ｵﾈｶﾞｲ </string>
     <string name="defaultGPH">時給 ... G/h</string>
-    <string name="addSrcButton">原料を追加</string>
+    <string name="addSrcButton">原料・道具を追加</string>
     <string name="addProdButton">成果品を追加</string>
     <string name="itemicon">itemIcon</string>
     <string name="delete">delete</string>

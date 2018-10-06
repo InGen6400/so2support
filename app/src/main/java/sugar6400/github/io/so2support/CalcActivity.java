@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -79,6 +80,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     InputMethodManager inputMethodManager;
     // 背景のレイアウト
     private ConstraintLayout mainLayout;
+
+    boolean isSelectedSrcList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -233,9 +236,14 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             switch (v.getId()) {
                 case R.id.srcAddButton:
                     popupHolder.reset();
+                    isSelectedSrcList = true;
                     openPopup();
                     break;
                 case R.id.prodAddButton:
+                    popupHolder.reset();
+                    isSelectedSrcList = false;
+                    openPopup();
+                    break;
                 case R.id.itemView:
                 case R.id.delValue:
                     popupHolder.value = 0;
@@ -286,6 +294,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
+        if (isSelectedSrcList) {
+            ((TextView) popupView.findViewById(R.id.settingText)).setText("原料・道具を追加");
+        } else {
+            ((TextView) popupView.findViewById(R.id.settingText)).setText("成果品を追加");
+        }
 
         popupWindow.setContentView(popupView);
 

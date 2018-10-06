@@ -120,6 +120,7 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="false"
                             android:contentDescription="@string/addProdButton"
+                            android:onClick="onClick"
                             android:tag="addProd"
                             app:srcCompat="@android:drawable/ic_input_add" />
                     </LinearLayout>

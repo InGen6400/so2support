@@ -1,6 +1,10 @@
 package sugar6400.github.io.so2support;
 
-public class CalcItemData {
+public class CalcItemData implements Cloneable {
+    //catSpinnerでの位置
+    public int catPosition;
+    //spinnerでの位置
+    public int itemPosition;
     //アイテムのid
     public int id;
     //個数
@@ -27,6 +31,8 @@ public class CalcItemData {
         value = 0;
         breakProb = 100;
         isTool = false;
+        catPosition = 0;
+        itemPosition = 0;
     }
 
     public int addNum(int input) {
@@ -35,5 +41,14 @@ public class CalcItemData {
 
     public float addValue(float input) {
         return value += input;
+    }
+
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException ex) {
+            System.err.println(ex);
+            return null;
+        }
     }
 }

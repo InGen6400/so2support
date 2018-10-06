@@ -71,7 +71,7 @@
                         android:orientation="horizontal">
 
                         <ImageButton
-                            android:id="@+id/srcAddButton"
+                            android:id="@+id/srcPopupButton"
                             style="@style/Widget.AppCompat.ImageButton"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                         android:orientation="horizontal">
 
                         <ImageButton
-                            android:id="@+id/prodAddButton"
+                            android:id="@+id/prodPopupButton"
                             style="@style/Widget.AppCompat.ImageButton"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"

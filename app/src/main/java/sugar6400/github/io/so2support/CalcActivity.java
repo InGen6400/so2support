@@ -54,10 +54,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private Spinner itemSpinner;
     //カテゴリスピナー
     private Spinner catSpinner;
-    //選択中のカテゴリID
-    private int selectedCatID = 0;
-    //選択中のアイテムID
-    private int selectedItemID = 0;
     //endregion
 
     //ポップアップ用変数
@@ -134,7 +130,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //選択されたカテゴリーIDを保存してアイテムスピナーの内容を更新
-                selectedCatID = position;
+                popupHolder.catPosition = position;
                 reloadItemSpinner();
             }
 
@@ -163,8 +159,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             //アイテム選択時
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //選択したアイテムのIDを取得
-                selectedItemID = catSpinnerItemId[selectedCatID].get(position);
+                popupHolder.itemPosition = position;
             }
 
             //アイテムが選択されなかった
@@ -185,9 +180,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     private ItemListAdapter initItemListView(ArrayList<CalcItemData> list) {
         ItemListAdapter adapter = new ItemListAdapter(CalcActivity.this);
-        //テスト用の5アイテム
+        //テスト用のアイテム
         adapter.setItemList(list);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
             CalcItemData itemData = new CalcItemData();
             itemData.id = 1 + i;
             itemData.num = (i + 1) * 5;
@@ -227,22 +222,31 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     //アイテムスピナーの内容を更新
     private void reloadItemSpinner() {
-        itemSpinner.setAdapter(itemSpinnerAdapter[selectedCatID]);
+        itemSpinner.setAdapter(itemSpinnerAdapter[popupHolder.catPosition]);
     }
 
     @Override
     public void onClick(View v) {
         if (v != null) {
             switch (v.getId()) {
-                case R.id.srcAddButton:
-                    popupHolder.reset();
+                case R.id.srcPopupButton:
                     isSelectedSrcList = true;
                     openPopup();
                     break;
-                case R.id.prodAddButton:
-                    popupHolder.reset();
+                case R.id.prodPopupButton:
                     isSelectedSrcList = false;
                     openPopup();
+                    break;
+                case R.id.addButton:
+                    if (isSelectedSrcList) {
+                        addSrc(popupHolder);
+                    } else {
+                        addProd(popupHolder);
+                    }
+                    popupHolder.reset();
+                    if (popupWindow.isShowing()) {
+                        popupWindow.dismiss();
+                    }
                     break;
                 case R.id.itemView:
                 case R.id.delValue:
@@ -256,8 +260,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.isToolCheck:
                     if (isToolChk.isChecked() == true) {
                         probEditText.setVisibility(View.VISIBLE);
+                        popupHolder.isTool = true;
                     } else {
                         probEditText.setVisibility(View.INVISIBLE);
+                        popupHolder.isTool = false;
                     }
                     break;
             }
@@ -321,7 +327,30 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
 
         //中央に表示
-        popupWindow.showAtLocation(findViewById(R.id.srcAddButton), Gravity.CENTER, 0, 0);
+        popupWindow.showAtLocation(findViewById(R.id.srcPopupButton), Gravity.CENTER, 0, 0);
+        reloadPopup();
+    }
+
+    private void reloadPopup() {
+        if (popupHolder.value > 0) {
+            valueEditText.setText(String.valueOf(popupHolder.value));
+        } else {
+            valueEditText.setText("");
+        }
+        if (popupHolder.num > 0) {
+            numEditText.setText(String.valueOf(popupHolder.num));
+        } else {
+            numEditText.setText("");
+        }
+        catSpinner.setSelection(popupHolder.catPosition);
+        itemSpinner.setSelection(popupHolder.itemPosition);
+        isToolChk.setChecked(popupHolder.isTool);
+        if (isToolChk.isChecked()) {
+            probEditText.setText(String.valueOf(popupHolder.breakProb));
+        } else {
+            probEditText.setText("100");
+            probEditText.setVisibility(View.INVISIBLE);
+        }
     }
 
     //アイテムをカテゴリーごとに振り分けてスピナーに登録
@@ -378,7 +407,15 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     //原料リストにアイテムを追加する
     private void addSrc(CalcItemData itemData) {
+        CalcItemData additionalData = (CalcItemData) itemData.clone();
+        srcList.add(additionalData);
+        srcAdapter.notifyDataSetChanged();
+    }
 
+    private void addProd(CalcItemData itemData) {
+        CalcItemData additionalData = (CalcItemData) itemData.clone();
+        prodList.add(additionalData);
+        prodAdapter.notifyDataSetChanged();
     }
 
     //リスト要素を編集する

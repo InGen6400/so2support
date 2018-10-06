@@ -24,4 +24,18 @@
     <string name="cancelButton">キャンセル</string>
     <string name="addButtonText">追加</string>
     <string name="numHint">数を入力</string>
+    <string-array name="categoryList">
+        <item>原料</item>
+        <item>本</item>
+        <item>薬</item>
+        <item>剣</item>
+        <item>鎧</item>
+        <item>盾</item>
+        <item>杖</item>
+        <item>アクセサリ</item>
+        <item>地図</item>
+        <item>道具</item>
+        <item>生物</item>
+        <item>食物</item>
+    </string-array>
 </resources>

@@ -12,30 +12,16 @@
     <string name="delete">delete</string>
     <string name="addItem">アイテムを追加</string>
     <string name="itemImageDescript" />
-    <string name="toolCheckboxText">道具(確率で消失するか)</string>
+    <string name="toolCheckboxText">道具(確率で消費なのか～？)</string>
     <string name="valueTextHint">金額を入力</string>
     <string name="add1">+1</string>
     <string name="add10">+10</string>
     <string name="add100">+100</string>
     <string name="add1000">+1000</string>
     <string name="add10000">+10000</string>
-    <string name="breakProbHint">破損率(%)</string>
+    <string name="breakProbHint">消費率(%)</string>
     <string name="plus_minus">＋/－</string>
     <string name="cancelButton">キャンセル</string>
     <string name="addButtonText">追加</string>
     <string name="numHint">数を入力</string>
-    <string-array name="categoryList">
-        <item>原料</item>
-        <item>本</item>
-        <item>薬</item>
-        <item>剣</item>
-        <item>鎧</item>
-        <item>盾</item>
-        <item>杖</item>
-        <item>アクセサリ</item>
-        <item>地図</item>
-        <item>道具</item>
-        <item>生物</item>
-        <item>食物</item>
-    </string-array>
 </resources>

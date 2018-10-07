@@ -548,7 +548,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             GPHText.setText(R.string.defaultGPH);
         } else {
             float tax = (float) ((prodSum - srcSum) * 0.1);
-            eqText.setText(String.format("{(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)} ÷ %.2f時間 ]", prodSum, srcSum, tax, taskMinute / 60.0));
+            eqText.setText(String.format("{(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)} ÷ %.2f時間", prodSum, srcSum, tax, taskMinute / 60.0));
             GPHText.setText(String.format("時給 %,.1f G/h", (prodSum - srcSum - tax) * 60.0 / taskMinute));
         }
     }

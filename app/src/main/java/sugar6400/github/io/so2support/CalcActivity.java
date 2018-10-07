@@ -1,5 +1,6 @@
 package sugar6400.github.io.so2support;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -24,6 +25,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import java.util.ArrayList;
 
@@ -79,6 +81,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     //private PopupHolder popupHolder;
     private CalcItemData popupHolder;
 
+    private TimePickerDialog timePickerDialog;
+    private TextView timeHourText;
+    private TextView timeMinuteText;
+    private int taskMinute;
+
     // キーボード表示を制御するためのオブジェクト
     InputMethodManager inputMethodManager;
     // 背景のレイアウト
@@ -114,7 +121,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         prodList = new ArrayList<>();
         //原料・完成品リストの初期化
         srcAdapter = initItemListView(srcList);
-        prodAdapter = initItemListView(prodList);
+        prodAdapter = initItemProdListView(prodList);
 
         srcListView.setAdapter(srcAdapter);
         prodListView.setAdapter(prodAdapter);
@@ -194,6 +201,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         numAddButtons = new Button[5];
         isToolChk.setOnClickListener(this);
         setAddButtons();
+        initTimePicker();
     }
 
     @Override
@@ -202,6 +210,31 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
         }
+    }
+
+    private void initTimePicker() {
+        timeHourText = findViewById(R.id.timeHourText);
+        timeMinuteText = findViewById(R.id.timeMinuteText);
+        timePickerDialog = new TimePickerDialog(
+                this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        taskMinute = hourOfDay * 60 + minute;
+                        if (hourOfDay != 0) {
+                            timeHourText.setText(String.format("%d時間", hourOfDay));
+                        } else {
+                            timeHourText.setText("");
+                        }
+                        if (minute != 0) {
+                            timeMinuteText.setText(String.format("%d分", minute));
+                        } else {
+                            timeMinuteText.setText("");
+                        }
+                        reCalc();
+                    }
+                },
+                0, 0, true);
     }
 
     private void initCategorySpinner() {
@@ -264,20 +297,44 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         ItemListAdapter adapter = new ItemListAdapter(CalcActivity.this, this);
         //テスト用のアイテム
         adapter.setItemList(list);
-        for (int i = 0; i < 1; i++) {
-            CalcItemData itemData = new CalcItemData();
-            itemData.id = 1 + i;
-            itemData.num = (i + 1) * 5;
-            itemData.breakProb = 100;
-            itemData.value = (i + 1) * 10;
-            itemData.isTool = false;
-            list.add(itemData);
-        }
+
+        CalcItemData itemData = new CalcItemData();
+        itemData.id = 1;
+        itemData.num = 5;
+        itemData.breakProb = 100;
+        itemData.value = 90;
+        itemData.isTool = false;
+        list.add(itemData);
+
+        CalcItemData itemData2 = new CalcItemData();
+        itemData2.id = 15;
+        itemData2.num = 1;
+        itemData2.breakProb = 10;
+        itemData2.value = 2500;
+        itemData2.isTool = true;
+        list.add(itemData2);
+
         adapter.notifyDataSetChanged();
         return adapter;
     }
 
-    //TODO:　キーパッドでの入力時，数値が反映されない
+    private ItemListAdapter initItemProdListView(ArrayList<CalcItemData> list) {
+        ItemListAdapter adapter = new ItemListAdapter(CalcActivity.this, this);
+        //テスト用のアイテム
+        adapter.setItemList(list);
+
+        CalcItemData itemData = new CalcItemData();
+        itemData.id = 30;
+        itemData.num = 16;
+        itemData.breakProb = 100;
+        itemData.value = 180;
+        itemData.isTool = false;
+        list.add(itemData);
+
+        adapter.notifyDataSetChanged();
+        return adapter;
+    }
+
     private void setAddButtons() {
         for(int i=0; i<5; i++){
             int id = getResources().getIdentifier("addValue" + String.valueOf((int) Math.pow(10, i)), "id", getPackageName());
@@ -335,7 +392,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     reCalc();
                     break;
-                case R.id.itemView:
+                case R.id.openTimePicker:
+                    timePickerDialog.show();
+                    break;
                 case R.id.PMchangeNum:
                     popupHolder.isPMnumPlus = !popupHolder.isPMnumPlus;
                     if (popupHolder.isPMnumPlus) {
@@ -484,13 +543,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         //もし原料や成果がないなら計算式は表示しない
-        if (srcList.size() == 0 || prodList.size() == 0) {
+        if (srcList.size() == 0 || prodList.size() == 0 || taskMinute == 0) {
             eqText.setText(R.string.defaultEqu);
             GPHText.setText(R.string.defaultGPH);
         } else {
             float tax = (float) ((prodSum - srcSum) * 0.1);
-            eqText.setText(String.format("(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)", prodSum, srcSum, tax));
-            GPHText.setText(String.format("時給 %,.1f G/h", prodSum - srcSum - tax));
+            eqText.setText(String.format("{(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)} ÷ %.2f時間 ]", prodSum, srcSum, tax, taskMinute / 60.0));
+            GPHText.setText(String.format("時給 %,.1f G/h", (prodSum - srcSum - tax) * 60.0 / taskMinute));
         }
     }
 

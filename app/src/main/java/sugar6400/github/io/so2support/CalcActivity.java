@@ -213,8 +213,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initTimePicker() {
+        taskMinute = 0;
         timeHourText = findViewById(R.id.timeHourText);
         timeMinuteText = findViewById(R.id.timeMinuteText);
+        timeMinuteText.setText(String.format("0分 時間を入力してね→"));
         timePickerDialog = new TimePickerDialog(
                 this,
                 new TimePickerDialog.OnTimeSetListener() {

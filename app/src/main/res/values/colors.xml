@@ -8,4 +8,5 @@
     <color name="colorBlack">#000000</color>
     <color name="colorButton">#c0efff</color>
     <color name="colorAlpha">#19c0efff</color>
+    <color name="colorReverse">#ffb07b</color>
 </resources>

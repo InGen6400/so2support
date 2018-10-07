@@ -197,6 +197,26 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        probEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String str = s.toString();
+                if (!str.isEmpty()) {
+                    popupHolder.breakProb = Float.parseFloat(str);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         valueAddButtons = new Button[5];
         numAddButtons = new Button[5];
         isToolChk.setOnClickListener(this);

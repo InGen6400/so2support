@@ -61,8 +61,12 @@ public class ItemListAdapter extends BaseAdapter implements ListAdapter {
 
         ((TextView) convertView.findViewById(R.id.name)).setText(name);
         ((TextView) convertView.findViewById(R.id.num)).setText(numText);
-        ((TextView) convertView.findViewById(R.id.value)).setText("単価:" + String.format("%,d", value) + "G");
-        ((TextView) convertView.findViewById(R.id.sumValueText)).setText("総額:" + String.format("%,d", num * value) + "G");
+        ((TextView) convertView.findViewById(R.id.value)).setText("単価:" + String.format("%,dG", value));
+        if (itemList.get(position).isTool) {
+            ((TextView) convertView.findViewById(R.id.sumValueText)).setText("総額:" + String.format("%,.1fG", num * value * itemList.get(position).breakProb / 100.0));
+        } else {
+            ((TextView) convertView.findViewById(R.id.sumValueText)).setText("総額:" + String.format("%,dG", num * value));
+        }
         if (itemList.get(position).isTool) {
             ((TextView) convertView.findViewById(R.id.breakProbText)).setText("道具/破損率:" + String.format("%.1f", itemList.get(position).breakProb) + "%");
         } else {

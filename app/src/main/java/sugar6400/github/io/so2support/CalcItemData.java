@@ -10,7 +10,7 @@ public class CalcItemData implements Cloneable {
     //個数
     public int num;
     //価格
-    public float value;
+    public long value;
     //破損率
     public float breakProb;
     //道具かどうか
@@ -44,7 +44,7 @@ public class CalcItemData implements Cloneable {
         return isPMnumPlus ? (num += input) : (num -= input);
     }
 
-    public float addValue(float input) {
+    public long addValue(long input) {
         return isPMvaluePlus ? (value += input) : (value -= input);
     }
 

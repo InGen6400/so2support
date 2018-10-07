@@ -8,6 +8,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -68,6 +70,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private EditText numEditText;
     private EditText probEditText;
     private CheckBox isToolChk;
+    private String valuePrevText;
+    private String numPrevText;
 
     private TextView eqText;
     private TextView GPHText;
@@ -122,12 +126,83 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         numEditText = popupView.findViewById(R.id.numText);
         probEditText = popupView.findViewById(R.id.breakProbText);
         isToolChk = popupView.findViewById(R.id.isToolCheck);
+
+        valueEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                valuePrevText = s.toString();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String str = s.toString();
+                if (!str.isEmpty() && str != valuePrevText) {
+                    String numStr = str.replace(",", "");
+                    //13桁(兆の桁)が上限とする
+                    if (numStr.length() > 13) {
+                        numStr = "9999999999999";
+                    }
+                    popupHolder.value = Long.parseLong(numStr);
+                    String textWithComma = String.format("%,d", popupHolder.value);
+                    if (str.matches(textWithComma)) return;
+
+                    int cursorPos = textWithComma.length() - (str.length() - valueEditText.getSelectionEnd());
+                    valueEditText.setTextKeepState(textWithComma);
+                    if (cursorPos > 0) {
+                        valueEditText.setSelection(cursorPos);
+                    } else {
+                        valueEditText.setSelection(0);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        numEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                numPrevText = s.toString();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String str = s.toString();
+                if (!str.isEmpty() && str != numPrevText) {
+                    popupHolder.num = Integer.parseInt(str.replace(",", ""));
+                    String textWithComma = String.format("%,d", popupHolder.num);
+                    if (str.matches(textWithComma)) return;
+
+                    int cursorPos = textWithComma.length() - (str.length() - numEditText.getSelectionEnd());
+                    numEditText.setTextKeepState(textWithComma);
+                    if (cursorPos > 0) {
+                        numEditText.setSelection(cursorPos);
+                    } else {
+                        numEditText.setSelection(0);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
         valueAddButtons = new Button[5];
         numAddButtons = new Button[5];
         isToolChk.setOnClickListener(this);
         setAddButtons();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (popupWindow != null && popupWindow.isShowing()) {
+            popupWindow.dismiss();
+        }
+    }
 
     private void initCategorySpinner() {
         catSpinner = popupView.findViewById(R.id.catSpinner);
@@ -207,13 +282,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         for(int i=0; i<5; i++){
             int id = getResources().getIdentifier("addValue" + String.valueOf((int) Math.pow(10, i)), "id", getPackageName());
             valueAddButtons[i] = popupView.findViewById(id);
-            valueAddButtons[i].setTag((float) Math.pow(10, i));
+            valueAddButtons[i].setTag((long) Math.pow(10, i));
             valueAddButtons[i].setText("+" + String.valueOf((int) Math.pow(10, i)));
             valueAddButtons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    popupHolder.addValue((float) view.getTag());
-                    valueEditText.setText(String.format("%,.0f", popupHolder.value));
+                    popupHolder.addValue((long) view.getTag());
+                    valueEditText.setText(String.format("%d", popupHolder.value));
                 }
             });
             id = getResources().getIdentifier("addNum" + String.valueOf((int) Math.pow(10, i)), "id", getPackageName());
@@ -224,7 +299,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onClick(View view) {
                     popupHolder.addNum((int) view.getTag());
-                    numEditText.setText(String.format("%,d", popupHolder.num));
+                    numEditText.setText(String.format("%d", popupHolder.num));
                 }
             });
         }
@@ -391,7 +466,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     public void reCalc() {
         //原料の総額
-        float srcSum = 0;
+        long srcSum = 0;
         for (int i = 0; i < srcList.size(); i++) {
             if (srcList.get(i).isTool) {
                 srcSum += srcList.get(i).value * srcList.get(i).num * (srcList.get(i).breakProb / 100);
@@ -414,8 +489,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             GPHText.setText(R.string.defaultGPH);
         } else {
             float tax = (float) ((prodSum - srcSum) * 0.1);
-            eqText.setText(String.format("(成果:%.1fG) － (原料:%.1fG) － (税金:%.1fG)", prodSum, srcSum, tax));
-            GPHText.setText(String.format("時給 %.1f G/h", prodSum - srcSum - tax));
+            eqText.setText(String.format("(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)", prodSum, srcSum, tax));
+            GPHText.setText(String.format("時給 %,.1f G/h", prodSum - srcSum - tax));
         }
     }
 

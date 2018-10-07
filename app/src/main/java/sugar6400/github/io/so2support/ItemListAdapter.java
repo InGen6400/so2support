@@ -53,7 +53,7 @@ public class ItemListAdapter extends BaseAdapter implements ListAdapter {
 
         int id = itemList.get(position).id;
 
-        float value = itemList.get(position).value;
+        long value = itemList.get(position).value;
         int num = itemList.get(position).num;
         String name = itemDataBase.getItemStr(id, "name");
         String scale = itemDataBase.getItemStr(id, "scale");
@@ -61,8 +61,8 @@ public class ItemListAdapter extends BaseAdapter implements ListAdapter {
 
         ((TextView) convertView.findViewById(R.id.name)).setText(name);
         ((TextView) convertView.findViewById(R.id.num)).setText(numText);
-        ((TextView) convertView.findViewById(R.id.value)).setText("単価:" + String.format("%,.0f", value) + "G");
-        ((TextView) convertView.findViewById(R.id.sumValueText)).setText("総額:" + String.format("%,.1f", num * value) + "G");
+        ((TextView) convertView.findViewById(R.id.value)).setText("単価:" + String.format("%,d", value) + "G");
+        ((TextView) convertView.findViewById(R.id.sumValueText)).setText("総額:" + String.format("%,d", num * value) + "G");
         if (itemList.get(position).isTool) {
             ((TextView) convertView.findViewById(R.id.breakProbText)).setText("道具/破損率:" + String.format("%.1f", itemList.get(position).breakProb) + "%");
         } else {

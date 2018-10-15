@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -33,8 +34,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<CalcItemData> prodList;
     private ItemListAdapter srcAdapter;
     private ItemListAdapter prodAdapter;
-
-
 
     //ポップアップ用変数
     //private View popupView;
@@ -71,20 +70,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         itemDataBase = new ItemDataBase(this);
         initImageID();
 
-        final ListView srcListView;
-        ListView prodListView;
-        //原料のリストビューを取得
-
-        srcListView = findViewById(R.id.srcList);
-        prodListView = findViewById(R.id.prodList);
-        srcList = new ArrayList<>();
-        prodList = new ArrayList<>();
-        //原料・完成品リストの初期化
-        srcAdapter = initItemListView(srcList);
-        prodAdapter = initItemProdListView(prodList);
-
-        srcListView.setAdapter(srcAdapter);
-        prodListView.setAdapter(prodAdapter);
+        initItemListView();
+        initItemProdListView();
 
         popupWindow = new PopupItemEdit(CalcActivity.this);
 
@@ -136,10 +123,14 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private ItemListAdapter initItemListView(ArrayList<CalcItemData> list) {
-        ItemListAdapter adapter = new ItemListAdapter(CalcActivity.this, this);
+    private void initItemListView() {
+        final ListView srcListView;
+        srcListView = findViewById(R.id.srcList);
+        srcList = new ArrayList<>();
+
+        srcAdapter = new ItemListAdapter(CalcActivity.this, this);
         //テスト用のアイテム
-        adapter.setItemList(list);
+        srcAdapter.setItemList(srcList);
 
         CalcItemData itemData = new CalcItemData();
         itemData.id = 1;
@@ -147,7 +138,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         itemData.breakProb = 100;
         itemData.value = 90;
         itemData.isTool = false;
-        list.add(itemData);
+        itemData.catPosition = 0;
+        itemData.itemPosition = 0;
+        srcList.add(itemData);
 
         CalcItemData itemData2 = new CalcItemData();
         itemData2.id = 15;
@@ -155,16 +148,29 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         itemData2.breakProb = 10;
         itemData2.value = 2500;
         itemData2.isTool = true;
-        list.add(itemData2);
+        itemData2.catPosition = 1;
+        itemData2.itemPosition = 1;
+        srcList.add(itemData2);
 
-        adapter.notifyDataSetChanged();
-        return adapter;
+        srcAdapter.notifyDataSetChanged();
+        srcListView.setAdapter(srcAdapter);
+
+        //アイテムタップ時に編集画面を開く
+        srcListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                openPopup(true, position, (CalcItemData) srcList.get(position));
+            }
+        });
     }
 
-    private ItemListAdapter initItemProdListView(ArrayList<CalcItemData> list) {
-        ItemListAdapter adapter = new ItemListAdapter(CalcActivity.this, this);
+    private void initItemProdListView() {
+        final ListView prodListView;
+        prodListView = findViewById(R.id.prodList);
+        prodList = new ArrayList<>();
+        prodAdapter = new ItemListAdapter(CalcActivity.this, this);
         //テスト用のアイテム
-        adapter.setItemList(list);
+        prodAdapter.setItemList(prodList);
 
         CalcItemData itemData = new CalcItemData();
         itemData.id = 30;
@@ -172,10 +178,20 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         itemData.breakProb = 100;
         itemData.value = 180;
         itemData.isTool = false;
-        list.add(itemData);
+        itemData.catPosition = 2;
+        itemData.itemPosition = 0;
+        prodList.add(itemData);
 
-        adapter.notifyDataSetChanged();
-        return adapter;
+        prodAdapter.notifyDataSetChanged();
+        prodListView.setAdapter(prodAdapter);
+
+        //アイテムタップ時に編集画面を開く
+        prodListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                openPopup(false, position, prodList.get(position));
+            }
+        });
     }
 
     @Override
@@ -183,10 +199,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         if (v != null) {
             switch (v.getId()) {
                 case R.id.srcPopupButton:
-                    openPopup(true);
+                    openPopup(true, -1, null);
                     break;
                 case R.id.prodPopupButton:
-                    openPopup(false);
+                    openPopup(false, -1, null);
                     break;
                 case R.id.openTimePicker:
                     timePickerDialog.show();
@@ -217,7 +233,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //アイテム追加用ポップアップを開く
-    private void openPopup(boolean isSrc) {
+    private void openPopup(boolean isSrc, int position, CalcItemData holder) {
 
         //背景の指定
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -239,7 +255,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         //中央に表示
         popupWindow.showAtLocation(findViewById(R.id.srcPopupButton), Gravity.CENTER, 0, 0);
-        popupWindow.open(isSrc);
+        popupWindow.open(isSrc, position, holder);
     }
 
     public void closePopup() {
@@ -279,15 +295,23 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //原料リストにアイテムを追加する
-    public void addSrc(CalcItemData itemData) {
-        CalcItemData additionalData = (CalcItemData) itemData.clone();
-        srcList.add(additionalData);
+    public void addSrc(CalcItemData itemData, int index) {
+        if (index == -1) {
+            CalcItemData additionalData = (CalcItemData) itemData.clone();
+            srcList.add(additionalData);
+        } else {
+            srcList.set(index, (CalcItemData) itemData.clone());
+        }
         srcAdapter.notifyDataSetChanged();
     }
 
-    public void addProd(CalcItemData itemData) {
-        CalcItemData additionalData = (CalcItemData) itemData.clone();
-        prodList.add(additionalData);
+    public void addProd(CalcItemData itemData, int index) {
+        if (index == -1) {
+            CalcItemData additionalData = (CalcItemData) itemData.clone();
+            prodList.add(additionalData);
+        } else {
+            prodList.set(index, (CalcItemData) itemData.clone());
+        }
         prodAdapter.notifyDataSetChanged();
     }
 

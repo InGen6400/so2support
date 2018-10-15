@@ -54,6 +54,7 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
     //endregion
 
     private boolean isSrcList;
+    private int editingIndex;
 
     PopupItemEdit(CalcActivity mother) {
         calcActivity = mother;
@@ -77,22 +78,16 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         popupView.findViewById(R.id.addButton).setOnClickListener(this);
         popupView.findViewById(R.id.PMchangeValue).setOnClickListener(this);
         popupView.findViewById(R.id.PMchangeNum).setOnClickListener(this);
+        popupView.findViewById(R.id.cancelButton).setOnClickListener(this);
 
         setAddButtons();
 
-        popupView.findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calcActivity.closePopup();
-            }
-        });
 
         initCategorySpinner();
         initItemSpinner();
 
         setupEditTextFormatter();
 
-        reload();
     }
 
     @Override
@@ -100,15 +95,22 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         if (v != null) {
             switch (v.getId()) {
                 case R.id.addButton:
+                    popupHolder.itemPosition = itemSpinner.getSelectedItemPosition();
                     popupHolder.id = catSpinnerItemId[popupHolder.catPosition].get(popupHolder.itemPosition);
                     if (isSrcList) {
-                        calcActivity.addSrc(popupHolder);
+                        calcActivity.addSrc(popupHolder, editingIndex);
                     } else {
-                        calcActivity.addProd(popupHolder);
+                        calcActivity.addProd(popupHolder, editingIndex);
                     }
                     popupHolder.reset();
                     calcActivity.closePopup();
                     calcActivity.reCalc();
+                    break;
+                case R.id.cancelButton:
+                    if (editingIndex != -1) {
+                        popupHolder.reset();
+                    }
+                    calcActivity.closePopup();
                     break;
                 case R.id.PMchangeNum:
                     popupHolder.isPMnumPlus = !popupHolder.isPMnumPlus;
@@ -203,7 +205,7 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
                     String valueStr = str.replace(",", "");
                     //10桁が上限とする
                     if (valueStr.length() > 8) {
-                        valueStr = "9999999";
+                        valueStr = "99999999";
                     }
                     //int型に変換
                     popupHolder.num = Integer.parseInt(valueStr);
@@ -284,7 +286,7 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
             //アイテム選択時
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                popupHolder.itemPosition = position;
+                //popupHolder.itemPosition = position;
             }
 
             //アイテムが選択されなかった
@@ -347,10 +349,15 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         itemSpinner.setAdapter(itemSpinnerAdapter[popupHolder.catPosition]);
     }
 
-    public void open(boolean isSrcFlag) {
+    public void open(boolean isSrcFlag, int index, CalcItemData editedHolder) {
+        if (index != -1) {
+            popupHolder = (CalcItemData) editedHolder.clone();
+        }
+        editingIndex = index;
         isSrcList = isSrcFlag;
         reload();
     }
+
 
     public void reload() {
         if (popupHolder.value > 0) {
@@ -363,11 +370,10 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         } else {
             numEditText.setText("");
         }
-        catSpinner.setSelection(popupHolder.catPosition);
-        itemSpinner.setSelection(popupHolder.itemPosition);
         isToolChk.setChecked(popupHolder.isTool);
         if (isToolChk.isChecked()) {
             probEditText.setText(String.valueOf(popupHolder.breakProb));
+            probEditText.setVisibility(View.VISIBLE);
         } else {
             probEditText.setText("100");
             probEditText.setVisibility(View.INVISIBLE);
@@ -377,6 +383,14 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         } else {
             ((TextView) popupView.findViewById(R.id.settingText)).setText("成果品を追加");
         }
+        catSpinner.setSelection(popupHolder.catPosition, false);
+        reloadItemSpinner();
+        itemSpinner.post(new Runnable() {
+            @Override
+            public void run() {
+                itemSpinner.setSelection(popupHolder.itemPosition, false);
+            }
+        });
     }
 
     private int catStr2int(String catStr) {

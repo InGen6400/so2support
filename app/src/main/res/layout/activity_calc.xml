@@ -104,6 +104,8 @@
                     android:id="@+id/srcList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:divider="@null"
+                    android:dividerHeight="2dp"
                     android:isScrollContainer="false" />
 
                 <LinearLayout

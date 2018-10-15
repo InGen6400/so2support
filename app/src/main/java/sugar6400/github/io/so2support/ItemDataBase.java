@@ -12,6 +12,12 @@ import java.io.InputStreamReader;
 
 public class ItemDataBase {
 
+    //定数
+    //カテゴリー数
+    public static final int nCategory = 12;
+    //Jsonに登録されている読み込まないといけないアイテム数
+    public static final int JsonMaxDataNum = 1217;
+
     private BufferedReader br;
     private InputStream is;
     private String jsonText;

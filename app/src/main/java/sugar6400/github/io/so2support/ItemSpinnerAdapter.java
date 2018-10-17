@@ -54,8 +54,8 @@ public class ItemSpinnerAdapter extends BaseAdapter {
             convertView = inflater.inflate(layoutID, null);
             holder = new ViewHolder();
 
-            holder.image = convertView.findViewById(R.id.image_view);
-            holder.text = convertView.findViewById(R.id.text_view);
+            holder.image = convertView.findViewById(R.id.spinner_icon);
+            holder.text = convertView.findViewById(R.id.spinner_text);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

@@ -1,5 +1,6 @@
 package sugar6400.github.io.so2support;
 
+import android.os.Build;
 import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -81,7 +82,6 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         popupView.findViewById(R.id.cancelButton).setOnClickListener(this);
 
         setAddButtons();
-
 
         initCategorySpinner();
         initItemSpinner();
@@ -251,6 +251,11 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
 
     private void initCategorySpinner() {
         catSpinner = popupView.findViewById(R.id.catSpinner);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            catSpinner.setLayoutMode(Spinner.MODE_DROPDOWN);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            catSpinner.setLayoutMode(Spinner.MODE_DIALOG);
+        }
         catAdapter = new CatAdapter(calcActivity.getApplicationContext(), R.layout.spinner_item, nCategory);
         catSpinner.setAdapter(catAdapter);
         catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -275,13 +280,18 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
 
         //アイテム一覧スピナーの初期設定
         itemSpinner = popupView.findViewById(R.id.itemSpinner);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            itemSpinner.setLayoutMode(Spinner.MODE_DROPDOWN);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            itemSpinner.setLayoutMode(Spinner.MODE_DIALOG);
+        }
         itemSpinnerAdapter = new ItemSpinnerAdapter[nCategory];
         for (int i = 0; i < nCategory; i++) {
             itemSpinnerAdapter[i] = new ItemSpinnerAdapter(calcActivity.getApplicationContext(), R.layout.spinner_item, catSpinnerItemId[i]);
         }
-
         //初期は原料カテゴリのスピナー
         itemSpinner.setAdapter(itemSpinnerAdapter[0]);
+
         itemSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             //アイテム選択時
             @Override

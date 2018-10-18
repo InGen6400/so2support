@@ -1,4 +1,4 @@
-package sugar6400.github.io.so2support;
+package sugar6400.github.io.so2support.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;

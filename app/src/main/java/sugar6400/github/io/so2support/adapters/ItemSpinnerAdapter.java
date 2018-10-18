@@ -1,7 +1,6 @@
-package sugar6400.github.io.so2support;
+package sugar6400.github.io.so2support.adapters;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,35 +8,34 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CatAdapter extends BaseAdapter {
+import java.util.ArrayList;
+
+import sugar6400.github.io.so2support.R;
+
+import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
+import static sugar6400.github.io.so2support.CalcActivity.itemDataBase;
+
+public class ItemSpinnerAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
     private int layoutID;
-    private int num_cat;
-    private int[] imageIDs;
+    private ArrayList<Integer> itemIDs;
 
     static class ViewHolder {
         TextView text;
         ImageView image;
     }
 
-    CatAdapter(Context c, int catLayoutId, int num_cat) {
+    public ItemSpinnerAdapter(Context c, int itemLayoutId, ArrayList<Integer> idList) {
         inflater = LayoutInflater.from(c);
-        layoutID = catLayoutId;
+        layoutID = itemLayoutId;
 
-        this.num_cat = num_cat;
-        imageIDs = new int[num_cat];
-
-        Resources res = c.getResources();
-        for (int i = 0; i < num_cat; i++) {
-            String imageFileName = "sprite_category2x_" + String.valueOf(i);
-            imageIDs[i] = res.getIdentifier(imageFileName, "drawable", c.getPackageName());
-        }
+        itemIDs = idList;
     }
 
     @Override
     public int getCount() {
-        return num_cat;
+        return itemIDs.size();
     }
 
     @Override
@@ -65,8 +63,8 @@ public class CatAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.image.setImageResource(imageIDs[position]);
-        holder.text.setText(convertView.getResources().getStringArray(R.array.categoryList)[position]);
+        holder.image.setImageResource(imageIDs[itemIDs.get(position) - 1]);
+        holder.text.setText(itemDataBase.getItemStr(itemIDs.get(position), "name"));
 
         return convertView;
     }

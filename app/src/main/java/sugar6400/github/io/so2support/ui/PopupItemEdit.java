@@ -1,4 +1,4 @@
-package sugar6400.github.io.so2support;
+package sugar6400.github.io.so2support.ui;
 
 import android.os.Build;
 import android.support.constraint.ConstraintLayout;
@@ -16,9 +16,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import sugar6400.github.io.so2support.CalcActivity;
+import sugar6400.github.io.so2support.R;
+import sugar6400.github.io.so2support.adapters.CatAdapter;
+import sugar6400.github.io.so2support.adapters.ItemSpinnerAdapter;
+import sugar6400.github.io.so2support.container.CalcItemData;
+
 import static sugar6400.github.io.so2support.CalcActivity.itemDataBase;
-import static sugar6400.github.io.so2support.ItemDataBase.JsonMaxDataNum;
-import static sugar6400.github.io.so2support.ItemDataBase.nCategory;
+import static sugar6400.github.io.so2support.container.ItemDataBase.JsonMaxDataNum;
+import static sugar6400.github.io.so2support.container.ItemDataBase.nCategory;
 
 public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
 
@@ -57,7 +63,7 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
     private boolean isSrcList;
     private int editingIndex;
 
-    PopupItemEdit(CalcActivity mother) {
+    public PopupItemEdit(CalcActivity mother) {
         calcActivity = mother;
         popupView = mother.getLayoutInflater().inflate(R.layout.popup_layout, null);
         setContentView(popupView);
@@ -114,27 +120,11 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
                     break;
                 case R.id.PMchangeNum:
                     popupHolder.isPMnumPlus = !popupHolder.isPMnumPlus;
-                    if (popupHolder.isPMnumPlus) {
-                        for (int i = 0; i < numAddButtons.length; i++) {
-                            numAddButtons[i].setText("+" + String.valueOf((int) Math.pow(10, i)));
-                        }
-                    } else {
-                        for (int i = 0; i < numAddButtons.length; i++) {
-                            numAddButtons[i].setText("-" + String.valueOf((int) Math.pow(10, i)));
-                        }
-                    }
+                    changePM(numAddButtons, popupHolder.isPMnumPlus);
                     break;
                 case R.id.PMchangeValue:
                     popupHolder.isPMvaluePlus = !popupHolder.isPMvaluePlus;
-                    if (popupHolder.isPMvaluePlus) {
-                        for (int i = 0; i < valueAddButtons.length; i++) {
-                            valueAddButtons[i].setText("+" + String.valueOf((int) Math.pow(10, i)));
-                        }
-                    } else {
-                        for (int i = 0; i < valueAddButtons.length; i++) {
-                            valueAddButtons[i].setText("-" + String.valueOf((int) Math.pow(10, i)));
-                        }
-                    }
+                    changePM(valueAddButtons, popupHolder.isPMvaluePlus);
                     break;
                 case R.id.delValue:
                     popupHolder.value = 0;
@@ -359,6 +349,18 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         itemSpinner.setAdapter(itemSpinnerAdapter[popupHolder.catPosition]);
     }
 
+    private void changePM(Button[] buttonList, boolean isPlus) {
+        if (isPlus) {
+            for (int i = 0; i < buttonList.length; i++) {
+                buttonList[i].setText("+" + String.valueOf((int) Math.pow(10, i)));
+            }
+        } else {
+            for (int i = 0; i < buttonList.length; i++) {
+                buttonList[i].setText("-" + String.valueOf((int) Math.pow(10, i)));
+            }
+        }
+    }
+
     public void open(boolean isSrcFlag, int index, CalcItemData editedHolder) {
         if (index != -1) {
             popupHolder = (CalcItemData) editedHolder.clone();
@@ -367,7 +369,6 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         isSrcList = isSrcFlag;
         reload();
     }
-
 
     public void reload() {
         if (popupHolder.value > 0) {
@@ -389,10 +390,20 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
             probEditText.setVisibility(View.INVISIBLE);
         }
         if (isSrcList) {
-            ((TextView) popupView.findViewById(R.id.settingText)).setText("原料・道具を追加");
+            if (editingIndex > -1) {
+                ((TextView) popupView.findViewById(R.id.settingText)).setText("原料・道具を編集");
+            } else {
+                ((TextView) popupView.findViewById(R.id.settingText)).setText("原料・道具を追加");
+            }
         } else {
-            ((TextView) popupView.findViewById(R.id.settingText)).setText("成果品を追加");
+            if (editingIndex > -1) {
+                ((TextView) popupView.findViewById(R.id.settingText)).setText("成果品を編集");
+            } else {
+                ((TextView) popupView.findViewById(R.id.settingText)).setText("成果品を追加");
+            }
         }
+        changePM(valueAddButtons, popupHolder.isPMvaluePlus);
+        changePM(numAddButtons, popupHolder.isPMnumPlus);
         catSpinner.setSelection(popupHolder.catPosition, false);
         reloadItemSpinner();
         itemSpinner.post(new Runnable() {

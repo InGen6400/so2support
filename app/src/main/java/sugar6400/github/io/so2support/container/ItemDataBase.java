@@ -1,4 +1,4 @@
-package sugar6400.github.io.so2support;
+package sugar6400.github.io.so2support.container;
 
 import android.content.Context;
 import android.util.Log;
@@ -24,7 +24,7 @@ public class ItemDataBase {
 
     private JSONObject itemJson;
 
-    ItemDataBase(Context c) {
+    public ItemDataBase(Context c) {
         readJson(c);
         if (jsonText == null) {
             Log.e("Json Error", "JsonText is null");

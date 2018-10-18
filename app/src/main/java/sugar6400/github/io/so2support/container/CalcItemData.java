@@ -1,4 +1,4 @@
-package sugar6400.github.io.so2support;
+package sugar6400.github.io.so2support.container;
 
 public class CalcItemData implements Cloneable {
     //catSpinnerでの位置
@@ -19,7 +19,7 @@ public class CalcItemData implements Cloneable {
     public boolean isPMvaluePlus;
     public boolean isPMnumPlus;
 
-    CalcItemData() {
+    public CalcItemData() {
         this(1);
     }
 

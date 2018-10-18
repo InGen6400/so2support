@@ -1,4 +1,4 @@
-package sugar6400.github.io.so2support;
+package sugar6400.github.io.so2support.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,10 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import sugar6400.github.io.so2support.CalcActivity;
+import sugar6400.github.io.so2support.R;
+import sugar6400.github.io.so2support.container.CalcItemData;
 
 import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
 import static sugar6400.github.io.so2support.CalcActivity.itemDataBase;

@@ -41,6 +41,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <sugar6400.github.io.so2support.ui.NonScrollListView
+                    android:id="@+id/test"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="296dp" />
+
                 <TextView
                     android:id="@+id/miscTitle"
                     android:layout_width="match_parent"

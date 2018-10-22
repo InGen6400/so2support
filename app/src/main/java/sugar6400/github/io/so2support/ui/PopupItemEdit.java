@@ -286,7 +286,7 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
             //アイテム選択時
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //popupHolder.itemPosition = position;
+                popupHolder.itemPosition = position;
             }
 
             //アイテムが選択されなかった
@@ -404,6 +404,7 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         }
         changePM(valueAddButtons, popupHolder.isPMvaluePlus);
         changePM(numAddButtons, popupHolder.isPMnumPlus);
+
         catSpinner.setSelection(popupHolder.catPosition, false);
         reloadItemSpinner();
         itemSpinner.post(new Runnable() {

@@ -24,7 +24,9 @@ import java.util.ArrayList;
 import sugar6400.github.io.so2support.adapters.ItemListAdapter;
 import sugar6400.github.io.so2support.container.CalcItemData;
 import sugar6400.github.io.so2support.container.ItemDataBase;
+import sugar6400.github.io.so2support.container.WorkData;
 import sugar6400.github.io.so2support.ui.PopupItemEdit;
+import sugar6400.github.io.so2support.ui.WorkList;
 
 import static sugar6400.github.io.so2support.container.ItemDataBase.JsonMaxDataNum;
 
@@ -59,6 +61,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     InputMethodManager inputMethodManager;
     // 背景のレイアウト
     private ConstraintLayout mainLayout;
+    private WorkList workList;
 
 
     @Override
@@ -79,7 +82,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         initItemProdListView();
 
         popupWindow = new PopupItemEdit(CalcActivity.this);
-
+        workList = new WorkList(this, (ListView) findViewById(R.id.test));
+        WorkData workData = new WorkData("test Work", 30, 2000, srcList, prodList);
+        WorkData workData2 = new WorkData("test Work2", 60, 1200, srcList, prodList);
+        WorkData workData3 = new WorkData("test Work3", 60, 1200, srcList, prodList);
+        workList.addWork(workData);
+        workList.addWork(workData2);
+        workList.addWork(workData3);
         initTimePicker();
     }
 
@@ -269,9 +278,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void reCalc() {
+    public double reCalc() {
         //原料の総額
         long srcSum = 0;
+        double GPH = 0;
         for (int i = 0; i < srcList.size(); i++) {
             if (srcList.get(i).isTool) {
                 srcSum += srcList.get(i).value * srcList.get(i).num * (srcList.get(i).breakProb / 100);
@@ -294,9 +304,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             GPHText.setText(R.string.defaultGPH);
         } else {
             float tax = (float) ((prodSum - srcSum) * 0.1);
+            GPH = (prodSum - srcSum - tax) * 60.0 / taskMinute;
             eqText.setText(String.format("{(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)} ÷ %.2f時間", prodSum, srcSum, tax, taskMinute / 60.0));
-            GPHText.setText(String.format("時給 %,.1f G/h", (prodSum - srcSum - tax) * 60.0 / taskMinute));
+            GPHText.setText(String.format("時給 %,.1f G/h", GPH));
         }
+        return GPH;
     }
 
     //原料リストにアイテムを追加する
@@ -320,9 +332,33 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         prodAdapter.notifyDataSetChanged();
     }
 
-    //リスト要素を編集する
-    public void onClickEdit(View v) {
+    //作業データを読み込む
+    public void loadWork(WorkData workData) {
 
+        int hourOfDay = workData.getMinutes() / 60;
+        int minute = workData.getMinutes() % 60;
+        taskMinute = hourOfDay * 60 + minute;
+        //タイムピッカーを設定
+        timePickerDialog.updateTime(hourOfDay, minute);
+        //時間のテキストを設定
+        if (hourOfDay != 0) {
+            timeHourText.setText(String.format("%d時間", hourOfDay));
+        } else {
+            timeHourText.setText("");
+        }
+        if (minute != 0) {
+            timeMinuteText.setText(String.format("%d分", minute));
+        } else {
+            timeMinuteText.setText("");
+        }
+
+        srcList = new ArrayList<>(workData.getSrcList());
+        prodList = new ArrayList<>(workData.getProdList());
+        srcAdapter.setItemList(srcList);
+        prodAdapter.setItemList(prodList);
+        srcAdapter.notifyDataSetChanged();
+        prodAdapter.notifyDataSetChanged();
+
+        reCalc();
     }
-
 }

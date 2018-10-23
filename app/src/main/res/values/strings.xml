@@ -6,6 +6,8 @@
     <string name="defaultText">default...</string>
     <string name="defaultEqu">ここに計算式が表示されてほしい(；人；) ｵﾈｶﾞｲ </string>
     <string name="defaultGPH">時給 ... G/h</string>
+    <string name="drawer_open">作業リストを開く</string>
+    <string name="drawer_close">作業リストを閉じる</string>
     <string name="addSrcButton">原料・道具を追加</string>
     <string name="addProdButton">成果品を追加</string>
     <string name="itemicon">itemIcon</string>

@@ -37,7 +37,8 @@ public class WorkList implements AdapterView.OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        WorkData workData = (WorkData) listView.getItemAtPosition(position);
+        //逆順で読み込み
+        WorkData workData = (WorkData) listView.getItemAtPosition(workAdapter.getCount() - position - 1);
         calcActivity.loadWork(workData);
         Toast.makeText(calcActivity.getBaseContext(), workData.getName() + "をロードしました", Toast.LENGTH_SHORT).show();
     }

@@ -8,6 +8,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -72,7 +74,14 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         Toolbar myToolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
-        myToolbar.inflateMenu(R.);
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle =
+                new ActionBarDrawerToggle(
+                        this, drawerLayout, myToolbar, R.string.drawer_open, R.string.drawer_close
+                );
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
 
         eqText = findViewById(R.id.eqText);
         GPHText = findViewById(R.id.GPH);

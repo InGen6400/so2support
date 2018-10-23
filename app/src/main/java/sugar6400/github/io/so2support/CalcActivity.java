@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -68,6 +69,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
+
+        Toolbar myToolbar = findViewById(R.id.tool_bar);
+        setSupportActionBar(myToolbar);
+        myToolbar.inflateMenu(R.);
 
         eqText = findViewById(R.id.eqText);
         GPHText = findViewById(R.id.GPH);

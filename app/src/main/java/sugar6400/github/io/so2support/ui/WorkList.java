@@ -21,7 +21,6 @@ public class WorkList implements AdapterView.OnItemClickListener {
         this.listView = listView;
         workAdapter = new WorkListAdapter(calcActivity.getBaseContext());
 
-        listView.setDivider(null);
         listView.setOnItemClickListener(this);
         listView.setAdapter(workAdapter);
     }

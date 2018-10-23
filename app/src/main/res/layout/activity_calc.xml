@@ -13,7 +13,20 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:minHeight="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:elevation="4dp" />
+        android:elevation="4dp">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@android:drawable/ic_menu_save" />
+
+    </android.support.v7.widget.Toolbar>
+
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
@@ -270,7 +283,7 @@
 
         <ListView
             android:id="@+id/test"
-            android:layout_width="240dp"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="@color/colorWhite"

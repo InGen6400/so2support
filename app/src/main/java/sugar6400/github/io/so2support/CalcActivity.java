@@ -65,6 +65,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     // 背景のレイアウト
     private ConstraintLayout mainLayout;
     private WorkList workList;
+    private DrawerLayout drawerLayout;
 
 
     @Override
@@ -75,7 +76,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar myToolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
 
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle actionBarDrawerToggle =
                 new ActionBarDrawerToggle(
                         this, drawerLayout, myToolbar, R.string.drawer_open, R.string.drawer_close
@@ -374,5 +375,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         prodAdapter.notifyDataSetChanged();
 
         reCalc();
+        
+        drawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                drawerLayout.closeDrawer(Gravity.LEFT, true);
+            }
+        });
     }
 }

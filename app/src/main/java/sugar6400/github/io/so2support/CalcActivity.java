@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -109,6 +110,23 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         workList.addWork(workData2);
         workList.addWork(workData3);
         workNameText = findViewById(R.id.work_name);
+        workNameText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                //EnterKeyが押されたかを判定
+                if (event.getAction() == KeyEvent.ACTION_DOWN
+                        && keyCode == KeyEvent.KEYCODE_ENTER) {
+
+                    //ソフトキーボードを閉じる
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+                    return true;
+                }
+                return false;
+            }
+        });
         initTimePicker();
     }
 

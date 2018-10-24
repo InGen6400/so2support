@@ -236,6 +236,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.openTimePicker:
                     timePickerDialog.show();
                     break;
+                case R.id.save_button:
+                    addWork();
+                    break;
             }
         }
     }
@@ -347,12 +350,16 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         prodAdapter.notifyDataSetChanged();
     }
 
+    public void addWork() {
+        WorkData workData = new WorkData(taskMinute, reCalc(), srcList, prodList);
+        workList.addWork(workData);
+    }
+
     //作業データを読み込む
     public void loadWork(WorkData workData) {
-
-        int hourOfDay = workData.getMinutes() / 60;
-        int minute = workData.getMinutes() % 60;
-        taskMinute = hourOfDay * 60 + minute;
+        taskMinute = workData.getMinutes();
+        int hourOfDay = taskMinute / 60;
+        int minute = taskMinute % 60;
         //タイムピッカーを設定
         timePickerDialog.updateTime(hourOfDay, minute);
         //時間のテキストを設定

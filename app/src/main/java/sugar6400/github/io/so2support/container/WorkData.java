@@ -19,18 +19,25 @@ public class WorkData {
     //完成品リスト
     private ArrayList<CalcItemData> prodList;
 
-    WorkData(int minutes, double wage, ArrayList<CalcItemData> srcList, ArrayList<CalcItemData> prodList) {
+    public WorkData(int minutes, double wage, ArrayList<CalcItemData> srcList, ArrayList<CalcItemData> prodList) {
         this(itemDataBase.getItemStr(prodList.get(0).id, "name"), minutes, wage, srcList, prodList);
     }
 
     public WorkData(String name, int minutes, double wage,
                     ArrayList<CalcItemData> srcList, ArrayList<CalcItemData> prodList) {
+        this(name, prodList.get(0).id, minutes, wage, srcList, prodList);
+    }
+
+    public WorkData(String name, int image, int minutes, double wage,
+                    ArrayList<CalcItemData> srcList, ArrayList<CalcItemData> prodList) {
+        this.icon_id = image;
         this.name = name;
         this.minutes = minutes;
         this.wage = wage;
         this.srcList = new ArrayList<>(srcList);
         this.prodList = new ArrayList<>(prodList);
     }
+
 
     public String getName() {
         return name;

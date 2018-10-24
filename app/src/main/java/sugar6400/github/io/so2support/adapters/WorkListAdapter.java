@@ -35,8 +35,8 @@ public class WorkListAdapter extends ArrayAdapter<WorkData> {
         WorkData data = getItem(getCount() - 1 - position);
 
         nameText.setText(data.getName());
-        wageText.setText("時給：" + Double.toString(data.getWage()));
-        icon.setImageResource(imageIDs[data.getIcon_id()]);
+        wageText.setText("時給:" + String.format("%,.1fG", data.getWage()));
+        icon.setImageResource(imageIDs[data.getIcon_id() - 1]);
 
         return convertView;
     }

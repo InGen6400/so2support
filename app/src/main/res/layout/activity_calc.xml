@@ -16,12 +16,13 @@
         android:elevation="4dp">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
+            android:onClick="onClick"
             android:scaleType="fitCenter"
             app:srcCompat="@android:drawable/ic_menu_save" />
 

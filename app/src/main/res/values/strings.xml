@@ -29,7 +29,7 @@
     <string name="miscTitleText">時間とか</string>
     <string name="button">変更</string>
     <string name="taskTimeText">作業時間：</string>
-    <string name="work_name_default">作業名...</string>
+    <string name="work_name_default">ポーションを作る</string>
     <string-array name="categoryList">
         <item>原料</item>
         <item>本</item>

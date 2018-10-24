@@ -31,8 +31,7 @@ public class WorkListAdapter extends ArrayAdapter<WorkData> {
         TextView wageText = (TextView) convertView.findViewById(R.id.work_wage);
         ImageView icon = (ImageView) convertView.findViewById(R.id.work_icon);
 
-        //TODO:逆順にしてるけどバグの温床になるかも
-        WorkData data = getItem(getCount() - 1 - position);
+        WorkData data = getItem(position);
 
         nameText.setText(data.getName());
         wageText.setText("時給:" + String.format("%,.1fG", data.getWage()));

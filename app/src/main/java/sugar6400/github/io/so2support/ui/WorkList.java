@@ -1,5 +1,6 @@
 package sugar6400.github.io.so2support.ui;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -38,13 +39,13 @@ public class WorkList implements AdapterView.OnItemClickListener {
     public void insertTop(int position, WorkData workData) {
         WorkData temp = workAdapter.getItem(position);
         workAdapter.remove(temp);
-        workAdapter.add(workData);
+        Log.w("work", "remove pos:" + String.valueOf(position));
+        workAdapter.insert(workData, 0);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //逆順で読み込み
-        WorkData workData = (WorkData) listView.getItemAtPosition(workAdapter.getCount() - position - 1);
+        WorkData workData = (WorkData) listView.getItemAtPosition(position);
         calcActivity.loadWork(workData, position);
         Toast.makeText(calcActivity.getBaseContext(), workData.getName() + "をロードしました", Toast.LENGTH_SHORT).show();
     }

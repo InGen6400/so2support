@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -68,6 +69,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private WorkList workList;
     private DrawerLayout drawerLayout;
     private int showingWorkPosition = -1;
+    private EditText workNameText;
 
     //TODO: 新規作業の追加処理
     @Override
@@ -106,6 +108,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         workList.addWork(workData);
         workList.addWork(workData2);
         workList.addWork(workData3);
+        workNameText = findViewById(R.id.work_name);
         initTimePicker();
     }
 
@@ -353,7 +356,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void addWork() {
-        WorkData workData = new WorkData(taskMinute, reCalc(), srcList, prodList);
+        WorkData workData = new WorkData(workNameText.getText().toString(), taskMinute, reCalc(), srcList, prodList);
         if(showingWorkPosition >= 0){
             //存在するなら更新
             workList.insertTop(showingWorkPosition, workData);
@@ -361,6 +364,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             //存在しないなら追加
             workList.addWork(workData);
         }
+        //トップへ
+        showingWorkPosition = 0;
     }
 
     //作業データを読み込む
@@ -381,6 +386,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             timeMinuteText.setText("");
         }
+        workNameText.setText(workData.getName());
 
         srcList = new ArrayList<>(workData.getSrcList());
         prodList = new ArrayList<>(workData.getProdList());

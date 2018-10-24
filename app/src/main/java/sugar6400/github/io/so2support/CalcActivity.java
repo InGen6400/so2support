@@ -13,7 +13,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -76,6 +75,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         Toolbar myToolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
@@ -246,19 +246,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     break;
             }
         }
-    }
-
-    // 画面タップ時の処理
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        /*
-        // キーボードを隠す
-        inputMethodManager.hideSoftInputFromWindow(mainLayout.getWindowToken(),
-                InputMethodManager.HIDE_NOT_ALWAYS);
-        // 背景にフォーカスを移す
-        mainLayout.requestFocus();
-        */
-        return true;
     }
 
     @Override

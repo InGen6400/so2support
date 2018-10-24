@@ -35,11 +35,17 @@ public class WorkList implements AdapterView.OnItemClickListener {
         workAdapter.add(temp);
     }
 
+    public void insertTop(int position, WorkData workData) {
+        WorkData temp = workAdapter.getItem(position);
+        workAdapter.remove(temp);
+        workAdapter.add(workData);
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //逆順で読み込み
         WorkData workData = (WorkData) listView.getItemAtPosition(workAdapter.getCount() - position - 1);
-        calcActivity.loadWork(workData);
+        calcActivity.loadWork(workData, position);
         Toast.makeText(calcActivity.getBaseContext(), workData.getName() + "をロードしました", Toast.LENGTH_SHORT).show();
     }
 }

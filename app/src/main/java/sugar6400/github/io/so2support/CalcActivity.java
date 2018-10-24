@@ -64,10 +64,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     InputMethodManager inputMethodManager;
     // 背景のレイアウト
     private ConstraintLayout mainLayout;
+
     private WorkList workList;
     private DrawerLayout drawerLayout;
+    private int showingWorkPosition = -1;
 
-
+    //TODO: 新規作業の追加処理
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -352,11 +354,17 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     public void addWork() {
         WorkData workData = new WorkData(taskMinute, reCalc(), srcList, prodList);
-        workList.addWork(workData);
+        if(showingWorkPosition >= 0){
+            //存在するなら更新
+            workList.insertTop(showingWorkPosition, workData);
+        }else {
+            //存在しないなら追加
+            workList.addWork(workData);
+        }
     }
 
     //作業データを読み込む
-    public void loadWork(WorkData workData) {
+    public void loadWork(WorkData workData, int position) {
         taskMinute = workData.getMinutes();
         int hourOfDay = taskMinute / 60;
         int minute = taskMinute % 60;
@@ -382,7 +390,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         prodAdapter.notifyDataSetChanged();
 
         reCalc();
-        
+        showingWorkPosition = position;
+
         drawerLayout.post(new Runnable() {
             @Override
             public void run() {

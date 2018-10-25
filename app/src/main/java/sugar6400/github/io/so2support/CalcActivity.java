@@ -1,5 +1,6 @@
 package sugar6400.github.io.so2support;
 
+import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -7,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,24 +48,15 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private ItemListAdapter prodAdapter;
 
     //ポップアップ用変数
-    //private View popupView;
     private PopupItemEdit popupWindow;
 
     private TextView eqText;
     private TextView GPHText;
 
-    //private PopupHolder popupHolder;
-    //private CalcItemData popupHolder;
-
     private TimePickerDialog timePickerDialog;
     private TextView timeHourText;
     private TextView timeMinuteText;
     private int taskMinute;
-
-    // キーボード表示を制御するためのオブジェクト
-    InputMethodManager inputMethodManager;
-    // 背景のレイアウト
-    private ConstraintLayout mainLayout;
 
     private WorkList workList;
     private DrawerLayout drawerLayout;
@@ -88,14 +79,18 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         ActionBarDrawerToggle actionBarDrawerToggle =
                 new ActionBarDrawerToggle(
                         this, drawerLayout, myToolbar, R.string.drawer_open, R.string.drawer_close
-                );
+                ) {
+                    //ドロワーが開いたとき，キーボードを非表示
+                    public void onDrawerOpened(View drawerView) {
+                        super.onDrawerOpened(drawerView);
+                        hideKeyboard(drawerLayout);
+                    }
+                };
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
         eqText = findViewById(R.id.eqText);
         GPHText = findViewById(R.id.GPH);
-
-        inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         //アイテムデータの読み込み
         itemDataBase = new ItemDataBase(this);
@@ -128,6 +123,14 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     return true;
                 }
                 return false;
+            }
+        });
+        workNameText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
             }
         });
         initTimePicker();
@@ -270,6 +273,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     break;
             }
         }
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override

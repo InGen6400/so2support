@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -70,6 +71,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private DrawerLayout drawerLayout;
     private int showingWorkPosition = -1;
     private EditText workNameText;
+
+    private Toast mainToast;
 
     //TODO: 新規作業の追加処理
     @Override
@@ -262,6 +265,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.save_button:
                     addWork();
                     break;
+                case R.id.new_work_button:
+                    newWork();
+                    break;
             }
         }
     }
@@ -361,16 +367,37 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void addWork() {
+        if (prodList.size() == 0 || srcList.size() == 0) {
+            showToast("原料/完成品を追加して！ヽ(`Д´)ﾉﾌﾟﾝﾌﾟﾝ", Toast.LENGTH_SHORT);
+            return;
+        }
         WorkData workData = new WorkData(workNameText.getText().toString(), taskMinute, reCalc(), srcList, prodList);
         if(showingWorkPosition >= 0){
             //存在するなら更新
             workList.insertTop(showingWorkPosition, workData);
+            showToast("「" + workData.getName() + "」\n作業の変更を保存したよ(^^)/", Toast.LENGTH_SHORT);
         }else {
             //存在しないなら追加
             workList.addWork(workData);
+            showToast("「" + workData.getName() + "」\n作業リストに追加したよ(^^)/", Toast.LENGTH_SHORT);
         }
         //トップへ
         showingWorkPosition = 0;
+    }
+
+    private void newWork() {
+        showingWorkPosition = -1;
+        srcList.clear();
+        prodList.clear();
+        workNameText.setText("作業名．．．");
+        timePickerDialog.updateTime(0, 0);
+        timeHourText.setText("");
+        timeMinuteText.setText("");
+        taskMinute = 0;
+        prodAdapter.notifyDataSetChanged();
+        srcAdapter.notifyDataSetChanged();
+        showToast("新しい作業！(*ﾟ▽ﾟ*)ﾜｸﾜｸ", Toast.LENGTH_SHORT);
+        reCalc();
     }
 
     //作業データを読み込む
@@ -409,5 +436,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 drawerLayout.closeDrawer(Gravity.LEFT, true);
             }
         });
+    }
+
+    public void showToast(String message, int duration) {
+        if (mainToast != null) {
+            mainToast.cancel();
+        }
+        mainToast = Toast.makeText(this, message, duration);
+        mainToast.show();
     }
 }

@@ -47,6 +47,6 @@ public class WorkList implements AdapterView.OnItemClickListener {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         WorkData workData = (WorkData) listView.getItemAtPosition(position);
         calcActivity.loadWork(workData, position);
-        Toast.makeText(calcActivity.getBaseContext(), workData.getName() + "をロードしました", Toast.LENGTH_SHORT).show();
+        calcActivity.showToast("「" + workData.getName() + "」を読み込んだよ～", Toast.LENGTH_SHORT);
     }
 }

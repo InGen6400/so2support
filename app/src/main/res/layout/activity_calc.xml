@@ -24,18 +24,18 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="12dp"
             android:background="@android:color/transparent"
             android:onClick="onClick"
             android:scaleType="fitCenter"
-            app:srcCompat="@android:drawable/ic_menu_save" />
+            app:srcCompat="@drawable/ic_save_black_24dp" />
 
         <ImageButton
             android:id="@+id/new_work_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="12dp"
             android:background="@android:color/transparent"
             android:onClick="onClick"
             android:scaleType="fitCenter"

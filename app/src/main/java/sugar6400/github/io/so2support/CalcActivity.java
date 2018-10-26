@@ -25,6 +25,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import sugar6400.github.io.so2support.adapters.ItemListAdapter;
 import sugar6400.github.io.so2support.container.CalcItemData;
@@ -41,6 +42,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     //アイテムのデータ(名前，スタック数, etc...)
     public static ItemDataBase itemDataBase;
     public static int[] imageIDs;
+
+    public final static String RPEF_NAME = "save_data";
 
     private ArrayList<CalcItemData> srcList;
     private ArrayList<CalcItemData> prodList;
@@ -65,7 +68,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     private Toast mainToast;
 
-    //TODO: 新規作業の追加処理
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +76,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         Toolbar myToolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
+        workList = new WorkList(this, (ListView) findViewById(R.id.test));
 
         drawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle actionBarDrawerToggle =
@@ -83,7 +86,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     //ドロワーが開いたとき，キーボードを非表示
                     public void onDrawerOpened(View drawerView) {
                         super.onDrawerOpened(drawerView);
-                        hideKeyboard(drawerLayout);
+                        drawerLayout.requestFocus();
+                    }
+
+                    //ドロワーが閉じたとき，削除トグルをoffに
+                    public void onDrawerClosed(View drawerView) {
+                        super.onDrawerClosed(drawerView);
+                        workList.deleteToggle.setChecked(false);
                     }
                 };
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -99,14 +108,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         initItemListView();
         initItemProdListView();
 
-        popupWindow = new PopupItemEdit(CalcActivity.this);
-        workList = new WorkList(this, (ListView) findViewById(R.id.test));
-        WorkData workData = new WorkData("test Work", 30, 2000, srcList, prodList);
-        WorkData workData2 = new WorkData("test Work2", 60, 1200, srcList, prodList);
-        WorkData workData3 = new WorkData("test Work3", 60, 1200, srcList, prodList);
-        workList.addWork(workData);
-        workList.addWork(workData2);
-        workList.addWork(workData3);
         workNameText = findViewById(R.id.work_name);
         workNameText.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -118,7 +119,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
                     //ソフトキーボードを閉じる
                     InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    if (inputMethodManager != null) {
+                        inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    }
 
                     return true;
                 }
@@ -133,7 +136,16 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
+        popupWindow = new PopupItemEdit(CalcActivity.this);
         initTimePicker();
+
+        if (workList.getCount() == 0) {
+            WorkData workData = new WorkData("ポーションを作る", 30, 3924, srcList, prodList);
+            workList.addWork(workData);
+        } else {
+            //セーブデータが存在していたら，一番上のデータを表示する
+            loadWork(workList.getItem(0), 0);
+        }
     }
 
     @Override
@@ -148,7 +160,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         taskMinute = 0;
         timeHourText = findViewById(R.id.timeHourText);
         timeMinuteText = findViewById(R.id.timeMinuteText);
-        timeMinuteText.setText(String.format("0分 時間を入力してね→"));
+        timeMinuteText.setText("0分 時間を入力してね→");
         timePickerDialog = new TimePickerDialog(
                 this,
                 new TimePickerDialog.OnTimeSetListener() {
@@ -156,12 +168,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         taskMinute = hourOfDay * 60 + minute;
                         if (hourOfDay != 0) {
-                            timeHourText.setText(String.format("%d時間", hourOfDay));
+                            String str = String.format(Locale.US, "%d時間", hourOfDay);
+                            timeHourText.setText(str);
                         } else {
                             timeHourText.setText("");
                         }
                         if (minute != 0) {
-                            timeMinuteText.setText(String.format("%d分", minute));
+                            timeMinuteText.setText(String.format(Locale.US, "%d分", minute));
                         } else {
                             timeMinuteText.setText("");
                         }
@@ -217,7 +230,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         srcListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                openPopup(true, position, (CalcItemData) srcList.get(position));
+                openPopup(true, position, srcList.get(position));
             }
         });
     }
@@ -277,7 +290,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        if (inputMethodManager != null) {
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     @Override
@@ -347,8 +362,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             float tax = (float) ((prodSum - srcSum) * 0.1);
             GPH = (prodSum - srcSum - tax) * 60.0 / taskMinute;
-            eqText.setText(String.format("{(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)} ÷ %.2f時間", prodSum, srcSum, tax, taskMinute / 60.0));
-            GPHText.setText(String.format("時給 %,.1f G/h", GPH));
+            eqText.setText(String.format(Locale.US, "{(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)} ÷ %.2f時間", prodSum, srcSum, tax, taskMinute / 60.0));
+            GPHText.setText(String.format(Locale.US, "時給 %,.1f G/h", GPH));
         }
         return GPH;
     }
@@ -397,7 +412,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         showingWorkPosition = -1;
         srcList.clear();
         prodList.clear();
-        workNameText.setText("作業名．．．");
+        workNameText.setText("新規作業");
         timePickerDialog.updateTime(0, 0);
         timeHourText.setText("");
         timeMinuteText.setText("");
@@ -406,6 +421,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         srcAdapter.notifyDataSetChanged();
         showToast("新しい作業！(*ﾟ▽ﾟ*)ﾜｸﾜｸ", Toast.LENGTH_SHORT);
         reCalc();
+    }
+
+    public void catchWorkDeleted(int position) {
+        if (position == showingWorkPosition) {
+            showingWorkPosition = -1;
+        }
     }
 
     //作業データを読み込む
@@ -417,12 +438,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         timePickerDialog.updateTime(hourOfDay, minute);
         //時間のテキストを設定
         if (hourOfDay != 0) {
-            timeHourText.setText(String.format("%d時間", hourOfDay));
+            timeHourText.setText(String.format(Locale.US, "%d時間", hourOfDay));
         } else {
             timeHourText.setText("");
         }
         if (minute != 0) {
-            timeMinuteText.setText(String.format("%d分", minute));
+            timeMinuteText.setText(String.format(Locale.US, "%d分", minute));
         } else {
             timeMinuteText.setText("");
         }
@@ -436,12 +457,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         prodAdapter.notifyDataSetChanged();
 
         reCalc();
-        showingWorkPosition = position;
+        workList.gotoTop(position);
+        showingWorkPosition = 0;
 
         drawerLayout.post(new Runnable() {
             @Override
             public void run() {
-                drawerLayout.closeDrawer(Gravity.LEFT, true);
+                drawerLayout.closeDrawer(Gravity.START, true);
             }
         });
     }

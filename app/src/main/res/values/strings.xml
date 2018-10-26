@@ -3,9 +3,9 @@
     <string name="sourceText">原料・道具</string>
     <string name="prodText">完成品</string>
     <string name="resultText">結果</string>
-    <string name="defaultText">default...</string>
+    <string name="defaultText">default．．．</string>
     <string name="defaultEqu">ここに計算式が表示されてほしい(；人；) ｵﾈｶﾞｲ </string>
-    <string name="defaultGPH">時給 ... G/h</string>
+    <string name="defaultGPH">時給 ．．． G/h</string>
     <string name="drawer_open">作業リストを開く</string>
     <string name="drawer_close">作業リストを閉じる</string>
     <string name="addSrcButton">原料・道具を追加</string>
@@ -30,6 +30,13 @@
     <string name="button">変更</string>
     <string name="taskTimeText">作業時間：</string>
     <string name="work_name_default">ポーションを作る</string>
+    <string name="deleteStartText">削除開始</string>
+    <string name="deleteIconDexcription">削除アイコン</string>
+    <string name="save_description">保存ボタン</string>
+    <string name="new_work_descript">作業新規作成</string>
+    <string name="toggle_del_start">削除開始</string>
+    <string name="toggle_del_end">削除完了</string>
+    <string name="work_name_desc">作業名</string>
     <string-array name="categoryList">
         <item>原料</item>
         <item>本</item>

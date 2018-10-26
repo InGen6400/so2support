@@ -32,14 +32,14 @@ public class ItemDataBase {
     }
 
     //text(.json形式)ファイルを読み込んでJsonText形式にする
-    public void readJson(Context context) {
+    private void readJson(Context context) {
         try {
             try {
                 is = context.getAssets().open("item.json");
                 br = new BufferedReader(new InputStreamReader(is));
                 String str;
                 while ((str = br.readLine()) != null) {
-                    jsonText += str + "\n";
+                    jsonText = jsonText + str + "\n";
                 }
             } catch (Exception e) {
                 Log.e("json", "why");
@@ -72,7 +72,11 @@ public class ItemDataBase {
     //指定したタグの要素を取得
     public String getItemStr(int id, String tag) {
         try {
-            return itemJson.getJSONObject(String.valueOf(id)).getString(tag);
+            if (itemJson.has(String.valueOf(id))) {
+                return itemJson.getJSONObject(String.valueOf(id)).getString(tag);
+            } else {
+                return null;
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -82,7 +86,11 @@ public class ItemDataBase {
     //指定したタグ要素を取得(int)
     public int getItemInt(int id, String tag) {
         try {
-            return itemJson.getJSONObject(String.valueOf(id)).getInt(tag);
+            if (itemJson.has(String.valueOf(id))) {
+                return itemJson.getJSONObject(String.valueOf(id)).getInt(tag);
+            } else {
+                return -1;
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

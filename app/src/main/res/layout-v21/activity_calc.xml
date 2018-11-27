@@ -96,6 +96,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
+                        android:gravity="end"
                         android:orientation="vertical"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

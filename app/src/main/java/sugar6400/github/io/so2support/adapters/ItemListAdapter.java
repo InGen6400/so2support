@@ -15,20 +15,18 @@ import java.util.ArrayList;
 import sugar6400.github.io.so2support.CalcActivity;
 import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.container.CalcItemData;
+import sugar6400.github.io.so2support.datas.DataManager;
 
 import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
-import static sugar6400.github.io.so2support.CalcActivity.itemDataBase;
 
 public class ItemListAdapter extends BaseAdapter implements ListAdapter {
 
-    private Context context;
     private LayoutInflater inflater;
     private ArrayList<CalcItemData> itemList;
     private CalcActivity calcActivity;
 
     public ItemListAdapter(Context context, CalcActivity activity) {
         this.calcActivity = activity;
-        this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -59,8 +57,8 @@ public class ItemListAdapter extends BaseAdapter implements ListAdapter {
 
         long value = itemList.get(position).value;
         int num = itemList.get(position).num;
-        String name = itemDataBase.getItemStr(id, "name");
-        String scale = itemDataBase.getItemStr(id, "scale");
+        String name = DataManager.itemDataBase.getItemStr(id, "name");
+        String scale = DataManager.itemDataBase.getItemStr(id, "scale");
         String numText = String.valueOf(num) + scale;
 
         ((TextView) convertView.findViewById(R.id.name)).setText(name);

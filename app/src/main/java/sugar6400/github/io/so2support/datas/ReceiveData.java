@@ -7,6 +7,10 @@ public class ReceiveData {
 
     public Map<String, Map<String, ReceiveItem>> receive_items;
 
+    ReceiveData() {
+        receive_items = new HashMap<>();
+    }
+
     @SuppressWarnings("unchecked")
     public void from_map(String category, Map<String, Object> data) {
         for (String item_id : data.keySet()) {

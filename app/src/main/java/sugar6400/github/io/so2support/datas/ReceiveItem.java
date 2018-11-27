@@ -1,5 +1,6 @@
 package sugar6400.github.io.so2support.datas;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,8 @@ public class ReceiveItem {
 
     @SuppressWarnings("unchecked")
     ReceiveItem(Map<String, Object> data) {
+        cheap5_day = new ArrayList<>();
+        cheap5_week = new ArrayList<>();
         for (Map<String, Object> item : (List<Map<String, Object>>) data.get("cheap5_day")) {
             cheap5_day.add(new SaleData(item));
         }

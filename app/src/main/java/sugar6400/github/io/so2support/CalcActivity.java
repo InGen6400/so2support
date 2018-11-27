@@ -20,6 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -29,21 +30,22 @@ import java.util.Locale;
 
 import sugar6400.github.io.so2support.adapters.ItemListAdapter;
 import sugar6400.github.io.so2support.container.CalcItemData;
-import sugar6400.github.io.so2support.container.ItemDataBase;
 import sugar6400.github.io.so2support.container.WorkData;
+import sugar6400.github.io.so2support.datas.DataManager;
 import sugar6400.github.io.so2support.ui.PopupItemEdit;
 import sugar6400.github.io.so2support.ui.WorkList;
 
 import static sugar6400.github.io.so2support.container.ItemDataBase.JsonMaxDataNum;
 
-public class CalcActivity extends AppCompatActivity implements View.OnClickListener {
+public class CalcActivity extends AppCompatActivity implements View.OnClickListener, DataManager.OnPriceDataLoadedListener {
 
     //原料リスト
-    //アイテムのデータ(名前，スタック数, etc...)
-    public static ItemDataBase itemDataBase;
     public static int[] imageIDs;
 
     public final static String RPEF_NAME = "save_data";
+
+    private DataManager dataManager;
+    private ProgressBar progressBar;
 
     private ArrayList<CalcItemData> srcList;
     private ArrayList<CalcItemData> prodList;
@@ -74,6 +76,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_calc);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+        progressBar = findViewById(R.id.progressBar);
+        dataManager = new DataManager(this, progressBar);
+        dataManager.LoadPrices(this);
+
         Toolbar myToolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
         workList = new WorkList(this, (ListView) findViewById(R.id.test));
@@ -101,8 +107,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         eqText = findViewById(R.id.eqText);
         GPHText = findViewById(R.id.GPH);
 
-        //アイテムデータの読み込み
-        itemDataBase = new ItemDataBase(this);
         initImageID();
 
         initItemListView();
@@ -156,6 +160,42 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v != null) {
+            switch (v.getId()) {
+                case R.id.srcPopupButton:
+                    openPopup(true, -1, null);
+                    break;
+                case R.id.prodPopupButton:
+                    openPopup(false, -1, null);
+                    break;
+                case R.id.openTimePicker:
+                    timePickerDialog.show();
+                    break;
+                case R.id.save_button:
+                    addWork();
+                    break;
+                case R.id.new_work_button:
+                    newWork();
+                    break;
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (popupWindow != null && popupWindow.isShowing()) {
+            popupWindow.dismiss();
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    public void onPriceDataLoaded() {
+
+    }
+
     private void initTimePicker() {
         taskMinute = 0;
         timeHourText = findViewById(R.id.timeHourText);
@@ -189,7 +229,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         Resources res = getResources();
         for (int i = 0; i < imageIDs.length; i++) {
-            String imageFileName = "sprite_item2x_" + String.valueOf(itemDataBase.getItemInt(i + 1, "image"));
+            String imageFileName = "sprite_item2x_" + String.valueOf(dataManager.getItemElement(i + 1, "image"));
             imageIDs[i] = res.getIdentifier(imageFileName, "drawable", getPackageName());
         }
     }
@@ -265,29 +305,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v != null) {
-            switch (v.getId()) {
-                case R.id.srcPopupButton:
-                    openPopup(true, -1, null);
-                    break;
-                case R.id.prodPopupButton:
-                    openPopup(false, -1, null);
-                    break;
-                case R.id.openTimePicker:
-                    timePickerDialog.show();
-                    break;
-                case R.id.save_button:
-                    addWork();
-                    break;
-                case R.id.new_work_button:
-                    newWork();
-                    break;
-            }
-        }
-    }
-
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         if (inputMethodManager != null) {
@@ -295,13 +312,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        if (popupWindow != null && popupWindow.isShowing()) {
-            popupWindow.dismiss();
-        }
-        super.onDestroy();
-    }
 
     //アイテム追加用ポップアップを開く
     private void openPopup(boolean isSrc, int position, CalcItemData holder) {
@@ -475,4 +485,5 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         mainToast = Toast.makeText(this, message, duration);
         mainToast.show();
     }
+
 }

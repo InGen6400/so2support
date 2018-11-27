@@ -11,15 +11,15 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tool_bar"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:minHeight="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
+        android:clickable="true"
         android:elevation="4dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:clickable="true">
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <requestFocus />
 
@@ -46,7 +46,10 @@
             android:onClick="onClick"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_note_add_black_24dp" />
+
+
     </android.support.v7.widget.Toolbar>
+
 
 
     <android.support.v4.widget.DrawerLayout
@@ -73,7 +76,7 @@
 
                 <ScrollView
                     android:id="@+id/scroll"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:clickable="true"
                     android:focusable="true"
@@ -99,6 +102,16 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
+
+
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:indeterminate="false"
+                            android:visibility="gone"
+                            tools:layout_editor_absoluteX="16dp" />
 
                         <EditText
                             android:id="@+id/work_name"

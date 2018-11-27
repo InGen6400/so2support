@@ -11,9 +11,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import sugar6400.github.io.so2support.R;
+import sugar6400.github.io.so2support.datas.DataManager;
 
 import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
-import static sugar6400.github.io.so2support.CalcActivity.itemDataBase;
 
 public class ItemSpinnerAdapter extends BaseAdapter {
 
@@ -64,7 +64,7 @@ public class ItemSpinnerAdapter extends BaseAdapter {
         }
 
         holder.image.setImageResource(imageIDs[itemIDs.get(position) - 1]);
-        holder.text.setText(itemDataBase.getItemStr(itemIDs.get(position), "name"));
+        holder.text.setText(DataManager.itemDataBase.getItemStr(itemIDs.get(position), "name"));
 
         return convertView;
     }

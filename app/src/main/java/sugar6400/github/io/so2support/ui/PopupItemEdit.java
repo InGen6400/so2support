@@ -21,8 +21,8 @@ import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.adapters.CatAdapter;
 import sugar6400.github.io.so2support.adapters.ItemSpinnerAdapter;
 import sugar6400.github.io.so2support.container.CalcItemData;
+import sugar6400.github.io.so2support.datas.DataManager;
 
-import static sugar6400.github.io.so2support.CalcActivity.itemDataBase;
 import static sugar6400.github.io.so2support.container.ItemDataBase.JsonMaxDataNum;
 import static sugar6400.github.io.so2support.container.ItemDataBase.nCategory;
 
@@ -332,11 +332,11 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         }
 
         for (int i = 1; i <= JsonMaxDataNum; i++) {
-            cat = itemDataBase.getItemStr(i, "category");
+            cat = DataManager.itemDataBase.getItemStr(i, "category");
             if (cat != null) {
                 catId = catStr2int(cat);
                 if (catId != -1) {
-                    catSpinnerItemId[catId].add(itemDataBase.getItemInt(i, "item_id"));
+                    catSpinnerItemId[catId].add(DataManager.itemDataBase.getItemInt(i, "item_id"));
                 } else {
                     Log.e("Spinner", "CalcActivity 95~");
                 }

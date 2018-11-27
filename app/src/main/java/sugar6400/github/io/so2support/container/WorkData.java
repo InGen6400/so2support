@@ -2,7 +2,7 @@ package sugar6400.github.io.so2support.container;
 
 import java.util.ArrayList;
 
-import static sugar6400.github.io.so2support.CalcActivity.itemDataBase;
+import sugar6400.github.io.so2support.datas.DataManager;
 
 //作業データクラス
 public class WorkData {
@@ -20,7 +20,7 @@ public class WorkData {
     private ArrayList<CalcItemData> prodList;
 
     public WorkData(int minutes, double wage, ArrayList<CalcItemData> srcList, ArrayList<CalcItemData> prodList) {
-        this(itemDataBase.getItemStr(prodList.get(0).id, "name"), minutes, wage, srcList, prodList);
+        this(DataManager.itemDataBase.getItemStr(prodList.get(0).id, "name"), minutes, wage, srcList, prodList);
     }
 
     public WorkData(String name, int minutes, double wage,

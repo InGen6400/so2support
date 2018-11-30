@@ -3,6 +3,7 @@ package sugar6400.github.io.so2support;
 import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -181,6 +182,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.new_work_button:
                     newWork();
+                    break;
+                case R.id.setting_btn:
+                    startActivity(new Intent(CalcActivity.this, SettingsActivity.class));
                     break;
             }
         }

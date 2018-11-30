@@ -11,15 +11,15 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tool_bar"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:minHeight="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:clickable="true"
-        app:elevation="4dp"
+        android:elevation="4dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:clickable="true">
 
         <requestFocus />
 
@@ -47,6 +47,17 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_note_add_black_24dp" />
 
+        <ImageButton
+            android:id="@+id/setting_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/new_work_descript"
+            android:onClick="onClick"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_settings_white_32dp" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -104,7 +115,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-
                         <ProgressBar
                             android:id="@+id/progressBar"
                             style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
@@ -114,13 +124,11 @@
                             android:visibility="gone"
                             tools:layout_editor_absoluteX="16dp" />
 
-                        <!--
-                        app:autofillHints="ポーションを作る"
-                        -->
-                        <android.support.v7.widget.AppCompatEditText
+                        <EditText
                             android:id="@+id/work_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:autofillHints="ポーションを作る"
                             android:hint="@string/work_name_desc"
                             android:inputType="text"
                             android:singleLine="true"
@@ -284,9 +292,9 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"
                     android:clickable="true"
+                    android:elevation="32dp"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    app:elevation="50dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">

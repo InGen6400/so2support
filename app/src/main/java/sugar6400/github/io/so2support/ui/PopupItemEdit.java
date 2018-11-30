@@ -319,9 +319,15 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
                 popupHolder.id = catSpinnerItemId[popupHolder.catPosition].get(popupHolder.itemPosition);
                 if (!calcActivity.dataManager.isLoading()) {
                     receiveItem = calcActivity.dataManager.getReceiveItem(popupHolder.id);
-                    weekAveButton.setText(String.format(Locale.US, "過去1週のTOP5\n平均:%.2f", receiveItem.cheap5_week));
-                    dayAveButton.setText(String.format(Locale.US, "昨日のTOP5\n平均:%.2f", receiveItem.cheap5_day));
-                    cheapestButton.setText(String.format(Locale.US, "現在の最安値\n%d", receiveItem.cheapest.get(0).price));
+                    if (receiveItem != null) {
+                        weekAveButton.setText(String.format(Locale.US, "過去1週のTOP5\n平均:%.2f", receiveItem.cheap5_week));
+                        dayAveButton.setText(String.format(Locale.US, "昨日のTOP5\n平均:%.2f", receiveItem.cheap5_day));
+                        cheapestButton.setText(String.format(Locale.US, "現在の最安値\n%d", receiveItem.cheapest.get(0).price));
+                    } else {
+                        weekAveButton.setText("価格データがありません");
+                        dayAveButton.setText("手動で入力するか");
+                        cheapestButton.setText("オンラインで実行してください");
+                    }
                 } else {
                     Toast.makeText(calcActivity, "Loading now...", Toast.LENGTH_SHORT).show();
                 }

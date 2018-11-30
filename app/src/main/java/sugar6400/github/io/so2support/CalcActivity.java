@@ -25,6 +25,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -35,9 +37,6 @@ import sugar6400.github.io.so2support.datas.DataManager;
 import sugar6400.github.io.so2support.ui.PopupItemEdit;
 import sugar6400.github.io.so2support.ui.WorkList;
 
-import com.beardedhen.androidbootstrap.BootstrapDropDown;
-import com.beardedhen.androidbootstrap.TypefaceProvider;
-
 import static sugar6400.github.io.so2support.container.ItemDataBase.JsonMaxDataNum;
 
 public class CalcActivity extends AppCompatActivity implements View.OnClickListener, DataManager.OnPriceDataLoadedListener {
@@ -47,7 +46,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     public final static String RPEF_NAME = "save_data";
 
-    private DataManager dataManager;
+    public DataManager dataManager;
     private ProgressBar progressBar;
 
     private ArrayList<CalcItemData> srcList;

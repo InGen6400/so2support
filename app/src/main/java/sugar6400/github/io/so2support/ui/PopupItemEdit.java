@@ -13,8 +13,12 @@ import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import sugar6400.github.io.so2support.CalcActivity;
 import sugar6400.github.io.so2support.R;
@@ -22,22 +26,25 @@ import sugar6400.github.io.so2support.adapters.CatAdapter;
 import sugar6400.github.io.so2support.adapters.ItemSpinnerAdapter;
 import sugar6400.github.io.so2support.container.CalcItemData;
 import sugar6400.github.io.so2support.datas.DataManager;
+import sugar6400.github.io.so2support.datas.ReceiveItem;
 
 import static sugar6400.github.io.so2support.container.ItemDataBase.JsonMaxDataNum;
 import static sugar6400.github.io.so2support.container.ItemDataBase.nCategory;
 
 public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
 
+    private CalcActivity calcActivity;
+
     //各種数値表示テキスト
     private EditText valueEditText;
     private EditText numEditText;
     private EditText probEditText;
     private CheckBox isToolChk;
+
     //表示文字列
     private String valuePrevText;
     private String numPrevText;
 
-    private CalcActivity calcActivity;
     //ポップアップ用変数
     private View popupView;
     // 背景のレイアウト
@@ -59,6 +66,11 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
     //カテゴリスピナー
     private Spinner catSpinner;
     //endregion
+
+    private ReceiveItem receiveItem;
+    private BootstrapButton weekAveButton;
+    private BootstrapButton dayAveButton;
+    private BootstrapButton cheapestButton;
 
     private boolean isSrcList;
     private int editingIndex;
@@ -87,22 +99,46 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         popupView.findViewById(R.id.PMchangeNum).setOnClickListener(this);
         popupView.findViewById(R.id.cancelButton).setOnClickListener(this);
 
+        dayAveButton = popupView.findViewById(R.id.day_ave_button);
+        weekAveButton = popupView.findViewById(R.id.week_ave_button);
+        cheapestButton = popupView.findViewById(R.id.cheapest_button);
+
+        dayAveButton.setOnClickListener(this);
+        weekAveButton.setOnClickListener(this);
+        cheapestButton.setOnClickListener(this);
+
         setAddButtons();
 
         initCategorySpinner();
         initItemSpinner();
 
         setupEditTextFormatter();
-
     }
 
     @Override
     public void onClick(View v) {
         if (v != null) {
             switch (v.getId()) {
+                case R.id.week_ave_button:
+                    if (receiveItem != null) {
+                        popupHolder.value = Math.round(receiveItem.cheap5_week);
+                        valueEditText.setText(String.valueOf(popupHolder.value));
+                    }
+                    break;
+                case R.id.day_ave_button:
+                    if (receiveItem != null) {
+                        popupHolder.value = Math.round(receiveItem.cheap5_day);
+                        valueEditText.setText(String.valueOf(popupHolder.value));
+                    }
+                    break;
+                case R.id.cheapest_button:
+                    if (receiveItem != null) {
+                        popupHolder.value = receiveItem.cheapest.get(0).price;
+                        valueEditText.setText(String.valueOf(popupHolder.value));
+                    }
+                    break;
                 case R.id.addButton:
                     popupHolder.itemPosition = itemSpinner.getSelectedItemPosition();
-                    popupHolder.id = catSpinnerItemId[popupHolder.catPosition].get(popupHolder.itemPosition);
                     if (isSrcList) {
                         calcActivity.addSrc(popupHolder, editingIndex);
                     } else {
@@ -280,6 +316,15 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 popupHolder.itemPosition = position;
+                popupHolder.id = catSpinnerItemId[popupHolder.catPosition].get(popupHolder.itemPosition);
+                if (!calcActivity.dataManager.isLoading()) {
+                    receiveItem = calcActivity.dataManager.getReceiveItem(popupHolder.id);
+                    weekAveButton.setText(String.format(Locale.US, "過去1週のTOP5\n平均:%.2f", receiveItem.cheap5_week));
+                    dayAveButton.setText(String.format(Locale.US, "昨日のTOP5\n平均:%.2f", receiveItem.cheap5_day));
+                    cheapestButton.setText(String.format(Locale.US, "現在の最安値\n%d", receiveItem.cheapest.get(0).price));
+                } else {
+                    Toast.makeText(calcActivity, "Loading now...", Toast.LENGTH_SHORT).show();
+                }
             }
 
             //アイテムが選択されなかった

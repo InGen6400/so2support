@@ -40,6 +40,19 @@ public class DataManager {
         return prices.receive_items.get(category).get(id);
     }
 
+    public ReceiveItem getReceiveItem(String id) {
+        for (String key : prices.receive_items.keySet()) {
+            if (prices.receive_items.get(key).containsKey(id)) {
+                return prices.receive_items.get(key).get(id);
+            }
+        }
+        return null;
+    }
+
+    public ReceiveItem getReceiveItem(int id) {
+        return getReceiveItem(String.valueOf(id));
+    }
+
     public int getItemElement(int id, String tag) {
         return itemDataBase.getItemInt(id, tag);
     }
@@ -73,6 +86,10 @@ public class DataManager {
         } else {
             return false;
         }
+    }
+
+    public boolean isLoading() {
+        return isLoading;
     }
 
     public interface OnPriceDataLoadedListener {

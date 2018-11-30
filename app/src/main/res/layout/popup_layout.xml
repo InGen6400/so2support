@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android-bootstrap="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/popupLayout"
@@ -76,35 +77,36 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <android.support.v7.widget.AppCompatButton
+
+                    <com.beardedhen.androidbootstrap.BootstrapButton
                         android:id="@+id/week_ave"
-                        style="@style/Widget.AppCompat.Button"
                         android:layout_width="match_parent"
+                        android:text="過去1週平均\n12301.15"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:backgroundTint="@color/colorButton"
-                        android:textAlignment="center"
-                        android:textAllCaps="true" />
+                        android:layout_margin="2dp"
+                        app:bootstrapBrand="success"
+                        app:roundedCorners="true"/>
 
-                    <android.support.v7.widget.AppCompatButton
+                    <com.beardedhen.androidbootstrap.BootstrapButton
                         android:id="@+id/day_ave"
-                        style="@style/Widget.AppCompat.Button.Colored"
                         android:layout_width="match_parent"
+                        android:text="昨日の平均"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:backgroundTint="@color/colorButton"
-                        android:textAlignment="center"
-                        android:textAllCaps="true" />
+                        android:layout_margin="2dp"
+                        app:bootstrapBrand="success"
+                        app:roundedCorners="true"/>
 
-                    <android.support.v7.widget.AppCompatButton
-                        android:id="@+id/now_cheapest"
-                        style="@style/Widget.AppCompat.Button.Colored"
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/cheapest"
                         android:layout_width="match_parent"
+                        android:text="現在の最安値"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:backgroundTint="@color/colorButton"
-                        android:textAlignment="center"
-                        android:textAllCaps="true" />
+                        android:layout_margin="2dp"
+                        app:bootstrapBrand="success"
+                        app:roundedCorners="true"/>
                 </LinearLayout>
 
                 <TextView

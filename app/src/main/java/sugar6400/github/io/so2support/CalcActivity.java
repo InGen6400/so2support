@@ -35,6 +35,9 @@ import sugar6400.github.io.so2support.datas.DataManager;
 import sugar6400.github.io.so2support.ui.PopupItemEdit;
 import sugar6400.github.io.so2support.ui.WorkList;
 
+import com.beardedhen.androidbootstrap.BootstrapDropDown;
+import com.beardedhen.androidbootstrap.TypefaceProvider;
+
 import static sugar6400.github.io.so2support.container.ItemDataBase.JsonMaxDataNum;
 
 public class CalcActivity extends AppCompatActivity implements View.OnClickListener, DataManager.OnPriceDataLoadedListener {
@@ -73,6 +76,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TypefaceProvider.registerDefaultIconSets();
         setContentView(R.layout.activity_calc);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 

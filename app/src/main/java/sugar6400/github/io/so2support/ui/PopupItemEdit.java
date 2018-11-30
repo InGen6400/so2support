@@ -135,7 +135,7 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
                     numEditText.setText("");
                     break;
                 case R.id.isToolCheck:
-                    if (isToolChk.isChecked() == true) {
+                    if (isToolChk.isChecked()) {
                         probEditText.setVisibility(View.VISIBLE);
                         popupHolder.isTool = true;
                     } else {
@@ -243,8 +243,6 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
         catSpinner = popupView.findViewById(R.id.catSpinner);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             catSpinner.setLayoutMode(Spinner.MODE_DROPDOWN);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            catSpinner.setLayoutMode(Spinner.MODE_DIALOG);
         }
         catAdapter = new CatAdapter(calcActivity.getApplicationContext(), R.layout.spinner_item, nCategory);
         catSpinner.setAdapter(catAdapter);
@@ -270,11 +268,6 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
 
         //アイテム一覧スピナーの初期設定
         itemSpinner = popupView.findViewById(R.id.itemSpinner);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            itemSpinner.setLayoutMode(Spinner.MODE_DROPDOWN);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            itemSpinner.setLayoutMode(Spinner.MODE_DIALOG);
-        }
         itemSpinnerAdapter = new ItemSpinnerAdapter[nCategory];
         for (int i = 0; i < nCategory; i++) {
             itemSpinnerAdapter[i] = new ItemSpinnerAdapter(calcActivity.getApplicationContext(), R.layout.spinner_item, catSpinnerItemId[i]);
@@ -293,6 +286,9 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            itemSpinner.setLayoutMode(Spinner.MODE_DROPDOWN);
+        }
     }
 
     private void setAddButtons() {

@@ -182,9 +182,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.openTimePicker:
                     timePickerDialog.show();
                     break;
-                case R.id.save_button:
-                    addWork();
-                    break;
                 case R.id.new_work_button:
                     newWork();
                     break;
@@ -387,6 +384,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             eqText.setText(String.format(Locale.US, "{(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)} ÷ %.2f時間", prodSum, srcSum, tax, taskMinute / 60.0));
             GPHText.setText(String.format(Locale.US, "時給 %,.1f G/h", GPH));
         }
+        addWork(GPH);
         return GPH;
     }
 
@@ -411,12 +409,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         prodAdapter.notifyDataSetChanged();
     }
 
-    public void addWork() {
+    public void addWork(double GPH) {
         if (prodList.size() == 0 || srcList.size() == 0) {
-            showToast("原料/完成品を追加して！ヽ(`Д´)ﾉﾌﾟﾝﾌﾟﾝ", Toast.LENGTH_SHORT);
+            showToast("原料/完成品を追加して！(^_-)", Toast.LENGTH_SHORT);
             return;
         }
-        WorkData workData = new WorkData(workNameText.getText().toString(), taskMinute, reCalc(), srcList, prodList);
+        WorkData workData = new WorkData(workNameText.getText().toString(), taskMinute, GPH, srcList, prodList);
         if(showingWorkPosition >= 0){
             //存在するなら更新
             workList.insertTop(showingWorkPosition, workData);

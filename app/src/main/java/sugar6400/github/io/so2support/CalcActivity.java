@@ -82,7 +82,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         progressBar = findViewById(R.id.progressBar);
         dataManager = new DataManager(this, progressBar);
-        dataManager.LoadPrices(this);
 
         Toolbar myToolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
@@ -162,6 +161,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        dataManager.SaveNextSync();
     }
 
     @Override

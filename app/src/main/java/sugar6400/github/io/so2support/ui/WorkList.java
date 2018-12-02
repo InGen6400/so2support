@@ -10,6 +10,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -22,7 +23,7 @@ import sugar6400.github.io.so2support.container.WorkData;
 
 import static sugar6400.github.io.so2support.CalcActivity.RPEF_NAME;
 
-public class WorkList implements AdapterView.OnItemClickListener {
+public class WorkList implements AdapterView.OnItemClickListener, WorkData.OnWorkChangedListener {
 
     private ArrayList<WorkData> workList;
     private WorkListAdapter workAdapter;
@@ -47,7 +48,7 @@ public class WorkList implements AdapterView.OnItemClickListener {
             }
         });
 
-        gson = new Gson();
+        gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         pref = calcActivity.getSharedPreferences(RPEF_NAME, Context.MODE_PRIVATE);
         editor = pref.edit();
 
@@ -79,6 +80,7 @@ public class WorkList implements AdapterView.OnItemClickListener {
     }
 
     private void save() {
+        workAdapter.notifyDataSetChanged();
         String json = gson.toJson(workList);
         editor.putString(WORK_SAVE_KEY, json);
         editor.commit();
@@ -109,8 +111,17 @@ public class WorkList implements AdapterView.OnItemClickListener {
             calcActivity.catchWorkDeleted(position);
             save();
         } else {
+            // TODO: オートセーブ動作，削除時や読み込み時の動作の違い
             calcActivity.loadWork(workData, position);
             calcActivity.showToast("「" + workData.getName() + "」を読み込んだよ～", Toast.LENGTH_SHORT);
         }
+    }
+
+    public WorkData getWork(int position) {
+        return workList.get(position);
+    }
+
+    public void OnWorkChanged() {
+        save();
     }
 }

@@ -1,5 +1,7 @@
 package sugar6400.github.io.so2support.container;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.ArrayList;
 
 import sugar6400.github.io.so2support.datas.DataManager;
@@ -18,26 +20,31 @@ public class WorkData {
     private ArrayList<CalcItemData> srcList;
     //完成品リスト
     private ArrayList<CalcItemData> prodList;
+    //リスナー
+    @Expose(serialize = false, deserialize = false)
+    private OnWorkChangedListener listener;
 
-    public WorkData(int minutes, double wage, ArrayList<CalcItemData> srcList, ArrayList<CalcItemData> prodList) {
-        this(DataManager.itemDataBase.getItemStr(prodList.get(0).id, "name"), minutes, wage, srcList, prodList);
+    public WorkData(int minutes, double wage, OnWorkChangedListener listener) {
+        this(DataManager.itemDataBase.getItemStr(0, "name"), minutes, wage, listener);
     }
 
-    public WorkData(String name, int minutes, double wage,
-                    ArrayList<CalcItemData> srcList, ArrayList<CalcItemData> prodList) {
-        this(name, prodList.get(0).id, minutes, wage, srcList, prodList);
+    public WorkData(String name, int minutes, double wage, OnWorkChangedListener listener) {
+        this(name, 0, minutes, wage, listener);
     }
 
-    public WorkData(String name, int image, int minutes, double wage,
-                    ArrayList<CalcItemData> srcList, ArrayList<CalcItemData> prodList) {
+    public WorkData(String name, int image, int minutes, double wage, OnWorkChangedListener listener) {
         this.icon_id = image;
         this.name = name;
         this.minutes = minutes;
         this.wage = wage;
-        this.srcList = new ArrayList<>(srcList);
-        this.prodList = new ArrayList<>(prodList);
+        this.srcList = new ArrayList<>();
+        this.prodList = new ArrayList<>();
+        this.listener = listener;
     }
 
+    public void setListener(OnWorkChangedListener listener) {
+        this.listener = listener;
+    }
 
     public String getName() {
         return name;
@@ -45,6 +52,27 @@ public class WorkData {
 
     public void setName(String name) {
         this.name = name;
+        listener.OnWorkChanged();
+    }
+
+    public void addSrc(CalcItemData additionalData) {
+        srcList.add(additionalData);
+        listener.OnWorkChanged();
+    }
+
+    public void addProd(CalcItemData additionalData) {
+        prodList.add(additionalData);
+        listener.OnWorkChanged();
+    }
+
+    public void setSrc(CalcItemData newData, int index) {
+        srcList.set(index, newData);
+        listener.OnWorkChanged();
+    }
+
+    public void setProd(CalcItemData newData, int index) {
+        prodList.set(index, newData);
+        listener.OnWorkChanged();
     }
 
     public int getMinutes() {
@@ -65,5 +93,9 @@ public class WorkData {
 
     public ArrayList<CalcItemData> getProdList() {
         return prodList;
+    }
+
+    public interface OnWorkChangedListener {
+        public void OnWorkChanged();
     }
 }

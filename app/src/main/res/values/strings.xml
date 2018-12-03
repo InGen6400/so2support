@@ -52,7 +52,7 @@
         <item>食物</item>
     </string-array>
 
-    <string name="offline_message">端末上の価格で～た(オフライン)</string>
+    <string name="offline_message">端末の価格で～た</string>
     <string name="online_message">オンライン同期</string>
 
     <string name="title_activity_settings">せって～</string>
@@ -62,7 +62,7 @@
     <string name="pref_title_start_new">アプリ開始時に新作業で始める</string>
     <string name="pref_title_sync_freq">で～たおとす間隔</string>
     <string-array name="pref_sync_freq_titles">
-        <item>リアルタイム</item>
+        <item>リアルタイム(未実装)</item>
         <item>15 分</item>
         <item>30 分</item>
         <item>1 時間！</item>
@@ -85,7 +85,7 @@
         <item>2880</item>
         <item>4320</item>
     </string-array>
-    <string name="pref_sync_freq_default">0</string>
+    <string name="pref_sync_freq_default">1</string>
 
     <string name="pref_title_price_select">アイテム追加時，自動でいれる価格(まだできてない)</string>
     <string-array name="list_pref_price_select_titles">

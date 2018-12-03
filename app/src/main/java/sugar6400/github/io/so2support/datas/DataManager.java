@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,6 +28,8 @@ import java.util.TimeZone;
 import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.container.ItemDataBase;
 
+import static sugar6400.github.io.so2support.CalcActivity.RPEF_NAME;
+
 public class DataManager {
 
     private FirebaseFirestore db;
@@ -36,12 +39,14 @@ public class DataManager {
     public static ItemDataBase itemDataBase;
 
     private String TAG = "DataManager";
+    private static final String PrevSyncKey = "prev_sync";
     private String offlineMessage;
     private String onlineMessage;
 
     private boolean isLoading;
     private ProgressBar progressBar;
     private SharedPreferences pref;
+    private SharedPreferences sync_pref;
 
     private OnCompleteListener<QuerySnapshot> onCompleteListener;
 
@@ -60,8 +65,12 @@ public class DataManager {
         prices = new ReceiveData();
         isLoading = false;
         progressBar = inBar;
+        pref = PreferenceManager.getDefaultSharedPreferences(c);
+        sync_pref = c.getSharedPreferences(RPEF_NAME, Context.MODE_PRIVATE);
         completeToast = Toast.makeText(c, "で～たを取得したん(>ω<)", Toast.LENGTH_SHORT);
-        formatter = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss", Locale.JAPAN);
+        formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.JAPAN);
+        getPrevSync();
+        setPrevSyncText(false);
         onCompleteListener = new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -83,8 +92,11 @@ public class DataManager {
                         }
                         completeToast.show();
                     }
-                    prevSyncDate = new Date();
-                    setPrevSyncText(task.getResult().getMetadata().isFromCache());
+                    if (fromCache) {
+                        setPrevSyncText(true);
+                    } else {
+                        resetPrevSyncText(false);
+                    }
                     Log.w(TAG, "Cache:" + fromCache);
                 } else {
                     Log.w(TAG, "Error getting documents.", task.getException());
@@ -96,7 +108,6 @@ public class DataManager {
         //アイテムデータの読み込み
         itemDataBase = new ItemDataBase(c);
         db = FirebaseFirestore.getInstance();
-        pref = PreferenceManager.getDefaultSharedPreferences(c);
         long nextSyncTime = getNextSyncTime();
         if (nextSyncTime == 0) {
             LoadPrices(pref.getBoolean("isAutoSyncEnabled", true));
@@ -106,9 +117,29 @@ public class DataManager {
         }
     }
 
+    private void getPrevSync() {
+        try {
+            prevSyncDate = formatter.parse(sync_pref.getString(PrevSyncKey, "no_data"));
+        } catch (ParseException e) {
+            prevSyncDate = null;
+        }
+    }
+
+    private void resetPrevSyncText(boolean isCache) {
+        prevSyncDate = new Date();
+        setPrevSyncText(isCache);
+    }
+
     private void setPrevSyncText(boolean isCache) {
-        String date = formatter.format(prevSyncDate);
-        prevSyncTimeText.setText(isCache ? offlineMessage : onlineMessage + ": " + date);
+        String date;
+        if (prevSyncDate != null) {
+            date = formatter.format(prevSyncDate);
+            sync_pref.edit().putString(PrevSyncKey, date).apply();
+        } else {
+            date = "";
+            isCache = true;
+        }
+        prevSyncTimeText.setText(isCache ? offlineMessage + ": " + date : onlineMessage + ": " + date);
     }
 
     public ReceiveItem getReceiveItem(String category, String id) {

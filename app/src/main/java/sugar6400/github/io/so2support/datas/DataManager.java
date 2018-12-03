@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -49,6 +50,7 @@ public class DataManager {
     private Date prevSyncDate;
     private SimpleDateFormat formatter;
     private TextView prevSyncTimeText;
+    private Toast completeToast;
 
     public DataManager(Context c, ProgressBar inBar, final TextView prevSync) {
         prevSyncTimeText = prevSync;
@@ -58,11 +60,13 @@ public class DataManager {
         prices = new ReceiveData();
         isLoading = false;
         progressBar = inBar;
+        completeToast = Toast.makeText(c, "で～たを取得したん(>ω<)", Toast.LENGTH_SHORT);
         formatter = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss", Locale.JAPAN);
         onCompleteListener = new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+                    boolean fromCache = task.getResult().getMetadata().isFromCache();
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         String id = document.getId();
                         Map<String, Object> data = document.getData();
@@ -72,10 +76,16 @@ public class DataManager {
                     }
                     if (pref.getBoolean("isAutoSyncEnabled", true)) {
                         ReloadNextSync();
+                        if (fromCache) {
+                            completeToast.setText("で～たの取得ができんかったんよね(´･ω･`)");
+                        } else {
+                            completeToast.setText("で～たを取得したん(>ω<)");
+                        }
+                        completeToast.show();
                     }
                     prevSyncDate = new Date();
                     setPrevSyncText(task.getResult().getMetadata().isFromCache());
-                    Log.w(TAG, "Cache:" + task.getResult().getMetadata().isFromCache());
+                    Log.w(TAG, "Cache:" + fromCache);
                 } else {
                     Log.w(TAG, "Error getting documents.", task.getException());
                 }

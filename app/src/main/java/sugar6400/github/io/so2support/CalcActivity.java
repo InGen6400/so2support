@@ -230,6 +230,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.setting_btn:
                     startActivity(new Intent(CalcActivity.this, SettingsActivity.class));
                     break;
+                case R.id.sync_btn:
+                    dataManager.LoadPrices(true);
+                    break;
             }
         }
     }

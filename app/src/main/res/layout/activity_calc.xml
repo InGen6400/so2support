@@ -36,6 +36,18 @@
             app:srcCompat="@drawable/ic_note_add_black_24dp" />
 
         <ImageButton
+            android:id="@+id/sync_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/new_work_descript"
+            android:onClick="onClick"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_sync_white_32dp" />
+        
+        <ImageButton
             android:id="@+id/setting_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -46,6 +58,7 @@
             android:onClick="onClick"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_settings_white_32dp" />
+
 
     </android.support.v7.widget.Toolbar>
 

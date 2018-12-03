@@ -13,17 +13,25 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
+
+import javax.annotation.Nullable;
 
 import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.container.ItemDataBase;
@@ -38,6 +46,8 @@ public class DataManager {
     //アイテムのデータ(名前，スタック数, etc...)
     public static ItemDataBase itemDataBase;
 
+    private String[] categories;
+
     private String TAG = "DataManager";
     private static final String PrevSyncKey = "prev_sync";
     private String offlineMessage;
@@ -49,6 +59,7 @@ public class DataManager {
     private SharedPreferences sync_pref;
 
     private OnCompleteListener<QuerySnapshot> onCompleteListener;
+    private ArrayList<ListenerRegistration> snapshotListeners;
 
     private Handler syncHandler;
 
@@ -61,6 +72,7 @@ public class DataManager {
         prevSyncTimeText = prevSync;
         offlineMessage = c.getString(R.string.offline_message);
         onlineMessage = c.getString(R.string.online_message);
+        categories = c.getResources().getStringArray(R.array.categoryList);
         syncHandler = new Handler();
         prices = new ReceiveData();
         isLoading = false;
@@ -86,7 +98,7 @@ public class DataManager {
                     if (pref.getBoolean("isAutoSyncEnabled", true)) {
                         ReloadNextSync();
                         if (fromCache) {
-                            completeToast.setText("で～たの取得ができんかったんよね(´･ω･`)");
+                            completeToast.setText("で～たの取得ができんかったんよね\n(´･ω･`)");
                         } else {
                             completeToast.setText("で～たを取得したん(>ω<)");
                         }
@@ -114,6 +126,62 @@ public class DataManager {
         } else {
             LoadPrices(false);
             setNextSyncTimer(nextSyncTime);
+        }
+    }
+
+    public boolean LoadPrices(boolean isSyncEnabled) {
+        //ロード中でなければ
+        if (!isLoading) {
+            isLoading = true;
+            progressBar.setVisibility(View.VISIBLE);
+            //自動同期がONなら
+            if (isSyncEnabled) {
+                db.collection("price_data")
+                        .get()
+                        .addOnCompleteListener(onCompleteListener);
+            } else {
+                db.collection("price_data")
+                        .get(com.google.firebase.firestore.Source.CACHE)
+                        .addOnCompleteListener(onCompleteListener);
+            }
+            Log.d(TAG, "Loading");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void setupDocumentListeners() {
+        for (String cat : categories) {
+            DocumentReference docRef = db.collection("price_data").document(cat);
+            snapshotListeners.add(docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
+                    if (e != null) {
+                        Log.w(TAG, "Listen failed.", e);
+                        return;
+                    }
+
+                    if (snapshot != null && snapshot.exists()) {
+                        String id = snapshot.getId();
+                        Map<String, Object> data = snapshot.getData();
+                        Log.d(TAG, "Loaded: " + id);
+                        //ローカルに保存
+                        prices.from_map(id, data);
+                        completeToast.setText(id + "の価格で～た\nを取得したん(>ω<)");
+                        completeToast.show();
+                        resetPrevSyncText(false);
+                    } else {
+                        Log.d(TAG, "Current data: null");
+                    }
+                }
+            }));
+        }
+    }
+
+    public void removeDocumentListeners() {
+        for (ListenerRegistration register : snapshotListeners) {
+            register.remove();
         }
     }
 
@@ -161,28 +229,6 @@ public class DataManager {
 
     public int getItemElement(int id, String tag) {
         return itemDataBase.getItemInt(id, tag);
-    }
-
-    public boolean LoadPrices(boolean isSyncEnabled) {
-        //ロード中でなければ
-        if (!isLoading) {
-            isLoading = true;
-            progressBar.setVisibility(View.VISIBLE);
-            //自動同期がONなら
-            if (isSyncEnabled) {
-                db.collection("price_data")
-                        .get()
-                        .addOnCompleteListener(onCompleteListener);
-            } else {
-                db.collection("price_data")
-                        .get(com.google.firebase.firestore.Source.CACHE)
-                        .addOnCompleteListener(onCompleteListener);
-            }
-            Log.d(TAG, "Loading");
-            return true;
-        } else {
-            return false;
-        }
     }
 
     private long getNextSyncTime() {

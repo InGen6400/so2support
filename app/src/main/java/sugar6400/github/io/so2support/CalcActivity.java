@@ -3,6 +3,7 @@ package sugar6400.github.io.so2support;
 import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -75,6 +77,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     private Toast mainToast;
 
+    private EditText newNameText;
+    private AlertDialog newNameDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +99,26 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         workList = new WorkList(this, (ListView) findViewById(R.id.test));
 
         drawerLayout = findViewById(R.id.drawer_layout);
+
+
+        newNameText = new EditText(this);
+        newNameDialog = new AlertDialog.Builder(this)
+                .setTitle("新規作業名")
+                .setView(newNameText)
+                .setPositiveButton("追加", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        newWork(newNameText.getText().toString());
+                        newNameText.setText("");
+                    }
+                })
+                .setNegativeButton("キャンセル", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        newNameText.setText("");
+                    }
+                }).create();
+
         ActionBarDrawerToggle actionBarDrawerToggle =
                 new ActionBarDrawerToggle(
                         this, drawerLayout, myToolbar, R.string.drawer_open, R.string.drawer_close
@@ -200,7 +225,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     timePickerDialog.show();
                     break;
                 case R.id.new_work_button:
-                    newWork();
+                    newNameDialog.show();
                     break;
                 case R.id.setting_btn:
                     startActivity(new Intent(CalcActivity.this, SettingsActivity.class));
@@ -437,6 +462,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     private void newWork() {
         editWork = new WorkData("新規作業", 1, 0, 0, workList);
+        showToast("新しい作業！(*ﾟ▽ﾟ*)ﾜｸﾜｸ", Toast.LENGTH_SHORT);
+        reDraw();
+    }
+
+    private void newWork(String name) {
+        editWork = new WorkData(name, 1, 0, 0, workList);
         showToast("新しい作業！(*ﾟ▽ﾟ*)ﾜｸﾜｸ", Toast.LENGTH_SHORT);
         reDraw();
     }

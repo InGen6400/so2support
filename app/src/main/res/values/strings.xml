@@ -52,17 +52,14 @@
         <item>食物</item>
     </string-array>
 
+    <string name="offline_message">端末上の価格で～た(オフライン)</string>
+    <string name="online_message">オンライン同期</string>
 
     <string name="title_activity_settings">せって～</string>
-
     <string name="pref_header_general">一般的なや～つとか</string>
-
     <string name="pref_header_data_sync">で～たとか</string>
-
     <string name="pref_title_auto_download">で～た自動でおとす?</string>
-
     <string name="pref_title_start_new">アプリ開始時に新作業で始める</string>
-
     <string name="pref_title_sync_freq">で～たおとす間隔</string>
     <string-array name="pref_sync_freq_titles">
         <item>リアルタイム</item>

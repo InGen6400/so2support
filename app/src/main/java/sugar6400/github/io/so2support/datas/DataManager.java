@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -15,10 +16,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
+import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.container.ItemDataBase;
 
 public class DataManager {
@@ -30,6 +35,9 @@ public class DataManager {
     public static ItemDataBase itemDataBase;
 
     private String TAG = "DataManager";
+    private String offlineMessage;
+    private String onlineMessage;
+
     private boolean isLoading;
     private ProgressBar progressBar;
     private SharedPreferences pref;
@@ -38,11 +46,19 @@ public class DataManager {
 
     private Handler syncHandler;
 
-    public DataManager(Context c, ProgressBar inBar) {
+    private Date prevSyncDate;
+    private SimpleDateFormat formatter;
+    private TextView prevSyncTimeText;
+
+    public DataManager(Context c, ProgressBar inBar, final TextView prevSync) {
+        prevSyncTimeText = prevSync;
+        offlineMessage = c.getString(R.string.offline_message);
+        onlineMessage = c.getString(R.string.online_message);
         syncHandler = new Handler();
         prices = new ReceiveData();
         isLoading = false;
         progressBar = inBar;
+        formatter = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss", Locale.JAPAN);
         onCompleteListener = new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -57,6 +73,8 @@ public class DataManager {
                     if (pref.getBoolean("isAutoSyncEnabled", true)) {
                         ReloadNextSync();
                     }
+                    prevSyncDate = new Date();
+                    setPrevSyncText(task.getResult().getMetadata().isFromCache());
                     Log.w(TAG, "Cache:" + task.getResult().getMetadata().isFromCache());
                 } else {
                     Log.w(TAG, "Error getting documents.", task.getException());
@@ -76,6 +94,11 @@ public class DataManager {
             LoadPrices(false);
             setNextSyncTimer(nextSyncTime);
         }
+    }
+
+    private void setPrevSyncText(boolean isCache) {
+        String date = formatter.format(prevSyncDate);
+        prevSyncTimeText.setText(isCache ? offlineMessage : onlineMessage + ": " + date);
     }
 
     public ReceiveItem getReceiveItem(String category, String id) {

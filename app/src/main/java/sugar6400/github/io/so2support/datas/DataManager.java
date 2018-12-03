@@ -79,7 +79,7 @@ public class DataManager {
         progressBar = inBar;
         pref = PreferenceManager.getDefaultSharedPreferences(c);
         sync_pref = c.getSharedPreferences(RPEF_NAME, Context.MODE_PRIVATE);
-        completeToast = Toast.makeText(c, "で～たを取得したん(>ω<)", Toast.LENGTH_SHORT);
+        completeToast = Toast.makeText(c, "で～たを取得したん(>ω<)", Toast.LENGTH_LONG);
         formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.JAPAN);
         getPrevSync();
         setPrevSyncText(false);
@@ -133,6 +133,7 @@ public class DataManager {
         //ロード中でなければ
         if (!isLoading) {
             isLoading = true;
+            prevSyncTimeText.setText("同期中...");
             progressBar.setVisibility(View.VISIBLE);
             //自動同期がONなら
             if (isSyncEnabled) {
@@ -204,7 +205,7 @@ public class DataManager {
             date = formatter.format(prevSyncDate);
             sync_pref.edit().putString(PrevSyncKey, date).apply();
         } else {
-            date = "";
+            date = "みつからんかった(´･ω･`)";
             isCache = true;
         }
         prevSyncTimeText.setText(isCache ? offlineMessage + ": " + date : onlineMessage + ": " + date);

@@ -85,7 +85,7 @@
         <item>2880</item>
         <item>4320</item>
     </string-array>
-    <string name="pref_sync_freq_default">1</string>
+    <string name="pref_sync_freq_default">15</string>
 
     <string name="pref_title_price_select">アイテム追加時，自動でいれる価格(まだできてない)</string>
     <string-array name="list_pref_price_select_titles">

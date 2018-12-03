@@ -206,9 +206,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        dataManager.SaveNextSync();
+    public void onRestart() {
+        super.onRestart();
+        dataManager.ReloadNextSync();
     }
 
     @Override

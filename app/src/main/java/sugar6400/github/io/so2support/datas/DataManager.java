@@ -36,7 +36,10 @@ public class DataManager {
 
     private OnCompleteListener<QuerySnapshot> onCompleteListener;
 
+    private Handler syncHandler;
+
     public DataManager(Context c, ProgressBar inBar) {
+        syncHandler = new Handler();
         prices = new ReceiveData();
         isLoading = false;
         progressBar = inBar;
@@ -52,7 +55,7 @@ public class DataManager {
                         prices.from_map(id, data);
                     }
                     if (pref.getBoolean("isAutoSyncEnabled", true)) {
-                        SaveNextSync();
+                        ReloadNextSync();
                     }
                     Log.w(TAG, "Cache:" + task.getResult().getMetadata().isFromCache());
                 } else {
@@ -127,10 +130,10 @@ public class DataManager {
 
     private void setNextSyncTimer(long mili_sec) {
         if (mili_sec != 0) {
-            new Handler().postDelayed(new Runnable() {
+            syncHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    LoadPrices(false);
+                    LoadPrices(true);
                 }
             }, mili_sec);
             Calendar nextSyncTime = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"));
@@ -143,11 +146,13 @@ public class DataManager {
                     + "時" + nextSyncTime.get(Calendar.MINUTE)
                     + "分" + nextSyncTime.get(Calendar.SECOND));
         } else {
-            // TODO: リアルタイム動機
+            // TODO: リアルタイム動機（誤字った！！治すの面倒だ．そんな事書いてる暇があったら直したらどうだ．一行がとても長くなっているぞ気をつけろまじでほんと．）
         }
     }
 
-    public void SaveNextSync() {
+    public void ReloadNextSync() {
+        syncHandler.removeCallbacksAndMessages(null);
+        Log.d(TAG, "Removed Sync Callback");
         int syncFreqMinute = Integer.parseInt(pref.getString("sync_freq", "0"));
         Calendar nextSyncTime = Calendar.getInstance();
         nextSyncTime.add(Calendar.MINUTE, syncFreqMinute);

@@ -66,7 +66,7 @@ public class DataManager {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         String id = document.getId();
                         Map<String, Object> data = document.getData();
-                        Log.d(TAG, id + " => " + data);
+                        Log.d(TAG, "Loaded: " + id);
                         //ローカルに保存
                         prices.from_map(id, data);
                     }

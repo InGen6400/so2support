@@ -87,8 +87,7 @@ public class WorkList implements AdapterView.OnItemClickListener, WorkData.OnWor
     }
 
     private void load() {
-        Type type = new TypeToken<ArrayList<WorkData>>() {
-        }.getType();
+        Type type = new TypeToken<ArrayList<WorkData>>() {}.getType();
         String jsonStr = pref.getString(WORK_SAVE_KEY, null);
         if (jsonStr != null) {
             workList = gson.fromJson(jsonStr, type);

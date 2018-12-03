@@ -84,6 +84,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         progressBar = findViewById(R.id.progressBar);
         dataManager = new DataManager(this, progressBar);
+        workNameText = findViewById(R.id.work_name);
+
+        eqText = findViewById(R.id.eqText);
+        GPHText = findViewById(R.id.GPH);
 
         Toolbar myToolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
@@ -109,14 +113,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        eqText = findViewById(R.id.eqText);
-        GPHText = findViewById(R.id.GPH);
-
         initImageID();
 
         popupWindow = new PopupItemEdit(CalcActivity.this);
         initTimePicker();
 
+        initItemListView();
+        initItemProdListView();
         if (workList.getCount() == 0 || PreferenceManager.getDefaultSharedPreferences(this).getBoolean("isStartNewWork", true)) {
             newWork();
         } else {
@@ -124,10 +127,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             loadWork(workList.getItem(0), 0);
         }
 
-        initItemListView();
-        initItemProdListView();
 
-        workNameText = findViewById(R.id.work_name);
         workNameText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -223,7 +223,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initTimePicker() {
-        taskMinute = 0;
         timeHourText = findViewById(R.id.timeHourText);
         timeMinuteText = findViewById(R.id.timeMinuteText);
         timeMinuteText.setText("0分 時間を入力してね→");
@@ -232,7 +231,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        taskMinute = hourOfDay * 60 + minute;
+                        editWork.setMinutes(hourOfDay * 60 + minute);
                         reDraw();
                     }
                 },
@@ -254,8 +253,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         srcListView = findViewById(R.id.srcList);
 
         srcAdapter = new ItemListAdapter(CalcActivity.this, this);
-        //テスト用のアイテム
-        srcAdapter.setItemList(editWork.getSrcList());
 
         CalcItemData itemData = new CalcItemData();
         itemData.id = 1;
@@ -265,7 +262,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         itemData.isTool = false;
         itemData.catPosition = 0;
         itemData.itemPosition = 0;
-        editWork.getSrcList().add(itemData);
+        //editWork.getSrcList().add(itemData);
 
         CalcItemData itemData2 = new CalcItemData();
         itemData2.id = 15;
@@ -275,11 +272,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         itemData2.isTool = true;
         itemData2.catPosition = 1;
         itemData2.itemPosition = 1;
-        editWork.getSrcList().add(itemData2);
+        //editWork.getSrcList().add(itemData2);
 
         srcAdapter.notifyDataSetChanged();
-        srcListView.setAdapter(srcAdapter);
 
+        srcListView.setAdapter(srcAdapter);
         //アイテムタップ時に編集画面を開く
         srcListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -293,8 +290,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         final ListView prodListView;
         prodListView = findViewById(R.id.prodList);
         prodAdapter = new ItemListAdapter(CalcActivity.this, this);
-        //テスト用のアイテム
-        prodAdapter.setItemList(editWork.getProdList());
 
         CalcItemData itemData = new CalcItemData();
         itemData.id = 30;
@@ -304,9 +299,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         itemData.isTool = false;
         itemData.catPosition = 2;
         itemData.itemPosition = 0;
-        editWork.getProdList().add(itemData);
+        //editWork.getProdList().add(itemData);
 
         prodAdapter.notifyDataSetChanged();
+
         prodListView.setAdapter(prodAdapter);
 
         //アイテムタップ時に編集画面を開く
@@ -390,6 +386,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             eqText.setText(String.format(Locale.US, "{(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)} ÷ %.2f時間", prodSum, srcSum, tax, taskMinute / 60.0));
             GPHText.setText(String.format(Locale.US, "時給 %,.1f G/h", GPH));
         }
+        editWork.setWage(GPH);
         return GPH;
     }
 
@@ -409,6 +406,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             timeMinuteText.setText("");
         }
+        srcAdapter.setItemList(editWork.getSrcList());
+        prodAdapter.setItemList(editWork.getProdList());
         srcAdapter.notifyDataSetChanged();
         prodAdapter.notifyDataSetChanged();
 
@@ -437,18 +436,12 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void addWork() {
-        if (editWork.getProdList().size() == 0 || editWork.getSrcList().size() == 0) {
-            showToast("原料/完成品を追加して！(^_-)", Toast.LENGTH_SHORT);
-            return;
-        }
         if(showingWorkPosition >= 0){
             //存在するなら更新
             workList.insertTop(showingWorkPosition, editWork);
-            showToast("「" + editWork.getName() + "」\n作業の変更を保存したよ(^^)/", Toast.LENGTH_SHORT);
-        }else {
+        } else {
             //存在しないなら追加
             workList.addWork(editWork);
-            showToast("「" + editWork.getName() + "」\n作業リストに追加したよ(^^)/", Toast.LENGTH_SHORT);
         }
         //トップへ
         showingWorkPosition = 0;
@@ -459,6 +452,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         editWork = new WorkData("新規作業", 1, 0, 0, workList);
         showToast("新しい作業！(*ﾟ▽ﾟ*)ﾜｸﾜｸ", Toast.LENGTH_SHORT);
         addWork();
+        reDraw();
     }
 
     public void catchWorkDeleted(int position) {

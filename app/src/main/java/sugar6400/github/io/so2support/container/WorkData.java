@@ -9,16 +9,22 @@ import sugar6400.github.io.so2support.datas.DataManager;
 //作業データクラス
 public class WorkData {
     //作業名
+    @Expose
     private String name;
     //作業時間
+    @Expose
     private int minutes;
     //時給
+    @Expose
     private double wage;
     //アイコンのアイテムID
+    @Expose
     private int icon_id;
     //原料リスト
+    @Expose
     private ArrayList<CalcItemData> srcList;
     //完成品リスト
+    @Expose
     private ArrayList<CalcItemData> prodList;
     //リスナー
     @Expose(serialize = false, deserialize = false)
@@ -29,7 +35,7 @@ public class WorkData {
     }
 
     public WorkData(String name, int minutes, double wage, OnWorkChangedListener listener) {
-        this(name, 0, minutes, wage, listener);
+        this(name, 1, minutes, wage, listener);
     }
 
     public WorkData(String name, int image, int minutes, double wage, OnWorkChangedListener listener) {
@@ -62,6 +68,11 @@ public class WorkData {
 
     public void addProd(CalcItemData additionalData) {
         prodList.add(additionalData);
+        if(!prodList.isEmpty()) {
+            icon_id = prodList.get(0).id;
+        }else{
+            icon_id = 0;
+        }
         listener.OnWorkChanged();
     }
 
@@ -79,9 +90,13 @@ public class WorkData {
         return minutes;
     }
 
+    public void setMinutes(int minutes){this.minutes = minutes;}
+
     public double getWage() {
         return wage;
     }
+
+    public void setWage(double wage){this.wage = wage;}
 
     public int getIcon_id() {
         return icon_id;

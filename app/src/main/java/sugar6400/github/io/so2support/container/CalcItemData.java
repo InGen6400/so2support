@@ -1,19 +1,28 @@
 package sugar6400.github.io.so2support.container;
 
+import com.google.gson.annotations.Expose;
+
 public class CalcItemData implements Cloneable {
     //catSpinnerでの位置
+    @Expose
     public int catPosition;
     //spinnerでの位置
+    @Expose
     public int itemPosition;
     //アイテムのid
+    @Expose
     public int id;
     //個数
+    @Expose
     public int num;
     //価格
+    @Expose
     public long value;
     //破損率
+    @Expose
     public float breakProb;
     //道具かどうか
+    @Expose
     public boolean isTool;
     //金額入力がプラスかどうか
     public boolean isPMvaluePlus;

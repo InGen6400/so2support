@@ -24,7 +24,7 @@
         android:title="@string/pref_title_price_select" />
 
     <SwitchPreference
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:key="isStartNewWork"
         android:title="@string/pref_title_start_new" />
 

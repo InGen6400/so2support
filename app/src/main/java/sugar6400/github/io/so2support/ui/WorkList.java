@@ -107,7 +107,6 @@ public class WorkList implements AdapterView.OnItemClickListener, WorkData.OnWor
         WorkData workData = (WorkData) listView.getItemAtPosition(position);
         if (deleteToggle.isChecked()) {
             workAdapter.remove(workData);
-            calcActivity.catchWorkDeleted(position);
             save();
         } else {
             // TODO: オートセーブ動作，削除時や読み込み時の動作の違い
@@ -120,7 +119,12 @@ public class WorkList implements AdapterView.OnItemClickListener, WorkData.OnWor
         return workList.get(position);
     }
 
-    public void OnWorkChanged() {
+    public void OnWorkChanged(WorkData data) {
+        if (workList.contains(data)) {
+            insertTop(workList.indexOf(data), data);
+        } else {
+            addWork(data);
+        }
         save();
     }
 }

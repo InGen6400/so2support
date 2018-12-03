@@ -70,7 +70,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private WorkList workList;
     private WorkData editWork;
     private DrawerLayout drawerLayout;
-    private int showingWorkPosition = -1;
+    //private int showingWorkPosition = -1;
     private EditText workNameText;
 
     private Toast mainToast;
@@ -435,30 +435,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         prodAdapter.notifyDataSetChanged();
     }
 
-    public void addWork() {
-        if(showingWorkPosition >= 0){
-            //存在するなら更新
-            workList.insertTop(showingWorkPosition, editWork);
-        } else {
-            //存在しないなら追加
-            workList.addWork(editWork);
-        }
-        //トップへ
-        showingWorkPosition = 0;
-    }
-
     private void newWork() {
-        showingWorkPosition = -1;
         editWork = new WorkData("新規作業", 1, 0, 0, workList);
         showToast("新しい作業！(*ﾟ▽ﾟ*)ﾜｸﾜｸ", Toast.LENGTH_SHORT);
-        addWork();
         reDraw();
-    }
-
-    public void catchWorkDeleted(int position) {
-        if (position == showingWorkPosition) {
-            showingWorkPosition = -1;
-        }
     }
 
     //作業データを読み込む
@@ -466,7 +446,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         editWork = workData;
         editWork.setListener(workList);
         reDraw();
-        showingWorkPosition = position;
 
         drawerLayout.post(new Runnable() {
             @Override

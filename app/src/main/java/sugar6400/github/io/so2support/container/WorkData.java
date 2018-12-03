@@ -58,12 +58,12 @@ public class WorkData {
 
     public void setName(String name) {
         this.name = name;
-        listener.OnWorkChanged();
+        listener.OnWorkChanged(this);
     }
 
     public void addSrc(CalcItemData additionalData) {
         srcList.add(additionalData);
-        listener.OnWorkChanged();
+        listener.OnWorkChanged(this);
     }
 
     public void addProd(CalcItemData additionalData) {
@@ -73,17 +73,17 @@ public class WorkData {
         }else{
             icon_id = 0;
         }
-        listener.OnWorkChanged();
+        listener.OnWorkChanged(this);
     }
 
     public void setSrc(CalcItemData newData, int index) {
         srcList.set(index, newData);
-        listener.OnWorkChanged();
+        listener.OnWorkChanged(this);
     }
 
     public void setProd(CalcItemData newData, int index) {
         prodList.set(index, newData);
-        listener.OnWorkChanged();
+        listener.OnWorkChanged(this);
     }
 
     public int getMinutes() {
@@ -111,6 +111,6 @@ public class WorkData {
     }
 
     public interface OnWorkChangedListener {
-        public void OnWorkChanged();
+        void OnWorkChanged(WorkData data);
     }
 }

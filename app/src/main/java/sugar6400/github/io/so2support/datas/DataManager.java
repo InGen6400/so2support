@@ -75,6 +75,7 @@ public class DataManager {
         categories = c.getResources().getStringArray(R.array.categoryList);
         syncHandler = new Handler();
         prices = new ReceiveData();
+        snapshotListeners = new ArrayList<>();
         isLoading = false;
         progressBar = inBar;
         pref = PreferenceManager.getDefaultSharedPreferences(c);
@@ -121,7 +122,7 @@ public class DataManager {
         itemDataBase = new ItemDataBase(c);
         db = FirebaseFirestore.getInstance();
         long nextSyncTime = getNextSyncTime();
-        if (nextSyncTime == 0) {
+        if (nextSyncTime == 0 && !isRealtime()) {
             LoadPrices(pref.getBoolean("isAutoSyncEnabled", true));
         } else {
             LoadPrices(false);
@@ -132,22 +133,28 @@ public class DataManager {
     public boolean LoadPrices(boolean isSyncEnabled) {
         //ロード中でなければ
         if (!isLoading) {
-            isLoading = true;
-            prevSyncTimeText.setText("同期中...");
-            progressBar.setVisibility(View.VISIBLE);
-            //自動同期がONなら
-            if (isSyncEnabled) {
-                db.collection("price_data")
-                        .get()
-                        .addOnCompleteListener(onCompleteListener);
+            if(isRealtime()) {
+                Log.d(TAG, "リアルタイム");
+                return false;
             } else {
-                db.collection("price_data")
-                        .get(com.google.firebase.firestore.Source.CACHE)
-                        .addOnCompleteListener(onCompleteListener);
+                isLoading = true;
+                prevSyncTimeText.setText("同期中...");
+                progressBar.setVisibility(View.VISIBLE);
+                //自動同期がONなら
+                if (isSyncEnabled) {
+                    db.collection("price_data")
+                            .get()
+                            .addOnCompleteListener(onCompleteListener);
+                } else {
+                    db.collection("price_data")
+                            .get(com.google.firebase.firestore.Source.CACHE)
+                            .addOnCompleteListener(onCompleteListener);
+                }
+                Log.d(TAG, "Loading");
+                return true;
             }
-            Log.d(TAG, "Loading");
-            return true;
         } else {
+            Log.d(TAG, "ロード中");
             return false;
         }
     }
@@ -166,7 +173,7 @@ public class DataManager {
                     if (snapshot != null && snapshot.exists()) {
                         String id = snapshot.getId();
                         Map<String, Object> data = snapshot.getData();
-                        Log.d(TAG, "Loaded: " + id);
+                        Log.d(TAG, "Listener Loaded: " + id);
                         //ローカルに保存
                         prices.from_map(id, data);
                         completeToast.setText(id + "の価格で～た\nを取得したん(>ω<)");
@@ -177,10 +184,12 @@ public class DataManager {
                     }
                 }
             }));
+            Log.d(TAG, cat+": Started Listen");
         }
     }
 
     public void removeDocumentListeners() {
+        Log.d(TAG, "Stopped Listeners");
         for (ListenerRegistration register : snapshotListeners) {
             register.remove();
         }
@@ -232,6 +241,10 @@ public class DataManager {
         return itemDataBase.getItemInt(id, tag);
     }
 
+    private boolean isRealtime(){
+        return pref.getLong("SyncTimer", 0) == 0;
+    }
+
     private long getNextSyncTime() {
         if (pref.getBoolean("isAutoSyncEnabled", true)) {
             return Math.max(pref.getLong("SyncTimer", 0) - Calendar.getInstance().getTimeInMillis(), 0);
@@ -241,6 +254,7 @@ public class DataManager {
 
     private void setNextSyncTimer(long mili_sec) {
         if (mili_sec != 0) {
+            removeDocumentListeners();
             syncHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -258,6 +272,7 @@ public class DataManager {
                     + "分" + nextSyncTime.get(Calendar.SECOND));
         } else {
             // TODO: リアルタイム動機（誤字った！！治すの面倒だ．そんな事書いてる暇があったら直したらどうだ．一行がとても長くなっているぞ気をつけろまじでほんと．）
+            setupDocumentListeners();
         }
     }
 
@@ -265,9 +280,13 @@ public class DataManager {
         syncHandler.removeCallbacksAndMessages(null);
         Log.d(TAG, "Removed Sync Callback");
         int syncFreqMinute = Integer.parseInt(pref.getString("sync_freq", "0"));
-        Calendar nextSyncTime = Calendar.getInstance();
-        nextSyncTime.add(Calendar.MINUTE, syncFreqMinute);
-        pref.edit().putLong("SyncTimer", nextSyncTime.getTimeInMillis()).apply();
+        if(syncFreqMinute != 0) {
+            Calendar nextSyncTime = Calendar.getInstance();
+            nextSyncTime.add(Calendar.MINUTE, syncFreqMinute);
+            pref.edit().putLong("SyncTimer", nextSyncTime.getTimeInMillis()).apply();
+        }else{
+            pref.edit().putLong("SyncTimer", 0).apply();
+        }
         setNextSyncTimer(getNextSyncTime());
     }
 

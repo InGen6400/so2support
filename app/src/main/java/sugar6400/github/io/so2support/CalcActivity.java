@@ -208,7 +208,18 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onRestart() {
         super.onRestart();
-        dataManager.ReloadNextSync();
+        if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean("isAutoSyncEnabled", true)) {
+            dataManager.ReloadNextSync();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (popupWindow != null && popupWindow.isShowing()) {
+            popupWindow.dismiss();
+        }
+        dataManager.removeDocumentListeners();
+        super.onDestroy();
     }
 
     @Override
@@ -235,14 +246,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     break;
             }
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        if (popupWindow != null && popupWindow.isShowing()) {
-            popupWindow.dismiss();
-        }
-        super.onDestroy();
     }
 
     @Override

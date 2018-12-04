@@ -62,7 +62,7 @@
     <string name="pref_title_start_new">アプリ開始時に新作業で始める</string>
     <string name="pref_title_sync_freq">で～たおとす間隔</string>
     <string-array name="pref_sync_freq_titles">
-        <item>リアルタイム(未実装)</item>
+        <item>リアルタイム</item>
         <item>15 分</item>
         <item>30 分</item>
         <item>1 時間！</item>

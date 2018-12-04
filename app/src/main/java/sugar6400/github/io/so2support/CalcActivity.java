@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -45,7 +46,7 @@ import sugar6400.github.io.so2support.ui.WorkList;
 
 import static sugar6400.github.io.so2support.container.ItemDataBase.JsonMaxDataNum;
 
-public class CalcActivity extends AppCompatActivity implements View.OnClickListener, DataManager.OnPriceDataLoadedListener {
+public class CalcActivity extends AppCompatActivity implements View.OnClickListener {
 
     //原料リスト
     public static int[] imageIDs;
@@ -83,6 +84,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //初回起動時にはイントロ画面が表示される
+        showIntroActivity();
+
         TypefaceProvider.registerDefaultIconSets();
         setContentView(R.layout.activity_calc);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -208,7 +213,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onRestart() {
         super.onRestart();
-        if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean("isAutoSyncEnabled", true)) {
+        if (dataManager != null && PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean("isAutoSyncEnabled", true)) {
             dataManager.ReloadNextSync();
         }
     }
@@ -218,8 +224,51 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
         }
-        dataManager.removeDocumentListeners();
+        if (dataManager != null)
+            dataManager.removeDocumentListeners();
         super.onDestroy();
+    }
+
+    private void showIntroActivity() {
+
+        //  Declare a new thread to do a preference check
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //  Initialize SharedPreferences
+                SharedPreferences getPrefs = PreferenceManager
+                        .getDefaultSharedPreferences(getBaseContext());
+
+                //  Create a new boolean and preference and set it to true
+                boolean isFirstStart = getPrefs.getBoolean("firstStart", true);
+
+                //  If the activity has never started before...
+                if (isFirstStart) {
+
+                    //  Launch app intro
+                    final Intent i = new Intent(CalcActivity.this, IntroActivity.class);
+
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(i);
+                        }
+                    });
+
+                    //  Make a new preferences editor
+                    SharedPreferences.Editor e = getPrefs.edit();
+
+                    //  Edit preference to make it false because we don't want this to run again
+                    e.putBoolean("firstStart", false);
+
+                    //  Apply changes
+                    e.apply();
+                }
+            }
+        });
+
+        t.start();
     }
 
     @Override
@@ -246,11 +295,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                     break;
             }
         }
-    }
-
-    @Override
-    public void onPriceDataLoaded() {
-
     }
 
     private void initTimePicker() {

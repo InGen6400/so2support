@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="sugar6400.github.io.so2support">
 
     <application
@@ -7,7 +8,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".CalcActivity"
             android:screenOrientation="portrait">
@@ -21,6 +23,9 @@
             android:theme="@style/SettingsTheme"
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".IntroActivity"
+            android:label="@string/app_name"></activity>
     </application>
 
 </manifest>

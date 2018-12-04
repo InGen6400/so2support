@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Z:/Android/AndroidStudio/plugins/android/lib/android.jar!/images/material_design_icons/notification/ic_sync_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/Z:/Android/AndroidStudio/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_directions_run_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,11 +29,12 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="height" value="32" />
-                            <entry key="outputName" value="ic_sync_white_32dp" />
+                            <entry key="height" value="192" />
+                            <entry key="opacityPercent" value="80" />
+                            <entry key="outputName" value="ic_directions_run_white_192dp" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\Daichi" />
-                            <entry key="width" value="32" />
+                            <entry key="width" value="192" />
                           </map>
                         </option>
                       </PersistentState>

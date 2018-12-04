@@ -1,6 +1,7 @@
 package sugar6400.github.io.so2support.ui;
 
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -320,13 +321,39 @@ public class PopupItemEdit extends PopupWindow implements View.OnClickListener {
                 if (!calcActivity.dataManager.isLoading()) {
                     receiveItem = calcActivity.dataManager.getReceiveItem(popupHolder.id);
                     if (receiveItem != null) {
-                        weekAveButton.setText(String.format(Locale.US, "過去1週のTOP5\n平均:%.2f", receiveItem.cheap5_week));
+                        weekAveButton.setText(String.format(Locale.US, "1週間のTOP5\n平均:%.2f", receiveItem.cheap5_week));
                         dayAveButton.setText(String.format(Locale.US, "昨日のTOP5\n平均:%.2f", receiveItem.cheap5_day));
-                        cheapestButton.setText(String.format(Locale.US, "現在の最安値\n%d", receiveItem.cheapest.get(0).price));
+                        if(receiveItem.cheapest != null && !receiveItem.cheapest.isEmpty()) {
+                            cheapestButton.setText(String.format(Locale.US, "現在の最安値\n%d", receiveItem.cheapest.get(0).price));
+                        }else{
+                            cheapestButton.setText("いま市場に出てない！！");
+                        }
+                        switch (PreferenceManager.getDefaultSharedPreferences(calcActivity).getString("price_select", "1")){
+                            case "1":
+                                //そんとき自分で選ぶんだ
+                                break;
+                            case "2":
+                                //週
+                                popupHolder.value = (long)receiveItem.cheap5_week;
+                                break;
+                            case "3":
+                                //日
+                                popupHolder.value = (long)receiveItem.cheap5_day;
+                                break;
+                            case "4":
+                                //最安
+                                popupHolder.value = receiveItem.cheapest.get(0).price;
+                                break;
+                        }
+                        if (popupHolder.value > 0) {
+                            valueEditText.setText(String.valueOf(popupHolder.value));
+                        } else {
+                            valueEditText.setText("");
+                        }
                     } else {
-                        weekAveButton.setText("価格データがありません");
+                        weekAveButton.setText("価格データがないよ");
                         dayAveButton.setText("手動で入力するか");
-                        cheapestButton.setText("オンラインで実行してください");
+                        cheapestButton.setText("データの再取得を試してね");
                     }
                 } else {
                     Toast.makeText(calcActivity, "Loading now...", Toast.LENGTH_SHORT).show();

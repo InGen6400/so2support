@@ -17,6 +17,7 @@
         android:minHeight="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
+        tools:ignore="UnusedAttribute"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:clickable="true">
@@ -140,11 +141,10 @@
                                 tools:layout_editor_absoluteX="16dp" />
                         </LinearLayout>
 
-                        <EditText
+                        <android.support.v7.widget.AppCompatEditText
                             android:id="@+id/work_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:autofillHints="ポーションを作る"
                             android:hint="@string/work_name_desc"
                             android:inputType="text"
                             android:singleLine="true"
@@ -309,6 +309,7 @@
                     android:background="@color/colorWhite"
                     android:clickable="true"
                     android:elevation="32dp"
+                    tools:ignore="UnusedAttribute"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     app:layout_constraintBottom_toBottomOf="parent"

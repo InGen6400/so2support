@@ -18,7 +18,7 @@ public class IntroActivity extends AppIntro2 {
         SliderPage sliderPage1 = new SliderPage();
         sliderPage1.setTitle("Welcome!");
         sliderPage1.setDescription("このアプリは「SOLD OUT 2」の支援アプリだよ！");
-        sliderPage1.setImageDrawable(R.drawable.ic_launcher_160dp);
+        sliderPage1.setImageDrawable(R.drawable.ic_launcher_160);
         sliderPage1.setBgColor(Color.parseColor("#FF65ace4"));
         addSlide(AppIntroFragment.newInstance(sliderPage1));
 

@@ -1,6 +1,7 @@
 package sugar6400.github.io.so2support.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,12 +9,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.datas.DataManager;
 
-import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
+//import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
 
 public class ItemSpinnerAdapter extends BaseAdapter {
 
@@ -63,7 +66,11 @@ public class ItemSpinnerAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.image.setImageResource(imageIDs[itemIDs.get(position) - 1]);
+        // TODO:Glide
+        //holder.image.setImageResource(imageIDs[itemIDs.get(position) - 1]);
+
+        String fileName = "sprite_item2x_" + String.valueOf(DataManager.itemDataBase.getItemInt(itemIDs.get(position), "image")) + ".png";
+        Glide.with(parent).load(Uri.parse("file:///android_asset/" + fileName)).into(holder.image);
         holder.text.setText(DataManager.itemDataBase.getItemStr(itemIDs.get(position), "name"));
 
         return convertView;

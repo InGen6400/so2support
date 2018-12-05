@@ -19,7 +19,7 @@ public class WorkData {
     private double wage;
     //アイコンのアイテムID
     @Expose
-    private int icon_id;
+    private int item_id_for_icon;
     //原料リスト
     @Expose
     private ArrayList<CalcItemData> srcList;
@@ -39,7 +39,7 @@ public class WorkData {
     }
 
     public WorkData(String name, int image, int minutes, double wage, OnWorkChangedListener listener) {
-        this.icon_id = image;
+        this.item_id_for_icon = image;
         this.name = name;
         this.minutes = minutes;
         this.wage = wage;
@@ -69,9 +69,9 @@ public class WorkData {
     public void addProd(CalcItemData additionalData) {
         prodList.add(additionalData);
         if(!prodList.isEmpty()) {
-            icon_id = prodList.get(0).id;
+            item_id_for_icon = prodList.get(0).id;
         }else{
-            icon_id = 0;
+            item_id_for_icon = 0;
         }
         listener.OnWorkChanged(this);
     }
@@ -98,8 +98,8 @@ public class WorkData {
 
     public void setWage(double wage){this.wage = wage;}
 
-    public int getIcon_id() {
-        return icon_id;
+    public int getItem_id_for_icon() {
+        return item_id_for_icon;
     }
 
     public ArrayList<CalcItemData> getSrcList() {

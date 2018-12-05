@@ -1,6 +1,7 @@
 package sugar6400.github.io.so2support.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
 import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.container.WorkData;
+import sugar6400.github.io.so2support.datas.DataManager;
 
-import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
+//import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
 
 public class WorkListAdapter extends ArrayAdapter<WorkData> {
     private LayoutInflater inflater;
@@ -47,7 +51,10 @@ public class WorkListAdapter extends ArrayAdapter<WorkData> {
         if (data != null) {
             nameText.setText(data.getName());
             wageText.setText("時給:" + String.format(Locale.US, "%,.1fG", data.getWage()));
-            icon.setImageResource(imageIDs[data.getIcon_id() - 1]);
+            // TODO:画像指定をglideにする
+            //icon.setImageResource(imageIDs[data.getItem_id_for_icon() - 1]);
+            String fileName = "sprite_item2x_" + String.valueOf(DataManager.itemDataBase.getItemInt(data.getItem_id_for_icon() + 1, "image")) + ".png";
+            Glide.with(parent).load(Uri.parse("file:///android_asset/" + fileName)).into(icon);
             deleteImage.setImageResource(R.drawable.ic_delete_forever_black_24dp);
         }
         if (isDeleteShow) {

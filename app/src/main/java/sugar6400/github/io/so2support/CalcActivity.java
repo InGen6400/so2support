@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -44,12 +43,10 @@ import sugar6400.github.io.so2support.datas.DataManager;
 import sugar6400.github.io.so2support.ui.PopupItemEdit;
 import sugar6400.github.io.so2support.ui.WorkList;
 
-import static sugar6400.github.io.so2support.container.ItemDataBase.JsonMaxDataNum;
-
 public class CalcActivity extends AppCompatActivity implements View.OnClickListener {
 
     //原料リスト
-    public static int[] imageIDs;
+    //public static int[] imageIDs;
 
     public final static String RPEF_NAME = "save_data";
 
@@ -143,7 +140,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        initImageID();
+        // initImageID();
 
         popupWindow = new PopupItemEdit(CalcActivity.this);
         initTimePicker();
@@ -313,16 +310,17 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 0, 0, true);
     }
 
-    private void initImageID() {
-        imageIDs = new int[JsonMaxDataNum];
+    /*
+        private void initImageID() {
+            imageIDs = new int[JsonMaxDataNum];
 
-        Resources res = getResources();
-        for (int i = 0; i < imageIDs.length; i++) {
-            String imageFileName = "sprite_item2x_" + String.valueOf(dataManager.getItemElement(i + 1, "image"));
-            imageIDs[i] = res.getIdentifier(imageFileName, "drawable", getPackageName());
+            Resources res = getResources();
+            for (int i = 0; i < imageIDs.length; i++) {
+                String imageFileName = "sprite_item2x_" + String.valueOf(dataManager.getItemElement(i + 1, "image"));
+                imageIDs[i] = res.getIdentifier(imageFileName, "drawable", getPackageName());
+            }
         }
-    }
-
+    */
     private void initItemListView() {
         final ListView srcListView;
         srcListView = findViewById(R.id.srcList);

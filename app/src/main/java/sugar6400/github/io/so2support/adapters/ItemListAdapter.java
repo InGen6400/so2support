@@ -1,6 +1,7 @@
 package sugar6400.github.io.so2support.adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,9 @@ import sugar6400.github.io.so2support.CalcActivity;
 import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.container.CalcItemData;
 import sugar6400.github.io.so2support.datas.DataManager;
+import sugar6400.github.io.so2support.ui.GlideApp;
 
-import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
+//import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
 
 public class ItemListAdapter extends BaseAdapter implements ListAdapter {
 
@@ -77,7 +79,11 @@ public class ItemListAdapter extends BaseAdapter implements ListAdapter {
             ((TextView) convertView.findViewById(R.id.breakProbText)).setText("");
         }
 
-        ((ImageView) convertView.findViewById(R.id.itemImage)).setImageResource(imageIDs[itemList.get(position).id - 1]);
+        //Glide
+        ImageView imageView = convertView.findViewById(R.id.itemImage);
+        String fileName = "sprite_item2x_" + String.valueOf(calcActivity.dataManager.getItemElement(id, "image")) + ".png";
+        GlideApp.with(parent).load(Uri.parse("file:///android_asset/" + fileName)).into(imageView);
+
         ImageButton delButton = convertView.findViewById(R.id.itemDeleteButton);
         delButton.setTag(position);
         delButton.setOnClickListener(new View.OnClickListener() {

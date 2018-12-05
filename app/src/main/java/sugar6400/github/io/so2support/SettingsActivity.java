@@ -1,16 +1,24 @@
 package sugar6400.github.io.so2support;
 
 import android.annotation.TargetApi;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Process;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.MenuItem;
 
 import java.util.Arrays;
@@ -172,6 +180,28 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
             isAutoSyncPref = (SwitchPreference) findPreference("isAutoSyncEnabled");
             syncFreqPref = (ListPreference) findPreference("sync_freq");
+            Preference button = findPreference("reset");
+            button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(final Preference preference) {
+                    Log.d("Setting", "Pushed reset");
+                    new AlertDialog.Builder(getActivity())
+                            .setTitle("リセットします")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+                                    restart();
+                                }
+                            })
+                            .setNegativeButton("キャンセル", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            }).show();
+                    return true;
+                }
+            });
             isAutoSyncPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -214,6 +244,17 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     return true;
                 }
             });
+        }
+
+        private void restart() {
+            getFragmentManager().beginTransaction().remove(this).commit();
+            final Intent i = new Intent(getActivity(), CalcActivity.class);
+            final PendingIntent appStarter = PendingIntent.getActivity(getActivity(), 0, i, 0);
+
+            final AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, appStarter);
+
+            Process.killProcess(Process.myPid());
         }
 /*
         @Override

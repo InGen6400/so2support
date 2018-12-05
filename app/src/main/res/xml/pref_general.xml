@@ -28,4 +28,7 @@
         android:key="isStartNewWork"
         android:title="@string/pref_title_start_new" />
 
+    <Preference
+        android:title="アプリの初期化"
+        android:key="reset" />
 </PreferenceScreen>

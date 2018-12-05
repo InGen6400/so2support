@@ -220,10 +220,6 @@ public class DataManager {
         prevSyncTimeText.setText(isCache ? offlineMessage + ": " + date : onlineMessage + ": " + date);
     }
 
-    public ReceiveItem getReceiveItem(String category, String id) {
-        return prices.receive_items.get(category).get(id);
-    }
-
     public ReceiveItem getReceiveItem(String id) {
         for (String key : prices.receive_items.keySet()) {
             if (prices.receive_items.get(key).containsKey(id)) {
@@ -292,9 +288,5 @@ public class DataManager {
 
     public boolean isLoading() {
         return isLoading;
-    }
-
-    public interface OnPriceDataLoadedListener {
-        void onPriceDataLoaded();
     }
 }

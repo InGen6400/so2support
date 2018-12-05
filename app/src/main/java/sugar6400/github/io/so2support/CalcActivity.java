@@ -40,6 +40,7 @@ import sugar6400.github.io.so2support.adapters.ItemListAdapter;
 import sugar6400.github.io.so2support.container.CalcItemData;
 import sugar6400.github.io.so2support.container.WorkData;
 import sugar6400.github.io.so2support.datas.DataManager;
+import sugar6400.github.io.so2support.ui.MyGlideModule;
 import sugar6400.github.io.so2support.ui.PopupItemEdit;
 import sugar6400.github.io.so2support.ui.WorkList;
 
@@ -84,6 +85,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         //初回起動時にはイントロ画面が表示される
         showIntroActivity();
+        MyGlideModule.SetupOption();
 
         TypefaceProvider.registerDefaultIconSets();
         setContentView(R.layout.activity_calc);

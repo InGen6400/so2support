@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.datas.DataManager;
+import sugar6400.github.io.so2support.ui.MyGlideModule;
 
 //import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
 
@@ -70,7 +71,7 @@ public class ItemSpinnerAdapter extends BaseAdapter {
         //holder.image.setImageResource(imageIDs[itemIDs.get(position) - 1]);
 
         String fileName = "sprite_item2x_" + String.valueOf(DataManager.itemDataBase.getItemInt(itemIDs.get(position), "image")) + ".png";
-        Glide.with(parent).load(Uri.parse("file:///android_asset/" + fileName)).into(holder.image);
+        Glide.with(parent).load(Uri.parse("file:///android_asset/" + fileName)).apply(MyGlideModule.iconOption).into(holder.image);
         holder.text.setText(DataManager.itemDataBase.getItemStr(itemIDs.get(position), "name"));
 
         return convertView;

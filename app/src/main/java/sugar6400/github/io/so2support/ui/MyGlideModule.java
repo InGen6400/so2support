@@ -12,7 +12,7 @@ import sugar6400.github.io.so2support.R;
 public final class MyGlideModule extends AppGlideModule {
     public static RequestOptions iconOption;
 
-    public void SetupOption() {
+    public static void SetupOption() {
         iconOption = new RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .placeholder(R.drawable.sprite_item2x_420);

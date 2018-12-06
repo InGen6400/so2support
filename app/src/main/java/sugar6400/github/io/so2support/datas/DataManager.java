@@ -122,7 +122,7 @@ public class DataManager {
         itemDataBase = new ItemDataBase(c);
         db = FirebaseFirestore.getInstance();
         long nextSyncTime = getNextSyncTime();
-        if (nextSyncTime == 0 && !isRealtime()) {
+        if (nextSyncTime == 0 && !isRealTime()) {
             LoadPrices(pref.getBoolean("isAutoSyncEnabled", true));
         } else {
             LoadPrices(false);
@@ -133,7 +133,7 @@ public class DataManager {
     public boolean LoadPrices(boolean isSyncEnabled) {
         //ロード中でなければ
         if (!isLoading) {
-            if(isRealtime()) {
+            if (isRealTime()) {
                 Log.d(TAG, "リアルタイム");
                 return false;
             } else {
@@ -237,7 +237,7 @@ public class DataManager {
         return itemDataBase.getItemInt(id, tag);
     }
 
-    private boolean isRealtime(){
+    private boolean isRealTime() {
         return pref.getLong("SyncTimer", 15*1000*60) == 0;
     }
 

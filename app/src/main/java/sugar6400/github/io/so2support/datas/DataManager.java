@@ -65,6 +65,7 @@ public class DataManager implements SyncTimer.SyncTimerListener {
     private TextView prevSyncTimeText;
     private TextView nextSyncTimeText;
     private Toast completeToast;
+    private boolean toastOK;
 
     private String prevSyncFreq;
     private boolean isPrevRealtimeOn;
@@ -82,6 +83,7 @@ public class DataManager implements SyncTimer.SyncTimerListener {
 
         pref = PreferenceManager.getDefaultSharedPreferences(c);
         sync_pref = c.getSharedPreferences(RPEF_NAME, Context.MODE_PRIVATE);
+        toastOK = true;
         completeToast = Toast.makeText(c, "で～たを取得したん(>ω<)", Toast.LENGTH_LONG);
 
         prices = new ReceiveData();
@@ -105,11 +107,10 @@ public class DataManager implements SyncTimer.SyncTimerListener {
                     }
                     if (pref.getBoolean("isAutoSyncEnabled", true)) {
                         if (fromCache) {
-                            completeToast.setText("で～たの取得ができんかったんよね\n(´･ω･`)");
+                            showToast("で～たの取得ができんかったんよね\n(´･ω･`)");
                         } else {
-                            completeToast.setText("で～たを取得したん(>ω<)");
+                            showToast("で～たを取得したん(>ω<)");
                         }
-                        completeToast.show();
                     }
                     if (fromCache) {
                         setPrevSyncText(true);
@@ -187,8 +188,7 @@ public class DataManager implements SyncTimer.SyncTimerListener {
                         Log.d(TAG, "Listener Loaded: " + id);
                         //ローカルに保存
                         prices.from_map(id, data);
-                        completeToast.setText(id + "の価格で～た\nを取得したん(>ω<)");
-                        completeToast.show();
+                        showToast(id + "の価格で～た\nを取得したん(>ω<)");
                         resetPrevSyncText(false);
                     } else {
                         Log.d(TAG, "Current data: null");
@@ -298,6 +298,17 @@ public class DataManager implements SyncTimer.SyncTimerListener {
             isPrevRealtimeOn = false;
         }
         setNextSyncText();
+    }
+
+    public void setToastOK(boolean ok) {
+        toastOK = ok;
+    }
+
+    private void showToast(String msg) {
+        if (toastOK) {
+            completeToast.setText(msg);
+            completeToast.show();
+        }
     }
 
     @Override

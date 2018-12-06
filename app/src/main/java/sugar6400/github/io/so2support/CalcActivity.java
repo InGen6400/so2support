@@ -204,6 +204,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         //初回起動時に実行
         if (pref.getBoolean("first_so2support", true)) {
             editWork = workList.initPreviewWork();
+            dataManager.setToastOK(false);
             reDraw();
             pref.edit().putBoolean("first_so2support", false).apply();
         }
@@ -222,6 +223,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         super.onRestart();
         if (dataManager != null) {
             dataManager.ReloadSync();
+            dataManager.setToastOK(true);
         }
     }
 

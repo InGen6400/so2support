@@ -212,9 +212,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onRestart() {
         super.onRestart();
-        if (dataManager != null && PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean("isAutoSyncEnabled", true)) {
-            dataManager.ReloadNextSync();
+        if (dataManager != null) {
+            dataManager.ReloadSync();
         }
     }
 

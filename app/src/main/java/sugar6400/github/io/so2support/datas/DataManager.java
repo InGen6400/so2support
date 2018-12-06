@@ -2,7 +2,6 @@ package sugar6400.github.io.so2support.datas;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -25,11 +24,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
 
 import javax.annotation.Nullable;
 
@@ -38,13 +35,15 @@ import sugar6400.github.io.so2support.container.ItemDataBase;
 
 import static sugar6400.github.io.so2support.CalcActivity.RPEF_NAME;
 
-public class DataManager {
+public class DataManager implements SyncTimer.SyncTimerListener {
 
     private FirebaseFirestore db;
 
     private ReceiveData prices;
     //アイテムのデータ(名前，スタック数, etc...)
     public static ItemDataBase itemDataBase;
+
+    private SyncTimer timer;
 
     private String[] categories;
 
@@ -61,27 +60,29 @@ public class DataManager {
     private OnCompleteListener<QuerySnapshot> onCompleteListener;
     private ArrayList<ListenerRegistration> snapshotListeners;
 
-    private Handler syncHandler;
-
     private Date prevSyncDate;
     private SimpleDateFormat formatter;
     private TextView prevSyncTimeText;
     private Toast completeToast;
 
     public DataManager(Context c, ProgressBar inBar, final TextView prevSync) {
-        prevSyncTimeText = prevSync;
         offlineMessage = c.getString(R.string.offline_message);
         onlineMessage = c.getString(R.string.online_message);
-        categories = c.getResources().getStringArray(R.array.categoryList);
-        syncHandler = new Handler();
-        prices = new ReceiveData();
-        snapshotListeners = new ArrayList<>();
         isLoading = false;
+        categories = c.getResources().getStringArray(R.array.categoryList);
+
+        prevSyncTimeText = prevSync;
         progressBar = inBar;
+
         pref = PreferenceManager.getDefaultSharedPreferences(c);
         sync_pref = c.getSharedPreferences(RPEF_NAME, Context.MODE_PRIVATE);
         completeToast = Toast.makeText(c, "で～たを取得したん(>ω<)", Toast.LENGTH_LONG);
+
+        prices = new ReceiveData();
         formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.JAPAN);
+        snapshotListeners = new ArrayList<>();
+
+
         getPrevSync();
         setPrevSyncText(false);
         onCompleteListener = new OnCompleteListener<QuerySnapshot>() {
@@ -97,7 +98,6 @@ public class DataManager {
                         prices.from_map(id, data);
                     }
                     if (pref.getBoolean("isAutoSyncEnabled", true)) {
-                        ReloadNextSync();
                         if (fromCache) {
                             completeToast.setText("で～たの取得ができんかったんよね\n(´･ω･`)");
                         } else {
@@ -121,13 +121,7 @@ public class DataManager {
         //アイテムデータの読み込み
         itemDataBase = new ItemDataBase(c);
         db = FirebaseFirestore.getInstance();
-        long nextSyncTime = getNextSyncTime();
-        if (nextSyncTime == 0 && !isRealTime()) {
-            LoadPrices(pref.getBoolean("isAutoSyncEnabled", true));
-        } else {
-            LoadPrices(false);
-            setNextSyncTimer(nextSyncTime);
-        }
+        timer = new SyncTimer(c, this);
     }
 
     public boolean LoadPrices(boolean isSyncEnabled) {
@@ -158,6 +152,7 @@ public class DataManager {
             return false;
         }
     }
+
 
     public void setupDocumentListeners() {
         for (String cat : categories) {
@@ -195,6 +190,7 @@ public class DataManager {
         }
     }
 
+
     private void getPrevSync() {
         try {
             prevSyncDate = formatter.parse(sync_pref.getString(PrevSyncKey, "no_data"));
@@ -220,6 +216,7 @@ public class DataManager {
         prevSyncTimeText.setText(isCache ? offlineMessage + ": " + date : onlineMessage + ": " + date);
     }
 
+
     public ReceiveItem getReceiveItem(String id) {
         for (String key : prices.receive_items.keySet()) {
             if (prices.receive_items.get(key).containsKey(id)) {
@@ -233,60 +230,34 @@ public class DataManager {
         return getReceiveItem(String.valueOf(id));
     }
 
+
     public int getItemElement(int id, String tag) {
         return itemDataBase.getItemInt(id, tag);
     }
 
     private boolean isRealTime() {
-        return pref.getLong("SyncTimer", 15*1000*60) == 0;
-    }
-
-    private long getNextSyncTime() {
-        if (pref.getBoolean("isAutoSyncEnabled", true)) {
-            return Math.max(pref.getLong("SyncTimer", 15*1000*60) - Calendar.getInstance().getTimeInMillis(), 0);
-        }
-        return 0;
-    }
-
-    private void setNextSyncTimer(long mili_sec) {
-        if (mili_sec != 0) {
-            removeDocumentListeners();
-            syncHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    LoadPrices(true);
-                }
-            }, mili_sec);
-            Calendar nextSyncTime = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"));
-            nextSyncTime.add(Calendar.MILLISECOND, (int) mili_sec);
-            Log.d(TAG, "Next Sync: " + nextSyncTime.getTimeZone().getDisplayName() + "\t" +
-                    nextSyncTime.get(Calendar.YEAR)
-                    + "_" + (nextSyncTime.get(Calendar.MONTH) + 1)
-                    + "月" + nextSyncTime.get(Calendar.DAY_OF_MONTH)
-                    + "日" + nextSyncTime.get(Calendar.HOUR_OF_DAY)
-                    + "時" + nextSyncTime.get(Calendar.MINUTE)
-                    + "分" + nextSyncTime.get(Calendar.SECOND));
-        } else {
-            // TODO: リアルタイム動機（誤字った！！治すの面倒だ．そんな事書いてる暇があったら直したらどうだ．一行がとても長くなっているぞ気をつけろまじでほんと．）
-            setupDocumentListeners();
-        }
-    }
-
-    public void ReloadNextSync() {
-        syncHandler.removeCallbacksAndMessages(null);
-        Log.d(TAG, "Removed Sync Callback");
-        int syncFreqMinute = Integer.parseInt(pref.getString("sync_freq", "0"));
-        if(syncFreqMinute != 0) {
-            Calendar nextSyncTime = Calendar.getInstance();
-            nextSyncTime.add(Calendar.MINUTE, syncFreqMinute);
-            pref.edit().putLong("SyncTimer", nextSyncTime.getTimeInMillis()).apply();
-        }else{
-            pref.edit().putLong("SyncTimer", 0).apply();
-        }
-        setNextSyncTimer(getNextSyncTime());
+        return pref.getString("sync_freq", "15").equals("-1");
     }
 
     public boolean isLoading() {
         return isLoading;
+    }
+
+    public void ReloadSync() {
+        if (pref.getBoolean("isAutoSyncEnabled", true)) {
+            if (isRealTime()) {
+                setupDocumentListeners();
+                timer.RemoveTimer();
+            } else {
+                removeDocumentListeners();
+            }
+        } else {
+            Log.d(TAG, "同期OFF");
+        }
+    }
+
+    @Override
+    public void OnSyncTimerTimeUp() {
+        LoadPrices(true);
     }
 }

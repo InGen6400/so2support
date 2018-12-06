@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import sugar6400.github.io.so2support.CalcActivity;
 import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.adapters.WorkListAdapter;
+import sugar6400.github.io.so2support.container.CalcItemData;
 import sugar6400.github.io.so2support.container.WorkData;
 
 import static sugar6400.github.io.so2support.CalcActivity.RPEF_NAME;
@@ -113,6 +114,47 @@ public class WorkList implements AdapterView.OnItemClickListener, WorkData.OnWor
             calcActivity.loadWork(workData, position);
             calcActivity.showToast("「" + workData.getName() + "」を読み込んだよ～", Toast.LENGTH_SHORT);
         }
+    }
+
+    public WorkData initPreviewWork() {
+
+        WorkData prev_work = new WorkData("ポーションを作る", 60, 1332, this);
+        //薬草
+        CalcItemData itemData = new CalcItemData();
+        itemData.id = 1;
+        itemData.num = 5;
+        itemData.breakProb = 100;
+        itemData.value = 90;
+        itemData.isTool = false;
+        itemData.catPosition = 0;
+        itemData.itemPosition = 0;
+        prev_work.addSrc(itemData);
+
+        //薬本
+        itemData = new CalcItemData();
+        itemData.id = 15;
+        itemData.num = 1;
+        itemData.breakProb = 10;
+        itemData.value = 2500;
+        itemData.isTool = true;
+        itemData.catPosition = 1;
+        itemData.itemPosition = 1;
+        prev_work.addSrc(itemData);
+
+
+        //ポーション
+        itemData = new CalcItemData();
+        itemData.id = 30;
+        itemData.num = 16;
+        itemData.breakProb = 100;
+        itemData.value = 180;
+        itemData.isTool = false;
+        itemData.catPosition = 2;
+        itemData.itemPosition = 0;
+        prev_work.addProd(itemData);
+
+        OnWorkChanged(prev_work);
+        return prev_work;
     }
 
     public static void Reset() {

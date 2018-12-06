@@ -88,9 +88,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         MyGlideModule.SetupOption();
 
         TypefaceProvider.registerDefaultIconSets();
+
         setContentView(R.layout.activity_calc);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         progressBar = findViewById(R.id.progressBar);
         dataManager = new DataManager(this, progressBar
                 , (TextView) findViewById(R.id.prevSyncTimeText)
@@ -144,20 +146,17 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        // initImageID();
-
         popupWindow = new PopupItemEdit(CalcActivity.this);
         initTimePicker();
 
         initItemListView();
         initItemProdListView();
-        if (workList.getCount() == 0 || PreferenceManager.getDefaultSharedPreferences(this).getBoolean("isStartNewWork", true)) {
+        if (workList.getCount() == 0 || pref.getBoolean("isStartNewWork", false)) {
             newWork();
         } else {
             //セーブデータが存在していたら，一番上のデータを表示する
             loadWork(workList.getItem(0), 0);
         }
-
 
         workNameText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -201,6 +200,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
+
+        //初回起動時に実行
+        if (pref.getBoolean("first_so2support", true)) {
+            editWork = workList.initPreviewWork();
+            reDraw();
+            pref.edit().putBoolean("first_so2support", false).apply();
+        }
     }
 
     @Override
@@ -330,28 +336,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         srcAdapter = new ItemListAdapter(CalcActivity.this, this);
 
-        CalcItemData itemData = new CalcItemData();
-        itemData.id = 1;
-        itemData.num = 5;
-        itemData.breakProb = 100;
-        itemData.value = 90;
-        itemData.isTool = false;
-        itemData.catPosition = 0;
-        itemData.itemPosition = 0;
-        //editWork.getSrcList().add(itemData);
-
-        CalcItemData itemData2 = new CalcItemData();
-        itemData2.id = 15;
-        itemData2.num = 1;
-        itemData2.breakProb = 10;
-        itemData2.value = 2500;
-        itemData2.isTool = true;
-        itemData2.catPosition = 1;
-        itemData2.itemPosition = 1;
-        //editWork.getSrcList().add(itemData2);
-
-        srcAdapter.notifyDataSetChanged();
-
         srcListView.setAdapter(srcAdapter);
         //アイテムタップ時に編集画面を開く
         srcListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -366,18 +350,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         final ListView prodListView;
         prodListView = findViewById(R.id.prodList);
         prodAdapter = new ItemListAdapter(CalcActivity.this, this);
-
-        CalcItemData itemData = new CalcItemData();
-        itemData.id = 30;
-        itemData.num = 16;
-        itemData.breakProb = 100;
-        itemData.value = 180;
-        itemData.isTool = false;
-        itemData.catPosition = 2;
-        itemData.itemPosition = 0;
-        //editWork.getProdList().add(itemData);
-
-        prodAdapter.notifyDataSetChanged();
 
         prodListView.setAdapter(prodAdapter);
 
@@ -457,7 +429,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             eqText.setText(R.string.defaultEqu);
             GPHText.setText(R.string.defaultGPH);
         } else {
-            float tax = (float) ((prodSum - srcSum) * 0.1);
+            float tax = (float) ((prodSum) * 0.1);
             GPH = (prodSum - srcSum - tax) * 60.0 / taskMinute;
             eqText.setText(String.format(Locale.US, "{(成果:%,.1fG) － (原料:%,dG) － (税金:%,.1fG)} ÷ %.2f時間", prodSum, srcSum, tax, taskMinute / 60.0));
             GPHText.setText(String.format(Locale.US, "時給 %,.1f G/h", GPH));

@@ -53,7 +53,7 @@ public class WorkListAdapter extends ArrayAdapter<WorkData> {
             wageText.setText("時給:" + String.format(Locale.US, "%,.1fG", data.getWage()));
             // TODO:画像指定をglideにする
             //icon.setImageResource(imageIDs[data.getItem_id_for_icon() - 1]);
-            String fileName = "sprite_item2x_" + String.valueOf(DataManager.itemDataBase.getItemInt(data.getItem_id_for_icon() + 1, "image")) + ".png";
+            String fileName = "sprite_item2x_" + String.valueOf(DataManager.itemDataBase.getItemInt(data.getItem_id_for_icon(), "image")) + ".png";
             Glide.with(parent).load(Uri.parse("file:///android_asset/" + fileName)).into(icon);
             deleteImage.setImageResource(R.drawable.ic_delete_forever_black_24dp);
         }

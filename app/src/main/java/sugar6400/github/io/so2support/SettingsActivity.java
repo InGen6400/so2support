@@ -1,11 +1,8 @@
 package sugar6400.github.io.so2support;
 
 import android.annotation.TargetApi;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,7 +20,7 @@ import android.view.MenuItem;
 
 import java.util.Arrays;
 
-import sugar6400.github.io.so2support.datas.DataManager;
+import sugar6400.github.io.so2support.ui.WorkList;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -193,6 +190,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+                                    WorkList.Reset();
                                     restart();
                                 }
                             })

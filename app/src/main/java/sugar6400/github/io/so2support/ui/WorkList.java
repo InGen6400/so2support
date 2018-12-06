@@ -31,7 +31,7 @@ public class WorkList implements AdapterView.OnItemClickListener, WorkData.OnWor
     private CalcActivity calcActivity;
     public ToggleButton deleteToggle;
 
-    private SharedPreferences pref;
+    private static SharedPreferences pref;
     private SharedPreferences.Editor editor;
     private Gson gson;
     private static final String WORK_SAVE_KEY = "work_data";
@@ -113,6 +113,10 @@ public class WorkList implements AdapterView.OnItemClickListener, WorkData.OnWor
             calcActivity.loadWork(workData, position);
             calcActivity.showToast("「" + workData.getName() + "」を読み込んだよ～", Toast.LENGTH_SHORT);
         }
+    }
+
+    public static void Reset() {
+        pref.edit().clear().commit();
     }
 
     public WorkData getWork(int position) {

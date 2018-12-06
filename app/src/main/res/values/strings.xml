@@ -52,8 +52,8 @@
         <item>食物</item>
     </string-array>
 
-    <string name="offline_message">端末の価格で～た</string>
-    <string name="online_message">オンライン同期</string>
+    <string name="offline_message">前回の更新(キャッシュ読み込み)</string>
+    <string name="online_message">前回の更新</string>
 
     <string name="title_activity_settings">せって～</string>
     <string name="pref_header_general">一般的なや～つとか</string>
@@ -101,5 +101,6 @@
         <item>4</item>
     </string-array>
     <string name="pref_price_select_default">1</string>
+    <string name="nextSyncText">次の同期の予定時刻:</string>
 
 </resources>

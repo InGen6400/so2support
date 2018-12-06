@@ -63,15 +63,21 @@ public class DataManager implements SyncTimer.SyncTimerListener {
     private Date prevSyncDate;
     private SimpleDateFormat formatter;
     private TextView prevSyncTimeText;
+    private TextView nextSyncTimeText;
     private Toast completeToast;
 
-    public DataManager(Context c, ProgressBar inBar, final TextView prevSync) {
+    private String prevSyncFreq;
+    private boolean isPrevRealtimeOn;
+
+    public DataManager(Context c, ProgressBar inBar, TextView prevSync, TextView nextSync) {
         offlineMessage = c.getString(R.string.offline_message);
         onlineMessage = c.getString(R.string.online_message);
         isLoading = false;
+        prevSyncFreq = null;
         categories = c.getResources().getStringArray(R.array.categoryList);
 
         prevSyncTimeText = prevSync;
+        nextSyncTimeText = nextSync;
         progressBar = inBar;
 
         pref = PreferenceManager.getDefaultSharedPreferences(c);
@@ -115,6 +121,9 @@ public class DataManager implements SyncTimer.SyncTimerListener {
                     Log.w(TAG, "Error getting documents.", task.getException());
                 }
                 isLoading = false;
+                if (pref.getBoolean("isAutoSyncEnabled", true))
+                    timer.SetTimer();
+                setNextSyncText();
                 progressBar.setVisibility(View.GONE);
             }
         };
@@ -122,6 +131,13 @@ public class DataManager implements SyncTimer.SyncTimerListener {
         itemDataBase = new ItemDataBase(c);
         db = FirebaseFirestore.getInstance();
         timer = new SyncTimer(c, this);
+        if (pref.getBoolean("isAutoSyncEnabled", true) && isRealTime()) {
+            setupDocumentListeners();
+            isPrevRealtimeOn = true;
+        } else {
+            isPrevRealtimeOn = false;
+        }
+        setNextSyncText();
     }
 
     public boolean LoadPrices(boolean isSyncEnabled) {
@@ -216,6 +232,20 @@ public class DataManager implements SyncTimer.SyncTimerListener {
         prevSyncTimeText.setText(isCache ? offlineMessage + ": " + date : onlineMessage + ": " + date);
     }
 
+    private void setNextSyncText() {
+        String mes;
+        if (pref.getBoolean("isAutoSyncEnabled", true)) {
+            if (isRealTime()) {
+                mes = "次の同期: リアルタイム";
+            } else {
+                mes = "次の同期: " + timer.getNextSyncDate(formatter);
+            }
+        } else {
+            mes = "次の同期: 同期がOFFなんだ";
+        }
+        nextSyncTimeText.setText(mes);
+    }
+
 
     public ReceiveItem getReceiveItem(String id) {
         for (String key : prices.receive_items.keySet()) {
@@ -245,15 +275,29 @@ public class DataManager implements SyncTimer.SyncTimerListener {
 
     public void ReloadSync() {
         if (pref.getBoolean("isAutoSyncEnabled", true)) {
-            if (isRealTime()) {
+            boolean real = isRealTime();
+            if (real && !isPrevRealtimeOn) {
                 setupDocumentListeners();
                 timer.RemoveTimer();
-            } else {
+                prevSyncFreq = null;
+                isPrevRealtimeOn = true;
+            } else if (!real) {
                 removeDocumentListeners();
+                //周期が変わっていないならタイマー再セット
+                String freq = pref.getString("sync_freq", "15");
+                if (prevSyncFreq == null || !prevSyncFreq.equals(freq)) {
+                    timer.SetTimer();
+                    prevSyncFreq = pref.getString("sync_freq", "15");
+                }
+                isPrevRealtimeOn = false;
             }
         } else {
+            timer.RemoveTimer();
             Log.d(TAG, "同期OFF");
+            prevSyncFreq = null;
+            isPrevRealtimeOn = false;
         }
+        setNextSyncText();
     }
 
     @Override

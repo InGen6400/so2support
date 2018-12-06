@@ -92,7 +92,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         progressBar = findViewById(R.id.progressBar);
-        dataManager = new DataManager(this, progressBar, (TextView) findViewById(R.id.prevSyncTimeText));
+        dataManager = new DataManager(this, progressBar
+                , (TextView) findViewById(R.id.prevSyncTimeText)
+                , (TextView) findViewById(R.id.nextSyncText));
         workNameText = findViewById(R.id.work_name);
 
         eqText = findViewById(R.id.eqText);

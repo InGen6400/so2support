@@ -8,7 +8,6 @@ import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.TimeZone;
 
 public class SyncTimer {
 
@@ -22,16 +21,19 @@ public class SyncTimer {
         listener = callback;
         syncHandler = new Handler();
         pref = PreferenceManager.getDefaultSharedPreferences(c);
+        nextSyncTime = null;
         //リアルタイム同期でないならロードしてタイマーセット
-        if (!pref.getString("sync_freq", "15").equals("-1"))
+        if (pref.getBoolean("isAutoSyncEnabled", true)
+                && !pref.getString("sync_freq", "15").equals("-1"))
             LoadTimer();
     }
 
     public void LoadTimer() {
         long milliTimeUp = pref.getLong("SyncTimer", 15 * 1000 * 60)
-                - Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo")).getTimeInMillis();
+                - Calendar.getInstance().getTimeInMillis();
         if (milliTimeUp <= 0) {
             listener.OnSyncTimerTimeUp();
+            nextSyncTime = null;
         } else {
             SetTimer(milliTimeUp);
         }
@@ -43,6 +45,7 @@ public class SyncTimer {
 
     public void SetTimer(long milli_time) {
         if (milli_time <= 0) {
+            nextSyncTime = null;
             Log.w(TAG, "予期しない値あいたたい");
         } else {
             syncHandler.postDelayed(new Runnable() {
@@ -51,7 +54,7 @@ public class SyncTimer {
                     listener.OnSyncTimerTimeUp();
                 }
             }, milli_time);
-            nextSyncTime = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"));
+            nextSyncTime = Calendar.getInstance();
             nextSyncTime.add(Calendar.MILLISECOND, (int) milli_time);
             pref.edit().putLong("SyncTimer", nextSyncTime.getTimeInMillis()).apply();
             Log.d(TAG, "NextSync:" + nextSyncTime.getTime().toString());
@@ -59,11 +62,15 @@ public class SyncTimer {
     }
 
     public String getNextSyncDate(SimpleDateFormat format) {
-        return format.format(nextSyncTime);
+        if (nextSyncTime == null)
+            return "";
+        return format.format(nextSyncTime.getTime());
     }
 
     public void RemoveTimer() {
         syncHandler.removeCallbacksAndMessages(null);
+        nextSyncTime = null;
+        Log.d(TAG, "Stop Timer");
     }
 
     interface SyncTimerListener {

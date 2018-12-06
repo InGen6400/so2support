@@ -23,6 +23,8 @@ import android.view.MenuItem;
 
 import java.util.Arrays;
 
+import sugar6400.github.io.so2support.datas.DataManager;
+
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
  * handset devices, settings are presented as a single list. On tablets,
@@ -248,11 +250,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
         private void restart() {
             getFragmentManager().beginTransaction().remove(this).commit();
-            final Intent i = new Intent(getActivity(), CalcActivity.class);
-            final PendingIntent appStarter = PendingIntent.getActivity(getActivity(), 0, i, 0);
+            //final Intent i = new Intent(getActivity());
+            //final PendingIntent appStarter = PendingIntent.getActivity(getActivity(), 0, i, 0);
 
-            final AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, appStarter);
+            //final AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
+            //alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, appStarter);
 
             Process.killProcess(Process.myPid());
         }

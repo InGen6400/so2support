@@ -2,6 +2,7 @@ package sugar6400.github.io.so2support.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +10,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import sugar6400.github.io.so2support.R;
+import sugar6400.github.io.so2support.ui.GlideApp;
+import sugar6400.github.io.so2support.ui.MyGlideModule;
 
 public class CatAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
     private int layoutID;
     private int num_cat;
-    private int[] imageIDs;
 
     static class ViewHolder {
         TextView text;
@@ -28,13 +32,14 @@ public class CatAdapter extends BaseAdapter {
         layoutID = catLayoutId;
 
         this.num_cat = num_cat;
+        /*
         imageIDs = new int[num_cat];
 
         Resources res = c.getResources();
         for (int i = 0; i < num_cat; i++) {
             String imageFileName = "sprite_category2x_" + String.valueOf(i);
             imageIDs[i] = res.getIdentifier(imageFileName, "drawable", c.getPackageName());
-        }
+        }*/
     }
 
     @Override
@@ -67,7 +72,9 @@ public class CatAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.image.setImageResource(imageIDs[position]);
+//        holder.image.setImageResource(imageIDs[position]);
+        String fileName = "sprite_category2x_" + String.valueOf(position) + ".png";
+        Glide.with(parent).load(Uri.parse("file:///android_asset/" + fileName)).apply(MyGlideModule.iconOption).into(holder.image);
         holder.text.setText(convertView.getResources().getStringArray(R.array.categoryList)[position]);
 
         return convertView;

@@ -11,13 +11,15 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import sugar6400.github.io.so2support.CalcActivity;
 import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.container.CalcItemData;
 import sugar6400.github.io.so2support.datas.DataManager;
-import sugar6400.github.io.so2support.ui.GlideApp;
+import sugar6400.github.io.so2support.ui.MyGlideModule;
 
 //import static sugar6400.github.io.so2support.CalcActivity.imageIDs;
 
@@ -82,7 +84,7 @@ public class ItemListAdapter extends BaseAdapter implements ListAdapter {
         //Glide
         ImageView imageView = convertView.findViewById(R.id.itemImage);
         String fileName = "sprite_item2x_" + String.valueOf(calcActivity.dataManager.getItemElement(id, "image")) + ".png";
-        GlideApp.with(parent).load(Uri.parse("file:///android_asset/" + fileName)).into(imageView);
+        Glide.with(parent).load(Uri.parse("file:///android_asset/" + fileName)).apply(MyGlideModule.iconOption).into(imageView);
 
         ImageButton delButton = convertView.findViewById(R.id.itemDeleteButton);
         delButton.setTag(position);

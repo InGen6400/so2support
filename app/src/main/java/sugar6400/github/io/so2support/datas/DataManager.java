@@ -238,12 +238,12 @@ public class DataManager {
     }
 
     private boolean isRealtime(){
-        return pref.getLong("SyncTimer", 0) == 0;
+        return pref.getLong("SyncTimer", 15*1000*60) == 0;
     }
 
     private long getNextSyncTime() {
         if (pref.getBoolean("isAutoSyncEnabled", true)) {
-            return Math.max(pref.getLong("SyncTimer", 0) - Calendar.getInstance().getTimeInMillis(), 0);
+            return Math.max(pref.getLong("SyncTimer", 15*1000*60) - Calendar.getInstance().getTimeInMillis(), 0);
         }
         return 0;
     }

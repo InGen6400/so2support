@@ -19,8 +19,7 @@
         android:contentDescription="@string/itemicon"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/sprite_item2x_1" />
+        android:scaleType="fitCenter" />
 
     <TextView
         android:id="@+id/spinner_text"

@@ -3,6 +3,7 @@ package sugar6400.github.io.so2support;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -189,8 +190,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+                                    //削除してからアプリを終了するため同期実行
                                     PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
                                     WorkList.Reset();
+                                    SharedPreferences internal = getActivity().getSharedPreferences("material_showcaseview_prefs", 0);
+                                    internal.edit().clear().commit();
                                     restart();
                                 }
                             })

@@ -83,7 +83,7 @@ public class DataManager implements SyncTimer.SyncTimerListener {
 
         pref = PreferenceManager.getDefaultSharedPreferences(c);
         sync_pref = c.getSharedPreferences(RPEF_NAME, Context.MODE_PRIVATE);
-        toastOK = true;
+        toastOK = false;
         completeToast = Toast.makeText(c, "で～たを取得したん(>ω<)", Toast.LENGTH_LONG);
 
         prices = new ReceiveData();

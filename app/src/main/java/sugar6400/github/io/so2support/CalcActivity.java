@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -43,8 +44,12 @@ import sugar6400.github.io.so2support.datas.DataManager;
 import sugar6400.github.io.so2support.ui.MyGlideModule;
 import sugar6400.github.io.so2support.ui.PopupItemEdit;
 import sugar6400.github.io.so2support.ui.WorkList;
+import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
-public class CalcActivity extends AppCompatActivity implements View.OnClickListener {
+public class CalcActivity extends AppCompatActivity implements View.OnClickListener, IShowcaseListener {
 
     //原料リスト
     //public static int[] imageIDs;
@@ -78,10 +83,13 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText newNameText;
     private AlertDialog newNameDialog;
+    private SharedPreferences pref;
+    private Toolbar myToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_calc);
 
         //初回起動時にはイントロ画面が表示される
         showIntroActivity();
@@ -89,10 +97,9 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         TypefaceProvider.registerDefaultIconSets();
 
-        setContentView(R.layout.activity_calc);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
         progressBar = findViewById(R.id.progressBar);
         dataManager = new DataManager(this, progressBar
                 , (TextView) findViewById(R.id.prevSyncTimeText)
@@ -102,7 +109,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         eqText = findViewById(R.id.eqText);
         GPHText = findViewById(R.id.GPH);
 
-        Toolbar myToolbar = findViewById(R.id.tool_bar);
+        myToolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
         workList = new WorkList(this, (ListView) findViewById(R.id.test));
 
@@ -201,13 +208,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        //初回起動時に実行
-        if (pref.getBoolean("first_so2support", true)) {
-            editWork = workList.initPreviewWork();
-            dataManager.setToastOK(false);
-            reDraw();
-            pref.edit().putBoolean("first_so2support", false).apply();
-        }
     }
 
     @Override
@@ -221,6 +221,53 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onRestart() {
         super.onRestart();
+        //初回起動時に実行
+        if (pref.getBoolean("first_so2support", true) && !pref.getBoolean("firstStart", true)) {
+            editWork = workList.initPreviewWork();
+            dataManager.setToastOK(false);
+            reDraw();
+            pref.edit().putBoolean("first_so2support", false).apply();
+
+
+            ShowcaseConfig config = new ShowcaseConfig();
+            //config.setDelay(100);
+            MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this);
+            sequence.setConfig(config);
+            sequence.addSequenceItem(
+                    new MaterialShowcaseView.Builder(this)
+                            .setTarget(findViewById(R.id.openTimePicker))
+                            .setContentText("ちゅーとりあるなんだ．\nここから作業時間を設定できるんだの")
+                            .setDismissText("OK！  ")
+                            .build());
+            sequence.addSequenceItem(
+                    new MaterialShowcaseView.Builder(this)
+                            .setTarget(findViewById(R.id.srcPopupButton))
+                            .setContentText("そしてここからアイテムを追加できるんだ～")
+                            .setDismissText("へぇ～")
+                            .build());
+            ArrayList<View> list = myToolbar.getTouchables();
+            sequence.addSequenceItem(
+                    new MaterialShowcaseView.Builder(this)
+                            .setTarget(list.get(4))
+                            .setContentText("ここをタップするか，画面左からのスライドで作業リストを表示．変更があったら自動で保存されるよ～")
+                            .setDismissText("なるほど～  ")
+                            .build());
+            sequence.addSequenceItem(
+                    new MaterialShowcaseView.Builder(this)
+                            .setTarget(findViewById(R.id.new_work_button))
+                            .setContentText("ここから作業を追加できるから，どんどん追加して自分の作業リストを充実させちゃおう！")
+                            .setDismissText("ヽ(^o^)丿おー  ")
+                            .build());
+            MaterialShowcaseView showcaseView = new MaterialShowcaseView.Builder(this)
+                    .setTarget(findViewById(R.id.prevSyncTimeText))
+                    .setContentText("あ，ちなみにこのアプリは価格データをネットから落としてきてるんだ．落とすタイミングとか，そんな機能イラネって人は歯車のアイコンから設定してね！じゃぁね～ﾉｼ")
+                    .setDismissText("じゃぁね～ﾉｼ  ")
+                    .setDismissOnTouch(true)
+                    .build();
+            showcaseView.addShowcaseListener(this);
+            sequence.addSequenceItem(showcaseView);
+            sequence.start();
+        }
         if (dataManager != null) {
             dataManager.ReloadSync();
             dataManager.setToastOK(true);
@@ -272,6 +319,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
                     //  Apply changes
                     e.apply();
+
                 }
             }
         });
@@ -321,17 +369,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
                 0, 0, true);
     }
 
-    /*
-        private void initImageID() {
-            imageIDs = new int[JsonMaxDataNum];
-
-            Resources res = getResources();
-            for (int i = 0; i < imageIDs.length; i++) {
-                String imageFileName = "sprite_item2x_" + String.valueOf(dataManager.getItemElement(i + 1, "image"));
-                imageIDs[i] = res.getIdentifier(imageFileName, "drawable", getPackageName());
-            }
-        }
-    */
     private void initItemListView() {
         final ListView srcListView;
         srcListView = findViewById(R.id.srcList);
@@ -519,4 +556,14 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         mainToast.show();
     }
 
+    @Override
+    public void onShowcaseDisplayed(MaterialShowcaseView materialShowcaseView) {
+
+    }
+
+    @Override
+    public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
+        dataManager.setToastOK(true);
+        Log.d("asdasd", "dissmiss:");
+    }
 }

@@ -18,7 +18,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -564,6 +563,5 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
         dataManager.setToastOK(true);
-        Log.d("asdasd", "dissmiss:");
     }
 }

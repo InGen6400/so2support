@@ -1,3678 +1,3759 @@
 {
-  "1": {
-    "category": "原料",
-    "item_id": 1,
-    "limit": 1000,
-    "name": "薬草",
-    "scale": "本",
-    "image": 1,
-    "sort": 217
-  },
-  "2": {
-    "category": "原料",
-    "item_id": 2,
-    "limit": 1000,
-    "name": "獣の皮",
-    "scale": "枚",
-    "image": 95,
-    "sort": 256
-  },
-  "3": {
-    "category": "原料",
-    "item_id": 3,
-    "limit": 1000,
-    "name": "木の枝",
-    "scale": "本",
-    "image": 246,
-    "sort": 218
-  },
-  "4": {
-    "category": "原料",
-    "item_id": 4,
-    "limit": 100,
-    "name": "丸太",
-    "scale": "本",
-    "image": 383,
-    "sort": 219
-  },
-  "5": {
-    "category": "原料",
-    "item_id": 5,
-    "limit": 1000,
-    "name": "鉄鉱石",
-    "scale": "kg",
-    "image": 166,
-    "sort": 228
-  },
-  "6": {
-    "category": "原料",
-    "item_id": 6,
-    "limit": 1000,
-    "name": "ミスリル原石",
-    "scale": "kg",
-    "image": 405,
-    "sort": 229
-  },
-  "7": {
-    "category": "原料",
-    "item_id": 7,
-    "limit": 1000,
-    "name": "オリハルコン原石",
-    "scale": "kg",
-    "image": 416,
-    "sort": 230
-  },
-  "8": {
-    "category": "原料",
-    "item_id": 8,
-    "limit": 1000,
-    "name": "魔石",
-    "scale": "個",
-    "image": 188,
-    "sort": 226
-  },
-  "9": {
-    "category": "地図",
-    "item_id": 9,
-    "limit": 50,
-    "name": "近くの鉱山への地図",
-    "scale": "枚",
-    "image": 209,
-    "sort": 46
-  },
-  "11": {
-    "category": "本",
-    "item_id": 11,
-    "limit": 100,
-    "name": "宝くじ",
-    "scale": "枚",
-    "image": 44,
-    "sort": 393
-  },
-  "12": {
-    "category": "地図",
-    "item_id": 12,
-    "limit": 50,
-    "name": "近くの山への地図",
-    "scale": "枚",
-    "image": 46,
-    "sort": 46
-  },
-  "14": {
-    "category": "地図",
-    "item_id": 14,
-    "limit": 50,
-    "name": "剣市への地図",
-    "scale": "枚",
-    "image": 149,
-    "sort": 47
-  },
-  "15": {
-    "category": "本",
-    "item_id": 15,
-    "limit": 50,
-    "name": "薬調合入門",
-    "scale": "冊",
-    "image": 134,
-    "sort": 29
-  },
-  "16": {
-    "category": "本",
-    "item_id": 16,
-    "limit": 50,
-    "name": "革細工入門",
-    "scale": "冊",
-    "image": 9,
-    "sort": 30
-  },
-  "17": {
-    "category": "本",
-    "item_id": 17,
-    "limit": 50,
-    "name": "木工細工入門",
-    "scale": "冊",
-    "image": 191,
-    "sort": 31
-  },
-  "18": {
-    "category": "アクセサリ",
-    "item_id": 18,
-    "limit": 50,
-    "name": "鍛冶屋の技術",
-    "scale": "技",
-    "image": 73,
-    "sort": 1
-  },
-  "19": {
-    "category": "アクセサリ",
-    "item_id": 19,
-    "limit": 50,
-    "name": "魔法の知識",
-    "scale": "知識",
-    "image": 214,
-    "sort": 2
-  },
-  "20": {
-    "category": "本",
-    "item_id": 20,
-    "limit": 50,
-    "name": "剣の鍛え方",
-    "scale": "冊",
-    "image": 116,
-    "sort": 33
-  },
-  "21": {
-    "category": "本",
-    "item_id": 21,
-    "limit": 50,
-    "name": "盾の作り方",
-    "scale": "冊",
-    "image": 236,
-    "sort": 34
-  },
-  "22": {
-    "category": "本",
-    "item_id": 22,
-    "limit": 50,
-    "name": "鎧の作り方",
-    "scale": "冊",
-    "image": 96,
-    "sort": 35
-  },
-  "23": {
-    "category": "本",
-    "item_id": 23,
-    "limit": 50,
-    "name": "杖の作り方",
-    "scale": "冊",
-    "image": 255,
-    "sort": 36
-  },
-  "24": {
-    "category": "アクセサリ",
-    "item_id": 24,
-    "limit": 50,
-    "name": "目利きの真髄",
-    "scale": "真髄",
-    "image": 34,
-    "sort": 3
-  },
-  "25": {
-    "category": "生物",
-    "item_id": 25,
-    "limit": 100,
-    "name": "ミノタウロス♀",
-    "scale": "頭",
-    "image": 265,
-    "sort": 78
-  },
-  "26": {
-    "category": "食物",
-    "item_id": 26,
-    "limit": 1000,
-    "name": "ミノ牛乳",
-    "scale": "本",
-    "image": 283,
-    "sort": 130
-  },
-  "27": {
-    "category": "食物",
-    "item_id": 27,
-    "limit": 10,
-    "name": "七面鳥の丸焼き",
-    "scale": "皿",
-    "image": 161,
-    "sort": 386
-  },
-  "28": {
-    "category": "食物",
-    "item_id": 28,
-    "limit": 10,
-    "name": "こだわりのラム酒",
-    "scale": "本",
-    "image": 298,
-    "sort": 387
-  },
-  "29": {
-    "category": "アクセサリ",
-    "item_id": 29,
-    "limit": 10,
-    "name": "おしゃれブーツ",
-    "scale": "足",
-    "image": 15,
-    "sort": 385
-  },
-  "30": {
-    "category": "薬",
-    "item_id": 30,
-    "limit": 1000,
-    "name": "ポーション",
-    "scale": "本",
-    "image": 267,
-    "sort": 67
-  },
-  "31": {
-    "category": "薬",
-    "item_id": 31,
-    "limit": 1000,
-    "name": "ハイポーション",
-    "scale": "本",
-    "image": 323,
-    "sort": 68
-  },
-  "32": {
-    "category": "薬",
-    "item_id": 32,
-    "limit": 500,
-    "name": "エーテル",
-    "scale": "本",
-    "image": 310,
-    "sort": 69
-  },
-  "33": {
-    "category": "薬",
-    "item_id": 33,
-    "limit": 500,
-    "name": "ハイエーテル",
-    "scale": "本",
-    "image": 79,
-    "sort": 70
-  },
-  "34": {
-    "category": "薬",
-    "item_id": 34,
-    "limit": 100,
-    "name": "エリ草",
-    "scale": "本",
-    "image": 345,
-    "sort": 75
-  },
-  "35": {
-    "category": "食物",
-    "item_id": 35,
-    "limit": 100,
-    "name": "ミノヨーグルト",
-    "scale": "個",
-    "image": 80,
-    "sort": 131
-  },
-  "36": {
-    "category": "食物",
-    "item_id": 36,
-    "limit": 100,
-    "name": "ミノチーズ",
-    "scale": "個",
-    "image": 311,
-    "sort": 132
-  },
-  "38": {
-    "category": "アクセサリ",
-    "item_id": 38,
-    "limit": 50,
-    "name": "解体屋の魂",
-    "scale": "魂",
-    "image": 39,
-    "sort": 4
-  },
-  "40": {
-    "category": "剣",
-    "item_id": 40,
-    "limit": 100,
-    "name": "木刀",
-    "scale": "本",
-    "image": 384,
-    "sort": 265
-  },
-  "41": {
-    "category": "剣",
-    "item_id": 41,
-    "limit": 100,
-    "name": "鉄の剣",
-    "scale": "本",
-    "image": 395,
-    "sort": 266
-  },
-  "42": {
-    "category": "剣",
-    "item_id": 42,
-    "limit": 100,
-    "name": "鋼鉄の剣",
-    "scale": "本",
-    "image": 396,
-    "sort": 267
-  },
-  "43": {
-    "category": "剣",
-    "item_id": 43,
-    "limit": 100,
-    "name": "ミスリルの剣",
-    "scale": "本",
-    "image": 19,
-    "sort": 268
-  },
-  "44": {
-    "category": "剣",
-    "item_id": 44,
-    "limit": 100,
-    "name": "オリハルコンの剣",
-    "scale": "本",
-    "image": 40,
-    "sort": 269
-  },
-  "45": {
-    "category": "盾",
-    "item_id": 45,
-    "limit": 100,
-    "name": "革の盾",
-    "scale": "枚",
-    "image": 61,
-    "sort": 298
-  },
-  "46": {
-    "category": "盾",
-    "item_id": 46,
-    "limit": 100,
-    "name": "木の盾",
-    "scale": "枚",
-    "image": 82,
-    "sort": 299
-  },
-  "47": {
-    "category": "盾",
-    "item_id": 47,
-    "limit": 100,
-    "name": "鉄の盾",
-    "scale": "枚",
-    "image": 103,
-    "sort": 300
-  },
-  "48": {
-    "category": "盾",
-    "item_id": 48,
-    "limit": 100,
-    "name": "鋼鉄の盾",
-    "scale": "枚",
-    "image": 124,
-    "sort": 301
-  },
-  "49": {
-    "category": "盾",
-    "item_id": 49,
-    "limit": 100,
-    "name": "ミスリルの盾",
-    "scale": "枚",
-    "image": 145,
-    "sort": 302
-  },
-  "50": {
-    "category": "盾",
-    "item_id": 50,
-    "limit": 100,
-    "name": "オリハルコンの盾",
-    "scale": "枚",
-    "image": 187,
-    "sort": 303
-  },
-  "51": {
-    "category": "鎧",
-    "item_id": 51,
-    "limit": 100,
-    "name": "革の胸当て",
-    "scale": "領",
-    "image": 355,
-    "sort": 308
-  },
-  "52": {
-    "category": "鎧",
-    "item_id": 52,
-    "limit": 100,
-    "name": "木の胸当て",
-    "scale": "領",
-    "image": 376,
-    "sort": 309
-  },
-  "53": {
-    "category": "鎧",
-    "item_id": 53,
-    "limit": 100,
-    "name": "鉄の鎧",
-    "scale": "領",
-    "image": 397,
-    "sort": 310
-  },
-  "54": {
-    "category": "鎧",
-    "item_id": 54,
-    "limit": 100,
-    "name": "鋼鉄の鎧",
-    "scale": "領",
-    "image": 399,
-    "sort": 311
-  },
-  "55": {
-    "category": "鎧",
-    "item_id": 55,
-    "limit": 100,
-    "name": "ミスリルの鎧",
-    "scale": "領",
-    "image": 400,
-    "sort": 312
-  },
-  "56": {
-    "category": "鎧",
-    "item_id": 56,
-    "limit": 100,
-    "name": "オリハルコンの鎧",
-    "scale": "領",
-    "image": 401,
-    "sort": 313
-  },
-  "57": {
-    "category": "杖",
-    "item_id": 57,
-    "limit": 100,
-    "name": "木の杖",
-    "scale": "本",
-    "image": 402,
-    "sort": 277
-  },
-  "58": {
-    "category": "杖",
-    "item_id": 58,
-    "limit": 100,
-    "name": "鉄の杖",
-    "scale": "本",
-    "image": 403,
-    "sort": 278
-  },
-  "59": {
-    "category": "杖",
-    "item_id": 59,
-    "limit": 100,
-    "name": "鋼鉄の杖",
-    "scale": "本",
-    "image": 404,
-    "sort": 279
-  },
-  "60": {
-    "category": "杖",
-    "item_id": 60,
-    "limit": 100,
-    "name": "ミスリルの杖",
-    "scale": "本",
-    "image": 406,
-    "sort": 280
-  },
-  "61": {
-    "category": "杖",
-    "item_id": 61,
-    "limit": 100,
-    "name": "オリハルコンの杖",
-    "scale": "本",
-    "image": 407,
-    "sort": 281
-  },
-  "65": {
-    "category": "本",
-    "item_id": 65,
-    "limit": 1,
-    "name": "禁断の書",
-    "scale": "冊",
-    "image": 411,
-    "sort": 42
-  },
-  "66": {
-    "category": "本",
-    "item_id": 66,
-    "limit": 50,
-    "name": "装飾細工入門",
-    "scale": "冊",
-    "image": 412,
-    "sort": 32
-  },
-  "67": {
-    "category": "アクセサリ",
-    "item_id": 67,
-    "limit": 100,
-    "name": "鉄のピアス",
-    "scale": "点",
-    "image": 413,
-    "sort": 329
-  },
-  "68": {
-    "category": "アクセサリ",
-    "item_id": 68,
-    "limit": 100,
-    "name": "ミスリルの指輪",
-    "scale": "点",
-    "image": 414,
-    "sort": 330
-  },
-  "69": {
-    "category": "アクセサリ",
-    "item_id": 69,
-    "limit": 100,
-    "name": "オリハルコンの腕輪",
-    "scale": "点",
-    "image": 415,
-    "sort": 331
-  },
-  "70": {
-    "category": "アクセサリ",
-    "item_id": 70,
-    "limit": 10,
-    "name": "NAYUTAの首飾り",
-    "scale": "点",
-    "image": 417,
-    "sort": 332
-  },
-  "71": {
-    "category": "道具",
-    "item_id": 71,
-    "limit": 100,
-    "name": "革製装備一式",
-    "scale": "組",
-    "image": 418,
-    "sort": 57
-  },
-  "72": {
-    "category": "道具",
-    "item_id": 72,
-    "limit": 100,
-    "name": "木製装備一式",
-    "scale": "組",
-    "image": 20,
-    "sort": 58
-  },
-  "73": {
-    "category": "道具",
-    "item_id": 73,
-    "limit": 100,
-    "name": "鉄製装備一式",
-    "scale": "組",
-    "image": 41,
-    "sort": 59
-  },
-  "74": {
-    "category": "道具",
-    "item_id": 74,
-    "limit": 100,
-    "name": "鋼鉄製装備一式",
-    "scale": "組",
-    "image": 62,
-    "sort": 60
-  },
-  "75": {
-    "category": "道具",
-    "item_id": 75,
-    "limit": 100,
-    "name": "ミスリル製装備一式",
-    "scale": "組",
-    "image": 83,
-    "sort": 61
-  },
-  "76": {
-    "category": "道具",
-    "item_id": 76,
-    "limit": 100,
-    "name": "オリハルコン製装備一式",
-    "scale": "組",
-    "image": 104,
-    "sort": 62
-  },
-  "77": {
-    "category": "道具",
-    "item_id": 77,
-    "limit": 10,
-    "name": "お祝いセット",
-    "scale": "セット",
-    "image": 125,
-    "sort": 389
-  },
-  "79": {
-    "category": "道具",
-    "item_id": 79,
-    "limit": 1000,
-    "name": "ギフト券",
-    "scale": "枚",
-    "image": 167,
-    "sort": 391
-  },
-  "101": {
-    "category": "地図",
-    "item_id": 101,
-    "limit": 50,
-    "name": "地図[Lv1]",
-    "scale": "枚",
-    "image": 21,
-    "sort": 356
-  },
-  "102": {
-    "category": "地図",
-    "item_id": 102,
-    "limit": 50,
-    "name": "地図[Lv2]",
-    "scale": "枚",
-    "image": 22,
-    "sort": 357
-  },
-  "103": {
-    "category": "地図",
-    "item_id": 103,
-    "limit": 50,
-    "name": "地図[Lv3]",
-    "scale": "枚",
-    "image": 2,
-    "sort": 358
-  },
-  "104": {
-    "category": "地図",
-    "item_id": 104,
-    "limit": 50,
-    "name": "地図[Lv4]",
-    "scale": "枚",
-    "image": 23,
-    "sort": 359
-  },
-  "105": {
-    "category": "地図",
-    "item_id": 105,
-    "limit": 50,
-    "name": "地図[Lv5]",
-    "scale": "枚",
-    "image": 42,
-    "sort": 360
-  },
-  "106": {
-    "category": "食物",
-    "item_id": 106,
-    "limit": 100,
-    "name": "魂の水",
-    "scale": "瓶",
-    "image": 43,
-    "sort": 99
-  },
-  "110": {
-    "category": "剣",
-    "item_id": 110,
-    "limit": 100,
-    "name": "短剣",
-    "scale": "本",
-    "image": 3,
-    "sort": 274
-  },
-  "111": {
-    "category": "杖",
-    "item_id": 111,
-    "limit": 100,
-    "name": "いかずちの杖",
-    "scale": "本",
-    "image": 24,
-    "sort": 288
-  },
-  "112": {
-    "category": "鎧",
-    "item_id": 112,
-    "limit": 100,
-    "name": "布の服",
-    "scale": "着",
-    "image": 45,
-    "sort": 317
-  },
-  "113": {
-    "category": "アクセサリ",
-    "item_id": 113,
-    "limit": 100,
-    "name": "疾風の籠手",
-    "scale": "双",
-    "image": 63,
-    "sort": 338
-  },
-  "114": {
-    "category": "アクセサリ",
-    "item_id": 114,
-    "limit": 100,
-    "name": "ハチマキ",
-    "scale": "本",
-    "image": 64,
-    "sort": 343
-  },
-  "115": {
-    "category": "生物",
-    "item_id": 115,
-    "limit": 10,
-    "name": "気まぐれな妖精",
-    "scale": "妖精",
-    "image": 65,
-    "sort": 77
-  },
-  "116": {
-    "category": "アクセサリ",
-    "item_id": 116,
-    "limit": 100,
-    "name": "ダイス",
-    "scale": "個",
-    "image": 4,
-    "sort": 347
-  },
-  "119": {
-    "category": "アクセサリ",
-    "item_id": 119,
-    "limit": 100,
-    "name": "水晶の首飾り",
-    "scale": "本",
-    "image": 25,
-    "sort": 344
-  },
-  "120": {
-    "category": "アクセサリ",
-    "item_id": 120,
-    "limit": 100,
-    "name": "祝福の耳飾り",
-    "scale": "点",
-    "image": 67,
-    "sort": 345
-  },
-  "121": {
-    "category": "アクセサリ",
-    "item_id": 121,
-    "limit": 10,
-    "name": "魔女の指輪",
-    "scale": "本",
-    "image": 105,
-    "sort": 346
-  },
-  "122": {
-    "category": "アクセサリ",
-    "item_id": 122,
-    "limit": 100,
-    "name": "盗賊の籠手",
-    "scale": "双",
-    "image": 69,
-    "sort": 339
-  },
-  "123": {
-    "category": "アクセサリ",
-    "item_id": 123,
-    "limit": 100,
-    "name": "盗賊のお守り",
-    "scale": "体",
-    "image": 90,
-    "sort": 348
-  },
-  "124": {
-    "category": "鎧",
-    "item_id": 124,
-    "limit": 100,
-    "name": "魔術師のローブ",
-    "scale": "着",
-    "image": 111,
-    "sort": 319
-  },
-  "125": {
-    "category": "鎧",
-    "item_id": 125,
-    "limit": 100,
-    "name": "ホビットの服",
-    "scale": "着",
-    "image": 126,
-    "sort": 318
-  },
-  "126": {
-    "category": "盾",
-    "item_id": 126,
-    "limit": 100,
-    "name": "報復の盾",
-    "scale": "枚",
-    "image": 127,
-    "sort": 307
-  },
-  "127": {
-    "category": "剣",
-    "item_id": 127,
-    "limit": 1,
-    "name": "とっておきのハンマー",
-    "scale": "本",
-    "image": 128,
-    "sort": 289
-  },
-  "128": {
-    "category": "アクセサリ",
-    "item_id": 128,
-    "limit": 100,
-    "name": "エルフの弓",
-    "scale": "挺",
-    "image": 129,
-    "sort": 342
-  },
-  "129": {
-    "category": "剣",
-    "item_id": 129,
-    "limit": 5,
-    "name": "エクスカリパー",
-    "scale": "本",
-    "image": 130,
-    "sort": 291
-  },
-  "130": {
-    "category": "剣",
-    "item_id": 130,
-    "limit": 100,
-    "name": "血の剣",
-    "scale": "本",
-    "image": 132,
-    "sort": 275
-  },
-  "131": {
-    "category": "杖",
-    "item_id": 131,
-    "limit": 100,
-    "name": "炎の杖",
-    "scale": "本",
-    "image": 7,
-    "sort": 286
-  },
-  "132": {
-    "category": "杖",
-    "item_id": 132,
-    "limit": 100,
-    "name": "月の杖",
-    "scale": "本",
-    "image": 28,
-    "sort": 287
-  },
-  "133": {
-    "category": "剣",
-    "item_id": 133,
-    "limit": 1,
-    "name": "エクスカリバー",
-    "scale": "振",
-    "image": 49,
-    "sort": 292
-  },
-  "134": {
-    "category": "剣",
-    "item_id": 134,
-    "limit": 1,
-    "name": "フィン・マックールの剣",
-    "scale": "振",
-    "image": 70,
-    "sort": 290
-  },
-  "135": {
-    "category": "原料",
-    "item_id": 135,
-    "limit": 1000,
-    "name": "顔料",
-    "scale": "皿",
-    "image": 91,
-    "sort": 261
-  },
-  "136": {
-    "category": "原料",
-    "item_id": 136,
-    "limit": 1000,
-    "name": "紙束",
-    "scale": "組",
-    "image": 112,
-    "sort": 28
-  },
-  "137": {
-    "category": "道具",
-    "item_id": 137,
-    "limit": 500,
-    "name": "ペン",
-    "scale": "本",
-    "image": 133,
-    "sort": 27
-  },
-  "138": {
-    "category": "原料",
-    "item_id": 138,
-    "limit": 1000,
-    "name": "鳥の羽根",
-    "scale": "本",
-    "image": 147,
-    "sort": 223
-  },
-  "139": {
-    "category": "原料",
-    "item_id": 139,
-    "limit": 1000,
-    "name": "カイコの繭",
-    "scale": "束",
-    "image": 148,
-    "sort": 258
-  },
-  "140": {
-    "category": "生物",
-    "item_id": 140,
-    "limit": 200,
-    "name": "たまご",
-    "scale": "ミミたまご",
-    "image": 150,
-    "sort": 85
-  },
-  "141": {
-    "category": "生物",
-    "item_id": 141,
-    "limit": 100,
-    "name": "こつこつミミ星人",
-    "scale": "ミミ",
-    "image": 151,
-    "sort": 86
-  },
-  "142": {
-    "category": "生物",
-    "item_id": 142,
-    "limit": 100,
-    "name": "へいたいミミ星人",
-    "scale": "ミミ",
-    "image": 152,
-    "sort": 87
-  },
-  "143": {
-    "category": "生物",
-    "item_id": 143,
-    "limit": 100,
-    "name": "さくせんミミ星人",
-    "image": 154,
-    "scale": "ミミ",
-    "sort": 88
-  },
-  "144": {
-    "category": "生物",
-    "item_id": 144,
-    "limit": 100,
-    "name": "きまぐれミミ星人",
-    "image": 8,
-    "scale": "ミミ",
-    "sort": 89
-  },
-  "145": {
-    "category": "生物",
-    "item_id": 145,
-    "limit": 100,
-    "name": "ぶるじょあミミ星人",
-    "image": 29,
-    "scale": "ミミ",
-    "sort": 90
-  },
-  "146": {
-    "category": "食物",
-    "item_id": 146,
-    "limit": 1000,
-    "name": "砂糖水",
-    "scale": "cc",
-    "image": 50,
-    "sort": 98
-  },
-  "147": {
-    "category": "原料",
-    "item_id": 147,
-    "limit": 1000,
-    "name": "羊毛",
-    "scale": "kg",
-    "image": 71,
-    "sort": 259
-  },
-  "148": {
-    "category": "原料",
-    "item_id": 148,
-    "limit": 1000,
-    "name": "糸",
-    "scale": "束",
-    "image": 92,
-    "sort": 262
-  },
-  "149": {
-    "category": "原料",
-    "item_id": 149,
-    "limit": 1000,
-    "name": "布",
-    "scale": "巻",
-    "image": 113,
-    "sort": 263
-  },
-  "150": {
-    "category": "道具",
-    "item_id": 150,
-    "limit": 100,
-    "name": "木製食器",
-    "scale": "組",
-    "image": 155,
-    "sort": 182
-  },
-  "151": {
-    "category": "道具",
-    "item_id": 151,
-    "limit": 100,
-    "name": "木製家具",
-    "scale": "組",
-    "image": 168,
-    "sort": 183
-  },
-  "152": {
-    "category": "生物",
-    "item_id": 152,
-    "limit": 100,
-    "name": "カイコ",
-    "scale": "頭",
-    "image": 169,
-    "sort": 79
-  },
-  "153": {
-    "category": "生物",
-    "item_id": 153,
-    "limit": 100,
-    "name": "黄金の羊",
-    "scale": "頭",
-    "image": 170,
-    "sort": 80
-  },
-  "154": {
-    "category": "食物",
-    "item_id": 154,
-    "limit": 1000,
-    "name": "獣の肉",
-    "scale": "塊",
-    "image": 171,
-    "sort": 119
-  },
-  "155": {
-    "category": "原料",
-    "item_id": 155,
-    "limit": 1000,
-    "name": "獣の骨",
-    "scale": "個",
-    "image": 172,
-    "sort": 257
-  },
-  "156": {
-    "category": "食物",
-    "item_id": 156,
-    "limit": 1000,
-    "name": "小麦",
-    "scale": "束",
-    "image": 173,
-    "sort": 103
-  },
-  "157": {
-    "category": "食物",
-    "item_id": 157,
-    "limit": 200,
-    "name": "食パン",
-    "scale": "斤",
-    "image": 174,
-    "sort": 142
-  },
-  "158": {
-    "category": "道具",
-    "item_id": 158,
-    "limit": 50,
-    "name": "ハンターボウ",
-    "scale": "本",
-    "image": 175,
-    "sort": 19
-  },
-  "159": {
-    "category": "道具",
-    "item_id": 159,
-    "limit": 50,
-    "name": "釣り具",
-    "scale": "組",
-    "image": 176,
-    "sort": 18
-  },
-  "160": {
-    "category": "食物",
-    "item_id": 160,
-    "limit": 500,
-    "name": "魚",
-    "scale": "匹",
-    "image": 30,
-    "sort": 125
-  },
-  "161": {
-    "category": "生物",
-    "item_id": 161,
-    "limit": 10,
-    "name": "ヌシ",
-    "scale": "ヌシ",
-    "image": 51,
-    "sort": 82
-  },
-  "162": {
-    "category": "食物",
-    "item_id": 162,
-    "limit": 1000,
-    "name": "米",
-    "scale": "kg",
-    "image": 72,
-    "sort": 102
-  },
-  "163": {
-    "category": "食物",
-    "item_id": 163,
-    "limit": 200,
-    "name": "日替わり定食",
-    "scale": "膳",
-    "image": 93,
-    "sort": 156
-  },
-  "164": {
-    "category": "食物",
-    "item_id": 164,
-    "limit": 1000,
-    "name": "キャベツ",
-    "scale": "玉",
-    "image": 114,
-    "sort": 104
-  },
-  "165": {
-    "category": "食物",
-    "item_id": 165,
-    "limit": 1000,
-    "name": "トウモコロシ",
-    "scale": "本",
-    "image": 135,
-    "sort": 105
-  },
-  "166": {
-    "category": "食物",
-    "item_id": 166,
-    "limit": 1000,
-    "name": "にんじん",
-    "scale": "本",
-    "image": 156,
-    "sort": 106
-  },
-  "167": {
-    "category": "道具",
-    "item_id": 167,
-    "limit": 50,
-    "name": "乳鉢",
-    "scale": "個",
-    "image": 177,
-    "sort": 5
-  },
-  "168": {
-    "category": "道具",
-    "item_id": 168,
-    "limit": 50,
-    "name": "鍛冶ハンマー",
-    "scale": "本",
-    "image": 189,
-    "sort": 17
-  },
-  "169": {
-    "category": "道具",
-    "item_id": 169,
-    "limit": 50,
-    "name": "なめし道具",
-    "scale": "組",
-    "image": 190,
-    "sort": 15
-  },
-  "170": {
-    "category": "道具",
-    "item_id": 170,
-    "limit": 50,
-    "name": "炉",
-    "scale": "基",
-    "image": 192,
-    "sort": 25
-  },
-  "171": {
-    "category": "道具",
-    "item_id": 171,
-    "limit": 50,
-    "name": "裁縫セット",
-    "scale": "組",
-    "image": 193,
-    "sort": 22
-  },
-  "172": {
-    "category": "道具",
-    "item_id": 172,
-    "limit": 50,
-    "name": "紡績機織道具",
-    "scale": "組",
-    "image": 194,
-    "sort": 23
-  },
-  "173": {
-    "category": "地図",
-    "item_id": 173,
-    "limit": 50,
-    "name": "近所の地図",
-    "scale": "枚",
-    "image": 195,
-    "sort": 44
-  },
-  "174": {
-    "category": "原料",
-    "item_id": 174,
-    "limit": 1000,
-    "name": "水",
-    "scale": "杯",
-    "image": 196,
-    "sort": 212
-  },
-  "175": {
-    "category": "原料",
-    "item_id": 175,
-    "limit": 1000,
-    "name": "鉄インゴット",
-    "scale": "本",
-    "image": 197,
-    "sort": 242
-  },
-  "176": {
-    "category": "原料",
-    "item_id": 176,
-    "limit": 1000,
-    "name": "ミスリルインゴット",
-    "scale": "本",
-    "image": 198,
-    "sort": 243
-  },
-  "177": {
-    "category": "原料",
-    "item_id": 177,
-    "limit": 1000,
-    "name": "オリハルコンインゴット",
-    "scale": "本",
-    "image": 10,
-    "sort": 244
-  },
-  "178": {
-    "category": "原料",
-    "item_id": 178,
-    "limit": 1000,
-    "name": "革",
-    "scale": "巻",
-    "image": 31,
-    "sort": 264
-  },
-  "179": {
-    "category": "地図",
-    "item_id": 179,
-    "limit": 50,
-    "name": "スライムの巣への地図",
-    "scale": "枚",
-    "image": 52,
-    "sort": 48
-  },
-  "180": {
-    "category": "食物",
-    "item_id": 180,
-    "limit": 200,
-    "name": "獣肉の燻製",
-    "scale": "個",
-    "image": 94,
-    "sort": 124
-  },
-  "181": {
-    "category": "原料",
-    "item_id": 181,
-    "limit": 1000,
-    "name": "色石",
-    "scale": "kg",
-    "image": 115,
-    "sort": 225
-  },
-  "182": {
-    "category": "原料",
-    "item_id": 182,
-    "limit": 1000,
-    "name": "色草",
-    "scale": "本",
-    "image": 136,
-    "sort": 222
-  },
-  "183": {
-    "category": "道具",
-    "item_id": 183,
-    "limit": 50,
-    "name": "はさみ",
-    "scale": "挺",
-    "image": 157,
-    "sort": 7
-  },
-  "184": {
-    "category": "道具",
-    "item_id": 184,
-    "limit": 50,
-    "name": "ノミ",
-    "scale": "本",
-    "image": 178,
-    "sort": 10
-  },
-  "185": {
-    "category": "食物",
-    "item_id": 185,
-    "limit": 200,
-    "name": "食用獣",
-    "scale": "体",
-    "image": 199,
-    "sort": 118
-  },
-  "186": {
-    "category": "道具",
-    "item_id": 186,
-    "limit": 50,
-    "name": "包丁",
-    "scale": "本",
-    "image": 210,
-    "sort": 9
-  },
-  "187": {
-    "category": "道具",
-    "item_id": 187,
-    "limit": 50,
-    "name": "クワ",
-    "scale": "本",
-    "image": 211,
-    "sort": 13
-  },
-  "188": {
-    "category": "食物",
-    "item_id": 188,
-    "limit": 1000,
-    "name": "塩",
-    "scale": "kg",
-    "image": 212,
-    "sort": 97
-  },
-  "189": {
-    "category": "道具",
-    "item_id": 189,
-    "limit": 50,
-    "name": "石窯",
-    "scale": "基",
-    "image": 213,
-    "sort": 26
-  },
-  "190": {
-    "category": "道具",
-    "item_id": 190,
-    "limit": 50,
-    "name": "ナイフ",
-    "scale": "本",
-    "image": 215,
-    "sort": 8
-  },
-  "191": {
-    "category": "道具",
-    "item_id": 191,
-    "limit": 50,
-    "name": "かまど",
-    "scale": "基",
-    "image": 216,
-    "sort": 24
-  },
-  "192": {
-    "category": "原料",
-    "item_id": 192,
-    "limit": 1000,
-    "name": "薪",
-    "scale": "束",
-    "image": 217,
-    "sort": 260
-  },
-  "193": {
-    "category": "原料",
-    "item_id": 193,
-    "limit": 1000,
-    "name": "石",
-    "scale": "塊",
-    "image": 218,
-    "sort": 224
-  },
-  "194": {
-    "category": "道具",
-    "item_id": 194,
-    "limit": 50,
-    "name": "砥石",
-    "scale": "挺",
-    "image": 219,
-    "sort": 6
-  },
-  "195": {
-    "category": "道具",
-    "item_id": 195,
-    "limit": 50,
-    "name": "斧",
-    "scale": "本",
-    "image": 220,
-    "sort": 12
-  },
-  "196": {
-    "category": "道具",
-    "item_id": 196,
-    "limit": 50,
-    "name": "カッパーマトック",
-    "scale": "本",
-    "image": 11,
-    "sort": 14
-  },
-  "197": {
-    "category": "道具",
-    "item_id": 197,
-    "limit": 50,
-    "name": "オーバーオール",
-    "scale": "着",
-    "image": 32,
-    "sort": 20
-  },
-  "198": {
-    "category": "道具",
-    "item_id": 198,
-    "limit": 50,
-    "name": "ワークコート",
-    "scale": "着",
-    "image": 53,
-    "sort": 21
-  },
-  "199": {
-    "category": "道具",
-    "item_id": 199,
-    "limit": 50,
-    "name": "木槌",
-    "scale": "本",
-    "image": 74,
-    "sort": 16
-  },
-  "200": {
-    "category": "地図",
-    "item_id": 200,
-    "limit": 50,
-    "name": "ミノタウロス♀の巣への地図",
-    "scale": "枚",
-    "image": 137,
-    "sort": 53
-  },
-  "201": {
-    "category": "地図",
-    "item_id": 201,
-    "limit": 50,
-    "name": "ゴブリンの巣への地図",
-    "scale": "枚",
-    "image": 158,
-    "sort": 49
-  },
-  "202": {
-    "category": "地図",
-    "item_id": 202,
-    "limit": 50,
-    "name": "オークの巣への地図",
-    "scale": "枚",
-    "image": 179,
-    "sort": 50
-  },
-  "203": {
-    "category": "地図",
-    "item_id": 203,
-    "limit": 50,
-    "name": "トロールの巣への地図",
-    "scale": "枚",
-    "image": 200,
-    "sort": 51
-  },
-  "204": {
-    "category": "地図",
-    "item_id": 204,
-    "limit": 50,
-    "name": "ドラゴンの巣への地図",
-    "scale": "枚",
-    "image": 221,
-    "sort": 52
-  },
-  "205": {
-    "category": "本",
-    "item_id": 205,
-    "limit": 50,
-    "name": "絵本",
-    "scale": "冊",
-    "image": 231,
-    "sort": 37
-  },
-  "206": {
-    "category": "アクセサリ",
-    "item_id": 206,
-    "limit": 100,
-    "name": "カラーストーンブローチ",
-    "scale": "点",
-    "image": 232,
-    "sort": 335
-  },
-  "207": {
-    "category": "剣",
-    "item_id": 207,
-    "limit": 100,
-    "name": "カラフルソード",
-    "image": 233,
-    "scale": "本",
-    "sort": 273
-  },
-  "208": {
-    "category": "食物",
-    "item_id": 208,
-    "limit": 500,
-    "name": "すああま",
-    "scale": "個",
-    "image": 234,
-    "sort": 163
-  },
-  "209": {
-    "category": "食物",
-    "item_id": 209,
-    "limit": 500,
-    "name": "ツナポコ",
-    "scale": "袋",
-    "image": 235,
-    "sort": 164
-  },
-  "210": {
-    "category": "杖",
-    "item_id": 210,
-    "limit": 100,
-    "name": "ファンシーステッキ",
-    "scale": "ステッキ",
-    "image": 237,
-    "sort": 285
-  },
-  "211": {
-    "category": "アクセサリ",
-    "item_id": 211,
-    "limit": 100,
-    "name": "レザーグローブ",
-    "scale": "双",
-    "image": 238,
-    "sort": 337
-  },
-  "212": {
-    "category": "食物",
-    "item_id": 212,
-    "limit": 500,
-    "name": "ハーブティー",
-    "scale": "杯",
-    "image": 239,
-    "sort": 134
-  },
-  "213": {
-    "category": "道具",
-    "item_id": 213,
-    "limit": 100,
-    "name": "はたき",
-    "scale": "本",
-    "image": 240,
-    "sort": 185
-  },
-  "214": {
-    "category": "盾",
-    "item_id": 214,
-    "limit": 100,
-    "name": "ボーンシールド",
-    "scale": "枚",
-    "image": 241,
-    "sort": 306
-  },
-  "215": {
-    "category": "鎧",
-    "item_id": 215,
-    "limit": 100,
-    "name": "ボーンメイル",
-    "scale": "領",
-    "image": 242,
-    "sort": 316
-  },
-  "216": {
-    "category": "原料",
-    "item_id": 216,
-    "limit": 1000,
-    "name": "砂",
-    "scale": "kg",
-    "image": 12,
-    "sort": 214
-  },
-  "217": {
-    "category": "原料",
-    "item_id": 217,
-    "limit": 1000,
-    "name": "土",
-    "scale": "kg",
-    "image": 33,
-    "sort": 215
-  },
-  "218": {
-    "category": "原料",
-    "item_id": 218,
-    "limit": 1000,
-    "name": "氷",
-    "scale": "kg",
-    "image": 54,
-    "sort": 213
-  },
-  "219": {
-    "category": "原料",
-    "item_id": 219,
-    "limit": 1000,
-    "name": "ガラス",
-    "scale": "枚",
-    "image": 75,
-    "sort": 227
-  },
-  "220": {
-    "category": "原料",
-    "item_id": 220,
-    "limit": 1000,
-    "name": "肥料",
-    "scale": "袋",
-    "image": 117,
-    "sort": 216
-  },
-  "221": {
-    "category": "原料",
-    "item_id": 221,
-    "limit": 1000,
-    "name": "ビン",
-    "scale": "瓶",
-    "image": 138,
-    "sort": 204
-  },
-  "222": {
-    "category": "食物",
-    "item_id": 222,
-    "limit": 1000,
-    "name": "サンフラワー",
-    "scale": "本",
-    "image": 159,
-    "sort": 112
-  },
-  "223": {
-    "category": "食物",
-    "item_id": 223,
-    "limit": 500,
-    "name": "イカ",
-    "scale": "杯",
-    "image": 180,
-    "sort": 126
-  },
-  "224": {
-    "category": "食物",
-    "item_id": 224,
-    "limit": 500,
-    "name": "タコ",
-    "scale": "杯",
-    "image": 201,
-    "sort": 127
-  },
-  "225": {
-    "category": "食物",
-    "item_id": 225,
-    "limit": 500,
-    "name": "アユ",
-    "scale": "尾",
-    "image": 222,
-    "sort": 128
-  },
-  "226": {
-    "category": "生物",
-    "item_id": 226,
-    "limit": 500,
-    "name": "金魚",
-    "scale": "匹",
-    "image": 243,
-    "sort": 81
-  },
-  "227": {
-    "category": "食物",
-    "item_id": 227,
-    "limit": 200,
-    "name": "ステーキ肉",
-    "scale": "塊",
-    "image": 252,
-    "sort": 120
-  },
-  "228": {
-    "category": "食物",
-    "item_id": 228,
-    "limit": 200,
-    "name": "マンガ肉",
-    "scale": "本",
-    "image": 253,
-    "sort": 121
-  },
-  "229": {
-    "category": "食物",
-    "item_id": 229,
-    "limit": 200,
-    "name": "ハンバーグ",
-    "scale": "個",
-    "image": 254,
-    "sort": 157
-  },
-  "230": {
-    "category": "食物",
-    "item_id": 230,
-    "limit": 200,
-    "name": "カレーパン",
-    "scale": "個",
-    "image": 256,
-    "sort": 144
-  },
-  "231": {
-    "category": "食物",
-    "item_id": 231,
-    "limit": 200,
-    "name": "カレー",
-    "scale": "人分",
-    "image": 257,
-    "sort": 158
-  },
-  "232": {
-    "category": "食物",
-    "item_id": 232,
-    "limit": 200,
-    "name": "野菜サラダ",
-    "scale": "皿",
-    "image": 258,
-    "sort": 162
-  },
-  "233": {
-    "category": "食物",
-    "item_id": 233,
-    "limit": 200,
-    "name": "フランスパン",
-    "scale": "本",
-    "image": 259,
-    "sort": 145
-  },
-  "234": {
-    "category": "食物",
-    "item_id": 234,
-    "limit": 200,
-    "name": "シーフードカレー",
-    "scale": "人分",
-    "image": 260,
-    "sort": 160
-  },
-  "235": {
-    "category": "食物",
-    "item_id": 235,
-    "limit": 200,
-    "name": "ホットドッグ",
-    "scale": "本",
-    "image": 261,
-    "sort": 161
-  },
-  "236": {
-    "category": "食物",
-    "item_id": 236,
-    "limit": 200,
-    "name": "謎肉",
-    "scale": "個",
-    "image": 262,
-    "sort": 122
-  },
-  "237": {
-    "category": "食物",
-    "item_id": 237,
-    "limit": 200,
-    "name": "ソーセージ",
-    "scale": "本",
-    "image": 263,
-    "sort": 123
-  },
-  "238": {
-    "category": "食物",
-    "item_id": 238,
-    "limit": 200,
-    "name": "コッペパン",
-    "scale": "個",
-    "image": 264,
-    "sort": 143
-  },
-  "239": {
-    "category": "アクセサリ",
-    "item_id": 239,
-    "limit": 200,
-    "name": "ポプリ",
-    "scale": "個",
-    "image": 13,
-    "sort": 203
-  },
-  "240": {
-    "category": "食物",
-    "item_id": 240,
-    "limit": 200,
-    "name": "イカ焼き",
-    "scale": "本",
-    "image": 55,
-    "sort": 165
-  },
-  "241": {
-    "category": "食物",
-    "item_id": 241,
-    "limit": 200,
-    "name": "タコ焼き",
-    "scale": "皿",
-    "image": 76,
-    "sort": 166
-  },
-  "242": {
-    "category": "食物",
-    "item_id": 242,
-    "limit": 200,
-    "name": "アユの塩焼き",
-    "scale": "本",
-    "image": 97,
-    "sort": 167
-  },
-  "243": {
-    "category": "食物",
-    "item_id": 243,
-    "limit": 200,
-    "name": "にぎりずし",
-    "scale": "貫",
-    "image": 118,
-    "sort": 169
-  },
-  "244": {
-    "category": "アクセサリ",
-    "item_id": 244,
-    "limit": 100,
-    "name": "壺",
-    "scale": "壺",
-    "image": 139,
-    "sort": 190
-  },
-  "245": {
-    "category": "アクセサリ",
-    "item_id": 245,
-    "limit": 200,
-    "name": "湯飲み",
-    "scale": "個",
-    "image": 160,
-    "sort": 191
-  },
-  "246": {
-    "category": "アクセサリ",
-    "item_id": 246,
-    "limit": 200,
-    "name": "絵付け皿",
-    "scale": "枚",
-    "image": 181,
-    "sort": 192
-  },
-  "247": {
-    "category": "アクセサリ",
-    "item_id": 247,
-    "limit": 100,
-    "name": "たぬきの置物",
-    "scale": "縁起物",
-    "image": 202,
-    "sort": 193
-  },
-  "248": {
-    "category": "アクセサリ",
-    "item_id": 248,
-    "limit": 100,
-    "name": "招き猫の置物",
-    "scale": "縁起物",
-    "image": 223,
-    "sort": 194
-  },
-  "249": {
-    "category": "アクセサリ",
-    "item_id": 249,
-    "limit": 200,
-    "name": "ビー玉",
-    "scale": "個",
-    "image": 244,
-    "sort": 206
-  },
-  "250": {
-    "category": "食物",
-    "item_id": 250,
-    "limit": 1000,
-    "name": "サボテン",
-    "scale": "本",
-    "image": 273,
-    "sort": 111
-  },
-  "251": {
-    "category": "アクセサリ",
-    "item_id": 251,
-    "limit": 100,
-    "name": "ランプ",
-    "scale": "個",
-    "image": 274,
-    "sort": 209
-  },
-  "252": {
-    "category": "アクセサリ",
-    "item_id": 252,
-    "limit": 100,
-    "name": "フラワーポット",
-    "scale": "個",
-    "image": 275,
-    "sort": 207
-  },
-  "253": {
-    "category": "アクセサリ",
-    "item_id": 253,
-    "limit": 100,
-    "name": "ビードロ",
-    "scale": "個",
-    "image": 276,
-    "sort": 208
-  },
-  "254": {
-    "category": "食物",
-    "item_id": 254,
-    "limit": 200,
-    "name": "かき氷",
-    "scale": "杯",
-    "image": 277,
-    "sort": 171
-  },
-  "255": {
-    "category": "食物",
-    "item_id": 255,
-    "limit": 200,
-    "name": "アイスクリーム",
-    "scale": "個",
-    "image": 278,
-    "sort": 172
-  },
-  "256": {
-    "category": "鎧",
-    "item_id": 256,
-    "limit": 100,
-    "name": "質素な服",
-    "scale": "着",
-    "image": 279,
-    "sort": 320
-  },
-  "257": {
-    "category": "鎧",
-    "item_id": 257,
-    "limit": 100,
-    "name": "作業着",
-    "scale": "着",
-    "image": 280,
-    "sort": 321
-  },
-  "258": {
-    "category": "鎧",
-    "item_id": 258,
-    "limit": 100,
-    "name": "パージャーマー",
-    "scale": "着",
-    "image": 281,
-    "sort": 322
-  },
-  "259": {
-    "category": "鎧",
-    "item_id": 259,
-    "limit": 100,
-    "name": "着物",
-    "scale": "枚",
-    "image": 282,
-    "sort": 323
-  },
-  "260": {
-    "category": "食物",
-    "item_id": 260,
-    "limit": 1000,
-    "name": "コーヒー豆",
-    "scale": "袋",
-    "image": 284,
-    "sort": 113
-  },
-  "261": {
-    "category": "食物",
-    "item_id": 261,
-    "limit": 1000,
-    "name": "みかん",
-    "scale": "個",
-    "image": 285,
-    "sort": 108
-  },
-  "262": {
-    "category": "食物",
-    "item_id": 262,
-    "limit": 500,
-    "name": "コーヒー",
-    "scale": "杯",
-    "image": 286,
-    "sort": 135
-  },
-  "263": {
-    "category": "食物",
-    "item_id": 263,
-    "limit": 500,
-    "name": "ウインナーコーヒー",
-    "scale": "杯",
-    "image": 14,
-    "sort": 136
-  },
-  "264": {
-    "category": "食物",
-    "item_id": 264,
-    "limit": 500,
-    "name": "プォンジュース",
-    "scale": "本",
-    "image": 35,
-    "sort": 138
-  },
-  "265": {
-    "category": "食物",
-    "item_id": 265,
-    "limit": 200,
-    "name": "ワカサギの天ぷら",
-    "scale": "皿",
-    "image": 56,
-    "sort": 168
-  },
-  "266": {
-    "category": "食物",
-    "item_id": 266,
-    "limit": 500,
-    "name": "ワカサギ",
-    "scale": "匹",
-    "image": 77,
-    "sort": 129
-  },
-  "267": {
-    "category": "原料",
-    "item_id": 267,
-    "limit": 500,
-    "name": "サンフラワーオイル",
-    "scale": "本",
-    "image": 98,
-    "sort": 100
-  },
-  "268": {
-    "category": "道具",
-    "item_id": 268,
-    "limit": 50,
-    "name": "鍋",
-    "scale": "個",
-    "image": 119,
-    "sort": 11
-  },
-  "269": {
-    "category": "アクセサリ",
-    "item_id": 269,
-    "limit": 100,
-    "name": "ギター",
-    "scale": "本",
-    "image": 140,
-    "sort": 186
-  },
-  "270": {
-    "category": "アクセサリ",
-    "item_id": 270,
-    "limit": 100,
-    "name": "笛",
-    "scale": "本",
-    "image": 182,
-    "sort": 187
-  },
-  "271": {
-    "category": "アクセサリ",
-    "item_id": 271,
-    "limit": 100,
-    "name": "太鼓",
-    "scale": "台",
-    "image": 203,
-    "sort": 189
-  },
-  "272": {
-    "category": "アクセサリ",
-    "item_id": 272,
-    "limit": 100,
-    "name": "木琴",
-    "scale": "台",
-    "image": 224,
-    "sort": 188
-  },
-  "273": {
-    "category": "本",
-    "item_id": 273,
-    "limit": 100,
-    "name": "楽譜",
-    "scale": "冊",
-    "image": 245,
-    "sort": 38
-  },
-  "274": {
-    "category": "道具",
-    "item_id": 274,
-    "limit": 100,
-    "name": "スワンボート",
-    "scale": "機",
-    "image": 266,
-    "sort": 197
-  },
-  "275": {
-    "category": "道具",
-    "item_id": 275,
-    "limit": 100,
-    "name": "オフトゥン",
-    "scale": "枚",
-    "image": 287,
-    "sort": 324
-  },
-  "276": {
-    "category": "道具",
-    "item_id": 276,
-    "limit": 100,
-    "name": "メィクラ",
-    "scale": "個",
-    "image": 0,
-    "sort": 325
-  },
-  "277": {
-    "category": "道具",
-    "item_id": 277,
-    "limit": 100,
-    "name": "安眠セット",
-    "scale": "組",
-    "image": 295,
-    "sort": 327
-  },
-  "278": {
-    "category": "本",
-    "item_id": 278,
-    "limit": 50,
-    "name": "グリモワール",
-    "scale": "冊",
-    "image": 296,
-    "sort": 39
-  },
-  "279": {
-    "category": "生物",
-    "item_id": 279,
-    "limit": 100,
-    "name": "ゴーレム",
-    "scale": "体",
-    "image": 297,
-    "sort": 92
-  },
-  "280": {
-    "category": "薬",
-    "item_id": 280,
-    "limit": 100,
-    "name": "キュアポーション",
-    "scale": "本",
-    "image": 299,
-    "sort": 71
-  },
-  "281": {
-    "category": "薬",
-    "item_id": 281,
-    "limit": 100,
-    "name": "パワーポーション",
-    "scale": "本",
-    "image": 300,
-    "sort": 74
-  },
-  "282": {
-    "category": "薬",
-    "item_id": 282,
-    "limit": 100,
-    "name": "マインドポーション",
-    "scale": "本",
-    "image": 301,
-    "sort": 72
-  },
-  "283": {
-    "category": "薬",
-    "item_id": 283,
-    "limit": 100,
-    "name": "レジストポーション",
-    "scale": "本",
-    "image": 302,
-    "sort": 73
-  },
-  "284": {
-    "category": "原料",
-    "item_id": 284,
-    "limit": 1000,
-    "name": "ブラッディウム原石",
-    "scale": "kg",
-    "image": 303,
-    "sort": 231
-  },
-  "285": {
-    "category": "原料",
-    "item_id": 285,
-    "limit": 1000,
-    "name": "ブラッディウムインゴット",
-    "scale": "本",
-    "image": 304,
-    "sort": 245
-  },
-  "286": {
-    "category": "剣",
-    "item_id": 286,
-    "limit": 100,
-    "name": "ブラッディウムソード",
-    "scale": "本",
-    "image": 305,
-    "sort": 270
-  },
-  "287": {
-    "category": "鎧",
-    "item_id": 287,
-    "limit": 100,
-    "name": "ブラッディウムプレート",
-    "scale": "領",
-    "image": 306,
-    "sort": 314
-  },
-  "288": {
-    "category": "盾",
-    "item_id": 288,
-    "limit": 100,
-    "name": "ブラッディウムシールド",
-    "scale": "枚",
-    "image": 307,
-    "sort": 304
-  },
-  "289": {
-    "category": "杖",
-    "item_id": 289,
-    "limit": 100,
-    "name": "ブラッディウムロッド",
-    "scale": "本",
-    "image": 308,
-    "sort": 282
-  },
-  "290": {
-    "category": "道具",
-    "item_id": 290,
-    "limit": 100,
-    "name": "ブラッディウム製装備一式",
-    "scale": "組",
-    "image": 36,
-    "sort": 63
-  },
-  "291": {
-    "category": "地図",
-    "item_id": 291,
-    "limit": 50,
-    "name": "ヴァンパイアの巣への地図",
-    "scale": "枚",
-    "image": 57,
-    "sort": 54
-  },
-  "292": {
-    "category": "地図",
-    "item_id": 292,
-    "limit": 50,
-    "name": "地図[Lv6]",
-    "scale": "枚",
-    "image": 78,
-    "sort": 361
-  },
-  "293": {
-    "category": "アクセサリ",
-    "item_id": 293,
-    "limit": 10,
-    "name": "YUIKAの首飾り",
-    "scale": "点",
-    "image": 99,
-    "sort": 333
-  },
-  "294": {
-    "category": "剣",
-    "item_id": 294,
-    "limit": 1,
-    "name": "村正",
-    "scale": "振",
-    "image": 120,
-    "sort": 297
-  },
-  "295": {
-    "category": "剣",
-    "item_id": 295,
-    "limit": 5,
-    "name": "虎徹",
-    "scale": "振",
-    "image": 141,
-    "sort": 296
-  },
-  "296": {
-    "category": "剣",
-    "item_id": 296,
-    "limit": 10,
-    "name": "ドゥルハーケン",
-    "scale": "挺",
-    "image": 162,
-    "sort": 293
-  },
-  "297": {
-    "category": "剣",
-    "item_id": 297,
-    "limit": 10,
-    "name": "ヴァルキリーランス",
-    "scale": "本",
-    "image": 183,
-    "sort": 294
-  },
-  "298": {
-    "category": "剣",
-    "item_id": 298,
-    "limit": 10,
-    "name": "サイクロプスの棍棒",
-    "scale": "本",
-    "image": 204,
-    "sort": 295
-  },
-  "299": {
-    "category": "原料",
-    "item_id": 299,
-    "limit": 10,
-    "name": "龍の鱗",
-    "scale": "鱗",
-    "image": 225,
-    "sort": 354
-  },
-  "300": {
-    "category": "原料",
-    "item_id": 300,
-    "limit": 10,
-    "name": "ユニコーンの角",
-    "scale": "角",
-    "image": 288,
-    "sort": 355
-  },
-  "301": {
-    "category": "アクセサリ",
-    "item_id": 301,
-    "limit": 10,
-    "name": "ブラッディティアーズ",
-    "scale": "粒",
-    "image": 309,
-    "sort": 353
-  },
-  "302": {
-    "category": "剣",
-    "item_id": 302,
-    "limit": 100,
-    "name": "ボーンブレイド",
-    "scale": "本",
-    "image": 315,
-    "sort": 272
-  },
-  "303": {
-    "category": "杖",
-    "item_id": 303,
-    "limit": 100,
-    "name": "ボーンワンド",
-    "scale": "本",
-    "image": 316,
-    "sort": 284
-  },
-  "304": {
-    "category": "道具",
-    "item_id": 304,
-    "limit": 100,
-    "name": "ボーン装備一式",
-    "scale": "組",
-    "image": 317,
-    "sort": 65
-  },
-  "305": {
-    "category": "原料",
-    "item_id": 305,
-    "limit": 1000,
-    "name": "パプリカの種",
-    "scale": "粒",
-    "image": 318,
-    "sort": 114
-  },
-  "306": {
-    "category": "食物",
-    "item_id": 306,
-    "limit": 1000,
-    "name": "パプリカの実",
-    "scale": "個",
-    "image": 319,
-    "sort": 115
-  },
-  "307": {
-    "category": "アクセサリ",
-    "item_id": 307,
-    "limit": 100,
-    "name": "パプリカマンの兜",
-    "scale": "かぶり物",
-    "image": 320,
-    "sort": 349
-  },
-  "308": {
-    "category": "食物",
-    "item_id": 308,
-    "limit": 200,
-    "name": "パプリカのケーキ",
-    "scale": "個",
-    "image": 321,
-    "sort": 174
-  },
-  "309": {
-    "category": "食物",
-    "item_id": 309,
-    "limit": 200,
-    "name": "パプリカのクッキー",
-    "scale": "個",
-    "image": 322,
-    "sort": 175
-  },
-  "310": {
-    "category": "アクセサリ",
-    "item_id": 310,
-    "limit": 100,
-    "name": "パプリカマント",
-    "scale": "マント",
-    "image": 324,
-    "sort": 350
-  },
-  "311": {
-    "category": "食物",
-    "item_id": 311,
-    "limit": 1000,
-    "name": "キャンデー",
-    "scale": "個",
-    "image": 325,
-    "sort": 173
-  },
-  "312": {
-    "category": "食物",
-    "item_id": 312,
-    "limit": 200,
-    "name": "パプリカのキャンデー",
-    "scale": "個",
-    "image": 326,
-    "sort": 176
-  },
-  "313": {
-    "category": "道具",
-    "item_id": 313,
-    "limit": 1,
-    "name": "パプリカの看板",
-    "scale": "個",
-    "image": 327,
-    "sort": 379
-  },
-  "314": {
-    "category": "食物",
-    "item_id": 314,
-    "limit": 100,
-    "name": "ヌシ酒",
-    "scale": "本",
-    "image": 328,
-    "sort": 388
-  },
-  "315": {
-    "category": "地図",
-    "item_id": 315,
-    "limit": 50,
-    "name": "スカルドラゴンの巣への地図",
-    "scale": "枚",
-    "image": 329,
-    "sort": 55
-  },
-  "316": {
-    "category": "原料",
-    "item_id": 316,
-    "limit": 1000,
-    "name": "アダマンチウム原石",
-    "scale": "kg",
-    "image": 330,
-    "sort": 232
-  },
-  "317": {
-    "category": "原料",
-    "item_id": 317,
-    "limit": 1000,
-    "name": "アダマンチウムインゴット",
-    "scale": "本",
-    "image": 16,
-    "sort": 246
-  },
-  "318": {
-    "category": "食物",
-    "item_id": 318,
-    "limit": 100,
-    "name": "イカの塩辛",
-    "scale": "壺",
-    "image": 37,
-    "sort": 170
-  },
-  "319": {
-    "category": "アクセサリ",
-    "item_id": 319,
-    "limit": 5,
-    "name": "立派な石像",
-    "scale": "体",
-    "image": 58,
-    "sort": 195
-  },
-  "320": {
-    "category": "アクセサリ",
-    "item_id": 320,
-    "limit": 200,
-    "name": "レザーサンダル",
-    "scale": "足",
-    "image": 100,
-    "sort": 340
-  },
-  "321": {
-    "category": "生物",
-    "item_id": 321,
-    "limit": 200,
-    "name": "フタツバチ",
-    "scale": "匹",
-    "image": 121,
-    "sort": 83
-  },
-  "322": {
-    "category": "道具",
-    "item_id": 322,
-    "limit": 100,
-    "name": "ハチの巣箱",
-    "scale": "箱",
-    "image": 142,
-    "sort": 184
-  },
-  "323": {
-    "category": "食物",
-    "item_id": 323,
-    "limit": 100,
-    "name": "ハチミツ",
-    "scale": "瓶",
-    "image": 163,
-    "sort": 101
-  },
-  "324": {
-    "category": "食物",
-    "item_id": 324,
-    "limit": 500,
-    "name": "りんご",
-    "scale": "玉",
-    "image": 184,
-    "sort": 109
-  },
-  "325": {
-    "category": "食物",
-    "item_id": 325,
-    "limit": 200,
-    "name": "甘口カレー",
-    "scale": "人分",
-    "image": 205,
-    "sort": 159
-  },
-  "326": {
-    "category": "本",
-    "item_id": 326,
-    "limit": 100,
-    "name": "生物図鑑",
-    "scale": "冊",
-    "image": 226,
-    "sort": 41
-  },
-  "327": {
-    "category": "原料",
-    "item_id": 327,
-    "limit": 200,
-    "name": "宝石貝",
-    "image": 247,
-    "scale": "枚",
-    "sort": 239
-  },
-  "328": {
-    "category": "アクセサリ",
-    "item_id": 328,
-    "limit": 200,
-    "name": "エレガントバッグ",
-    "scale": "点",
-    "image": 268,
-    "sort": 336
-  },
-  "329": {
-    "category": "アクセサリ",
-    "item_id": 329,
-    "limit": 200,
-    "name": "ピンクジェムの首飾り",
-    "scale": "点",
-    "image": 289,
-    "sort": 334
-  },
-  "330": {
-    "category": "道具",
-    "item_id": 330,
-    "limit": 200,
-    "name": "抱きメィクラ",
-    "scale": "個",
-    "image": 331,
-    "sort": 326
-  },
-  "331": {
-    "category": "アクセサリ",
-    "item_id": 331,
-    "limit": 5,
-    "name": "絢爛な石像",
-    "scale": "体",
-    "image": 36,
-    "sort": 196
-  },
-  "332": {
-    "category": "道具",
-    "item_id": 332,
-    "limit": 1,
-    "name": "絢爛な石像の看板",
-    "scale": "枚",
-    "image": 337,
-    "sort": 380
-  },
-  "333": {
-    "category": "アクセサリ",
-    "item_id": 333,
-    "limit": 200,
-    "name": "木の実飾り",
-    "scale": "個",
-    "image": 338,
-    "sort": 198
-  },
-  "334": {
-    "category": "アクセサリ",
-    "item_id": 334,
-    "limit": 200,
-    "name": "ベル",
-    "scale": "個",
-    "image": 339,
-    "sort": 199
-  },
-  "335": {
-    "category": "アクセサリ",
-    "item_id": 335,
-    "limit": 200,
-    "name": "リース",
-    "scale": "個",
-    "image": 340,
-    "sort": 200
-  },
-  "336": {
-    "category": "原料",
-    "item_id": 336,
-    "limit": 100,
-    "name": "とんがった木",
-    "scale": "本",
-    "image": 341,
-    "sort": 220
-  },
-  "337": {
-    "category": "アクセサリ",
-    "item_id": 337,
-    "limit": 50,
-    "name": "飾りツリー",
-    "scale": "本",
-    "image": 342,
-    "sort": 201
-  },
-  "338": {
-    "category": "アクセサリ",
-    "item_id": 338,
-    "limit": 200,
-    "name": "ふわふわ帽子",
-    "scale": "枚",
-    "image": 343,
-    "sort": 351
-  },
-  "339": {
-    "category": "アクセサリ",
-    "item_id": 339,
-    "limit": 200,
-    "name": "もこもこブーツ",
-    "scale": "足",
-    "image": 344,
-    "sort": 352
-  },
-  "340": {
-    "category": "生物",
-    "item_id": 340,
-    "limit": 100,
-    "name": "スノーマン",
-    "scale": "人",
-    "image": 346,
-    "sort": 93
-  },
-  "341": {
-    "category": "道具",
-    "item_id": 341,
-    "limit": 1,
-    "name": "飾りツリーの看板",
-    "scale": "枚",
-    "image": 347,
-    "sort": 381
-  },
-  "342": {
-    "category": "道具",
-    "item_id": 342,
-    "limit": 1,
-    "name": "帽子の看板",
-    "scale": "枚",
-    "image": 348,
-    "sort": 382
-  },
-  "343": {
-    "category": "道具",
-    "item_id": 343,
-    "limit": 1,
-    "name": "スノーマンの看板",
-    "scale": "枚",
-    "image": 349,
-    "sort": 383
-  },
-  "344": {
-    "category": "食物",
-    "item_id": 344,
-    "limit": 200,
-    "name": "ブッシュ・ド・モエル",
-    "scale": "本",
-    "image": 350,
-    "sort": 177
-  },
-  "345": {
-    "category": "食物",
-    "item_id": 345,
-    "limit": 100,
-    "name": "豪華なケーキ",
-    "scale": "ホール",
-    "image": 351,
-    "sort": 178
-  },
-  "346": {
-    "category": "食物",
-    "item_id": 346,
-    "limit": 100,
-    "name": "豪華なステーキ",
-    "scale": "皿",
-    "image": 352,
-    "sort": 179
-  },
-  "347": {
-    "category": "食物",
-    "item_id": 347,
-    "limit": 100,
-    "name": "豪華なサシーミ",
-    "scale": "皿",
-    "image": 17,
-    "sort": 180
-  },
-  "348": {
-    "category": "食物",
-    "item_id": 348,
-    "limit": 500,
-    "name": "いちご",
-    "scale": "粒",
-    "image": 38,
-    "sort": 110
-  },
-  "349": {
-    "category": "食物",
-    "item_id": 349,
-    "limit": 500,
-    "name": "ミノバター",
-    "scale": "本",
-    "image": 59,
-    "sort": 133
-  },
-  "350": {
-    "category": "食物",
-    "item_id": 350,
-    "limit": 200,
-    "name": "チョコロロネ",
-    "scale": "個",
-    "image": 101,
-    "sort": 146
-  },
-  "351": {
-    "category": "食物",
-    "item_id": 351,
-    "limit": 200,
-    "name": "クロワッサン",
-    "scale": "個",
-    "image": 122,
-    "sort": 147
-  },
-  "352": {
-    "category": "食物",
-    "item_id": 352,
-    "limit": 200,
-    "name": "ピッザ",
-    "scale": "枚",
-    "image": 143,
-    "sort": 148
-  },
-  "353": {
-    "category": "食物",
-    "item_id": 353,
-    "limit": 200,
-    "name": "いちご牛乳",
-    "scale": "本",
-    "image": 164,
-    "sort": 139
-  },
-  "354": {
-    "category": "食物",
-    "item_id": 354,
-    "limit": 200,
-    "name": "コーヒー牛乳",
-    "scale": "本",
-    "image": 185,
-    "sort": 140
-  },
-  "355": {
-    "category": "食物",
-    "item_id": 355,
-    "limit": 200,
-    "name": "カフェラテ",
-    "scale": "杯",
-    "image": 206,
-    "sort": 141
-  },
-  "356": {
-    "category": "食物",
-    "item_id": 356,
-    "limit": 500,
-    "name": "もちぃ",
-    "scale": "個",
-    "image": 227,
-    "sort": 150
-  },
-  "357": {
-    "category": "食物",
-    "item_id": 357,
-    "limit": 200,
-    "name": "鏡もちぃ梅",
-    "scale": "個",
-    "image": 248,
-    "sort": 151
-  },
-  "358": {
-    "category": "食物",
-    "item_id": 358,
-    "limit": 200,
-    "name": "鏡もちぃ竹",
-    "scale": "個",
-    "image": 269,
-    "sort": 152
-  },
-  "359": {
-    "category": "食物",
-    "item_id": 359,
-    "limit": 200,
-    "name": "鏡もちぃ松",
-    "scale": "個",
-    "image": 290,
-    "sort": 153
-  },
-  "360": {
-    "category": "食物",
-    "item_id": 360,
-    "limit": 200,
-    "name": "鏡もちぃ極",
-    "scale": "個",
-    "image": 332,
-    "sort": 154
-  },
-  "361": {
-    "category": "アクセサリ",
-    "item_id": 361,
-    "limit": 200,
-    "name": "手鏡",
-    "scale": "個",
-    "image": 353,
-    "sort": 202
-  },
-  "362": {
-    "category": "道具",
-    "item_id": 362,
-    "limit": 5,
-    "name": "鏡もちぃの看板",
-    "scale": "枚",
-    "image": 357,
-    "sort": 384
-  },
-  "363": {
-    "category": "食物",
-    "item_id": 363,
-    "limit": 200,
-    "name": "なななくさがゆ",
-    "scale": "杯",
-    "image": 358,
-    "sort": 155
-  },
-  "364": {
-    "category": "生物",
-    "item_id": 364,
-    "limit": 1,
-    "name": "わんこ",
-    "scale": "わんこ",
-    "image": 359,
-    "sort": 94
-  },
-  "365": {
-    "category": "鎧",
-    "item_id": 365,
-    "limit": 100,
-    "name": "アダマンチウムの鎧",
-    "scale": "領",
-    "image": 360,
-    "sort": 315
-  },
-  "366": {
-    "category": "盾",
-    "item_id": 366,
-    "limit": 100,
-    "name": "アダマンチウムの盾",
-    "scale": "枚",
-    "image": 361,
-    "sort": 305
-  },
-  "367": {
-    "category": "鎧",
-    "item_id": 367,
-    "limit": 200,
-    "name": "ゴージャスドレス",
-    "scale": "点",
-    "image": 362,
-    "sort": 328
-  },
-  "368": {
-    "category": "アクセサリ",
-    "item_id": 368,
-    "limit": 200,
-    "name": "グロスヒール",
-    "scale": "点",
-    "image": 363,
-    "sort": 341
-  },
-  "369": {
-    "category": "食物",
-    "item_id": 369,
-    "limit": 200,
-    "name": "クァクァオの実",
-    "scale": "個",
-    "image": 364,
-    "sort": 116
-  },
-  "370": {
-    "category": "食物",
-    "item_id": 370,
-    "limit": 1000,
-    "name": "クァクァオ豆",
-    "scale": "粒",
-    "image": 366,
-    "sort": 117
-  },
-  "371": {
-    "category": "薬",
-    "item_id": 371,
-    "limit": 500,
-    "name": "豆づくし",
-    "scale": "盛",
-    "image": 367,
-    "sort": 76
-  },
-  "372": {
-    "category": "地図",
-    "item_id": 372,
-    "limit": 50,
-    "name": "サイクロプスの巣への地図",
-    "scale": "枚",
-    "image": 368,
-    "sort": 56
-  },
-  "373": {
-    "category": "食物",
-    "item_id": 373,
-    "limit": 100,
-    "name": "チョッコレイト",
-    "scale": "個",
-    "image": 369,
-    "sort": 181
-  },
-  "374": {
-    "category": "原料",
-    "item_id": 374,
-    "limit": 10,
-    "name": "エメラルド",
-    "scale": "カラット",
-    "image": 370,
-    "sort": 247
-  },
-  "375": {
-    "category": "原料",
-    "item_id": 375,
-    "limit": 10,
-    "name": "ルビー",
-    "scale": "カラット",
-    "image": 371,
-    "sort": 248
-  },
-  "376": {
-    "category": "原料",
-    "item_id": 376,
-    "limit": 10,
-    "name": "サファイア",
-    "scale": "カラット",
-    "image": 372,
-    "sort": 249
-  },
-  "377": {
-    "category": "原料",
-    "item_id": 377,
-    "limit": 10,
-    "name": "アメジスト",
-    "scale": "カラット",
-    "image": 373,
-    "sort": 250
-  },
-  "378": {
-    "category": "原料",
-    "item_id": 378,
-    "limit": 10,
-    "name": "ガーネット",
-    "scale": "カラット",
-    "image": 374,
-    "sort": 251
-  },
-  "379": {
-    "category": "原料",
-    "item_id": 379,
-    "limit": 10,
-    "name": "トパーズ",
-    "scale": "カラット",
-    "image": 18,
-    "sort": 252
-  },
-  "380": {
-    "category": "原料",
-    "item_id": 380,
-    "limit": 10,
-    "name": "パール",
-    "scale": "匁",
-    "image": 60,
-    "sort": 253
-  },
-  "381": {
-    "category": "原料",
-    "item_id": 381,
-    "limit": 10,
-    "name": "ブルーダイヤ",
-    "scale": "カラット",
-    "image": 81,
-    "sort": 254
-  },
-  "382": {
-    "category": "原料",
-    "item_id": 382,
-    "limit": 10,
-    "name": "レッドダイヤ",
-    "scale": "カラット",
-    "image": 102,
-    "sort": 255
-  },
-  "383": {
-    "category": "生物",
-    "item_id": 383,
-    "limit": 1,
-    "name": "にゃんこ",
-    "scale": "にゃんこ",
-    "image": 123,
-    "sort": 95
-  },
-  "384": {
-    "category": "本",
-    "item_id": 384,
-    "limit": 50,
-    "name": "真・グリモワール",
-    "scale": "冊",
-    "image": 144,
-    "sort": 40
-  },
-  "385": {
-    "category": "生物",
-    "item_id": 385,
-    "limit": 5,
-    "name": "ミーミーキング",
-    "scale": "ミミ",
-    "image": 153,
-    "sort": 91
-  },
-  "386": {
-    "category": "道具",
-    "item_id": 386,
-    "limit": 5,
-    "name": "ギルドフラッグ",
-    "scale": "本",
-    "image": 186,
-    "sort": 390
-  },
-  "387": {
-    "category": "剣",
-    "item_id": 387,
-    "limit": 5,
-    "name": "ヴァトゥールンアクス",
-    "scale": "本",
-    "image": 207,
-    "sort": 276
-  },
-  "388": {
-    "category": "剣",
-    "item_id": 388,
-    "limit": 100,
-    "name": "アダマンチウムの剣",
-    "scale": "本",
-    "image": 228,
-    "sort": 271
-  },
-  "389": {
-    "category": "杖",
-    "item_id": 389,
-    "limit": 100,
-    "name": "アダマンチウムの杖",
-    "scale": "本",
-    "image": 249,
-    "sort": 283
-  },
-  "390": {
-    "category": "道具",
-    "item_id": 390,
-    "limit": 100,
-    "name": "アダマンチウム製装備一式",
-    "scale": "組",
-    "image": 291,
-    "sort": 64
-  },
-  "391": {
-    "category": "原料",
-    "item_id": 391,
-    "limit": 100,
-    "name": "桃色の木",
-    "scale": "本",
-    "image": 312,
-    "sort": 221
-  },
-  "392": {
-    "category": "原料",
-    "item_id": 392,
-    "limit": 200,
-    "name": "エメラルド原石",
-    "scale": "塊",
-    "image": 333,
-    "sort": 233
-  },
-  "393": {
-    "category": "原料",
-    "item_id": 393,
-    "limit": 200,
-    "name": "ルビー原石",
-    "scale": "塊",
-    "image": 354,
-    "sort": 234
-  },
-  "394": {
-    "category": "原料",
-    "item_id": 394,
-    "limit": 200,
-    "name": "サファイア原石",
-    "scale": "塊",
-    "image": 375,
-    "sort": 235
-  },
-  "395": {
-    "category": "原料",
-    "item_id": 395,
-    "limit": 200,
-    "name": "アメジスト原石",
-    "scale": "塊",
-    "image": 378,
-    "sort": 236
-  },
-  "396": {
-    "category": "原料",
-    "item_id": 396,
-    "limit": 200,
-    "name": "ガーネット原石",
-    "scale": "塊",
-    "image": 379,
-    "sort": 237
-  },
-  "397": {
-    "category": "原料",
-    "item_id": 397,
-    "limit": 200,
-    "name": "トパーズ原石",
-    "scale": "塊",
-    "image": 380,
-    "sort": 238
-  },
-  "399": {
-    "category": "原料",
-    "item_id": 399,
-    "limit": 200,
-    "name": "ブルーダイヤ原石",
-    "scale": "塊",
-    "image": 382,
-    "sort": 240
-  },
-  "400": {
-    "category": "原料",
-    "item_id": 400,
-    "limit": 200,
-    "name": "レッドダイヤ原石",
-    "scale": "塊",
-    "image": 385,
-    "sort": 241
-  },
-  "401": {
-    "category": "食物",
-    "item_id": 401,
-    "limit": 100,
-    "name": "パンセット",
-    "scale": "セット",
-    "image": 386,
-    "sort": 149
-  },
-  "402": {
-    "category": "生物",
-    "item_id": 402,
-    "limit": 1,
-    "name": "うさこ",
-    "scale": "うさこ",
-    "image": 387,
-    "sort": 96
-  },
-  "403": {
-    "category": "道具",
-    "item_id": 403,
-    "limit": 500,
-    "name": "グラス",
-    "scale": "脚",
-    "image": 388,
-    "sort": 205
-  },
-  "404": {
-    "category": "道具",
-    "item_id": 404,
-    "limit": 100,
-    "name": "こいのぼり",
-    "scale": "のぼり",
-    "image": 389,
-    "sort": 210
-  },
-  "405": {
-    "category": "食物",
-    "item_id": 405,
-    "limit": 100,
-    "name": "うおのぼり",
-    "scale": "のぼり",
-    "image": 390,
-    "sort": 211
-  },
-  "406": {
-    "category": "食物",
-    "item_id": 406,
-    "limit": 500,
-    "name": "ミックスジュース",
-    "scale": "杯",
-    "image": 391,
-    "sort": 137
-  },
-  "407": {
-    "category": "アクセサリ",
-    "item_id": 407,
-    "limit": 100,
-    "name": "セレブセット",
-    "scale": "セット",
-    "image": 392,
-    "sort": 66
-  },
-  "408": {
-    "category": "生物",
-    "item_id": 408,
-    "limit": 200,
-    "name": "ちび助",
-    "scale": "匹",
-    "image": 393,
-    "sort": 84
-  },
-  "409": {
-    "category": "食物",
-    "item_id": 409,
-    "limit": 200,
-    "name": "ぅわぁさび",
-    "scale": "本",
-    "image": 394,
-    "sort": 107
-  },
-  "500": {
-    "category": "本",
-    "item_id": 500,
-    "limit": 100,
-    "name": "申請書",
-    "scale": "枚",
-    "image": 208,
-    "sort": 43
-  },
-  "501": {
-    "category": "薬",
-    "item_id": 501,
-    "limit": 10000,
-    "name": "スピードポーション",
-    "scale": "本",
-    "image": 229,
-    "sort": 397
-  },
-  "502": {
-    "category": "薬",
-    "item_id": 502,
-    "limit": 10000,
-    "name": "韋駄天ポーション",
-    "scale": "本",
-    "image": 250,
-    "sort": 398
-  },
-  "503": {
-    "category": "道具",
-    "item_id": 503,
-    "limit": 10000,
-    "name": "優待お試し券",
-    "scale": "枚",
-    "image": 271,
-    "sort": 400
-  },
-  "504": {
-    "category": "薬",
-    "item_id": 504,
-    "limit": 10000,
-    "name": "クイックポーション",
-    "scale": "本",
-    "image": 292,
-    "sort": 396
-  },
-  "505": {
-    "category": "道具",
-    "item_id": 505,
-    "limit": 10000,
-    "name": "優待券",
-    "scale": "枚",
-    "image": 313,
-    "sort": 402
-  },
-  "506": {
-    "category": "道具",
-    "item_id": 506,
-    "limit": 10000,
-    "name": "優待回数券",
-    "scale": "枚",
-    "image": 334,
-    "sort": 401
-  },
-  "994": {
-    "category": "道具",
-    "item_id": 994,
-    "limit": 10000,
-    "name": "コイン",
-    "scale": "枚",
-    "image": 230,
-    "sort": 395
-  },
-  "995": {
-    "category": "道具",
-    "item_id": 995,
-    "limit": 10,
-    "name": "訓練完了証明書",
-    "scale": "枚",
-    "image": 251,
-    "sort": 403
-  },
-  "996": {
-    "category": "地図",
-    "item_id": 996,
-    "limit": 1,
-    "name": "訓練所への地図",
-    "scale": "枚",
-    "image": 272,
-    "sort": 404
-  },
-  "997": {
-    "category": "道具",
-    "item_id": 997,
-    "limit": 10000,
-    "name": "引換券",
-    "scale": "枚",
-    "image": 293,
-    "sort": 394
-  },
-  "999": {
-    "category": "道具",
-    "item_id": 999,
-    "limit": 100,
-    "name": "福引き券",
-    "scale": "枚",
-    "image": 314,
-    "sort": 392
-  },
-  "1200": {
-    "category": "道具",
-    "item_id": 1200,
-    "limit": 100,
-    "name": "やりなおし券",
-    "scale": "枚",
-    "image": 84,
-    "sort": 399
-  },
-  "1201": {
-    "category": "本",
-    "item_id": 1201,
-    "limit": 100,
-    "name": "駆け出し店舗の設計図",
-    "scale": "枚",
-    "image": 85,
-    "sort": 362
-  },
-  "1202": {
-    "category": "本",
-    "item_id": 1202,
-    "limit": 100,
-    "name": "倉庫の設計図",
-    "scale": "枚",
-    "image": 27,
-    "sort": 369
-  },
-  "1203": {
-    "category": "本",
-    "item_id": 1203,
-    "limit": 100,
-    "name": "よろず屋の設計図",
-    "scale": "枚",
-    "image": 86,
-    "sort": 370
-  },
-  "1204": {
-    "category": "本",
-    "item_id": 1204,
-    "limit": 100,
-    "name": "アトリエの設計図",
-    "scale": "枚",
-    "image": 87,
-    "sort": 371
-  },
-  "1205": {
-    "category": "本",
-    "item_id": 1205,
-    "limit": 100,
-    "name": "便利屋の設計図",
-    "scale": "枚",
-    "image": 88,
-    "sort": 373
-  },
-  "1206": {
-    "category": "本",
-    "item_id": 1206,
-    "limit": 100,
-    "name": "卸売問屋の設計図",
-    "scale": "枚",
-    "image": 26,
-    "sort": 374
-  },
-  "1207": {
-    "category": "本",
-    "item_id": 1207,
-    "limit": 100,
-    "name": "テナントの設計図",
-    "scale": "枚",
-    "image": 47,
-    "sort": 375
-  },
-  "1208": {
-    "category": "本",
-    "item_id": 1208,
-    "limit": 100,
-    "name": "工房の設計図",
-    "scale": "枚",
-    "image": 48,
-    "sort": 376
-  },
-  "1209": {
-    "category": "本",
-    "item_id": 1209,
-    "limit": 100,
-    "name": "運送屋の設計図",
-    "scale": "枚",
-    "image": 68,
-    "sort": 378
-  },
-  "1210": {
-    "category": "本",
-    "item_id": 1210,
-    "limit": 100,
-    "name": "蔵の設計図",
-    "scale": "枚",
-    "image": 6,
-    "sort": 364
-  },
-  "1211": {
-    "category": "本",
-    "item_id": 1211,
-    "limit": 100,
-    "name": "露天商の設計図",
-    "scale": "枚",
-    "image": 106,
-    "sort": 365
-  },
-  "1212": {
-    "category": "本",
-    "item_id": 1212,
-    "limit": 100,
-    "name": "作業場の設計図",
-    "scale": "枚",
-    "image": 107,
-    "sort": 366
-  },
-  "1213": {
-    "category": "本",
-    "item_id": 1213,
-    "limit": 100,
-    "name": "運び屋の設計図",
-    "scale": "枚",
-    "image": 108,
-    "sort": 368
-  },
-  "1214": {
-    "category": "本",
-    "item_id": 1214,
-    "limit": 100,
-    "name": "移動販売の設計図",
-    "scale": "枚",
-    "image": 110,
-    "sort": 363
-  },
-  "1215": {
-    "category": "本",
-    "item_id": 1215,
-    "limit": 100,
-    "name": "ベースキャンプの設計図",
-    "scale": "枚",
-    "image": 109,
-    "sort": 367
-  },
-  "1216": {
-    "category": "本",
-    "item_id": 1216,
-    "limit": 100,
-    "name": "山小屋の設計図",
-    "scale": "枚",
-    "image": 5,
-    "sort": 372
-  },
-  "1217": {
-    "category": "本",
-    "item_id": 1217,
-    "limit": 100,
-    "name": "ログハウスの設計図",
-    "scale": "枚",
-    "image": 89,
-    "sort": 377
-  },
-  "2000080": {
-    "category": "食物",
-    "item_id": 2000080,
-    "limit": 10000,
-    "name": "レシピ#メェロン",
-    "scale": "個",
-    "sort": 405
-  },
-  "2000095": {
-    "category": "食物",
-    "item_id": 2000095,
-    "limit": 10000,
-    "name": "レシピ#ぶどう",
-    "scale": "個",
-    "sort": 408
-  },
-  "2000107": {
-    "category": "食物",
-    "item_id": 2000107,
-    "limit": 10000,
-    "name": "レシピ#トマト",
-    "scale": "個",
-    "sort": 407
-  },
-  "2000322": {
-    "category": "食物",
-    "item_id": 2000322,
-    "limit": 10000,
-    "name": "レシピ#スイカ",
-    "scale": "個",
-    "sort": 409
-  },
-  "2001076": {
-    "category": "食物",
-    "item_id": 2001076,
-    "limit": 10000,
-    "name": "レシピ#ウメ",
-    "scale": "個",
-    "sort": 406
-  }
+    "1": {
+        "category": "原料",
+        "item_id": 1,
+        "limit": 1000,
+        "name": "薬草",
+        "scale": "本",
+        "image": 1,
+        "sort": 217
+    },
+    "2": {
+        "category": "原料",
+        "item_id": 2,
+        "limit": 1000,
+        "name": "獣の皮",
+        "scale": "枚",
+        "image": 95,
+        "sort": 256
+    },
+    "3": {
+        "category": "原料",
+        "item_id": 3,
+        "limit": 1000,
+        "name": "木の枝",
+        "scale": "本",
+        "image": 246,
+        "sort": 218
+    },
+    "4": {
+        "category": "原料",
+        "item_id": 4,
+        "limit": 100,
+        "name": "丸太",
+        "scale": "本",
+        "image": 383,
+        "sort": 219
+    },
+    "5": {
+        "category": "原料",
+        "item_id": 5,
+        "limit": 1000,
+        "name": "鉄鉱石",
+        "scale": "kg",
+        "image": 166,
+        "sort": 228
+    },
+    "6": {
+        "category": "原料",
+        "item_id": 6,
+        "limit": 1000,
+        "name": "ミスリル原石",
+        "scale": "kg",
+        "image": 405,
+        "sort": 229
+    },
+    "7": {
+        "category": "原料",
+        "item_id": 7,
+        "limit": 1000,
+        "name": "オリハルコン原石",
+        "scale": "kg",
+        "image": 416,
+        "sort": 230
+    },
+    "8": {
+        "category": "原料",
+        "item_id": 8,
+        "limit": 1000,
+        "name": "魔石",
+        "scale": "個",
+        "image": 188,
+        "sort": 226
+    },
+    "9": {
+        "category": "地図",
+        "item_id": 9,
+        "limit": 50,
+        "name": "近くの鉱山への地図",
+        "scale": "枚",
+        "image": 209,
+        "sort": 46
+    },
+    "11": {
+        "category": "本",
+        "item_id": 11,
+        "limit": 100,
+        "name": "宝くじ",
+        "scale": "枚",
+        "image": 44,
+        "sort": 393
+    },
+    "12": {
+        "category": "地図",
+        "item_id": 12,
+        "limit": 50,
+        "name": "近くの山への地図",
+        "scale": "枚",
+        "image": 46,
+        "sort": 46
+    },
+    "14": {
+        "category": "地図",
+        "item_id": 14,
+        "limit": 50,
+        "name": "剣市への地図",
+        "scale": "枚",
+        "image": 149,
+        "sort": 47
+    },
+    "15": {
+        "category": "本",
+        "item_id": 15,
+        "limit": 50,
+        "name": "薬調合入門",
+        "scale": "冊",
+        "image": 134,
+        "sort": 29
+    },
+    "16": {
+        "category": "本",
+        "item_id": 16,
+        "limit": 50,
+        "name": "革細工入門",
+        "scale": "冊",
+        "image": 9,
+        "sort": 30
+    },
+    "17": {
+        "category": "本",
+        "item_id": 17,
+        "limit": 50,
+        "name": "木工細工入門",
+        "scale": "冊",
+        "image": 191,
+        "sort": 31
+    },
+    "18": {
+        "category": "アクセサリ",
+        "item_id": 18,
+        "limit": 50,
+        "name": "鍛冶屋の技術",
+        "scale": "技",
+        "image": 73,
+        "sort": 1
+    },
+    "19": {
+        "category": "アクセサリ",
+        "item_id": 19,
+        "limit": 50,
+        "name": "魔法の知識",
+        "scale": "知識",
+        "image": 214,
+        "sort": 2
+    },
+    "20": {
+        "category": "本",
+        "item_id": 20,
+        "limit": 50,
+        "name": "剣の鍛え方",
+        "scale": "冊",
+        "image": 116,
+        "sort": 33
+    },
+    "21": {
+        "category": "本",
+        "item_id": 21,
+        "limit": 50,
+        "name": "盾の作り方",
+        "scale": "冊",
+        "image": 236,
+        "sort": 34
+    },
+    "22": {
+        "category": "本",
+        "item_id": 22,
+        "limit": 50,
+        "name": "鎧の作り方",
+        "scale": "冊",
+        "image": 96,
+        "sort": 35
+    },
+    "23": {
+        "category": "本",
+        "item_id": 23,
+        "limit": 50,
+        "name": "杖の作り方",
+        "scale": "冊",
+        "image": 255,
+        "sort": 36
+    },
+    "24": {
+        "category": "アクセサリ",
+        "item_id": 24,
+        "limit": 50,
+        "name": "目利きの真髄",
+        "scale": "真髄",
+        "image": 34,
+        "sort": 3
+    },
+    "25": {
+        "category": "生物",
+        "item_id": 25,
+        "limit": 100,
+        "name": "ミノタウロス♀",
+        "scale": "頭",
+        "image": 265,
+        "sort": 78
+    },
+    "26": {
+        "category": "食物",
+        "item_id": 26,
+        "limit": 1000,
+        "name": "ミノ牛乳",
+        "scale": "本",
+        "image": 283,
+        "sort": 130
+    },
+    "27": {
+        "category": "食物",
+        "item_id": 27,
+        "limit": 10,
+        "name": "七面鳥の丸焼き",
+        "scale": "皿",
+        "image": 161,
+        "sort": 386
+    },
+    "28": {
+        "category": "食物",
+        "item_id": 28,
+        "limit": 10,
+        "name": "こだわりのラム酒",
+        "scale": "本",
+        "image": 298,
+        "sort": 387
+    },
+    "29": {
+        "category": "アクセサリ",
+        "item_id": 29,
+        "limit": 10,
+        "name": "おしゃれブーツ",
+        "scale": "足",
+        "image": 15,
+        "sort": 385
+    },
+    "30": {
+        "category": "薬",
+        "item_id": 30,
+        "limit": 1000,
+        "name": "ポーション",
+        "scale": "本",
+        "image": 267,
+        "sort": 67
+    },
+    "31": {
+        "category": "薬",
+        "item_id": 31,
+        "limit": 1000,
+        "name": "ハイポーション",
+        "scale": "本",
+        "image": 323,
+        "sort": 68
+    },
+    "32": {
+        "category": "薬",
+        "item_id": 32,
+        "limit": 500,
+        "name": "エーテル",
+        "scale": "本",
+        "image": 310,
+        "sort": 69
+    },
+    "33": {
+        "category": "薬",
+        "item_id": 33,
+        "limit": 500,
+        "name": "ハイエーテル",
+        "scale": "本",
+        "image": 79,
+        "sort": 70
+    },
+    "34": {
+        "category": "薬",
+        "item_id": 34,
+        "limit": 100,
+        "name": "エリ草",
+        "scale": "本",
+        "image": 345,
+        "sort": 75
+    },
+    "35": {
+        "category": "食物",
+        "item_id": 35,
+        "limit": 100,
+        "name": "ミノヨーグルト",
+        "scale": "個",
+        "image": 80,
+        "sort": 131
+    },
+    "36": {
+        "category": "食物",
+        "item_id": 36,
+        "limit": 100,
+        "name": "ミノチーズ",
+        "scale": "個",
+        "image": 311,
+        "sort": 132
+    },
+    "38": {
+        "category": "アクセサリ",
+        "item_id": 38,
+        "limit": 50,
+        "name": "解体屋の魂",
+        "scale": "魂",
+        "image": 39,
+        "sort": 4
+    },
+    "40": {
+        "category": "剣",
+        "item_id": 40,
+        "limit": 100,
+        "name": "木刀",
+        "scale": "本",
+        "image": 384,
+        "sort": 265
+    },
+    "41": {
+        "category": "剣",
+        "item_id": 41,
+        "limit": 100,
+        "name": "鉄の剣",
+        "scale": "本",
+        "image": 395,
+        "sort": 266
+    },
+    "42": {
+        "category": "剣",
+        "item_id": 42,
+        "limit": 100,
+        "name": "鋼鉄の剣",
+        "scale": "本",
+        "image": 396,
+        "sort": 267
+    },
+    "43": {
+        "category": "剣",
+        "item_id": 43,
+        "limit": 100,
+        "name": "ミスリルの剣",
+        "scale": "本",
+        "image": 19,
+        "sort": 268
+    },
+    "44": {
+        "category": "剣",
+        "item_id": 44,
+        "limit": 100,
+        "name": "オリハルコンの剣",
+        "scale": "本",
+        "image": 40,
+        "sort": 269
+    },
+    "45": {
+        "category": "盾",
+        "item_id": 45,
+        "limit": 100,
+        "name": "革の盾",
+        "scale": "枚",
+        "image": 61,
+        "sort": 298
+    },
+    "46": {
+        "category": "盾",
+        "item_id": 46,
+        "limit": 100,
+        "name": "木の盾",
+        "scale": "枚",
+        "image": 82,
+        "sort": 299
+    },
+    "47": {
+        "category": "盾",
+        "item_id": 47,
+        "limit": 100,
+        "name": "鉄の盾",
+        "scale": "枚",
+        "image": 103,
+        "sort": 300
+    },
+    "48": {
+        "category": "盾",
+        "item_id": 48,
+        "limit": 100,
+        "name": "鋼鉄の盾",
+        "scale": "枚",
+        "image": 124,
+        "sort": 301
+    },
+    "49": {
+        "category": "盾",
+        "item_id": 49,
+        "limit": 100,
+        "name": "ミスリルの盾",
+        "scale": "枚",
+        "image": 145,
+        "sort": 302
+    },
+    "50": {
+        "category": "盾",
+        "item_id": 50,
+        "limit": 100,
+        "name": "オリハルコンの盾",
+        "scale": "枚",
+        "image": 187,
+        "sort": 303
+    },
+    "51": {
+        "category": "鎧",
+        "item_id": 51,
+        "limit": 100,
+        "name": "革の胸当て",
+        "scale": "領",
+        "image": 355,
+        "sort": 308
+    },
+    "52": {
+        "category": "鎧",
+        "item_id": 52,
+        "limit": 100,
+        "name": "木の胸当て",
+        "scale": "領",
+        "image": 376,
+        "sort": 309
+    },
+    "53": {
+        "category": "鎧",
+        "item_id": 53,
+        "limit": 100,
+        "name": "鉄の鎧",
+        "scale": "領",
+        "image": 397,
+        "sort": 310
+    },
+    "54": {
+        "category": "鎧",
+        "item_id": 54,
+        "limit": 100,
+        "name": "鋼鉄の鎧",
+        "scale": "領",
+        "image": 399,
+        "sort": 311
+    },
+    "55": {
+        "category": "鎧",
+        "item_id": 55,
+        "limit": 100,
+        "name": "ミスリルの鎧",
+        "scale": "領",
+        "image": 400,
+        "sort": 312
+    },
+    "56": {
+        "category": "鎧",
+        "item_id": 56,
+        "limit": 100,
+        "name": "オリハルコンの鎧",
+        "scale": "領",
+        "image": 401,
+        "sort": 313
+    },
+    "57": {
+        "category": "杖",
+        "item_id": 57,
+        "limit": 100,
+        "name": "木の杖",
+        "scale": "本",
+        "image": 402,
+        "sort": 277
+    },
+    "58": {
+        "category": "杖",
+        "item_id": 58,
+        "limit": 100,
+        "name": "鉄の杖",
+        "scale": "本",
+        "image": 403,
+        "sort": 278
+    },
+    "59": {
+        "category": "杖",
+        "item_id": 59,
+        "limit": 100,
+        "name": "鋼鉄の杖",
+        "scale": "本",
+        "image": 404,
+        "sort": 279
+    },
+    "60": {
+        "category": "杖",
+        "item_id": 60,
+        "limit": 100,
+        "name": "ミスリルの杖",
+        "scale": "本",
+        "image": 406,
+        "sort": 280
+    },
+    "61": {
+        "category": "杖",
+        "item_id": 61,
+        "limit": 100,
+        "name": "オリハルコンの杖",
+        "scale": "本",
+        "image": 407,
+        "sort": 281
+    },
+    "65": {
+        "category": "本",
+        "item_id": 65,
+        "limit": 1,
+        "name": "禁断の書",
+        "scale": "冊",
+        "image": 411,
+        "sort": 42
+    },
+    "66": {
+        "category": "本",
+        "item_id": 66,
+        "limit": 50,
+        "name": "装飾細工入門",
+        "scale": "冊",
+        "image": 412,
+        "sort": 32
+    },
+    "67": {
+        "category": "アクセサリ",
+        "item_id": 67,
+        "limit": 100,
+        "name": "鉄のピアス",
+        "scale": "点",
+        "image": 413,
+        "sort": 329
+    },
+    "68": {
+        "category": "アクセサリ",
+        "item_id": 68,
+        "limit": 100,
+        "name": "ミスリルの指輪",
+        "scale": "点",
+        "image": 414,
+        "sort": 330
+    },
+    "69": {
+        "category": "アクセサリ",
+        "item_id": 69,
+        "limit": 100,
+        "name": "オリハルコンの腕輪",
+        "scale": "点",
+        "image": 415,
+        "sort": 331
+    },
+    "70": {
+        "category": "アクセサリ",
+        "item_id": 70,
+        "limit": 10,
+        "name": "NAYUTAの首飾り",
+        "scale": "点",
+        "image": 417,
+        "sort": 332
+    },
+    "71": {
+        "category": "道具",
+        "item_id": 71,
+        "limit": 100,
+        "name": "革製装備一式",
+        "scale": "組",
+        "image": 418,
+        "sort": 57
+    },
+    "72": {
+        "category": "道具",
+        "item_id": 72,
+        "limit": 100,
+        "name": "木製装備一式",
+        "scale": "組",
+        "image": 20,
+        "sort": 58
+    },
+    "73": {
+        "category": "道具",
+        "item_id": 73,
+        "limit": 100,
+        "name": "鉄製装備一式",
+        "scale": "組",
+        "image": 41,
+        "sort": 59
+    },
+    "74": {
+        "category": "道具",
+        "item_id": 74,
+        "limit": 100,
+        "name": "鋼鉄製装備一式",
+        "scale": "組",
+        "image": 62,
+        "sort": 60
+    },
+    "75": {
+        "category": "道具",
+        "item_id": 75,
+        "limit": 100,
+        "name": "ミスリル製装備一式",
+        "scale": "組",
+        "image": 83,
+        "sort": 61
+    },
+    "76": {
+        "category": "道具",
+        "item_id": 76,
+        "limit": 100,
+        "name": "オリハルコン製装備一式",
+        "scale": "組",
+        "image": 104,
+        "sort": 62
+    },
+    "77": {
+        "category": "道具",
+        "item_id": 77,
+        "limit": 10,
+        "name": "お祝いセット",
+        "scale": "セット",
+        "image": 125,
+        "sort": 389
+    },
+    "79": {
+        "category": "道具",
+        "item_id": 79,
+        "limit": 1000,
+        "name": "ギフト券",
+        "scale": "枚",
+        "image": 167,
+        "sort": 391
+    },
+    "101": {
+        "category": "地図",
+        "item_id": 101,
+        "limit": 50,
+        "name": "地図[Lv1]",
+        "scale": "枚",
+        "image": 21,
+        "sort": 356
+    },
+    "102": {
+        "category": "地図",
+        "item_id": 102,
+        "limit": 50,
+        "name": "地図[Lv2]",
+        "scale": "枚",
+        "image": 22,
+        "sort": 357
+    },
+    "103": {
+        "category": "地図",
+        "item_id": 103,
+        "limit": 50,
+        "name": "地図[Lv3]",
+        "scale": "枚",
+        "image": 2,
+        "sort": 358
+    },
+    "104": {
+        "category": "地図",
+        "item_id": 104,
+        "limit": 50,
+        "name": "地図[Lv4]",
+        "scale": "枚",
+        "image": 23,
+        "sort": 359
+    },
+    "105": {
+        "category": "地図",
+        "item_id": 105,
+        "limit": 50,
+        "name": "地図[Lv5]",
+        "scale": "枚",
+        "image": 42,
+        "sort": 360
+    },
+    "106": {
+        "category": "食物",
+        "item_id": 106,
+        "limit": 100,
+        "name": "魂の水",
+        "scale": "瓶",
+        "image": 43,
+        "sort": 99
+    },
+    "110": {
+        "category": "剣",
+        "item_id": 110,
+        "limit": 100,
+        "name": "短剣",
+        "scale": "本",
+        "image": 3,
+        "sort": 274
+    },
+    "111": {
+        "category": "杖",
+        "item_id": 111,
+        "limit": 100,
+        "name": "いかずちの杖",
+        "scale": "本",
+        "image": 24,
+        "sort": 288
+    },
+    "112": {
+        "category": "鎧",
+        "item_id": 112,
+        "limit": 100,
+        "name": "布の服",
+        "scale": "着",
+        "image": 45,
+        "sort": 317
+    },
+    "113": {
+        "category": "アクセサリ",
+        "item_id": 113,
+        "limit": 100,
+        "name": "疾風の籠手",
+        "scale": "双",
+        "image": 63,
+        "sort": 338
+    },
+    "114": {
+        "category": "アクセサリ",
+        "item_id": 114,
+        "limit": 100,
+        "name": "ハチマキ",
+        "scale": "本",
+        "image": 64,
+        "sort": 343
+    },
+    "115": {
+        "category": "生物",
+        "item_id": 115,
+        "limit": 10,
+        "name": "気まぐれな妖精",
+        "scale": "妖精",
+        "image": 65,
+        "sort": 77
+    },
+    "116": {
+        "category": "アクセサリ",
+        "item_id": 116,
+        "limit": 100,
+        "name": "ダイス",
+        "scale": "個",
+        "image": 4,
+        "sort": 347
+    },
+    "119": {
+        "category": "アクセサリ",
+        "item_id": 119,
+        "limit": 100,
+        "name": "水晶の首飾り",
+        "scale": "本",
+        "image": 25,
+        "sort": 344
+    },
+    "120": {
+        "category": "アクセサリ",
+        "item_id": 120,
+        "limit": 100,
+        "name": "祝福の耳飾り",
+        "scale": "点",
+        "image": 67,
+        "sort": 345
+    },
+    "121": {
+        "category": "アクセサリ",
+        "item_id": 121,
+        "limit": 10,
+        "name": "魔女の指輪",
+        "scale": "本",
+        "image": 105,
+        "sort": 346
+    },
+    "122": {
+        "category": "アクセサリ",
+        "item_id": 122,
+        "limit": 100,
+        "name": "盗賊の籠手",
+        "scale": "双",
+        "image": 69,
+        "sort": 339
+    },
+    "123": {
+        "category": "アクセサリ",
+        "item_id": 123,
+        "limit": 100,
+        "name": "盗賊のお守り",
+        "scale": "体",
+        "image": 90,
+        "sort": 348
+    },
+    "124": {
+        "category": "鎧",
+        "item_id": 124,
+        "limit": 100,
+        "name": "魔術師のローブ",
+        "scale": "着",
+        "image": 111,
+        "sort": 319
+    },
+    "125": {
+        "category": "鎧",
+        "item_id": 125,
+        "limit": 100,
+        "name": "ホビットの服",
+        "scale": "着",
+        "image": 126,
+        "sort": 318
+    },
+    "126": {
+        "category": "盾",
+        "item_id": 126,
+        "limit": 100,
+        "name": "報復の盾",
+        "scale": "枚",
+        "image": 127,
+        "sort": 307
+    },
+    "127": {
+        "category": "剣",
+        "item_id": 127,
+        "limit": 1,
+        "name": "とっておきのハンマー",
+        "scale": "本",
+        "image": 128,
+        "sort": 289
+    },
+    "128": {
+        "category": "アクセサリ",
+        "item_id": 128,
+        "limit": 100,
+        "name": "エルフの弓",
+        "scale": "挺",
+        "image": 129,
+        "sort": 342
+    },
+    "129": {
+        "category": "剣",
+        "item_id": 129,
+        "limit": 5,
+        "name": "エクスカリパー",
+        "scale": "本",
+        "image": 130,
+        "sort": 291
+    },
+    "130": {
+        "category": "剣",
+        "item_id": 130,
+        "limit": 100,
+        "name": "血の剣",
+        "scale": "本",
+        "image": 132,
+        "sort": 275
+    },
+    "131": {
+        "category": "杖",
+        "item_id": 131,
+        "limit": 100,
+        "name": "炎の杖",
+        "scale": "本",
+        "image": 7,
+        "sort": 286
+    },
+    "132": {
+        "category": "杖",
+        "item_id": 132,
+        "limit": 100,
+        "name": "月の杖",
+        "scale": "本",
+        "image": 28,
+        "sort": 287
+    },
+    "133": {
+        "category": "剣",
+        "item_id": 133,
+        "limit": 1,
+        "name": "エクスカリバー",
+        "scale": "振",
+        "image": 49,
+        "sort": 292
+    },
+    "134": {
+        "category": "剣",
+        "item_id": 134,
+        "limit": 1,
+        "name": "フィン・マックールの剣",
+        "scale": "振",
+        "image": 70,
+        "sort": 290
+    },
+    "135": {
+        "category": "原料",
+        "item_id": 135,
+        "limit": 1000,
+        "name": "顔料",
+        "scale": "皿",
+        "image": 91,
+        "sort": 261
+    },
+    "136": {
+        "category": "原料",
+        "item_id": 136,
+        "limit": 1000,
+        "name": "紙束",
+        "scale": "組",
+        "image": 112,
+        "sort": 28
+    },
+    "137": {
+        "category": "道具",
+        "item_id": 137,
+        "limit": 500,
+        "name": "ペン",
+        "scale": "本",
+        "image": 133,
+        "sort": 27
+    },
+    "138": {
+        "category": "原料",
+        "item_id": 138,
+        "limit": 1000,
+        "name": "鳥の羽根",
+        "scale": "本",
+        "image": 147,
+        "sort": 223
+    },
+    "139": {
+        "category": "原料",
+        "item_id": 139,
+        "limit": 1000,
+        "name": "カイコの繭",
+        "scale": "束",
+        "image": 148,
+        "sort": 258
+    },
+    "140": {
+        "category": "生物",
+        "item_id": 140,
+        "limit": 200,
+        "name": "たまご",
+        "scale": "ミミたまご",
+        "image": 150,
+        "sort": 85
+    },
+    "141": {
+        "category": "生物",
+        "item_id": 141,
+        "limit": 100,
+        "name": "こつこつミミ星人",
+        "scale": "ミミ",
+        "image": 151,
+        "sort": 86
+    },
+    "142": {
+        "category": "生物",
+        "item_id": 142,
+        "limit": 100,
+        "name": "へいたいミミ星人",
+        "scale": "ミミ",
+        "image": 152,
+        "sort": 87
+    },
+    "143": {
+        "category": "生物",
+        "item_id": 143,
+        "limit": 100,
+        "name": "さくせんミミ星人",
+        "image": 154,
+        "scale": "ミミ",
+        "sort": 88
+    },
+    "144": {
+        "category": "生物",
+        "item_id": 144,
+        "limit": 100,
+        "name": "きまぐれミミ星人",
+        "image": 8,
+        "scale": "ミミ",
+        "sort": 89
+    },
+    "145": {
+        "category": "生物",
+        "item_id": 145,
+        "limit": 100,
+        "name": "ぶるじょあミミ星人",
+        "image": 29,
+        "scale": "ミミ",
+        "sort": 90
+    },
+    "146": {
+        "category": "食物",
+        "item_id": 146,
+        "limit": 1000,
+        "name": "砂糖水",
+        "scale": "cc",
+        "image": 50,
+        "sort": 98
+    },
+    "147": {
+        "category": "原料",
+        "item_id": 147,
+        "limit": 1000,
+        "name": "羊毛",
+        "scale": "kg",
+        "image": 71,
+        "sort": 259
+    },
+    "148": {
+        "category": "原料",
+        "item_id": 148,
+        "limit": 1000,
+        "name": "糸",
+        "scale": "束",
+        "image": 92,
+        "sort": 262
+    },
+    "149": {
+        "category": "原料",
+        "item_id": 149,
+        "limit": 1000,
+        "name": "布",
+        "scale": "巻",
+        "image": 113,
+        "sort": 263
+    },
+    "150": {
+        "category": "道具",
+        "item_id": 150,
+        "limit": 100,
+        "name": "木製食器",
+        "scale": "組",
+        "image": 155,
+        "sort": 182
+    },
+    "151": {
+        "category": "道具",
+        "item_id": 151,
+        "limit": 100,
+        "name": "木製家具",
+        "scale": "組",
+        "image": 168,
+        "sort": 183
+    },
+    "152": {
+        "category": "生物",
+        "item_id": 152,
+        "limit": 100,
+        "name": "カイコ",
+        "scale": "頭",
+        "image": 169,
+        "sort": 79
+    },
+    "153": {
+        "category": "生物",
+        "item_id": 153,
+        "limit": 100,
+        "name": "黄金の羊",
+        "scale": "頭",
+        "image": 170,
+        "sort": 80
+    },
+    "154": {
+        "category": "食物",
+        "item_id": 154,
+        "limit": 1000,
+        "name": "獣の肉",
+        "scale": "塊",
+        "image": 171,
+        "sort": 119
+    },
+    "155": {
+        "category": "原料",
+        "item_id": 155,
+        "limit": 1000,
+        "name": "獣の骨",
+        "scale": "個",
+        "image": 172,
+        "sort": 257
+    },
+    "156": {
+        "category": "食物",
+        "item_id": 156,
+        "limit": 1000,
+        "name": "小麦",
+        "scale": "束",
+        "image": 173,
+        "sort": 103
+    },
+    "157": {
+        "category": "食物",
+        "item_id": 157,
+        "limit": 200,
+        "name": "食パン",
+        "scale": "斤",
+        "image": 174,
+        "sort": 142
+    },
+    "158": {
+        "category": "道具",
+        "item_id": 158,
+        "limit": 50,
+        "name": "ハンターボウ",
+        "scale": "本",
+        "image": 175,
+        "sort": 19
+    },
+    "159": {
+        "category": "道具",
+        "item_id": 159,
+        "limit": 50,
+        "name": "釣り具",
+        "scale": "組",
+        "image": 176,
+        "sort": 18
+    },
+    "160": {
+        "category": "食物",
+        "item_id": 160,
+        "limit": 500,
+        "name": "魚",
+        "scale": "匹",
+        "image": 30,
+        "sort": 125
+    },
+    "161": {
+        "category": "生物",
+        "item_id": 161,
+        "limit": 10,
+        "name": "ヌシ",
+        "scale": "ヌシ",
+        "image": 51,
+        "sort": 82
+    },
+    "162": {
+        "category": "食物",
+        "item_id": 162,
+        "limit": 1000,
+        "name": "米",
+        "scale": "kg",
+        "image": 72,
+        "sort": 102
+    },
+    "163": {
+        "category": "食物",
+        "item_id": 163,
+        "limit": 200,
+        "name": "日替わり定食",
+        "scale": "膳",
+        "image": 93,
+        "sort": 156
+    },
+    "164": {
+        "category": "食物",
+        "item_id": 164,
+        "limit": 1000,
+        "name": "キャベツ",
+        "scale": "玉",
+        "image": 114,
+        "sort": 104
+    },
+    "165": {
+        "category": "食物",
+        "item_id": 165,
+        "limit": 1000,
+        "name": "トウモコロシ",
+        "scale": "本",
+        "image": 135,
+        "sort": 105
+    },
+    "166": {
+        "category": "食物",
+        "item_id": 166,
+        "limit": 1000,
+        "name": "にんじん",
+        "scale": "本",
+        "image": 156,
+        "sort": 106
+    },
+    "167": {
+        "category": "道具",
+        "item_id": 167,
+        "limit": 50,
+        "name": "乳鉢",
+        "scale": "個",
+        "image": 177,
+        "sort": 5
+    },
+    "168": {
+        "category": "道具",
+        "item_id": 168,
+        "limit": 50,
+        "name": "鍛冶ハンマー",
+        "scale": "本",
+        "image": 189,
+        "sort": 17
+    },
+    "169": {
+        "category": "道具",
+        "item_id": 169,
+        "limit": 50,
+        "name": "なめし道具",
+        "scale": "組",
+        "image": 190,
+        "sort": 15
+    },
+    "170": {
+        "category": "道具",
+        "item_id": 170,
+        "limit": 50,
+        "name": "炉",
+        "scale": "基",
+        "image": 192,
+        "sort": 25
+    },
+    "171": {
+        "category": "道具",
+        "item_id": 171,
+        "limit": 50,
+        "name": "裁縫セット",
+        "scale": "組",
+        "image": 193,
+        "sort": 22
+    },
+    "172": {
+        "category": "道具",
+        "item_id": 172,
+        "limit": 50,
+        "name": "紡績機織道具",
+        "scale": "組",
+        "image": 194,
+        "sort": 23
+    },
+    "173": {
+        "category": "地図",
+        "item_id": 173,
+        "limit": 50,
+        "name": "近所の地図",
+        "scale": "枚",
+        "image": 195,
+        "sort": 44
+    },
+    "174": {
+        "category": "原料",
+        "item_id": 174,
+        "limit": 1000,
+        "name": "水",
+        "scale": "杯",
+        "image": 196,
+        "sort": 212
+    },
+    "175": {
+        "category": "原料",
+        "item_id": 175,
+        "limit": 1000,
+        "name": "鉄インゴット",
+        "scale": "本",
+        "image": 197,
+        "sort": 242
+    },
+    "176": {
+        "category": "原料",
+        "item_id": 176,
+        "limit": 1000,
+        "name": "ミスリルインゴット",
+        "scale": "本",
+        "image": 198,
+        "sort": 243
+    },
+    "177": {
+        "category": "原料",
+        "item_id": 177,
+        "limit": 1000,
+        "name": "オリハルコンインゴット",
+        "scale": "本",
+        "image": 10,
+        "sort": 244
+    },
+    "178": {
+        "category": "原料",
+        "item_id": 178,
+        "limit": 1000,
+        "name": "革",
+        "scale": "巻",
+        "image": 31,
+        "sort": 264
+    },
+    "179": {
+        "category": "地図",
+        "item_id": 179,
+        "limit": 50,
+        "name": "スライムの巣への地図",
+        "scale": "枚",
+        "image": 52,
+        "sort": 48
+    },
+    "180": {
+        "category": "食物",
+        "item_id": 180,
+        "limit": 200,
+        "name": "獣肉の燻製",
+        "scale": "個",
+        "image": 94,
+        "sort": 124
+    },
+    "181": {
+        "category": "原料",
+        "item_id": 181,
+        "limit": 1000,
+        "name": "色石",
+        "scale": "kg",
+        "image": 115,
+        "sort": 225
+    },
+    "182": {
+        "category": "原料",
+        "item_id": 182,
+        "limit": 1000,
+        "name": "色草",
+        "scale": "本",
+        "image": 136,
+        "sort": 222
+    },
+    "183": {
+        "category": "道具",
+        "item_id": 183,
+        "limit": 50,
+        "name": "はさみ",
+        "scale": "挺",
+        "image": 157,
+        "sort": 7
+    },
+    "184": {
+        "category": "道具",
+        "item_id": 184,
+        "limit": 50,
+        "name": "ノミ",
+        "scale": "本",
+        "image": 178,
+        "sort": 10
+    },
+    "185": {
+        "category": "食物",
+        "item_id": 185,
+        "limit": 200,
+        "name": "食用獣",
+        "scale": "体",
+        "image": 199,
+        "sort": 118
+    },
+    "186": {
+        "category": "道具",
+        "item_id": 186,
+        "limit": 50,
+        "name": "包丁",
+        "scale": "本",
+        "image": 210,
+        "sort": 9
+    },
+    "187": {
+        "category": "道具",
+        "item_id": 187,
+        "limit": 50,
+        "name": "クワ",
+        "scale": "本",
+        "image": 211,
+        "sort": 13
+    },
+    "188": {
+        "category": "食物",
+        "item_id": 188,
+        "limit": 1000,
+        "name": "塩",
+        "scale": "kg",
+        "image": 212,
+        "sort": 97
+    },
+    "189": {
+        "category": "道具",
+        "item_id": 189,
+        "limit": 50,
+        "name": "石窯",
+        "scale": "基",
+        "image": 213,
+        "sort": 26
+    },
+    "190": {
+        "category": "道具",
+        "item_id": 190,
+        "limit": 50,
+        "name": "ナイフ",
+        "scale": "本",
+        "image": 215,
+        "sort": 8
+    },
+    "191": {
+        "category": "道具",
+        "item_id": 191,
+        "limit": 50,
+        "name": "かまど",
+        "scale": "基",
+        "image": 216,
+        "sort": 24
+    },
+    "192": {
+        "category": "原料",
+        "item_id": 192,
+        "limit": 1000,
+        "name": "薪",
+        "scale": "束",
+        "image": 217,
+        "sort": 260
+    },
+    "193": {
+        "category": "原料",
+        "item_id": 193,
+        "limit": 1000,
+        "name": "石",
+        "scale": "塊",
+        "image": 218,
+        "sort": 224
+    },
+    "194": {
+        "category": "道具",
+        "item_id": 194,
+        "limit": 50,
+        "name": "砥石",
+        "scale": "挺",
+        "image": 219,
+        "sort": 6
+    },
+    "195": {
+        "category": "道具",
+        "item_id": 195,
+        "limit": 50,
+        "name": "斧",
+        "scale": "本",
+        "image": 220,
+        "sort": 12
+    },
+    "196": {
+        "category": "道具",
+        "item_id": 196,
+        "limit": 50,
+        "name": "カッパーマトック",
+        "scale": "本",
+        "image": 11,
+        "sort": 14
+    },
+    "197": {
+        "category": "道具",
+        "item_id": 197,
+        "limit": 50,
+        "name": "オーバーオール",
+        "scale": "着",
+        "image": 32,
+        "sort": 20
+    },
+    "198": {
+        "category": "道具",
+        "item_id": 198,
+        "limit": 50,
+        "name": "ワークコート",
+        "scale": "着",
+        "image": 53,
+        "sort": 21
+    },
+    "199": {
+        "category": "道具",
+        "item_id": 199,
+        "limit": 50,
+        "name": "木槌",
+        "scale": "本",
+        "image": 74,
+        "sort": 16
+    },
+    "200": {
+        "category": "地図",
+        "item_id": 200,
+        "limit": 50,
+        "name": "ミノタウロス♀の巣への地図",
+        "scale": "枚",
+        "image": 137,
+        "sort": 53
+    },
+    "201": {
+        "category": "地図",
+        "item_id": 201,
+        "limit": 50,
+        "name": "ゴブリンの巣への地図",
+        "scale": "枚",
+        "image": 158,
+        "sort": 49
+    },
+    "202": {
+        "category": "地図",
+        "item_id": 202,
+        "limit": 50,
+        "name": "オークの巣への地図",
+        "scale": "枚",
+        "image": 179,
+        "sort": 50
+    },
+    "203": {
+        "category": "地図",
+        "item_id": 203,
+        "limit": 50,
+        "name": "トロールの巣への地図",
+        "scale": "枚",
+        "image": 200,
+        "sort": 51
+    },
+    "204": {
+        "category": "地図",
+        "item_id": 204,
+        "limit": 50,
+        "name": "ドラゴンの巣への地図",
+        "scale": "枚",
+        "image": 221,
+        "sort": 52
+    },
+    "205": {
+        "category": "本",
+        "item_id": 205,
+        "limit": 50,
+        "name": "絵本",
+        "scale": "冊",
+        "image": 231,
+        "sort": 37
+    },
+    "206": {
+        "category": "アクセサリ",
+        "item_id": 206,
+        "limit": 100,
+        "name": "カラーストーンブローチ",
+        "scale": "点",
+        "image": 232,
+        "sort": 335
+    },
+    "207": {
+        "category": "剣",
+        "item_id": 207,
+        "limit": 100,
+        "name": "カラフルソード",
+        "image": 233,
+        "scale": "本",
+        "sort": 273
+    },
+    "208": {
+        "category": "食物",
+        "item_id": 208,
+        "limit": 500,
+        "name": "すああま",
+        "scale": "個",
+        "image": 234,
+        "sort": 163
+    },
+    "209": {
+        "category": "食物",
+        "item_id": 209,
+        "limit": 500,
+        "name": "ツナポコ",
+        "scale": "袋",
+        "image": 235,
+        "sort": 164
+    },
+    "210": {
+        "category": "杖",
+        "item_id": 210,
+        "limit": 100,
+        "name": "ファンシーステッキ",
+        "scale": "ステッキ",
+        "image": 237,
+        "sort": 285
+    },
+    "211": {
+        "category": "アクセサリ",
+        "item_id": 211,
+        "limit": 100,
+        "name": "レザーグローブ",
+        "scale": "双",
+        "image": 238,
+        "sort": 337
+    },
+    "212": {
+        "category": "食物",
+        "item_id": 212,
+        "limit": 500,
+        "name": "ハーブティー",
+        "scale": "杯",
+        "image": 239,
+        "sort": 134
+    },
+    "213": {
+        "category": "道具",
+        "item_id": 213,
+        "limit": 100,
+        "name": "はたき",
+        "scale": "本",
+        "image": 240,
+        "sort": 185
+    },
+    "214": {
+        "category": "盾",
+        "item_id": 214,
+        "limit": 100,
+        "name": "ボーンシールド",
+        "scale": "枚",
+        "image": 241,
+        "sort": 306
+    },
+    "215": {
+        "category": "鎧",
+        "item_id": 215,
+        "limit": 100,
+        "name": "ボーンメイル",
+        "scale": "領",
+        "image": 242,
+        "sort": 316
+    },
+    "216": {
+        "category": "原料",
+        "item_id": 216,
+        "limit": 1000,
+        "name": "砂",
+        "scale": "kg",
+        "image": 12,
+        "sort": 214
+    },
+    "217": {
+        "category": "原料",
+        "item_id": 217,
+        "limit": 1000,
+        "name": "土",
+        "scale": "kg",
+        "image": 33,
+        "sort": 215
+    },
+    "218": {
+        "category": "原料",
+        "item_id": 218,
+        "limit": 1000,
+        "name": "氷",
+        "scale": "kg",
+        "image": 54,
+        "sort": 213
+    },
+    "219": {
+        "category": "原料",
+        "item_id": 219,
+        "limit": 1000,
+        "name": "ガラス",
+        "scale": "枚",
+        "image": 75,
+        "sort": 227
+    },
+    "220": {
+        "category": "原料",
+        "item_id": 220,
+        "limit": 1000,
+        "name": "肥料",
+        "scale": "袋",
+        "image": 117,
+        "sort": 216
+    },
+    "221": {
+        "category": "原料",
+        "item_id": 221,
+        "limit": 1000,
+        "name": "ビン",
+        "scale": "瓶",
+        "image": 138,
+        "sort": 204
+    },
+    "222": {
+        "category": "食物",
+        "item_id": 222,
+        "limit": 1000,
+        "name": "サンフラワー",
+        "scale": "本",
+        "image": 159,
+        "sort": 112
+    },
+    "223": {
+        "category": "食物",
+        "item_id": 223,
+        "limit": 500,
+        "name": "イカ",
+        "scale": "杯",
+        "image": 180,
+        "sort": 126
+    },
+    "224": {
+        "category": "食物",
+        "item_id": 224,
+        "limit": 500,
+        "name": "タコ",
+        "scale": "杯",
+        "image": 201,
+        "sort": 127
+    },
+    "225": {
+        "category": "食物",
+        "item_id": 225,
+        "limit": 500,
+        "name": "アユ",
+        "scale": "尾",
+        "image": 222,
+        "sort": 128
+    },
+    "226": {
+        "category": "生物",
+        "item_id": 226,
+        "limit": 500,
+        "name": "金魚",
+        "scale": "匹",
+        "image": 243,
+        "sort": 81
+    },
+    "227": {
+        "category": "食物",
+        "item_id": 227,
+        "limit": 200,
+        "name": "ステーキ肉",
+        "scale": "塊",
+        "image": 252,
+        "sort": 120
+    },
+    "228": {
+        "category": "食物",
+        "item_id": 228,
+        "limit": 200,
+        "name": "マンガ肉",
+        "scale": "本",
+        "image": 253,
+        "sort": 121
+    },
+    "229": {
+        "category": "食物",
+        "item_id": 229,
+        "limit": 200,
+        "name": "ハンバーグ",
+        "scale": "個",
+        "image": 254,
+        "sort": 157
+    },
+    "230": {
+        "category": "食物",
+        "item_id": 230,
+        "limit": 200,
+        "name": "カレーパン",
+        "scale": "個",
+        "image": 256,
+        "sort": 144
+    },
+    "231": {
+        "category": "食物",
+        "item_id": 231,
+        "limit": 200,
+        "name": "カレー",
+        "scale": "人分",
+        "image": 257,
+        "sort": 158
+    },
+    "232": {
+        "category": "食物",
+        "item_id": 232,
+        "limit": 200,
+        "name": "野菜サラダ",
+        "scale": "皿",
+        "image": 258,
+        "sort": 162
+    },
+    "233": {
+        "category": "食物",
+        "item_id": 233,
+        "limit": 200,
+        "name": "フランスパン",
+        "scale": "本",
+        "image": 259,
+        "sort": 145
+    },
+    "234": {
+        "category": "食物",
+        "item_id": 234,
+        "limit": 200,
+        "name": "シーフードカレー",
+        "scale": "人分",
+        "image": 260,
+        "sort": 160
+    },
+    "235": {
+        "category": "食物",
+        "item_id": 235,
+        "limit": 200,
+        "name": "ホットドッグ",
+        "scale": "本",
+        "image": 261,
+        "sort": 161
+    },
+    "236": {
+        "category": "食物",
+        "item_id": 236,
+        "limit": 200,
+        "name": "謎肉",
+        "scale": "個",
+        "image": 262,
+        "sort": 122
+    },
+    "237": {
+        "category": "食物",
+        "item_id": 237,
+        "limit": 200,
+        "name": "ソーセージ",
+        "scale": "本",
+        "image": 263,
+        "sort": 123
+    },
+    "238": {
+        "category": "食物",
+        "item_id": 238,
+        "limit": 200,
+        "name": "コッペパン",
+        "scale": "個",
+        "image": 264,
+        "sort": 143
+    },
+    "239": {
+        "category": "アクセサリ",
+        "item_id": 239,
+        "limit": 200,
+        "name": "ポプリ",
+        "scale": "個",
+        "image": 13,
+        "sort": 203
+    },
+    "240": {
+        "category": "食物",
+        "item_id": 240,
+        "limit": 200,
+        "name": "イカ焼き",
+        "scale": "本",
+        "image": 55,
+        "sort": 165
+    },
+    "241": {
+        "category": "食物",
+        "item_id": 241,
+        "limit": 200,
+        "name": "タコ焼き",
+        "scale": "皿",
+        "image": 76,
+        "sort": 166
+    },
+    "242": {
+        "category": "食物",
+        "item_id": 242,
+        "limit": 200,
+        "name": "アユの塩焼き",
+        "scale": "本",
+        "image": 97,
+        "sort": 167
+    },
+    "243": {
+        "category": "食物",
+        "item_id": 243,
+        "limit": 200,
+        "name": "にぎりずし",
+        "scale": "貫",
+        "image": 118,
+        "sort": 169
+    },
+    "244": {
+        "category": "アクセサリ",
+        "item_id": 244,
+        "limit": 100,
+        "name": "壺",
+        "scale": "壺",
+        "image": 139,
+        "sort": 190
+    },
+    "245": {
+        "category": "アクセサリ",
+        "item_id": 245,
+        "limit": 200,
+        "name": "湯飲み",
+        "scale": "個",
+        "image": 160,
+        "sort": 191
+    },
+    "246": {
+        "category": "アクセサリ",
+        "item_id": 246,
+        "limit": 200,
+        "name": "絵付け皿",
+        "scale": "枚",
+        "image": 181,
+        "sort": 192
+    },
+    "247": {
+        "category": "アクセサリ",
+        "item_id": 247,
+        "limit": 100,
+        "name": "たぬきの置物",
+        "scale": "縁起物",
+        "image": 202,
+        "sort": 193
+    },
+    "248": {
+        "category": "アクセサリ",
+        "item_id": 248,
+        "limit": 100,
+        "name": "招き猫の置物",
+        "scale": "縁起物",
+        "image": 223,
+        "sort": 194
+    },
+    "249": {
+        "category": "アクセサリ",
+        "item_id": 249,
+        "limit": 200,
+        "name": "ビー玉",
+        "scale": "個",
+        "image": 244,
+        "sort": 206
+    },
+    "250": {
+        "category": "食物",
+        "item_id": 250,
+        "limit": 1000,
+        "name": "サボテン",
+        "scale": "本",
+        "image": 273,
+        "sort": 111
+    },
+    "251": {
+        "category": "アクセサリ",
+        "item_id": 251,
+        "limit": 100,
+        "name": "ランプ",
+        "scale": "個",
+        "image": 274,
+        "sort": 209
+    },
+    "252": {
+        "category": "アクセサリ",
+        "item_id": 252,
+        "limit": 100,
+        "name": "フラワーポット",
+        "scale": "個",
+        "image": 275,
+        "sort": 207
+    },
+    "253": {
+        "category": "アクセサリ",
+        "item_id": 253,
+        "limit": 100,
+        "name": "ビードロ",
+        "scale": "個",
+        "image": 276,
+        "sort": 208
+    },
+    "254": {
+        "category": "食物",
+        "item_id": 254,
+        "limit": 200,
+        "name": "かき氷",
+        "scale": "杯",
+        "image": 277,
+        "sort": 171
+    },
+    "255": {
+        "category": "食物",
+        "item_id": 255,
+        "limit": 200,
+        "name": "アイスクリーム",
+        "scale": "個",
+        "image": 278,
+        "sort": 172
+    },
+    "256": {
+        "category": "鎧",
+        "item_id": 256,
+        "limit": 100,
+        "name": "質素な服",
+        "scale": "着",
+        "image": 279,
+        "sort": 320
+    },
+    "257": {
+        "category": "鎧",
+        "item_id": 257,
+        "limit": 100,
+        "name": "作業着",
+        "scale": "着",
+        "image": 280,
+        "sort": 321
+    },
+    "258": {
+        "category": "鎧",
+        "item_id": 258,
+        "limit": 100,
+        "name": "パージャーマー",
+        "scale": "着",
+        "image": 281,
+        "sort": 322
+    },
+    "259": {
+        "category": "鎧",
+        "item_id": 259,
+        "limit": 100,
+        "name": "着物",
+        "scale": "枚",
+        "image": 282,
+        "sort": 323
+    },
+    "260": {
+        "category": "食物",
+        "item_id": 260,
+        "limit": 1000,
+        "name": "コーヒー豆",
+        "scale": "袋",
+        "image": 284,
+        "sort": 113
+    },
+    "261": {
+        "category": "食物",
+        "item_id": 261,
+        "limit": 1000,
+        "name": "みかん",
+        "scale": "個",
+        "image": 285,
+        "sort": 108
+    },
+    "262": {
+        "category": "食物",
+        "item_id": 262,
+        "limit": 500,
+        "name": "コーヒー",
+        "scale": "杯",
+        "image": 286,
+        "sort": 135
+    },
+    "263": {
+        "category": "食物",
+        "item_id": 263,
+        "limit": 500,
+        "name": "ウインナーコーヒー",
+        "scale": "杯",
+        "image": 14,
+        "sort": 136
+    },
+    "264": {
+        "category": "食物",
+        "item_id": 264,
+        "limit": 500,
+        "name": "プォンジュース",
+        "scale": "本",
+        "image": 35,
+        "sort": 138
+    },
+    "265": {
+        "category": "食物",
+        "item_id": 265,
+        "limit": 200,
+        "name": "ワカサギの天ぷら",
+        "scale": "皿",
+        "image": 56,
+        "sort": 168
+    },
+    "266": {
+        "category": "食物",
+        "item_id": 266,
+        "limit": 500,
+        "name": "ワカサギ",
+        "scale": "匹",
+        "image": 77,
+        "sort": 129
+    },
+    "267": {
+        "category": "原料",
+        "item_id": 267,
+        "limit": 500,
+        "name": "サンフラワーオイル",
+        "scale": "本",
+        "image": 98,
+        "sort": 100
+    },
+    "268": {
+        "category": "道具",
+        "item_id": 268,
+        "limit": 50,
+        "name": "鍋",
+        "scale": "個",
+        "image": 119,
+        "sort": 11
+    },
+    "269": {
+        "category": "アクセサリ",
+        "item_id": 269,
+        "limit": 100,
+        "name": "ギター",
+        "scale": "本",
+        "image": 140,
+        "sort": 186
+    },
+    "270": {
+        "category": "アクセサリ",
+        "item_id": 270,
+        "limit": 100,
+        "name": "笛",
+        "scale": "本",
+        "image": 182,
+        "sort": 187
+    },
+    "271": {
+        "category": "アクセサリ",
+        "item_id": 271,
+        "limit": 100,
+        "name": "太鼓",
+        "scale": "台",
+        "image": 203,
+        "sort": 189
+    },
+    "272": {
+        "category": "アクセサリ",
+        "item_id": 272,
+        "limit": 100,
+        "name": "木琴",
+        "scale": "台",
+        "image": 224,
+        "sort": 188
+    },
+    "273": {
+        "category": "本",
+        "item_id": 273,
+        "limit": 100,
+        "name": "楽譜",
+        "scale": "冊",
+        "image": 245,
+        "sort": 38
+    },
+    "274": {
+        "category": "道具",
+        "item_id": 274,
+        "limit": 100,
+        "name": "スワンボート",
+        "scale": "機",
+        "image": 266,
+        "sort": 197
+    },
+    "275": {
+        "category": "道具",
+        "item_id": 275,
+        "limit": 100,
+        "name": "オフトゥン",
+        "scale": "枚",
+        "image": 287,
+        "sort": 324
+    },
+    "276": {
+        "category": "道具",
+        "item_id": 276,
+        "limit": 100,
+        "name": "メィクラ",
+        "scale": "個",
+        "image": 0,
+        "sort": 325
+    },
+    "277": {
+        "category": "道具",
+        "item_id": 277,
+        "limit": 100,
+        "name": "安眠セット",
+        "scale": "組",
+        "image": 295,
+        "sort": 327
+    },
+    "278": {
+        "category": "本",
+        "item_id": 278,
+        "limit": 50,
+        "name": "グリモワール",
+        "scale": "冊",
+        "image": 296,
+        "sort": 39
+    },
+    "279": {
+        "category": "生物",
+        "item_id": 279,
+        "limit": 100,
+        "name": "ゴーレム",
+        "scale": "体",
+        "image": 297,
+        "sort": 92
+    },
+    "280": {
+        "category": "薬",
+        "item_id": 280,
+        "limit": 100,
+        "name": "キュアポーション",
+        "scale": "本",
+        "image": 299,
+        "sort": 71
+    },
+    "281": {
+        "category": "薬",
+        "item_id": 281,
+        "limit": 100,
+        "name": "パワーポーション",
+        "scale": "本",
+        "image": 300,
+        "sort": 74
+    },
+    "282": {
+        "category": "薬",
+        "item_id": 282,
+        "limit": 100,
+        "name": "マインドポーション",
+        "scale": "本",
+        "image": 301,
+        "sort": 72
+    },
+    "283": {
+        "category": "薬",
+        "item_id": 283,
+        "limit": 100,
+        "name": "レジストポーション",
+        "scale": "本",
+        "image": 302,
+        "sort": 73
+    },
+    "284": {
+        "category": "原料",
+        "item_id": 284,
+        "limit": 1000,
+        "name": "ブラッディウム原石",
+        "scale": "kg",
+        "image": 303,
+        "sort": 231
+    },
+    "285": {
+        "category": "原料",
+        "item_id": 285,
+        "limit": 1000,
+        "name": "ブラッディウムインゴット",
+        "scale": "本",
+        "image": 304,
+        "sort": 245
+    },
+    "286": {
+        "category": "剣",
+        "item_id": 286,
+        "limit": 100,
+        "name": "ブラッディウムソード",
+        "scale": "本",
+        "image": 305,
+        "sort": 270
+    },
+    "287": {
+        "category": "鎧",
+        "item_id": 287,
+        "limit": 100,
+        "name": "ブラッディウムプレート",
+        "scale": "領",
+        "image": 306,
+        "sort": 314
+    },
+    "288": {
+        "category": "盾",
+        "item_id": 288,
+        "limit": 100,
+        "name": "ブラッディウムシールド",
+        "scale": "枚",
+        "image": 307,
+        "sort": 304
+    },
+    "289": {
+        "category": "杖",
+        "item_id": 289,
+        "limit": 100,
+        "name": "ブラッディウムロッド",
+        "scale": "本",
+        "image": 308,
+        "sort": 282
+    },
+    "290": {
+        "category": "道具",
+        "item_id": 290,
+        "limit": 100,
+        "name": "ブラッディウム製装備一式",
+        "scale": "組",
+        "image": 36,
+        "sort": 63
+    },
+    "291": {
+        "category": "地図",
+        "item_id": 291,
+        "limit": 50,
+        "name": "ヴァンパイアの巣への地図",
+        "scale": "枚",
+        "image": 57,
+        "sort": 54
+    },
+    "292": {
+        "category": "地図",
+        "item_id": 292,
+        "limit": 50,
+        "name": "地図[Lv6]",
+        "scale": "枚",
+        "image": 78,
+        "sort": 361
+    },
+    "293": {
+        "category": "アクセサリ",
+        "item_id": 293,
+        "limit": 10,
+        "name": "YUIKAの首飾り",
+        "scale": "点",
+        "image": 99,
+        "sort": 333
+    },
+    "294": {
+        "category": "剣",
+        "item_id": 294,
+        "limit": 1,
+        "name": "村正",
+        "scale": "振",
+        "image": 120,
+        "sort": 297
+    },
+    "295": {
+        "category": "剣",
+        "item_id": 295,
+        "limit": 5,
+        "name": "虎徹",
+        "scale": "振",
+        "image": 141,
+        "sort": 296
+    },
+    "296": {
+        "category": "剣",
+        "item_id": 296,
+        "limit": 10,
+        "name": "ドゥルハーケン",
+        "scale": "挺",
+        "image": 162,
+        "sort": 293
+    },
+    "297": {
+        "category": "剣",
+        "item_id": 297,
+        "limit": 10,
+        "name": "ヴァルキリーランス",
+        "scale": "本",
+        "image": 183,
+        "sort": 294
+    },
+    "298": {
+        "category": "剣",
+        "item_id": 298,
+        "limit": 10,
+        "name": "サイクロプスの棍棒",
+        "scale": "本",
+        "image": 204,
+        "sort": 295
+    },
+    "299": {
+        "category": "原料",
+        "item_id": 299,
+        "limit": 10,
+        "name": "龍の鱗",
+        "scale": "鱗",
+        "image": 225,
+        "sort": 354
+    },
+    "300": {
+        "category": "原料",
+        "item_id": 300,
+        "limit": 10,
+        "name": "ユニコーンの角",
+        "scale": "角",
+        "image": 288,
+        "sort": 355
+    },
+    "301": {
+        "category": "アクセサリ",
+        "item_id": 301,
+        "limit": 10,
+        "name": "ブラッディティアーズ",
+        "scale": "粒",
+        "image": 309,
+        "sort": 353
+    },
+    "302": {
+        "category": "剣",
+        "item_id": 302,
+        "limit": 100,
+        "name": "ボーンブレイド",
+        "scale": "本",
+        "image": 315,
+        "sort": 272
+    },
+    "303": {
+        "category": "杖",
+        "item_id": 303,
+        "limit": 100,
+        "name": "ボーンワンド",
+        "scale": "本",
+        "image": 316,
+        "sort": 284
+    },
+    "304": {
+        "category": "道具",
+        "item_id": 304,
+        "limit": 100,
+        "name": "ボーン装備一式",
+        "scale": "組",
+        "image": 317,
+        "sort": 65
+    },
+    "305": {
+        "category": "原料",
+        "item_id": 305,
+        "limit": 1000,
+        "name": "パプリカの種",
+        "scale": "粒",
+        "image": 318,
+        "sort": 114
+    },
+    "306": {
+        "category": "食物",
+        "item_id": 306,
+        "limit": 1000,
+        "name": "パプリカの実",
+        "scale": "個",
+        "image": 319,
+        "sort": 115
+    },
+    "307": {
+        "category": "アクセサリ",
+        "item_id": 307,
+        "limit": 100,
+        "name": "パプリカマンの兜",
+        "scale": "かぶり物",
+        "image": 320,
+        "sort": 349
+    },
+    "308": {
+        "category": "食物",
+        "item_id": 308,
+        "limit": 200,
+        "name": "パプリカのケーキ",
+        "scale": "個",
+        "image": 321,
+        "sort": 174
+    },
+    "309": {
+        "category": "食物",
+        "item_id": 309,
+        "limit": 200,
+        "name": "パプリカのクッキー",
+        "scale": "個",
+        "image": 322,
+        "sort": 175
+    },
+    "310": {
+        "category": "アクセサリ",
+        "item_id": 310,
+        "limit": 100,
+        "name": "パプリカマント",
+        "scale": "マント",
+        "image": 324,
+        "sort": 350
+    },
+    "311": {
+        "category": "食物",
+        "item_id": 311,
+        "limit": 1000,
+        "name": "キャンデー",
+        "scale": "個",
+        "image": 325,
+        "sort": 173
+    },
+    "312": {
+        "category": "食物",
+        "item_id": 312,
+        "limit": 200,
+        "name": "パプリカのキャンデー",
+        "scale": "個",
+        "image": 326,
+        "sort": 176
+    },
+    "313": {
+        "category": "道具",
+        "item_id": 313,
+        "limit": 1,
+        "name": "パプリカの看板",
+        "scale": "個",
+        "image": 327,
+        "sort": 379
+    },
+    "314": {
+        "category": "食物",
+        "item_id": 314,
+        "limit": 100,
+        "name": "ヌシ酒",
+        "scale": "本",
+        "image": 328,
+        "sort": 388
+    },
+    "315": {
+        "category": "地図",
+        "item_id": 315,
+        "limit": 50,
+        "name": "スカルドラゴンの巣への地図",
+        "scale": "枚",
+        "image": 329,
+        "sort": 55
+    },
+    "316": {
+        "category": "原料",
+        "item_id": 316,
+        "limit": 1000,
+        "name": "アダマンチウム原石",
+        "scale": "kg",
+        "image": 330,
+        "sort": 232
+    },
+    "317": {
+        "category": "原料",
+        "item_id": 317,
+        "limit": 1000,
+        "name": "アダマンチウムインゴット",
+        "scale": "本",
+        "image": 16,
+        "sort": 246
+    },
+    "318": {
+        "category": "食物",
+        "item_id": 318,
+        "limit": 100,
+        "name": "イカの塩辛",
+        "scale": "壺",
+        "image": 37,
+        "sort": 170
+    },
+    "319": {
+        "category": "アクセサリ",
+        "item_id": 319,
+        "limit": 5,
+        "name": "立派な石像",
+        "scale": "体",
+        "image": 58,
+        "sort": 195
+    },
+    "320": {
+        "category": "アクセサリ",
+        "item_id": 320,
+        "limit": 200,
+        "name": "レザーサンダル",
+        "scale": "足",
+        "image": 100,
+        "sort": 340
+    },
+    "321": {
+        "category": "生物",
+        "item_id": 321,
+        "limit": 200,
+        "name": "フタツバチ",
+        "scale": "匹",
+        "image": 121,
+        "sort": 83
+    },
+    "322": {
+        "category": "道具",
+        "item_id": 322,
+        "limit": 100,
+        "name": "ハチの巣箱",
+        "scale": "箱",
+        "image": 142,
+        "sort": 184
+    },
+    "323": {
+        "category": "食物",
+        "item_id": 323,
+        "limit": 100,
+        "name": "ハチミツ",
+        "scale": "瓶",
+        "image": 163,
+        "sort": 101
+    },
+    "324": {
+        "category": "食物",
+        "item_id": 324,
+        "limit": 500,
+        "name": "りんご",
+        "scale": "玉",
+        "image": 184,
+        "sort": 109
+    },
+    "325": {
+        "category": "食物",
+        "item_id": 325,
+        "limit": 200,
+        "name": "甘口カレー",
+        "scale": "人分",
+        "image": 205,
+        "sort": 159
+    },
+    "326": {
+        "category": "本",
+        "item_id": 326,
+        "limit": 100,
+        "name": "生物図鑑",
+        "scale": "冊",
+        "image": 226,
+        "sort": 41
+    },
+    "327": {
+        "category": "原料",
+        "item_id": 327,
+        "limit": 200,
+        "name": "宝石貝",
+        "image": 247,
+        "scale": "枚",
+        "sort": 239
+    },
+    "328": {
+        "category": "アクセサリ",
+        "item_id": 328,
+        "limit": 200,
+        "name": "エレガントバッグ",
+        "scale": "点",
+        "image": 268,
+        "sort": 336
+    },
+    "329": {
+        "category": "アクセサリ",
+        "item_id": 329,
+        "limit": 200,
+        "name": "ピンクジェムの首飾り",
+        "scale": "点",
+        "image": 289,
+        "sort": 334
+    },
+    "330": {
+        "category": "道具",
+        "item_id": 330,
+        "limit": 200,
+        "name": "抱きメィクラ",
+        "scale": "個",
+        "image": 331,
+        "sort": 326
+    },
+    "331": {
+        "category": "アクセサリ",
+        "item_id": 331,
+        "limit": 5,
+        "name": "絢爛な石像",
+        "scale": "体",
+        "image": 36,
+        "sort": 196
+    },
+    "332": {
+        "category": "道具",
+        "item_id": 332,
+        "limit": 1,
+        "name": "絢爛な石像の看板",
+        "scale": "枚",
+        "image": 337,
+        "sort": 380
+    },
+    "333": {
+        "category": "アクセサリ",
+        "item_id": 333,
+        "limit": 200,
+        "name": "木の実飾り",
+        "scale": "個",
+        "image": 338,
+        "sort": 198
+    },
+    "334": {
+        "category": "アクセサリ",
+        "item_id": 334,
+        "limit": 200,
+        "name": "ベル",
+        "scale": "個",
+        "image": 339,
+        "sort": 199
+    },
+    "335": {
+        "category": "アクセサリ",
+        "item_id": 335,
+        "limit": 200,
+        "name": "リース",
+        "scale": "個",
+        "image": 340,
+        "sort": 200
+    },
+    "336": {
+        "category": "原料",
+        "item_id": 336,
+        "limit": 100,
+        "name": "とんがった木",
+        "scale": "本",
+        "image": 341,
+        "sort": 220
+    },
+    "337": {
+        "category": "アクセサリ",
+        "item_id": 337,
+        "limit": 50,
+        "name": "飾りツリー",
+        "scale": "本",
+        "image": 342,
+        "sort": 201
+    },
+    "338": {
+        "category": "アクセサリ",
+        "item_id": 338,
+        "limit": 200,
+        "name": "ふわふわ帽子",
+        "scale": "枚",
+        "image": 343,
+        "sort": 351
+    },
+    "339": {
+        "category": "アクセサリ",
+        "item_id": 339,
+        "limit": 200,
+        "name": "もこもこブーツ",
+        "scale": "足",
+        "image": 344,
+        "sort": 352
+    },
+    "340": {
+        "category": "生物",
+        "item_id": 340,
+        "limit": 100,
+        "name": "スノーマン",
+        "scale": "人",
+        "image": 346,
+        "sort": 93
+    },
+    "341": {
+        "category": "道具",
+        "item_id": 341,
+        "limit": 1,
+        "name": "飾りツリーの看板",
+        "scale": "枚",
+        "image": 347,
+        "sort": 381
+    },
+    "342": {
+        "category": "道具",
+        "item_id": 342,
+        "limit": 1,
+        "name": "帽子の看板",
+        "scale": "枚",
+        "image": 348,
+        "sort": 382
+    },
+    "343": {
+        "category": "道具",
+        "item_id": 343,
+        "limit": 1,
+        "name": "スノーマンの看板",
+        "scale": "枚",
+        "image": 349,
+        "sort": 383
+    },
+    "344": {
+        "category": "食物",
+        "item_id": 344,
+        "limit": 200,
+        "name": "ブッシュ・ド・モエル",
+        "scale": "本",
+        "image": 350,
+        "sort": 177
+    },
+    "345": {
+        "category": "食物",
+        "item_id": 345,
+        "limit": 100,
+        "name": "豪華なケーキ",
+        "scale": "ホール",
+        "image": 351,
+        "sort": 178
+    },
+    "346": {
+        "category": "食物",
+        "item_id": 346,
+        "limit": 100,
+        "name": "豪華なステーキ",
+        "scale": "皿",
+        "image": 352,
+        "sort": 179
+    },
+    "347": {
+        "category": "食物",
+        "item_id": 347,
+        "limit": 100,
+        "name": "豪華なサシーミ",
+        "scale": "皿",
+        "image": 17,
+        "sort": 180
+    },
+    "348": {
+        "category": "食物",
+        "item_id": 348,
+        "limit": 500,
+        "name": "いちご",
+        "scale": "粒",
+        "image": 38,
+        "sort": 110
+    },
+    "349": {
+        "category": "食物",
+        "item_id": 349,
+        "limit": 500,
+        "name": "ミノバター",
+        "scale": "本",
+        "image": 59,
+        "sort": 133
+    },
+    "350": {
+        "category": "食物",
+        "item_id": 350,
+        "limit": 200,
+        "name": "チョコロロネ",
+        "scale": "個",
+        "image": 101,
+        "sort": 146
+    },
+    "351": {
+        "category": "食物",
+        "item_id": 351,
+        "limit": 200,
+        "name": "クロワッサン",
+        "scale": "個",
+        "image": 122,
+        "sort": 147
+    },
+    "352": {
+        "category": "食物",
+        "item_id": 352,
+        "limit": 200,
+        "name": "ピッザ",
+        "scale": "枚",
+        "image": 143,
+        "sort": 148
+    },
+    "353": {
+        "category": "食物",
+        "item_id": 353,
+        "limit": 200,
+        "name": "いちご牛乳",
+        "scale": "本",
+        "image": 164,
+        "sort": 139
+    },
+    "354": {
+        "category": "食物",
+        "item_id": 354,
+        "limit": 200,
+        "name": "コーヒー牛乳",
+        "scale": "本",
+        "image": 185,
+        "sort": 140
+    },
+    "355": {
+        "category": "食物",
+        "item_id": 355,
+        "limit": 200,
+        "name": "カフェラテ",
+        "scale": "杯",
+        "image": 206,
+        "sort": 141
+    },
+    "356": {
+        "category": "食物",
+        "item_id": 356,
+        "limit": 500,
+        "name": "もちぃ",
+        "scale": "個",
+        "image": 227,
+        "sort": 150
+    },
+    "357": {
+        "category": "食物",
+        "item_id": 357,
+        "limit": 200,
+        "name": "鏡もちぃ梅",
+        "scale": "個",
+        "image": 248,
+        "sort": 151
+    },
+    "358": {
+        "category": "食物",
+        "item_id": 358,
+        "limit": 200,
+        "name": "鏡もちぃ竹",
+        "scale": "個",
+        "image": 269,
+        "sort": 152
+    },
+    "359": {
+        "category": "食物",
+        "item_id": 359,
+        "limit": 200,
+        "name": "鏡もちぃ松",
+        "scale": "個",
+        "image": 290,
+        "sort": 153
+    },
+    "360": {
+        "category": "食物",
+        "item_id": 360,
+        "limit": 200,
+        "name": "鏡もちぃ極",
+        "scale": "個",
+        "image": 332,
+        "sort": 154
+    },
+    "361": {
+        "category": "アクセサリ",
+        "item_id": 361,
+        "limit": 200,
+        "name": "手鏡",
+        "scale": "個",
+        "image": 353,
+        "sort": 202
+    },
+    "362": {
+        "category": "道具",
+        "item_id": 362,
+        "limit": 5,
+        "name": "鏡もちぃの看板",
+        "scale": "枚",
+        "image": 357,
+        "sort": 384
+    },
+    "363": {
+        "category": "食物",
+        "item_id": 363,
+        "limit": 200,
+        "name": "なななくさがゆ",
+        "scale": "杯",
+        "image": 358,
+        "sort": 155
+    },
+    "364": {
+        "category": "生物",
+        "item_id": 364,
+        "limit": 1,
+        "name": "わんこ",
+        "scale": "わんこ",
+        "image": 359,
+        "sort": 94
+    },
+    "365": {
+        "category": "鎧",
+        "item_id": 365,
+        "limit": 100,
+        "name": "アダマンチウムの鎧",
+        "scale": "領",
+        "image": 360,
+        "sort": 315
+    },
+    "366": {
+        "category": "盾",
+        "item_id": 366,
+        "limit": 100,
+        "name": "アダマンチウムの盾",
+        "scale": "枚",
+        "image": 361,
+        "sort": 305
+    },
+    "367": {
+        "category": "鎧",
+        "item_id": 367,
+        "limit": 200,
+        "name": "ゴージャスドレス",
+        "scale": "点",
+        "image": 362,
+        "sort": 328
+    },
+    "368": {
+        "category": "アクセサリ",
+        "item_id": 368,
+        "limit": 200,
+        "name": "グロスヒール",
+        "scale": "点",
+        "image": 363,
+        "sort": 341
+    },
+    "369": {
+        "category": "食物",
+        "item_id": 369,
+        "limit": 200,
+        "name": "クァクァオの実",
+        "scale": "個",
+        "image": 364,
+        "sort": 116
+    },
+    "370": {
+        "category": "食物",
+        "item_id": 370,
+        "limit": 1000,
+        "name": "クァクァオ豆",
+        "scale": "粒",
+        "image": 366,
+        "sort": 117
+    },
+    "371": {
+        "category": "薬",
+        "item_id": 371,
+        "limit": 500,
+        "name": "豆づくし",
+        "scale": "盛",
+        "image": 367,
+        "sort": 76
+    },
+    "372": {
+        "category": "地図",
+        "item_id": 372,
+        "limit": 50,
+        "name": "サイクロプスの巣への地図",
+        "scale": "枚",
+        "image": 368,
+        "sort": 56
+    },
+    "373": {
+        "category": "食物",
+        "item_id": 373,
+        "limit": 100,
+        "name": "チョッコレイト",
+        "scale": "個",
+        "image": 369,
+        "sort": 181
+    },
+    "374": {
+        "category": "原料",
+        "item_id": 374,
+        "limit": 10,
+        "name": "エメラルド",
+        "scale": "カラット",
+        "image": 370,
+        "sort": 247
+    },
+    "375": {
+        "category": "原料",
+        "item_id": 375,
+        "limit": 10,
+        "name": "ルビー",
+        "scale": "カラット",
+        "image": 371,
+        "sort": 248
+    },
+    "376": {
+        "category": "原料",
+        "item_id": 376,
+        "limit": 10,
+        "name": "サファイア",
+        "scale": "カラット",
+        "image": 372,
+        "sort": 249
+    },
+    "377": {
+        "category": "原料",
+        "item_id": 377,
+        "limit": 10,
+        "name": "アメジスト",
+        "scale": "カラット",
+        "image": 373,
+        "sort": 250
+    },
+    "378": {
+        "category": "原料",
+        "item_id": 378,
+        "limit": 10,
+        "name": "ガーネット",
+        "scale": "カラット",
+        "image": 374,
+        "sort": 251
+    },
+    "379": {
+        "category": "原料",
+        "item_id": 379,
+        "limit": 10,
+        "name": "トパーズ",
+        "scale": "カラット",
+        "image": 18,
+        "sort": 252
+    },
+    "380": {
+        "category": "原料",
+        "item_id": 380,
+        "limit": 10,
+        "name": "パール",
+        "scale": "匁",
+        "image": 60,
+        "sort": 253
+    },
+    "381": {
+        "category": "原料",
+        "item_id": 381,
+        "limit": 10,
+        "name": "ブルーダイヤ",
+        "scale": "カラット",
+        "image": 81,
+        "sort": 254
+    },
+    "382": {
+        "category": "原料",
+        "item_id": 382,
+        "limit": 10,
+        "name": "レッドダイヤ",
+        "scale": "カラット",
+        "image": 102,
+        "sort": 255
+    },
+    "383": {
+        "category": "生物",
+        "item_id": 383,
+        "limit": 1,
+        "name": "にゃんこ",
+        "scale": "にゃんこ",
+        "image": 123,
+        "sort": 95
+    },
+    "384": {
+        "category": "本",
+        "item_id": 384,
+        "limit": 50,
+        "name": "真・グリモワール",
+        "scale": "冊",
+        "image": 144,
+        "sort": 40
+    },
+    "385": {
+        "category": "生物",
+        "item_id": 385,
+        "limit": 5,
+        "name": "ミーミーキング",
+        "scale": "ミミ",
+        "image": 153,
+        "sort": 91
+    },
+    "386": {
+        "category": "道具",
+        "item_id": 386,
+        "limit": 5,
+        "name": "ギルドフラッグ",
+        "scale": "本",
+        "image": 186,
+        "sort": 390
+    },
+    "387": {
+        "category": "剣",
+        "item_id": 387,
+        "limit": 5,
+        "name": "ヴァトゥールンアクス",
+        "scale": "本",
+        "image": 207,
+        "sort": 276
+    },
+    "388": {
+        "category": "剣",
+        "item_id": 388,
+        "limit": 100,
+        "name": "アダマンチウムの剣",
+        "scale": "本",
+        "image": 228,
+        "sort": 271
+    },
+    "389": {
+        "category": "杖",
+        "item_id": 389,
+        "limit": 100,
+        "name": "アダマンチウムの杖",
+        "scale": "本",
+        "image": 249,
+        "sort": 283
+    },
+    "390": {
+        "category": "道具",
+        "item_id": 390,
+        "limit": 100,
+        "name": "アダマンチウム製装備一式",
+        "scale": "組",
+        "image": 291,
+        "sort": 64
+    },
+    "391": {
+        "category": "原料",
+        "item_id": 391,
+        "limit": 100,
+        "name": "桃色の木",
+        "scale": "本",
+        "image": 312,
+        "sort": 221
+    },
+    "392": {
+        "category": "原料",
+        "item_id": 392,
+        "limit": 200,
+        "name": "エメラルド原石",
+        "scale": "塊",
+        "image": 333,
+        "sort": 233
+    },
+    "393": {
+        "category": "原料",
+        "item_id": 393,
+        "limit": 200,
+        "name": "ルビー原石",
+        "scale": "塊",
+        "image": 354,
+        "sort": 234
+    },
+    "394": {
+        "category": "原料",
+        "item_id": 394,
+        "limit": 200,
+        "name": "サファイア原石",
+        "scale": "塊",
+        "image": 375,
+        "sort": 235
+    },
+    "395": {
+        "category": "原料",
+        "item_id": 395,
+        "limit": 200,
+        "name": "アメジスト原石",
+        "scale": "塊",
+        "image": 378,
+        "sort": 236
+    },
+    "396": {
+        "category": "原料",
+        "item_id": 396,
+        "limit": 200,
+        "name": "ガーネット原石",
+        "scale": "塊",
+        "image": 379,
+        "sort": 237
+    },
+    "397": {
+        "category": "原料",
+        "item_id": 397,
+        "limit": 200,
+        "name": "トパーズ原石",
+        "scale": "塊",
+        "image": 380,
+        "sort": 238
+    },
+    "399": {
+        "category": "原料",
+        "item_id": 399,
+        "limit": 200,
+        "name": "ブルーダイヤ原石",
+        "scale": "塊",
+        "image": 382,
+        "sort": 240
+    },
+    "400": {
+        "category": "原料",
+        "item_id": 400,
+        "limit": 200,
+        "name": "レッドダイヤ原石",
+        "scale": "塊",
+        "image": 385,
+        "sort": 241
+    },
+    "401": {
+        "category": "食物",
+        "item_id": 401,
+        "limit": 100,
+        "name": "パンセット",
+        "scale": "セット",
+        "image": 386,
+        "sort": 149
+    },
+    "402": {
+        "category": "生物",
+        "item_id": 402,
+        "limit": 1,
+        "name": "うさこ",
+        "scale": "うさこ",
+        "image": 387,
+        "sort": 96
+    },
+    "403": {
+        "category": "道具",
+        "item_id": 403,
+        "limit": 500,
+        "name": "グラス",
+        "scale": "脚",
+        "image": 388,
+        "sort": 205
+    },
+    "404": {
+        "category": "道具",
+        "item_id": 404,
+        "limit": 100,
+        "name": "こいのぼり",
+        "scale": "のぼり",
+        "image": 389,
+        "sort": 210
+    },
+    "405": {
+        "category": "食物",
+        "item_id": 405,
+        "limit": 100,
+        "name": "うおのぼり",
+        "scale": "のぼり",
+        "image": 390,
+        "sort": 211
+    },
+    "406": {
+        "category": "食物",
+        "item_id": 406,
+        "limit": 500,
+        "name": "ミックスジュース",
+        "scale": "杯",
+        "image": 391,
+        "sort": 137
+    },
+    "407": {
+        "category": "アクセサリ",
+        "item_id": 407,
+        "limit": 100,
+        "name": "セレブセット",
+        "scale": "セット",
+        "image": 392,
+        "sort": 66
+    },
+    "408": {
+        "category": "生物",
+        "item_id": 408,
+        "limit": 200,
+        "name": "ちび助",
+        "scale": "匹",
+        "image": 393,
+        "sort": 84
+    },
+    "409": {
+        "category": "食物",
+        "item_id": 409,
+        "limit": 200,
+        "name": "ぅわぁさび",
+        "scale": "本",
+        "image": 394,
+        "sort": 107
+    },
+    "410": {
+        "category": "生物",
+        "item_id": 410,
+        "limit": 1,
+        "name": "黄金の仔羊",
+        "scale": "ひつじ",
+        "image": 2018120700,
+        "sort": 86
+    },
+    "411": {
+        "category": "道具",
+        "item_id": 411,
+        "limit": 1,
+        "name": "パプリカマンの看板",
+        "scale": "個",
+        "image": 2018120701,
+        "sort": 388
+    },
+    "412": {
+        "category": "アクセサリ",
+        "item_id": 412,
+        "limit": 200,
+        "name": "もふもふ帽子",
+        "scale": "もふ",
+        "image": 2018120702,
+        "sort": 360
+    },
+    "413": {
+        "category": "地図",
+        "item_id": 413,
+        "limit": 50,
+        "name": "おじいさんへの地図",
+        "scale": "枚",
+        "image": 2018120703,
+        "sort": 61
+    },
+    "414": {
+        "category": "剣",
+        "item_id": 414,
+        "limit": 100,
+        "name": "飾りツリーランス",
+        "scale": "本",
+        "image": 2018120704,
+        "sort": 301
+    },
+    "415": {
+        "category": "本",
+        "item_id": 415,
+        "limit": 50,
+        "name": "わんこのすべて",
+        "scale": "冊",
+        "image": 2018120705,
+        "sort": 38
+    },
+    "416": {
+        "category": "本",
+        "item_id": 416,
+        "limit": 50,
+        "name": "にゃんこのすべて",
+        "scale": "冊",
+        "image": 2018120706,
+        "sort": 39
+    },
+    "417": {
+        "category": "本",
+        "item_id": 417,
+        "limit": 50,
+        "name": "うさこのすべて",
+        "scale": "冊",
+        "image": 2018120707,
+        "sort": 40
+    },
+    "418": {
+        "category": "本",
+        "item_id": 418,
+        "limit": 50,
+        "name": "ひつじのすべて",
+        "scale": "冊",
+        "image": 2018120708,
+        "sort": 41
+    },
+    "500": {
+        "category": "本",
+        "item_id": 500,
+        "limit": 100,
+        "name": "申請書",
+        "scale": "枚",
+        "image": 208,
+        "sort": 43
+    },
+    "501": {
+        "category": "薬",
+        "item_id": 501,
+        "limit": 10000,
+        "name": "スピードポーション",
+        "scale": "本",
+        "image": 229,
+        "sort": 397
+    },
+    "502": {
+        "category": "薬",
+        "item_id": 502,
+        "limit": 10000,
+        "name": "韋駄天ポーション",
+        "scale": "本",
+        "image": 250,
+        "sort": 398
+    },
+    "503": {
+        "category": "道具",
+        "item_id": 503,
+        "limit": 10000,
+        "name": "優待お試し券",
+        "scale": "枚",
+        "image": 271,
+        "sort": 400
+    },
+    "504": {
+        "category": "薬",
+        "item_id": 504,
+        "limit": 10000,
+        "name": "クイックポーション",
+        "scale": "本",
+        "image": 292,
+        "sort": 396
+    },
+    "505": {
+        "category": "道具",
+        "item_id": 505,
+        "limit": 10000,
+        "name": "優待券",
+        "scale": "枚",
+        "image": 313,
+        "sort": 402
+    },
+    "506": {
+        "category": "道具",
+        "item_id": 506,
+        "limit": 10000,
+        "name": "優待回数券",
+        "scale": "枚",
+        "image": 334,
+        "sort": 401
+    },
+    "994": {
+        "category": "道具",
+        "item_id": 994,
+        "limit": 10000,
+        "name": "コイン",
+        "scale": "枚",
+        "image": 230,
+        "sort": 395
+    },
+    "995": {
+        "category": "道具",
+        "item_id": 995,
+        "limit": 10,
+        "name": "訓練完了証明書",
+        "scale": "枚",
+        "image": 251,
+        "sort": 403
+    },
+    "996": {
+        "category": "地図",
+        "item_id": 996,
+        "limit": 1,
+        "name": "訓練所への地図",
+        "scale": "枚",
+        "image": 272,
+        "sort": 404
+    },
+    "997": {
+        "category": "道具",
+        "item_id": 997,
+        "limit": 10000,
+        "name": "引換券",
+        "scale": "枚",
+        "image": 293,
+        "sort": 394
+    },
+    "999": {
+        "category": "道具",
+        "item_id": 999,
+        "limit": 100,
+        "name": "福引き券",
+        "scale": "枚",
+        "image": 314,
+        "sort": 392
+    },
+    "1200": {
+        "category": "道具",
+        "item_id": 1200,
+        "limit": 100,
+        "name": "やりなおし券",
+        "scale": "枚",
+        "image": 84,
+        "sort": 399
+    },
+    "1201": {
+        "category": "本",
+        "item_id": 1201,
+        "limit": 100,
+        "name": "駆け出し店舗の設計図",
+        "scale": "枚",
+        "image": 85,
+        "sort": 362
+    },
+    "1202": {
+        "category": "本",
+        "item_id": 1202,
+        "limit": 100,
+        "name": "倉庫の設計図",
+        "scale": "枚",
+        "image": 27,
+        "sort": 369
+    },
+    "1203": {
+        "category": "本",
+        "item_id": 1203,
+        "limit": 100,
+        "name": "よろず屋の設計図",
+        "scale": "枚",
+        "image": 86,
+        "sort": 370
+    },
+    "1204": {
+        "category": "本",
+        "item_id": 1204,
+        "limit": 100,
+        "name": "アトリエの設計図",
+        "scale": "枚",
+        "image": 87,
+        "sort": 371
+    },
+    "1205": {
+        "category": "本",
+        "item_id": 1205,
+        "limit": 100,
+        "name": "便利屋の設計図",
+        "scale": "枚",
+        "image": 88,
+        "sort": 373
+    },
+    "1206": {
+        "category": "本",
+        "item_id": 1206,
+        "limit": 100,
+        "name": "卸売問屋の設計図",
+        "scale": "枚",
+        "image": 26,
+        "sort": 374
+    },
+    "1207": {
+        "category": "本",
+        "item_id": 1207,
+        "limit": 100,
+        "name": "テナントの設計図",
+        "scale": "枚",
+        "image": 47,
+        "sort": 375
+    },
+    "1208": {
+        "category": "本",
+        "item_id": 1208,
+        "limit": 100,
+        "name": "工房の設計図",
+        "scale": "枚",
+        "image": 48,
+        "sort": 376
+    },
+    "1209": {
+        "category": "本",
+        "item_id": 1209,
+        "limit": 100,
+        "name": "運送屋の設計図",
+        "scale": "枚",
+        "image": 68,
+        "sort": 378
+    },
+    "1210": {
+        "category": "本",
+        "item_id": 1210,
+        "limit": 100,
+        "name": "蔵の設計図",
+        "scale": "枚",
+        "image": 6,
+        "sort": 364
+    },
+    "1211": {
+        "category": "本",
+        "item_id": 1211,
+        "limit": 100,
+        "name": "露天商の設計図",
+        "scale": "枚",
+        "image": 106,
+        "sort": 365
+    },
+    "1212": {
+        "category": "本",
+        "item_id": 1212,
+        "limit": 100,
+        "name": "作業場の設計図",
+        "scale": "枚",
+        "image": 107,
+        "sort": 366
+    },
+    "1213": {
+        "category": "本",
+        "item_id": 1213,
+        "limit": 100,
+        "name": "運び屋の設計図",
+        "scale": "枚",
+        "image": 108,
+        "sort": 368
+    },
+    "1214": {
+        "category": "本",
+        "item_id": 1214,
+        "limit": 100,
+        "name": "移動販売の設計図",
+        "scale": "枚",
+        "image": 110,
+        "sort": 363
+    },
+    "1215": {
+        "category": "本",
+        "item_id": 1215,
+        "limit": 100,
+        "name": "ベースキャンプの設計図",
+        "scale": "枚",
+        "image": 109,
+        "sort": 367
+    },
+    "1216": {
+        "category": "本",
+        "item_id": 1216,
+        "limit": 100,
+        "name": "山小屋の設計図",
+        "scale": "枚",
+        "image": 5,
+        "sort": 372
+    },
+    "1217": {
+        "category": "本",
+        "item_id": 1217,
+        "limit": 100,
+        "name": "ログハウスの設計図",
+        "scale": "枚",
+        "image": 89,
+        "sort": 377
+    },
+    "2000080": {
+        "category": "食物",
+        "item_id": 2000080,
+        "limit": 10000,
+        "name": "レシピ#メェロン",
+        "scale": "個",
+        "sort": 405
+    },
+    "2000095": {
+        "category": "食物",
+        "item_id": 2000095,
+        "limit": 10000,
+        "name": "レシピ#ぶどう",
+        "scale": "個",
+        "sort": 408
+    },
+    "2000107": {
+        "category": "食物",
+        "item_id": 2000107,
+        "limit": 10000,
+        "name": "レシピ#トマト",
+        "scale": "個",
+        "sort": 407
+    },
+    "2000322": {
+        "category": "食物",
+        "item_id": 2000322,
+        "limit": 10000,
+        "name": "レシピ#スイカ",
+        "scale": "個",
+        "sort": 409
+    },
+    "2001076": {
+        "category": "食物",
+        "item_id": 2001076,
+        "limit": 10000,
+        "name": "レシピ#ウメ",
+        "scale": "個",
+        "sort": 406
+    }
 }

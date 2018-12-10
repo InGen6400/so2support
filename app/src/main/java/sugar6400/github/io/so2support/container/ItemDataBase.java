@@ -1,6 +1,7 @@
 package sugar6400.github.io.so2support.container;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -10,7 +11,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class ItemDataBase {
+public class ItemDataBase extends AsyncTask<Context, Void, Void> {
 
     //定数
     //カテゴリー数
@@ -24,8 +25,10 @@ public class ItemDataBase {
 
     private JSONObject itemJson;
 
-    public ItemDataBase(Context c) {
-        readJson(c);
+    private ItemDataBaseListener listener;
+
+    public ItemDataBase(ItemDataBaseListener listen) {
+        listener = listen;
         if (jsonText == null) {
             Log.e("Json Error", "JsonText is null");
         }
@@ -71,29 +74,59 @@ public class ItemDataBase {
 
     //指定したタグの要素を取得
     public String getItemStr(int id, String tag) {
-        try {
-            if (itemJson.has(String.valueOf(id))) {
-                return itemJson.getJSONObject(String.valueOf(id)).getString(tag);
-            } else {
-                return null;
+        if (itemJson != null) {
+            try {
+                if (itemJson.has(String.valueOf(id))) {
+                    return itemJson.getJSONObject(String.valueOf(id)).getString(tag);
+                } else {
+                    return null;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return "no data";
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } else {
+            return "data not loaded";
         }
-        return null;
     }
 
     //指定したタグ要素を取得(int)
     public int getItemInt(int id, String tag) {
-        try {
-            if (itemJson.has(String.valueOf(id))) {
-                return itemJson.getJSONObject(String.valueOf(id)).getInt(tag);
-            } else {
+        if (itemJson != null) {
+            try {
+                if (itemJson.has(String.valueOf(id))) {
+                    return itemJson.getJSONObject(String.valueOf(id)).getInt(tag);
+                } else {
+                    return -1;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
                 return -1;
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } else {
+            return -2;
         }
-        return -1;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        listener.OnStartDataLoad();
+    }
+
+    @Override
+    protected Void doInBackground(Context... context) {
+        readJson(context[0]);
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void a) {
+        listener.OnFinishDataLoad();
+    }
+
+    public interface ItemDataBaseListener {
+        void OnStartDataLoad();
+
+        void OnFinishDataLoad();
     }
 }

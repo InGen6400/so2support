@@ -1,6 +1,7 @@
 package sugar6400.github.io.so2support;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -38,6 +39,7 @@ import java.util.Locale;
 
 import sugar6400.github.io.so2support.adapters.ItemListAdapter;
 import sugar6400.github.io.so2support.container.CalcItemData;
+import sugar6400.github.io.so2support.container.ItemDataBase;
 import sugar6400.github.io.so2support.container.WorkData;
 import sugar6400.github.io.so2support.datas.DataManager;
 import sugar6400.github.io.so2support.ui.MyGlideModule;
@@ -48,7 +50,7 @@ import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
-public class CalcActivity extends AppCompatActivity implements View.OnClickListener, IShowcaseListener {
+public class CalcActivity extends AppCompatActivity implements View.OnClickListener, IShowcaseListener, ItemDataBase.ItemDataBaseListener {
 
     //原料リスト
     //public static int[] imageIDs;
@@ -85,6 +87,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPreferences pref;
     private Toolbar myToolbar;
 
+    private Dialog progDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +102,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(R.layout.progress);
+        builder.setCancelable(false);
+        progDialog = builder.create();
+
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         progressBar = findViewById(R.id.progressBar);
         dataManager = new DataManager(this, progressBar
@@ -110,10 +119,8 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         myToolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(myToolbar);
-        workList = new WorkList(this, (ListView) findViewById(R.id.test));
 
         drawerLayout = findViewById(R.id.drawer_layout);
-
 
         newNameText = new EditText(this);
         newNameDialog = new AlertDialog.Builder(this)
@@ -152,17 +159,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        popupWindow = new PopupItemEdit(CalcActivity.this);
         initTimePicker();
 
         initItemListView();
         initItemProdListView();
-        if (workList.getCount() == 0 || pref.getBoolean("isStartNewWork", false)) {
-            newWork();
-        } else {
-            //セーブデータが存在していたら，一番上のデータを表示する
-            loadWork(workList.getItem(0), 0);
-        }
 
         workNameText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -407,7 +407,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
     //アイテム追加用ポップアップを開く
     private void openPopup(boolean isSrc, int position, CalcItemData holder) {
 
@@ -438,6 +437,11 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
         if (popupWindow.isShowing()) {
             popupWindow.dismiss();
         }
+    }
+
+    private void setProgressDialog(boolean show) {
+        if (show) progDialog.show();
+        else progDialog.dismiss();
     }
 
     public double reCalc() {
@@ -563,5 +567,23 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
         dataManager.setToastOK(true);
+    }
+
+    @Override
+    public void OnStartDataLoad() {
+        setProgressDialog(true);
+    }
+
+    @Override
+    public void OnFinishDataLoad() {
+        popupWindow = new PopupItemEdit(CalcActivity.this);
+        workList = new WorkList(this, (ListView) findViewById(R.id.test));
+        if (workList.getCount() == 0 || pref.getBoolean("isStartNewWork", false)) {
+            newWork();
+        } else {
+            //セーブデータが存在していたら，一番上のデータを表示する
+            loadWork(workList.getItem(0), 0);
+        }
+        setProgressDialog(false);
     }
 }

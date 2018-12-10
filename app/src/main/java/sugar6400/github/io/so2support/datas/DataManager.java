@@ -30,6 +30,7 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import sugar6400.github.io.so2support.CalcActivity;
 import sugar6400.github.io.so2support.R;
 import sugar6400.github.io.so2support.container.ItemDataBase;
 
@@ -70,7 +71,7 @@ public class DataManager implements SyncTimer.SyncTimerListener {
     private String prevSyncFreq;
     private boolean isPrevRealtimeOn;
 
-    public DataManager(Context c, ProgressBar inBar, TextView prevSync, TextView nextSync) {
+    public DataManager(CalcActivity c, ProgressBar inBar, TextView prevSync, TextView nextSync) {
         offlineMessage = c.getString(R.string.offline_message);
         onlineMessage = c.getString(R.string.online_message);
         isLoading = false;
@@ -130,6 +131,7 @@ public class DataManager implements SyncTimer.SyncTimerListener {
         };
         //アイテムデータの読み込み
         itemDataBase = new ItemDataBase(c);
+        itemDataBase.execute(c);
         db = FirebaseFirestore.getInstance();
         timer = new SyncTimer(c, this);
         if (pref.getBoolean("isAutoSyncEnabled", true) && isRealTime()) {

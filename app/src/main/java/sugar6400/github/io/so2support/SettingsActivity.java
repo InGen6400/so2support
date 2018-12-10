@@ -3,6 +3,7 @@ package sugar6400.github.io.so2support;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -20,6 +21,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import java.util.Arrays;
+import java.util.List;
 
 import sugar6400.github.io.so2support.ui.WorkList;
 
@@ -38,7 +40,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
     /**
      * A preference value change listener that updates the preference's summary
-     * to reflect its new value.
+     * to reflect its new value.*/
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
@@ -64,7 +66,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             return true;
         }
     };
-     */
+
 
     /**
      * Helper method to determine if the device has an extra-large screen. For
@@ -82,7 +84,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      * immediately updated upon calling this method. The exact display format is
      * dependent on the type of preference.
      *
-     * @se/e #sBindPreferenceSummaryToValueListene
+     * @see #sBindPreferenceSummaryToValueListener
+     * */
     private static void bindPreferenceSummaryToValue(Preference preference) {
         // Set the listener to watch for value changes.
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
@@ -94,17 +97,18 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                         .getDefaultSharedPreferences(preference.getContext())
                         .getString(preference.getKey(), ""));
     }
-     */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
+/*
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new GeneralPreferenceFragment())
-                .commit();
+                .commit();*/
     }
-
+/*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -114,7 +118,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+*/
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.
      */
@@ -137,19 +141,20 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
     /**
      * {@inheritDoc}
-
     @Override
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+     */
     public void onBuildHeaders(List<Header> target) {
         loadHeadersFromResource(R.xml.pref_headers, target);
     }
-     */
     /**
      * This method stops fragment injection in malicious applications.
      * Make sure to deny any unknown fragments here. */
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName().equals(fragmentName)
-                || GeneralPreferenceFragment.class.getName().equals(fragmentName);
+                || GeneralPreferenceFragment.class.getName().equals(fragmentName)
+                || DataSyncPreferenceFragment.class.getName().equals(fragmentName)
+                || NotificationPreferenceFragment.class.getName().equals(fragmentName);
     }
 
 
@@ -159,8 +164,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class GeneralPreferenceFragment extends PreferenceFragment {
 
-        private SwitchPreference isAutoSyncPref;
-        private ListPreference syncFreqPref;
         private ListPreference priceSelectPref;
 
         @Override
@@ -178,8 +181,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("example_list"));
             */
 
-            isAutoSyncPref = (SwitchPreference) findPreference("isAutoSyncEnabled");
-            syncFreqPref = (ListPreference) findPreference("sync_freq");
             Preference button = findPreference("reset");
             button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
@@ -206,6 +207,67 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     return true;
                 }
             });
+
+            priceSelectPref = (ListPreference) findPreference("price_select");
+            priceSelectPref.setSummary(priceSelectPref.getEntry());
+            priceSelectPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    int index = Arrays.asList(getResources().getStringArray(R.array.list_pref_price_select_values))
+                            .indexOf(String.valueOf(newValue));
+                    String selected_title = getResources().getStringArray(R.array.list_pref_price_select_titles)[index];
+                    preference.setSummary(selected_title);
+                    return true;
+                }
+            });
+        }
+
+        private void restart() {
+            getFragmentManager().beginTransaction().remove(this).commit();
+            //final Intent i = new Intent(getActivity());
+            //final PendingIntent appStarter = PendingIntent.getActivity(getActivity(), 0, i, 0);
+
+            //final AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
+            //alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, appStarter);
+
+            Process.killProcess(Process.myPid());
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+            if (id == android.R.id.home) {
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                return true;
+            }
+            return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static class DataSyncPreferenceFragment extends PreferenceFragment {
+
+        private SwitchPreference isAutoSyncPref;
+        private ListPreference syncFreqPref;
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_data_sync);
+            setHasOptionsMenu(true);
+
+            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
+            // to their values. When their values change, their summaries are
+            // updated to reflect the new value, per the Android Design
+            // guidelines.
+            /*
+            bindPreferenceSummaryToValue(findPreference("example_text"));
+            bindPreferenceSummaryToValue(findPreference("example_list"));
+            */
+
+            isAutoSyncPref = (SwitchPreference) findPreference("isAutoSyncEnabled");
+            syncFreqPref = (ListPreference) findPreference("sync_freq");
             isAutoSyncPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -235,32 +297,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                     return true;
                 }
             });
-
-            priceSelectPref = (ListPreference) findPreference("price_select");
-            priceSelectPref.setSummary(priceSelectPref.getEntry());
-            priceSelectPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    int index = Arrays.asList(getResources().getStringArray(R.array.list_pref_price_select_values))
-                            .indexOf(String.valueOf(newValue));
-                    String selected_title = getResources().getStringArray(R.array.list_pref_price_select_titles)[index];
-                    preference.setSummary(selected_title);
-                    return true;
-                }
-            });
         }
 
-        private void restart() {
-            getFragmentManager().beginTransaction().remove(this).commit();
-            //final Intent i = new Intent(getActivity());
-            //final PendingIntent appStarter = PendingIntent.getActivity(getActivity(), 0, i, 0);
-
-            //final AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(ALARM_SERVICE);
-            //alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, appStarter);
-
-            Process.killProcess(Process.myPid());
-        }
-/*
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
@@ -270,7 +308,28 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             }
             return super.onOptionsItemSelected(item);
         }
-    */
+
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static class NotificationPreferenceFragment extends PreferenceFragment {
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_notification);
+            setHasOptionsMenu(true);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+            if (id == android.R.id.home) {
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                return true;
+            }
+            return super.onOptionsItemSelected(item);
+        }
+
+    }
 }

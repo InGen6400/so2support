@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="shop_id"
+        android:title="@string/pref_shop_id"
+        android:summary="未入力"
+        android:inputType="number" />
+
+</PreferenceScreen>

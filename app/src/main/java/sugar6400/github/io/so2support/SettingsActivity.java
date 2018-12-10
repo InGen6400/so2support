@@ -108,6 +108,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 .replace(android.R.id.content, new GeneralPreferenceFragment())
                 .commit();*/
     }
+    // TODO: Android4.2で設定画面の戻るボタンからCalcActivityに戻れない
 /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -15,6 +15,8 @@ public class IntroActivity extends AppIntro2 {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        showSkipButton(false);
+
         SliderPage sliderPage1 = new SliderPage();
         sliderPage1.setTitle("Welcome!");
         sliderPage1.setDescription("このアプリは「SOLD OUT 2」の支援アプリだよ！");

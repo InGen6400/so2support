@@ -81,6 +81,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     private EditText workNameText;
 
     private Toast mainToast;
+    private boolean toastOK;
 
     private EditText newNameText;
     private AlertDialog newNameDialog;
@@ -93,6 +94,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calc);
+        toastOK = false;
 
         //初回起動時にはイントロ画面が表示される
         showIntroActivity();
@@ -163,50 +165,6 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
 
         initItemListView();
         initItemProdListView();
-
-        workNameText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                editWork.setName(workNameText.getText().toString());
-            }
-        });
-        workNameText.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                //EnterKeyが押されたかを判定
-                if (event.getAction() == KeyEvent.ACTION_DOWN
-                        && keyCode == KeyEvent.KEYCODE_ENTER) {
-
-                    //ソフトキーボードを閉じる
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    if (inputMethodManager != null) {
-                        inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    }
-
-                    return true;
-                }
-                return false;
-            }
-        });
-        workNameText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
-                }
-            }
-        });
-
     }
 
     @Override
@@ -220,56 +178,10 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onRestart() {
         super.onRestart();
-        //初回起動時に実行
-        if (pref.getBoolean("first_so2support", true) && !pref.getBoolean("firstStart", true)) {
-            editWork = workList.initPreviewWork();
-            dataManager.setToastOK(false);
-            reDraw();
-            pref.edit().putBoolean("first_so2support", false).apply();
-
-
-            ShowcaseConfig config = new ShowcaseConfig();
-            //config.setDelay(100);
-            MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this);
-            sequence.setConfig(config);
-            sequence.addSequenceItem(
-                    new MaterialShowcaseView.Builder(this)
-                            .setTarget(findViewById(R.id.openTimePicker))
-                            .setContentText("ちゅーとりあるなんだ．\nここから作業時間を設定できるんだの")
-                            .setDismissText("OK！  ")
-                            .build());
-            sequence.addSequenceItem(
-                    new MaterialShowcaseView.Builder(this)
-                            .setTarget(findViewById(R.id.srcPopupButton))
-                            .setContentText("そしてここからアイテムを追加できるんだ～")
-                            .setDismissText("へぇ～")
-                            .build());
-            ArrayList<View> list = myToolbar.getTouchables();
-            sequence.addSequenceItem(
-                    new MaterialShowcaseView.Builder(this)
-                            .setTarget(list.get(4))
-                            .setContentText("ここをタップするか，画面左からのスライドで作業リストを表示．変更があったら自動で保存されるよ～")
-                            .setDismissText("なるほど～  ")
-                            .build());
-            sequence.addSequenceItem(
-                    new MaterialShowcaseView.Builder(this)
-                            .setTarget(findViewById(R.id.new_work_button))
-                            .setContentText("ここから作業を追加できるから，どんどん追加して自分の作業リストを充実させちゃおう！")
-                            .setDismissText("ヽ(^o^)丿おー  ")
-                            .build());
-            MaterialShowcaseView showcaseView = new MaterialShowcaseView.Builder(this)
-                    .setTarget(findViewById(R.id.prevSyncTimeText))
-                    .setContentText("あ，ちなみにこのアプリは価格データをネットから落としてきてるんだ．落とすタイミングとか，そんな機能イラネって人は歯車のアイコンから設定してね！じゃぁね～ﾉｼ")
-                    .setDismissText("じゃぁね～ﾉｼ  ")
-                    .setDismissOnTouch(true)
-                    .build();
-            showcaseView.addShowcaseListener(this);
-            sequence.addSequenceItem(showcaseView);
-            sequence.start();
-        }
         if (dataManager != null) {
             dataManager.ReloadSync();
             dataManager.setToastOK(true);
+            toastOK = true;
         }
     }
 
@@ -567,6 +479,7 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onShowcaseDismissed(MaterialShowcaseView materialShowcaseView) {
         dataManager.setToastOK(true);
+        toastOK = true;
     }
 
     @Override
@@ -578,12 +491,111 @@ public class CalcActivity extends AppCompatActivity implements View.OnClickListe
     public void OnFinishDataLoad() {
         popupWindow = new PopupItemEdit(CalcActivity.this);
         workList = new WorkList(this, (ListView) findViewById(R.id.test));
+
+        //初回起動時に実行
+        if (pref.getBoolean("first_so2support", true) && !pref.getBoolean("firstStart", true)) {
+            editWork = workList.initPreviewWork();
+            dataManager.setToastOK(false);
+            reDraw();
+            pref.edit().putBoolean("first_so2support", false).apply();
+
+
+            ShowcaseConfig config = new ShowcaseConfig();
+            //config.setDelay(100);
+            MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this);
+            sequence.setConfig(config);
+            sequence.addSequenceItem(
+                    new MaterialShowcaseView.Builder(this)
+                            .setTarget(findViewById(R.id.openTimePicker))
+                            .setContentText("ちゅーとりあるなんだ．\nここから作業時間を設定できるんだの")
+                            .setDismissText("OK！  ")
+                            .setDismissOnTouch(true)
+                            .setMaskColour(Color.parseColor("#e57fc2ef"))
+                            .build());
+            sequence.addSequenceItem(
+                    new MaterialShowcaseView.Builder(this)
+                            .setTarget(findViewById(R.id.srcPopupButton))
+                            .setContentText("そしてここからアイテムを追加できるんだ～")
+                            .setDismissText("へぇ～")
+                            .setDismissOnTouch(true)
+                            .setMaskColour(Color.parseColor("#e57fc2ef"))
+                            .build());
+            ArrayList<View> list = myToolbar.getTouchables();
+            sequence.addSequenceItem(
+                    new MaterialShowcaseView.Builder(this)
+                            .setTarget(list.get(4))
+                            .setContentText("ここをタップするか，画面左からのスライドで作業リストを表示．変更があったら自動で保存されるよ～")
+                            .setDismissText("なるほど～  ")
+                            .setDismissOnTouch(true)
+                            .setMaskColour(Color.parseColor("#e57fc2ef"))
+                            .build());
+            sequence.addSequenceItem(
+                    new MaterialShowcaseView.Builder(this)
+                            .setTarget(findViewById(R.id.new_work_button))
+                            .setContentText("ここから作業を追加できるから，どんどん追加して自分の作業リストを充実させちゃおう！")
+                            .setDismissText("ヽ(^o^)丿おー  ")
+                            .setDismissOnTouch(true)
+                            .setMaskColour(Color.parseColor("#e57fc2ef"))
+                            .build());
+            MaterialShowcaseView showcaseView = new MaterialShowcaseView.Builder(this)
+                    .setTarget(findViewById(R.id.prevSyncTimeText))
+                    .setContentText("あ，ちなみにこのアプリは価格データをネットから落としてきてるんだ．落とすタイミングとか，そんな機能イラネって人は歯車のアイコンから設定してね！じゃぁね～ﾉｼ")
+                    .setDismissText("じゃぁね～ﾉｼ  ")
+                    .setDismissOnTouch(true)
+                    .setMaskColour(Color.parseColor("#e57fc2ef"))
+                    .build();
+            showcaseView.addShowcaseListener(this);
+            sequence.addSequenceItem(showcaseView);
+            sequence.start();
+        }
         if (workList.getCount() == 0 || pref.getBoolean("isStartNewWork", false)) {
             newWork();
         } else {
             //セーブデータが存在していたら，一番上のデータを表示する
             loadWork(workList.getItem(0), 0);
         }
+        workNameText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                editWork.setName(workNameText.getText().toString());
+            }
+        });
+        workNameText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                //EnterKeyが押されたかを判定
+                if (event.getAction() == KeyEvent.ACTION_DOWN
+                        && keyCode == KeyEvent.KEYCODE_ENTER) {
+
+                    //ソフトキーボードを閉じる
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (inputMethodManager != null) {
+                        inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    }
+
+                    return true;
+                }
+                return false;
+            }
+        });
+        workNameText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
         setProgressDialog(false);
     }
 }

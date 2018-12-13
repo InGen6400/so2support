@@ -133,7 +133,16 @@ public class DataManager implements SyncTimer.SyncTimerListener {
         itemDataBase = new ItemDataBase(c);
         itemDataBase.execute(c);
         db = FirebaseFirestore.getInstance();
+
         timer = new SyncTimer(c, this);
+        //リアルタイム同期でないならロードしてタイマーセット
+        if (pref.getBoolean("isAutoSyncEnabled", true)
+                && !pref.getString("sync_freq", "15").equals("-1")) {
+            timer.LoadTimer();
+        } else {
+            LoadPrices(false);
+        }
+
         if (pref.getBoolean("isAutoSyncEnabled", true) && isRealTime()) {
             setupDocumentListeners();
             isPrevRealtimeOn = true;

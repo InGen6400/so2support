@@ -22,10 +22,6 @@ public class SyncTimer {
         syncHandler = new Handler();
         pref = PreferenceManager.getDefaultSharedPreferences(c);
         nextSyncTime = null;
-        //リアルタイム同期でないならロードしてタイマーセット
-        if (pref.getBoolean("isAutoSyncEnabled", true)
-                && !pref.getString("sync_freq", "15").equals("-1"))
-            LoadTimer();
     }
 
     public void LoadTimer() {
